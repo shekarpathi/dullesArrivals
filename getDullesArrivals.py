@@ -58,15 +58,15 @@ for i in json_data['arrivals']:
     status = i['status']
     # actualtime = i['actualtime']
     actualtime = i['actualtime'] if i['actualtime'] is not None else ''
-    customsAt = i['customsAt'] if i['customsAt'] is not None else    ''
-    gate = i['gate'] if i['gate'] is not None else    ''
-    mod_status = i['mod_status'] if i['mod_status'] is not None else    ''
+    customsAt = i['customsAt'] if i['customsAt'] is not None else ''
+    gate = i['gate'] if i['gate'] is not None else ''
+    mod_status = i['mod_status'] if i['mod_status'] is not None else ''
 
-    baggage = i['baggage'] if i['baggage'] is not None else    ''
-    claim = i['claim'] if i['claim'] is not None else    ''
+    baggage = i['baggage'] if i['baggage'] is not None else ''
+    claim = i['claim'] if i['claim'] is not None else ''
     claim1 = i['claim1'] if i['claim1'] is not None else ''
-    claim2 = i['claim2'] if i['claim2'] is not None else    ''
-    claim3 = i['claim3'] if i['claim3'] is not None else    ''
+    claim2 = i['claim2'] if i['claim2'] is not None else ''
+    claim3 = i['claim3'] if i['claim3'] is not None else ''
 
     print(i['IATA'] + " | " + i['flightnumber'] + " | " + i['dep_airport_code'] + " | " + gate + " | " + status + " | " + mod_status + " | " + actualtime + " | " + customsAt + " | " + baggage + " | " + claim + " | " + claim1 + " | " + claim2 + " | " + claim3)
     t = t + 1
