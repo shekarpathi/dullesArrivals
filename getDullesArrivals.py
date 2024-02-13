@@ -1,16 +1,26 @@
+import time
+
 import requests, json
 
 url = "https://www.flydulles.com/arrivals-and-departures/json"
 
-response = requests.request(
-    "GET",
-    url
-)
-print(response.status_code)
+response_code = 401
+retryCount = 0
+success = False
 
-if response.status_code != 200:
-    exit(0)
-json_data = json.loads(response.text)
+while retryCount < 5 and response_code != 200:
+    retryCount += 1
+    time.sleep(4)
+    response = requests.get(url)
+    response_code = response.status_code
+    print('Retry count: %s response_code: %s ' %(retryCount, response_code))
+    if response.status_code == 200:
+        json_data = json.loads(response.text)
+        success = True
+
+if not success:
+    print('Could not get the response after 5 tries, hence exiting')
+    exit(3)
 
 arrivalsFile = open("arrivals.html", "w")
 arrivalsFile.write("""<!DOCTYPE html>
