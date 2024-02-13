@@ -9,14 +9,15 @@ retryCount = 0
 success = False
 
 while retryCount < 5 and response_code != 200:
-    retryCount += 1
-    time.sleep(4)
     response = requests.get(url)
     response_code = response.status_code
-    print('Retry count: %s response_code: %s ' %(retryCount, response_code))
+    print('Retry count: %s response_code: %s ' % (retryCount, response_code))
     if response.status_code == 200:
         json_data = json.loads(response.text)
         success = True
+    else:
+        retryCount += 1
+        time.sleep(10)
 
 if not success:
     print('Could not get the response after 5 tries, hence exiting')
@@ -40,7 +41,7 @@ arrivalsFile.write("""<link rel="stylesheet" type="text/css" href="https://cdn.d
 </script>
 </head>\n""")
 
-arrivalsFile.write('<table data-order=\'[[ 5, "asc" ]]\' data-page-length=\'25\' id="example" class="display" style="width:100%">\n')
+arrivalsFile.write('<table data-order=\'[[ 5, "asc" ]]\' data-page-length=\'15\' id="example" class="display" style="width:100%">\n')
 arrivalsFile.write("""<thead>
             <tr>
                 <th>Airline</th>
@@ -80,8 +81,9 @@ for i in json_data['arrivals']:
 
     print(i['IATA'] + " | " + i['flightnumber'] + " | " + i['dep_airport_code'] + " | " + gate + " | " + status + " | " + mod_status + " | " + actualtime + " | " + customsAt + " | " + baggage + " | " + claim + " | " + claim1 + " | " + claim2 + " | " + claim3)
     t = t + 1
-    arrivalsFile.write('<tr>\n')
-    arrivalsFile.write('    <td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (i['IATA'], i['flightnumber'], i['dep_airport_code'], gate, status, actualtime, mod_status, customsAt, baggage, claim, claim1, claim2, claim3))
-    arrivalsFile.write('</tr>\n')
+    if status != 'Scheduled':
+        arrivalsFile.write('<tr>\n')
+        arrivalsFile.write('    <td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (i['IATA'], i['flightnumber'], i['dep_airport_code'], gate, status, actualtime, mod_status, customsAt, baggage, claim, claim1, claim2, claim3))
+        arrivalsFile.write('</tr>\n')
 arrivalsFile.write('</tbody>\n')
 arrivalsFile.write('</table>\n')
