@@ -11,10 +11,9 @@ success = False
 
 
 def formatTime(ss):
-    print("Hello from formatTime")
     if ss is not None:
         datetime_obj = datetime.strptime(ss, "%Y-%m-%d %H:%M:%S")
-        print(datetime_obj.strftime("%m/%d %H:%M"))
+        # print(datetime_obj.strftime("%m/%d %H:%M"))
         return datetime_obj.strftime("%m/%d %H:%M")
     else:
         return ''
@@ -23,13 +22,14 @@ def formatTime(ss):
 while retryCount < 5 and response_code != 200:
     response = requests.get(url)
     response_code = response.status_code
-    print('Retry count: %s response_code: %s ' % (retryCount, response_code))
+    print('Retry count: %s response_code: %s' % (retryCount, response_code))
     if response.status_code == 200:
         json_data = json.loads(response.text)
         success = True
     else:
         retryCount += 1
-        time.sleep(10)
+        print('Sleeping for %s seconds' % (retryCount*10))
+        time.sleep(retryCount*10)
 
 if not success:
     print('Could not get the response after 5 tries, hence exiting')
@@ -173,8 +173,8 @@ for i in json_data['arrivals']:
     claim2 = i['claim2'] if i['claim2'] is not None else ''
     claim3 = i['claim3'] if i['claim3'] is not None else ''
 
-    print(i['IATA'] + " | " + i['flightnumber'] + " | " + i[
-        'dep_airport_code'] + " | " + gate + " | " + status + " | " + mod_status + " | " + actualtime + " | " + customsAt + " | " + baggage + " | " + claim + " | " + claim1 + " | " + claim2 + " | " + claim3)
+    # print(i['IATA'] + " | " + i['flightnumber'] + " | " + i[
+    #     'dep_airport_code'] + " | " + gate + " | " + status + " | " + mod_status + " | " + actualtime + " | " + customsAt + " | " + baggage + " | " + claim + " | " + claim1 + " | " + claim2 + " | " + claim3)
     t = t + 1
     if status != 'Scheduled':
         arrivalsFile.write('<tr>\n')
