@@ -42,6 +42,9 @@ jobs:
         git config --global user.email "shekar@yahoo.com"
         ls -ltra ./
         git status
+        git fetch origin
+        git merge origin main
+        
     - name: Run script to get data for IAD arrivals
       run: |
         python getDullesArrivals.py
