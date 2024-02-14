@@ -35,9 +35,6 @@ if not success:
     print('Could not get the response after 5 tries, hence exiting')
     exit(3)
 
-print(response.text)
-responseFile = open("response.txt", "w")
-responseFile.write(response.text)
 arrivalsFile = open("arrivals.html", "w")
 arrivalsFile.write("""<!DOCTYPE html>
 <html>
