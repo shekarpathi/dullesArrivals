@@ -10,6 +10,11 @@ retryCount = 0
 success = False
 
 
+def getCurrentTime():
+    now = datetime.now()
+    return now.strftime("%b %d, %Y %I:%M %p")
+
+
 def formatTime(ss):
     if ss is not None:
         datetime_obj = datetime.strptime(ss, "%Y-%m-%d %H:%M:%S")
@@ -18,8 +23,8 @@ def formatTime(ss):
     else:
         return ''
 
+
 def formatGate(gate, customs):
-    suffix= ''
     rgate = ''
     if customs == "In Customs":
         suffix = " Cafe Americana"
@@ -53,8 +58,8 @@ while retryCount < 5 and response_code != 200:
         success = True
     else:
         retryCount += 1
-        print('Sleeping for %s seconds' % (retryCount*10))
-        time.sleep(retryCount*10)
+        print('Sleeping for %s seconds' % (retryCount * 10))
+        time.sleep(retryCount * 10)
 
 if not success:
     print('Could not get the response after 5 tries, hence exiting')
@@ -64,6 +69,7 @@ arrivalsFile = open("arrivals.html", "w")
 arrivalsFile.write("""<!DOCTYPE html>
 <html>
 <head>
+\t<meta http-equiv="refresh" content="600">
 \t<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 \t<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">\n""")
 arrivalsFile.write("""<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
@@ -162,10 +168,9 @@ thead input {
 </head>\n""")
 
 arrivalsFile.write(
-    '<table data-order=\'[[ 5, "asc" ]]\' data-page-length=\'20\' id="example" class="cell-border" style="width:100%">\n')
+    '<table data-order=\'[[ 5, "asc" ]]\' data-page-length=\'15\' id="example" class="cell-border" style="width:100%">\n')
 arrivalsFile.write("""<thead>
             <tr>
-                <th>Airline</th>
                 <th>Number</th>
                 <th>Origin</th>
                 <th>Gate</th>
@@ -193,7 +198,6 @@ for i in json_data['arrivals']:
     customsAt = formatTime(i['customsAt'])
     # customsAt = i['customsAt'] if i['customsAt'] is not None else ''
 
-
     mod_status = i['mod_status'] if i['mod_status'] is not None else ''
     gate = formatGate(i['gate'], i['mod_status'])
 
@@ -209,9 +213,10 @@ for i in json_data['arrivals']:
     if status != 'Scheduled':
         arrivalsFile.write('<tr>\n')
         arrivalsFile.write(
-            '    <td>%s</td>\n<td><a href="https://www.flightstats.com/v2/flight-tracker/%s/%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
-            i['IATA'], i['IATA'], i['flightnumber'], i['flightnumber'], i['dep_airport_code'], gate, status, actualtime, mod_status, customsAt,
-            baggage, claim, claim1, claim2))
+            '    <td><a href="https://www.flightstats.com/v2/flight-tracker/%s/%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
+                i['IATA'], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'], gate, status,
+                actualtime, mod_status, customsAt,
+                baggage, claim, claim1, claim2))
         arrivalsFile.write('</tr>\n')
 arrivalsFile.write('</tbody>\n')
 arrivalsFile.write('</table>\n')
@@ -234,6 +239,7 @@ arrivalsFile.write("""
     });
 </script>
 """)
+arrivalsFile.write("Information updated at " + getCurrentTime())
 arrivalsFile.write('</html>\n')
 
 # https://htmlcolorcodes.com/color-names/
