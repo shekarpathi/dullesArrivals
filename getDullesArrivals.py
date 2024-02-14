@@ -18,6 +18,32 @@ def formatTime(ss):
     else:
         return ''
 
+def formatGate(gate, customs):
+    suffix= ''
+    rgate = ''
+    if customs == "In Customs":
+        suffix = " Cafe Americana"
+    else:
+        if gate is not None:
+            rgate = gate
+            if gate[0] == "A":
+                suffix = " | 🚆6╩7"
+            elif gate[0] == "C":
+                suffix = " | 🚆6╩7"
+            elif gate[0] == "B":
+                suffix = " | 🚆10╩11"
+            elif gate[0] == "Z":
+                suffix = " | 🚶╚8"
+            elif gate[0] == "D":
+                suffix = " | 🚌 ╔8"
+            else:
+                suffix = ''
+        else:
+            suffix = ''
+            rgate = ''
+    print ('%s %s' % (rgate, suffix))
+    return '%s %s' % (rgate, suffix)
+
 
 while retryCount < 5 and response_code != 200:
     response = requests.get(url)
@@ -152,7 +178,6 @@ arrivalsFile.write("""<thead>
                 <th>Carousel</th>
                 <th>Carousel1</th>
                 <th>Carousel2</th>
-                <th>Carousel3</th>
             </tr>
         </thead>
         <tbody>\n""")
@@ -170,8 +195,8 @@ for i in json_data['arrivals']:
     # customsAt = i['customsAt'] if i['customsAt'] is not None else ''
 
 
-    gate = i['gate'] if i['gate'] is not None else ''
     mod_status = i['mod_status'] if i['mod_status'] is not None else ''
+    gate = formatGate(i['gate'], i['mod_status'])
 
     baggage = i['baggage'] if i['baggage'] is not None else ''
     claim = i['claim'] if i['claim'] is not None else ''
@@ -185,9 +210,9 @@ for i in json_data['arrivals']:
     if status != 'Scheduled':
         arrivalsFile.write('<tr>\n')
         arrivalsFile.write(
-            '    <td>%s</td>\n<td><a href="https://www.flightstats.com/v2/flight-tracker/%s/%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
+            '    <td>%s</td>\n<td><a href="https://www.flightstats.com/v2/flight-tracker/%s/%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
             i['IATA'], i['IATA'], i['flightnumber'], i['flightnumber'], i['dep_airport_code'], gate, status, actualtime, mod_status, customsAt,
-            baggage, claim, claim1, claim2, claim3))
+            baggage, claim, claim1, claim2))
         arrivalsFile.write('</tr>\n')
 arrivalsFile.write('</tbody>\n')
 arrivalsFile.write('</table>\n')
