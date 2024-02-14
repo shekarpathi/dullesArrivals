@@ -1,9 +1,47 @@
-<!DOCTYPE html>
+import time
+from datetime import datetime
+
+import requests, json
+
+url = "https://www.flydulles.com/arrivals-and-departures/json"
+
+response_code = 401
+retryCount = 0
+success = False
+
+
+def formatTime(ss):
+    if ss is not None:
+        datetime_obj = datetime.strptime(ss, "%Y-%m-%d %H:%M:%S")
+        # print(datetime_obj.strftime("%m/%d %H:%M"))
+        return datetime_obj.strftime("%m/%d %H:%M")
+    else:
+        return ''
+
+
+while retryCount < 5 and response_code != 200:
+    response = requests.get(url)
+    response_code = response.status_code
+    print('Retry count: %s response_code: %s' % (retryCount, response_code))
+    if response.status_code == 200:
+        json_data = json.loads(response.text)
+        success = True
+    else:
+        retryCount += 1
+        print('Sleeping for %s seconds' % (retryCount*10))
+        time.sleep(retryCount*10)
+
+if not success:
+    print('Could not get the response after 5 tries, hence exiting')
+    exit(3)
+
+arrivalsFile = open("arrivals.html", "w")
+arrivalsFile.write("""<!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+\t<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+\t<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">\n""")
+arrivalsFile.write("""<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
@@ -96,9 +134,11 @@ thead input {
 }
 </style>
 
-</head>
-<table data-order='[[ 5, "asc" ]]' data-page-length='20' id="example" class="cell-border" style="width:100%">
-<thead>
+</head>\n""")
+
+arrivalsFile.write(
+    '<table data-order=\'[[ 5, "asc" ]]\' data-page-length=\'20\' id="example" class="cell-border" style="width:100%">\n')
+arrivalsFile.write("""<thead>
             <tr>
                 <th>Airline</th>
                 <th>Number</th>
@@ -115,864 +155,43 @@ thead input {
                 <th>Carousel3</th>
             </tr>
         </thead>
-        <tbody>
-<tr>
-    <td>EY</td>
-<td>131</td>
-<td>AUH</td>
-<td></td>
-<td>InAir</td>
-<td>02/14 16:11</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>11</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>997</td>
-<td>ACC</td>
-<td>C4</td>
-<td>InGate</td>
-<td>02/14 06:31</td>
-<td>In Customs</td>
-<td>02/14 06:49</td>
-<td>17</td>
-<td>17</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>ET</td>
-<td>500</td>
-<td>ADD</td>
-<td></td>
-<td>InAir</td>
-<td>02/14 08:00</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>21</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>4970</td>
-<td>ALB</td>
-<td>A6A</td>
-<td>Landed</td>
-<td>02/14 07:26</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>526</td>
-<td>AMM</td>
-<td>C5</td>
-<td>InGate</td>
-<td>02/14 06:17</td>
-<td>In Customs</td>
-<td>02/14 06:44</td>
-<td>16</td>
-<td>16</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>947</td>
-<td>AMS</td>
-<td>C2</td>
-<td>InAir</td>
-<td>02/14 13:49</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>16</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>1785</td>
-<td>BOS</td>
-<td>D24</td>
-<td>InGate</td>
-<td>02/14 07:05</td>
-<td></td>
-<td></td>
-<td>4</td>
-<td>4</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>951</td>
-<td>BRU</td>
-<td>C14</td>
-<td>InAir</td>
-<td>02/14 14:14</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>17</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>2223</td>
-<td>CPT</td>
-<td>C2</td>
-<td>InGate</td>
-<td>02/14 06:24</td>
-<td>In Customs</td>
-<td>02/14 06:49</td>
-<td>16</td>
-<td>16</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>4342</td>
-<td>CHO</td>
-<td>A4A</td>
-<td>InGate</td>
-<td>02/14 06:56</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>2700</td>
-<td>CLE</td>
-<td>D19</td>
-<td>InGate</td>
-<td>02/14 07:16</td>
-<td></td>
-<td></td>
-<td>1</td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>6360</td>
-<td>CMH</td>
-<td>A1C</td>
-<td>InGate</td>
-<td>02/14 07:05</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>3430</td>
-<td>CMH</td>
-<td>D29</td>
-<td>InGate</td>
-<td>02/14 07:14</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>SK</td>
-<td>925</td>
-<td>CPH</td>
-<td></td>
-<td>InAir</td>
-<td>02/14 15:25</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>18</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>AI</td>
-<td>103</td>
-<td>DEL</td>
-<td></td>
-<td>Landed</td>
-<td>02/14 06:39</td>
-<td>In Customs</td>
-<td>02/14 07:09</td>
-<td></td>
-<td></td>
-<td>19</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>QR</td>
-<td>709</td>
-<td>DOH</td>
-<td></td>
-<td>InAir</td>
-<td>02/14 07:58</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>16</td>
-<td>17</td>
-<td></td>
-</tr>
-<tr>
-    <td>QR</td>
-<td>707</td>
-<td>DOH</td>
-<td></td>
-<td>InAir</td>
-<td>02/14 15:45</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>21</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>EK</td>
-<td>231</td>
-<td>DXB</td>
-<td></td>
-<td>InAir</td>
-<td>02/14 09:02</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>19</td>
-<td>20</td>
-<td></td>
-</tr>
-<tr>
-    <td>9X</td>
-<td>124</td>
-<td>DUJ</td>
-<td></td>
-<td>Landed</td>
-<td>02/14 07:08</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>10</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>988</td>
-<td>FRA</td>
-<td>C2</td>
-<td>InAir</td>
-<td>02/14 14:49</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>17</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>AV</td>
-<td>654</td>
-<td>GUA</td>
-<td></td>
-<td>InGate</td>
-<td>02/13 23:42</td>
-<td>In Customs</td>
-<td>02/14 00:06</td>
-<td></td>
-<td></td>
-<td>19</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>1274</td>
-<td>BDL</td>
-<td>C25</td>
-<td>Landed</td>
-<td>02/14 07:19</td>
-<td></td>
-<td></td>
-<td>1</td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>3494</td>
-<td>IND</td>
-<td>D25</td>
-<td>InGate</td>
-<td>02/14 07:03</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>TK</td>
-<td>7</td>
-<td>IST</td>
-<td></td>
-<td>Delayed</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>21</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>6081</td>
-<td>JAX</td>
-<td>A2A</td>
-<td>Delayed</td>
-<td>02/14 11:43</td>
-<td></td>
-<td></td>
-<td>6</td>
-<td>6</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>SV</td>
-<td>35</td>
-<td>JED</td>
-<td></td>
-<td>InAir</td>
-<td>02/14 15:45</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>21</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>9X</td>
-<td>243</td>
-<td>LNS</td>
-<td></td>
-<td>Landed</td>
-<td>02/14 07:18</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>10</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>2663</td>
-<td>LAS</td>
-<td>C23</td>
-<td>InGate</td>
-<td>02/14 06:32</td>
-<td></td>
-<td></td>
-<td>3</td>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>ET</td>
-<td>516</td>
-<td>LFW</td>
-<td></td>
-<td>Proposed</td>
-<td>02/14 18:37</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>21</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>BA</td>
-<td>217</td>
-<td>LHR</td>
-<td></td>
-<td>OutGate</td>
-<td>02/14 15:03</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>20</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>919</td>
-<td>LHR</td>
-<td>C4</td>
-<td>OutGate</td>
-<td>02/14 15:04</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>17</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>1892</td>
-<td>LAX</td>
-<td>C14</td>
-<td>InGate</td>
-<td>02/14 07:01</td>
-<td></td>
-<td></td>
-<td>2</td>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>3547</td>
-<td>SDF</td>
-<td>C26</td>
-<td>InGate</td>
-<td>02/14 07:00</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>9X</td>
-<td>181</td>
-<td>MGW</td>
-<td></td>
-<td>Landed</td>
-<td>02/14 07:15</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>10</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>109</td>
-<td>MUC</td>
-<td>C5</td>
-<td>InAir</td>
-<td>02/14 15:31</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>3509</td>
-<td>LGA</td>
-<td>D27</td>
-<td>Landed</td>
-<td>02/14 07:17</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>6088</td>
-<td>LGA</td>
-<td>A2A</td>
-<td>InAir</td>
-<td>02/14 08:23</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>4400</td>
-<td>EWR</td>
-<td>A6C</td>
-<td>InGate</td>
-<td>02/14 07:17</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>1528</td>
-<td>ORF</td>
-<td>D2</td>
-<td>InGate</td>
-<td>02/14 07:06</td>
-<td></td>
-<td></td>
-<td>1</td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>3481</td>
-<td>PIT</td>
-<td>C24</td>
-<td>InGate</td>
-<td>02/14 07:13</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>6288</td>
-<td>PVD</td>
-<td>A2G</td>
-<td>InGate</td>
-<td>02/14 07:10</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>1964</td>
-<td>RDU</td>
-<td>D15</td>
-<td>InAir</td>
-<td>02/14 07:23</td>
-<td></td>
-<td></td>
-<td>1</td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>4503</td>
-<td>RIC</td>
-<td>A4C</td>
-<td>InGate</td>
-<td>02/14 07:13</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>6057</td>
-<td>ROA</td>
-<td>A6E</td>
-<td>InAir</td>
-<td>02/14 07:47</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>2129</td>
-<td>SAN</td>
-<td>D4</td>
-<td>InGate</td>
-<td>02/14 04:36</td>
-<td></td>
-<td></td>
-<td>3</td>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>722</td>
-<td>SFO</td>
-<td>D3</td>
-<td>InGate</td>
-<td>02/14 06:47</td>
-<td></td>
-<td></td>
-<td>4</td>
-<td>4</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>AV</td>
-<td>590</td>
-<td>SAL</td>
-<td></td>
-<td>InGate</td>
-<td>02/14 01:17</td>
-<td>In Customs</td>
-<td>02/14 01:37</td>
-<td></td>
-<td></td>
-<td>19</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>AV</td>
-<td>580</td>
-<td>SAL</td>
-<td></td>
-<td>InGate</td>
-<td>02/14 03:06</td>
-<td>In Customs</td>
-<td>02/14 03:28</td>
-<td></td>
-<td></td>
-<td>19</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>1458</td>
-<td>SAL</td>
-<td>C1</td>
-<td>InGate</td>
-<td>02/14 05:53</td>
-<td>In Customs</td>
-<td>02/14 06:31</td>
-<td>17</td>
-<td>17</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>860</td>
-<td>GRU</td>
-<td>C6</td>
-<td>InGate</td>
-<td>02/14 06:10</td>
-<td>In Customs</td>
-<td>02/14 06:35</td>
-<td>16</td>
-<td>16</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>KE</td>
-<td>93</td>
-<td>ICN</td>
-<td></td>
-<td>InAir</td>
-<td>02/14 09:53</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>19</td>
-<td>20</td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>6103</td>
-<td>SYR</td>
-<td>A1G</td>
-<td>OutGate</td>
-<td>02/14 08:23</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>NH</td>
-<td>102</td>
-<td>HND</td>
-<td></td>
-<td>InAir</td>
-<td>02/14 09:22</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>17</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>804</td>
-<td>HND</td>
-<td>C3</td>
-<td>InAir</td>
-<td>02/14 15:31</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>3634</td>
-<td>YYZ</td>
-<td>C22</td>
-<td>OutGate</td>
-<td>02/14 08:38</td>
-<td></td>
-<td></td>
-<td>5</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>OS</td>
-<td>93</td>
-<td>VIE</td>
-<td>B51</td>
-<td>InAir</td>
-<td>02/14 14:21</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>19</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-    <td>UA</td>
-<td>53</td>
-<td>ZRH</td>
-<td>C7</td>
-<td>InAir</td>
-<td>02/14 15:00</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>16</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+        <tbody>\n""")
+
+# print(json.dumps(json_data, sort_keys=True, indent=4, separators=(",", ": ")))
+# print(json_data['_links']['next'])
+t = 1
+
+for i in json_data['arrivals']:
+    status = i['status']
+    # actualtime = i['actualtime']
+    actualtime = formatTime(i['actualtime'])
+    # actualtime = i['actualtime'] if i['actualtime'] is not None else ''
+    customsAt = formatTime(i['customsAt'])
+    # customsAt = i['customsAt'] if i['customsAt'] is not None else ''
+
+
+    gate = i['gate'] if i['gate'] is not None else ''
+    mod_status = i['mod_status'] if i['mod_status'] is not None else ''
+
+    baggage = i['baggage'] if i['baggage'] is not None else ''
+    claim = i['claim'] if i['claim'] is not None else ''
+    claim1 = i['claim1'] if i['claim1'] is not None else ''
+    claim2 = i['claim2'] if i['claim2'] is not None else ''
+    claim3 = i['claim3'] if i['claim3'] is not None else ''
+
+    # print(i['IATA'] + " | " + i['flightnumber'] + " | " + i[
+    #     'dep_airport_code'] + " | " + gate + " | " + status + " | " + mod_status + " | " + actualtime + " | " + customsAt + " | " + baggage + " | " + claim + " | " + claim1 + " | " + claim2 + " | " + claim3)
+    t = t + 1
+    if status != 'Scheduled':
+        arrivalsFile.write('<tr>\n')
+        arrivalsFile.write(
+            '    <td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
+            i['IATA'], i['flightnumber'], i['dep_airport_code'], gate, status, actualtime, mod_status, customsAt,
+            baggage, claim, claim1, claim2, claim3))
+        arrivalsFile.write('</tr>\n')
+arrivalsFile.write('</tbody>\n')
+arrivalsFile.write('</table>\n')
+arrivalsFile.write("""
 <script>
     const rows = document.querySelectorAll('td');
     rows.forEach((row) => {
@@ -990,4 +209,5 @@ thead input {
       }
     });
 </script>
-</html>
+""")
+arrivalsFile.write('</html>\n')
