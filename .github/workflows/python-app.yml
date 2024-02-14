@@ -4,9 +4,12 @@ name: Cron job running every 11 minutes to get Dulles arrivals
 
 # Controls when the workflow will run
 on:
-  #  # Triggers on every push
   push:
-  #  # Triggers the workflow every 30 minutes
+    paths:
+      - getDullesArrivals.py
+      - .github/workflows/python-app.yml
+      
+    #  # Triggers the workflow every 30 minutes
   schedule:
   - cron: "*/12 * * * *"
 
