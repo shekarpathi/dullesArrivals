@@ -88,6 +88,12 @@ $(document).ready(function () {
 thead input {
         width: 100%;
     }
+    .selected{
+  background-color:green;
+}
+.bad{
+  background-color:red;
+}
 </style>
 
 </head>
@@ -116,7 +122,7 @@ thead input {
 <td>AUH</td>
 <td></td>
 <td>InAir</td>
-<td>02/14 16:11</td>
+<td>02/14 16:10</td>
 <td></td>
 <td></td>
 <td></td>
@@ -146,7 +152,7 @@ thead input {
 <td>ADD</td>
 <td></td>
 <td>InAir</td>
-<td>02/14 07:59</td>
+<td>02/14 08:01</td>
 <td></td>
 <td></td>
 <td></td>
@@ -205,8 +211,8 @@ thead input {
 <td>651</td>
 <td>AMS</td>
 <td></td>
-<td>OutGate</td>
-<td>02/14 15:56</td>
+<td>InAir</td>
+<td>02/14 15:51</td>
 <td></td>
 <td></td>
 <td></td>
@@ -415,7 +421,7 @@ thead input {
 <td>117</td>
 <td>DUB</td>
 <td></td>
-<td>OutGate</td>
+<td>InAir</td>
 <td>02/14 14:51</td>
 <td></td>
 <td></td>
@@ -460,7 +466,7 @@ thead input {
 <td>418</td>
 <td>FRA</td>
 <td>B45</td>
-<td>Expected</td>
+<td>OutGate</td>
 <td>02/14 15:44</td>
 <td></td>
 <td></td>
@@ -611,7 +617,7 @@ thead input {
 <td>LHR</td>
 <td></td>
 <td>InAir</td>
-<td>02/14 14:57</td>
+<td>02/14 14:49</td>
 <td></td>
 <td></td>
 <td></td>
@@ -820,7 +826,7 @@ thead input {
 <td>6057</td>
 <td>ROA</td>
 <td>A6E</td>
-<td>InAir</td>
+<td>Landed</td>
 <td>02/14 07:47</td>
 <td></td>
 <td></td>
@@ -940,8 +946,8 @@ thead input {
 <td>6103</td>
 <td>SYR</td>
 <td>A1G</td>
-<td>OutGate</td>
-<td>02/14 08:38</td>
+<td>InAir</td>
+<td>02/14 08:11</td>
 <td></td>
 <td></td>
 <td>5</td>
@@ -1027,3 +1033,22 @@ thead input {
 </tr>
 </tbody>
 </table>
+
+<script>
+    const rows = document.querySelectorAll('td');
+    rows.forEach((row) => {
+      if (row.innerHTML === 'InAir') {
+        const parent = row.parentNode;
+        parent.style.backgroundColor = 'Cornsilk';
+      }
+      else if (row.innerHTML === 'InGate') {
+        const parent = row.parentNode;
+        parent.style.backgroundColor = 'HoneyDew';
+      }
+      else if (row.innerHTML === 'Delayed') {
+        const parent = row.parentNode;
+        parent.style.backgroundColor = 'SeaShell';
+      }
+    });
+</script>
+</html>
