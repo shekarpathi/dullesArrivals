@@ -14,8 +14,8 @@ def formatTime(ss):
     print("Hello from formatTime")
     if ss is not None:
         datetime_obj = datetime.strptime(ss, "%Y-%m-%d %H:%M:%S")
-        print(datetime_obj.strftime("%H:%M"))
-        return datetime_obj.strftime("%H:%M")
+        print(datetime_obj.strftime("%m/%d %H:%M"))
+        return datetime_obj.strftime("%m/%d %H:%M")
     else:
         return ''
 
