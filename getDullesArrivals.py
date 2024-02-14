@@ -41,7 +41,6 @@ def formatGate(gate, customs):
         else:
             suffix = ''
             rgate = ''
-    print ('%s %s' % (rgate, suffix))
     return '%s %s' % (rgate, suffix)
 
 
