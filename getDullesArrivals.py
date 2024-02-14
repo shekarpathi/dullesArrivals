@@ -12,7 +12,7 @@ success = False
 
 
 def getCurrentTime():
-    now = datetime.now(tz=EST5EDT())
+    now = datetime.now(tz=timezone('America/New_York'))
     return now.strftime("%b %d, %Y %I:%M %p")
 
 
