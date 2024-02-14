@@ -169,7 +169,7 @@ thead input {
 </head>\n""")
 
 arrivalsFile.write(
-    '<table data-order=\'[[ 5, "asc" ]]\' data-page-length=\'15\' id="example" class="cell-border" style="width:100%">\n')
+    '<table data-order=\'[[ 4, "asc" ]]\' data-page-length=\'15\' id="example" class="cell-border" style="width:100%">\n')
 arrivalsFile.write("""<thead>
             <tr>
                 <th>Number</th>
