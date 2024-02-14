@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 
 import requests, json
 
@@ -7,6 +8,17 @@ url = "https://www.flydulles.com/arrivals-and-departures/json"
 response_code = 401
 retryCount = 0
 success = False
+
+
+def formatTime(ss):
+    print("Hello from formatTime")
+    if ss is not None:
+        datetime_obj = datetime.strptime(ss, "%Y-%m-%d %H:%M:%S")
+        print(datetime_obj.strftime("%H:%M"))
+        return datetime_obj.strftime("%H:%M")
+    else:
+        return ''
+
 
 while retryCount < 5 and response_code != 200:
     response = requests.get(url)
@@ -32,8 +44,8 @@ arrivalsFile.write("""<!DOCTYPE html>
 arrivalsFile.write("""<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
 <script type="text/javascript">
 
 
@@ -108,7 +120,6 @@ $(document).ready(function () {
     });
 });
 
-
 </script>
 
 <style type="text/css" class="init">
@@ -119,7 +130,8 @@ thead input {
 
 </head>\n""")
 
-arrivalsFile.write('<table data-order=\'[[ 5, "asc" ]]\' data-page-length=\'20\' id="example" class="cell-border" style="width:100%">\n')
+arrivalsFile.write(
+    '<table data-order=\'[[ 5, "asc" ]]\' data-page-length=\'20\' id="example" class="cell-border" style="width:100%">\n')
 arrivalsFile.write("""<thead>
             <tr>
                 <th>Airline</th>
@@ -139,15 +151,19 @@ arrivalsFile.write("""<thead>
         </thead>
         <tbody>\n""")
 
-
 # print(json.dumps(json_data, sort_keys=True, indent=4, separators=(",", ": ")))
 # print(json_data['_links']['next'])
 t = 1
+
 for i in json_data['arrivals']:
     status = i['status']
     # actualtime = i['actualtime']
-    actualtime = i['actualtime'] if i['actualtime'] is not None else ''
-    customsAt = i['customsAt'] if i['customsAt'] is not None else ''
+    actualtime = formatTime(i['actualtime'])
+    # actualtime = i['actualtime'] if i['actualtime'] is not None else ''
+    customsAt = formatTime(i['customsAt'])
+    # customsAt = i['customsAt'] if i['customsAt'] is not None else ''
+
+
     gate = i['gate'] if i['gate'] is not None else ''
     mod_status = i['mod_status'] if i['mod_status'] is not None else ''
 
@@ -157,11 +173,15 @@ for i in json_data['arrivals']:
     claim2 = i['claim2'] if i['claim2'] is not None else ''
     claim3 = i['claim3'] if i['claim3'] is not None else ''
 
-    print(i['IATA'] + " | " + i['flightnumber'] + " | " + i['dep_airport_code'] + " | " + gate + " | " + status + " | " + mod_status + " | " + actualtime + " | " + customsAt + " | " + baggage + " | " + claim + " | " + claim1 + " | " + claim2 + " | " + claim3)
+    print(i['IATA'] + " | " + i['flightnumber'] + " | " + i[
+        'dep_airport_code'] + " | " + gate + " | " + status + " | " + mod_status + " | " + actualtime + " | " + customsAt + " | " + baggage + " | " + claim + " | " + claim1 + " | " + claim2 + " | " + claim3)
     t = t + 1
     if status != 'Scheduled':
         arrivalsFile.write('<tr>\n')
-        arrivalsFile.write('    <td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (i['IATA'], i['flightnumber'], i['dep_airport_code'], gate, status, actualtime, mod_status, customsAt, baggage, claim, claim1, claim2, claim3))
+        arrivalsFile.write(
+            '    <td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
+            i['IATA'], i['flightnumber'], i['dep_airport_code'], gate, status, actualtime, mod_status, customsAt,
+            baggage, claim, claim1, claim2, claim3))
         arrivalsFile.write('</tr>\n')
 arrivalsFile.write('</tbody>\n')
 arrivalsFile.write('</table>\n')
