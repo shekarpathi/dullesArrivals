@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-name: Cron job to generate hosts file from various sources
+name: Cron job running every 10 minutes to get Dulles arrivals
 #on: push
 
 # Controls when the workflow will run
@@ -8,7 +8,7 @@ on:
   push:
   #  # Triggers the workflow every 30 minutes
   schedule:
-  - cron: "*/10 * * * *"
+  - cron: "*/11 * * * *"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,7 +19,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: checkout repo content
+    - name: checkout dullesArrivals repository
       uses: actions/checkout@v3 # checkout the repository content to github runner.
       with:
         repository: shekarpathi/dullesArrivals
@@ -27,7 +27,7 @@ jobs:
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
         clean: true
 
-    - name: setup python
+    - name: setup python 3.8
       uses: actions/setup-python@v2
       with:
         python-version: 3.8 #install the python needed
