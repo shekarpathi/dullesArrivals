@@ -35,6 +35,9 @@ if not success:
     print('Could not get the response after 5 tries, hence exiting')
     exit(3)
 
+print(response.text)
+responseFile = open("response.txt", "w")
+responseFile.write(response.text)
 arrivalsFile = open("arrivals.html", "w")
 arrivalsFile.write("""<!DOCTYPE html>
 <html>
@@ -185,8 +188,8 @@ for i in json_data['arrivals']:
     if status != 'Scheduled':
         arrivalsFile.write('<tr>\n')
         arrivalsFile.write(
-            '    <td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
-            i['IATA'], i['flightnumber'], i['dep_airport_code'], gate, status, actualtime, mod_status, customsAt,
+            '    <td>%s</td>\n<td><a href="https://www.flightstats.com/v2/flight-tracker/%s/%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
+            i['IATA'], i['IATA'], i['flightnumber'], i['flightnumber'], i['dep_airport_code'], gate, status, actualtime, mod_status, customsAt,
             baggage, claim, claim1, claim2, claim3))
         arrivalsFile.write('</tr>\n')
 arrivalsFile.write('</tbody>\n')
@@ -211,3 +214,5 @@ arrivalsFile.write("""
 </script>
 """)
 arrivalsFile.write('</html>\n')
+
+# https://htmlcolorcodes.com/color-names/
