@@ -1,5 +1,6 @@
 import time
 from datetime import datetime
+from pytz import timezone
 
 import requests, json
 
@@ -11,7 +12,7 @@ success = False
 
 
 def getCurrentTime():
-    now = datetime.now()
+    now = datetime.now(tz=EST5EDT())
     return now.strftime("%b %d, %Y %I:%M %p")
 
 
