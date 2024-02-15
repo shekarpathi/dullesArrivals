@@ -3,7 +3,7 @@ name: Cron job running every 10 minutes to get Dulles arrivals and on push
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "*/6 * * * *"
   push:
     paths:
       - getDullesArrivals.py
