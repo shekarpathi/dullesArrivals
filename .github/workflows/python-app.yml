@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-name: Cron job running every 11 minutes to get Dulles arrivals
+name: Cron job running every 10 minutes to get Dulles arrivals and on push
 #on: push
 
 # Controls when the workflow will run
@@ -9,7 +9,7 @@ on:
       - getDullesArrivals.py
       - .github/workflows/python-app.yml
       
-    #  # Triggers the workflow every 30 minutes
+    #  # Triggers the workflow every 10 minutes
   schedule:
   - cron: "*/10 * * * *"
 
