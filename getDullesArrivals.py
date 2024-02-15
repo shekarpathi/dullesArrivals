@@ -62,8 +62,8 @@ while retryCount < 5 and response_code != 200:
         success = True
     else:
         retryCount += 1
-        print('Sleeping for %s seconds' % (retryCount * 10))
-        time.sleep(retryCount * 10)
+        print('%s. Sleeping for 15 seconds' % retryCount)
+        time.sleep(15)
 
 if not success:
     print('Could not get the response after 5 tries, hence exiting')
