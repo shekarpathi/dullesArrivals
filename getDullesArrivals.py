@@ -240,7 +240,16 @@ arrivalsFile.write("""
     });
 </script>
 """)
-arrivalsFile.write("Information updated at " + getCurrentTime())
+arrivalsFile.write("<p id=\"update\" onclick=\"myFunction()\">Information current as of " + getCurrentTime() + "</p>")
+arrivalsFile.write("<p id=\"info\" onclick=\"myFunction()\">Click here to refresh this page</p>")
+arrivalsFile.write("""
+    <script>
+        function myFunction() {
+          document.getElementById("info").innerHTML = "Page refreshed at ";
+          location.reload()
+        }
+    </script>
+""")
 arrivalsFile.write('</html>\n')
 
 # https://htmlcolorcodes.com/color-names/
