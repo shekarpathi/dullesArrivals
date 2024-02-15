@@ -51,7 +51,10 @@ def formatGate(gate, customs):
 
 
 while retryCount < 5 and response_code != 200:
-    response = requests.get(url)
+    headers = dict()
+    headers["Cookie"] = "gdprText=1; ct_check_js=1c40e376161c5de64b00f3eb4ca54aed; ct_ps_timestamp=1708001301; ct_fkp_timestamp=0; ct_pointer_data=0; ct_timezone=-5; apbct_antibot=e057b330c453aaf1b084653edef1acc2866210a559d6700bc40c126dd2634986; ct_has_scrolled=false; alertsText=Yes; flight-info=1"
+
+    response = requests.get(url, headers=headers)
     response_code = response.status_code
     print('Retry count: %s response_code: %s' % (retryCount, response_code))
     if response.status_code == 200:
