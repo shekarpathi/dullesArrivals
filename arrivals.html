@@ -18,7 +18,7 @@ $(document).ready(function () {
         .clone(true)
         .addClass('filters')
         .appendTo('#example thead');
- 
+
     var table = $('#example').DataTable({
     "autoWidth": false,
         "columnDefs": [
@@ -28,12 +28,12 @@ $(document).ready(function () {
          width: 1
       }
       ],
-      
+
         orderCellsTop: true,
         fixedHeader: true,
         initComplete: function () {
             var api = this.api();
- 
+
             // For each column
             api
                 .columns()
@@ -45,7 +45,7 @@ $(document).ready(function () {
                     );
                     var title = $(cell).text();
                     $(cell).html('<input type="text" placeholder="' + title + '" />');
- 
+
                     // On every keypress in this input
                     $(
                         'input',
@@ -56,7 +56,7 @@ $(document).ready(function () {
                             // Get the search value
                             $(this).attr('title', $(this).val());
                             var regexr = '({search})'; //$(this).parents('th').find('select').val();
- 
+
                             var cursorPosition = this.selectionStart;
                             // Search the column for that value
                             api
@@ -72,7 +72,7 @@ $(document).ready(function () {
                         })
                         .on('keyup', function (e) {
                             e.stopPropagation();
- 
+
                             $(this).trigger('change');
                             $(this)
                                 .focus()[0]
@@ -116,7 +116,7 @@ thead input {
         </thead>
         <tbody>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/EY/131" target="_blank" rel="noopener noreferrer">EY 131</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/EY/131" target="_blank" rel="noopener noreferrer">EY 131</a></td>
 <td>AUH</td>
 <td> </td>
 <td>InAir</td>
@@ -129,7 +129,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/997" target="_blank" rel="noopener noreferrer">UA 997</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/997" target="_blank" rel="noopener noreferrer">UA 997</a></td>
 <td>ACC</td>
 <td>  Cafe Americana</td>
 <td>InGate</td>
@@ -142,7 +142,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/ET/500" target="_blank" rel="noopener noreferrer">ET 500</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/ET/500" target="_blank" rel="noopener noreferrer">ET 500</a></td>
 <td>ADD</td>
 <td>  Cafe Americana</td>
 <td>Landed</td>
@@ -155,7 +155,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4970" target="_blank" rel="noopener noreferrer">UA 4970</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4970" target="_blank" rel="noopener noreferrer">UA 4970</a></td>
 <td>ALB</td>
 <td>A4F  | 🚆6╩7</td>
 <td>InGate</td>
@@ -168,7 +168,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4889" target="_blank" rel="noopener noreferrer">UA 4889</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4889" target="_blank" rel="noopener noreferrer">UA 4889</a></td>
 <td>ALB</td>
 <td>A4C  | 🚆6╩7</td>
 <td>InGate</td>
@@ -181,7 +181,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/947" target="_blank" rel="noopener noreferrer">UA 947</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/947" target="_blank" rel="noopener noreferrer">UA 947</a></td>
 <td>AMS</td>
 <td>C4  | 🚆6╩7</td>
 <td>InAir</td>
@@ -194,7 +194,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/KL/651" target="_blank" rel="noopener noreferrer">KL 651</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/KL/651" target="_blank" rel="noopener noreferrer">KL 651</a></td>
 <td>AMS</td>
 <td> </td>
 <td>InAir</td>
@@ -207,7 +207,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/DL/2549" target="_blank" rel="noopener noreferrer">DL 2549</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/DL/2549" target="_blank" rel="noopener noreferrer">DL 2549</a></td>
 <td>ATL</td>
 <td>B74  | 🚆10╩11</td>
 <td>InGate</td>
@@ -220,7 +220,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/DL/2332" target="_blank" rel="noopener noreferrer">DL 2332</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/DL/2332" target="_blank" rel="noopener noreferrer">DL 2332</a></td>
 <td>ATL</td>
 <td>B74  | 🚆10╩11</td>
 <td>InGate</td>
@@ -233,7 +233,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/632" target="_blank" rel="noopener noreferrer">UA 632</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/632" target="_blank" rel="noopener noreferrer">UA 632</a></td>
 <td>ATL</td>
 <td>D9  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -246,7 +246,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/DL/2820" target="_blank" rel="noopener noreferrer">DL 2820</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/DL/2820" target="_blank" rel="noopener noreferrer">DL 2820</a></td>
 <td>ATL</td>
 <td>B74  | 🚆10╩11</td>
 <td>InAir</td>
@@ -259,7 +259,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/654" target="_blank" rel="noopener noreferrer">UA 654</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/654" target="_blank" rel="noopener noreferrer">UA 654</a></td>
 <td>AUS</td>
 <td>D20  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -272,7 +272,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/CA/817" target="_blank" rel="noopener noreferrer">CA 817</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/CA/817" target="_blank" rel="noopener noreferrer">CA 817</a></td>
 <td>PEK</td>
 <td> </td>
 <td>InAir</td>
@@ -285,7 +285,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/AV/246" target="_blank" rel="noopener noreferrer">AV 246</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/AV/246" target="_blank" rel="noopener noreferrer">AV 246</a></td>
 <td>BOG</td>
 <td> </td>
 <td>InAir</td>
@@ -298,7 +298,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1785" target="_blank" rel="noopener noreferrer">UA 1785</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1785" target="_blank" rel="noopener noreferrer">UA 1785</a></td>
 <td>BOS</td>
 <td>C23  | 🚆6╩7</td>
 <td>InGate</td>
@@ -311,7 +311,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1157" target="_blank" rel="noopener noreferrer">UA 1157</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1157" target="_blank" rel="noopener noreferrer">UA 1157</a></td>
 <td>BOS</td>
 <td>D18  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -324,7 +324,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/9X/392" target="_blank" rel="noopener noreferrer">9X 392</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/9X/392" target="_blank" rel="noopener noreferrer">9X 392</a></td>
 <td>BFD</td>
 <td> </td>
 <td>Landed</td>
@@ -337,7 +337,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/951" target="_blank" rel="noopener noreferrer">UA 951</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/951" target="_blank" rel="noopener noreferrer">UA 951</a></td>
 <td>BRU</td>
 <td>C14  | 🚆6╩7</td>
 <td>InAir</td>
@@ -350,7 +350,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/6021" target="_blank" rel="noopener noreferrer">UA 6021</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/6021" target="_blank" rel="noopener noreferrer">UA 6021</a></td>
 <td>BUF</td>
 <td>A3A  | 🚆6╩7</td>
 <td>InGate</td>
@@ -363,7 +363,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4875" target="_blank" rel="noopener noreferrer">UA 4875</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4875" target="_blank" rel="noopener noreferrer">UA 4875</a></td>
 <td>BUF</td>
 <td>A4E  | 🚆6╩7</td>
 <td>InGate</td>
@@ -376,7 +376,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/6036" target="_blank" rel="noopener noreferrer">UA 6036</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/6036" target="_blank" rel="noopener noreferrer">UA 6036</a></td>
 <td>BTV</td>
 <td>A1B  | 🚆6╩7</td>
 <td>InGate</td>
@@ -389,7 +389,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/MS/981" target="_blank" rel="noopener noreferrer">MS 981</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/MS/981" target="_blank" rel="noopener noreferrer">MS 981</a></td>
 <td>CAI</td>
 <td>  Cafe Americana</td>
 <td>Landed</td>
@@ -402,7 +402,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3559" target="_blank" rel="noopener noreferrer">UA 3559</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3559" target="_blank" rel="noopener noreferrer">UA 3559</a></td>
 <td>CHS</td>
 <td>C18  | 🚆6╩7</td>
 <td>InGate</td>
@@ -415,7 +415,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1361" target="_blank" rel="noopener noreferrer">UA 1361</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1361" target="_blank" rel="noopener noreferrer">UA 1361</a></td>
 <td>CLT</td>
 <td>D19  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -428,7 +428,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4342" target="_blank" rel="noopener noreferrer">UA 4342</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4342" target="_blank" rel="noopener noreferrer">UA 4342</a></td>
 <td>CHO</td>
 <td>A4E  | 🚆6╩7</td>
 <td>InGate</td>
@@ -441,7 +441,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/2031" target="_blank" rel="noopener noreferrer">UA 2031</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/2031" target="_blank" rel="noopener noreferrer">UA 2031</a></td>
 <td>ORD</td>
 <td>D7  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -454,7 +454,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/2612" target="_blank" rel="noopener noreferrer">UA 2612</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/2612" target="_blank" rel="noopener noreferrer">UA 2612</a></td>
 <td>ORD</td>
 <td>D16  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -467,7 +467,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3444" target="_blank" rel="noopener noreferrer">UA 3444</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3444" target="_blank" rel="noopener noreferrer">UA 3444</a></td>
 <td>CVG</td>
 <td>D27  | 🚌 ╔8</td>
 <td>InAir</td>
@@ -480,7 +480,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/2700" target="_blank" rel="noopener noreferrer">UA 2700</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/2700" target="_blank" rel="noopener noreferrer">UA 2700</a></td>
 <td>CLE</td>
 <td>C1  | 🚆6╩7</td>
 <td>InGate</td>
@@ -493,7 +493,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3520" target="_blank" rel="noopener noreferrer">UA 3520</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3520" target="_blank" rel="noopener noreferrer">UA 3520</a></td>
 <td>CLE</td>
 <td>D8  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -506,7 +506,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4277" target="_blank" rel="noopener noreferrer">UA 4277</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4277" target="_blank" rel="noopener noreferrer">UA 4277</a></td>
 <td>CAE</td>
 <td>A2F  | 🚆6╩7</td>
 <td>InGate</td>
@@ -519,7 +519,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3430" target="_blank" rel="noopener noreferrer">UA 3430</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3430" target="_blank" rel="noopener noreferrer">UA 3430</a></td>
 <td>CMH</td>
 <td>D23  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -532,7 +532,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/6360" target="_blank" rel="noopener noreferrer">UA 6360</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/6360" target="_blank" rel="noopener noreferrer">UA 6360</a></td>
 <td>CMH</td>
 <td>A1G  | 🚆6╩7</td>
 <td>InGate</td>
@@ -545,7 +545,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3662" target="_blank" rel="noopener noreferrer">UA 3662</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3662" target="_blank" rel="noopener noreferrer">UA 3662</a></td>
 <td>CMH</td>
 <td>D4  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -558,7 +558,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/SK/925" target="_blank" rel="noopener noreferrer">SK 925</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/SK/925" target="_blank" rel="noopener noreferrer">SK 925</a></td>
 <td>CPH</td>
 <td> </td>
 <td>InAir</td>
@@ -571,7 +571,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/2639" target="_blank" rel="noopener noreferrer">UA 2639</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/2639" target="_blank" rel="noopener noreferrer">UA 2639</a></td>
 <td>DFW</td>
 <td>D7  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -584,7 +584,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/358" target="_blank" rel="noopener noreferrer">UA 358</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/358" target="_blank" rel="noopener noreferrer">UA 358</a></td>
 <td>DFW</td>
 <td>D14  | 🚌 ╔8</td>
 <td>Delayed</td>
@@ -597,7 +597,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/AI/103" target="_blank" rel="noopener noreferrer">AI 103</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/AI/103" target="_blank" rel="noopener noreferrer">AI 103</a></td>
 <td>DEL</td>
 <td>  Cafe Americana</td>
 <td>Landed</td>
@@ -610,7 +610,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/674" target="_blank" rel="noopener noreferrer">UA 674</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/674" target="_blank" rel="noopener noreferrer">UA 674</a></td>
 <td>DEN</td>
 <td>C12  | 🚆6╩7</td>
 <td>InGate</td>
@@ -623,7 +623,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1101" target="_blank" rel="noopener noreferrer">UA 1101</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1101" target="_blank" rel="noopener noreferrer">UA 1101</a></td>
 <td>DEN</td>
 <td>C25  | 🚆6╩7</td>
 <td>InAir</td>
@@ -636,7 +636,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/DL/5195" target="_blank" rel="noopener noreferrer">DL 5195</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/DL/5195" target="_blank" rel="noopener noreferrer">DL 5195</a></td>
 <td>DTW</td>
 <td>B72  | 🚆10╩11</td>
 <td>InGate</td>
@@ -649,7 +649,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/QR/707" target="_blank" rel="noopener noreferrer">QR 707</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/QR/707" target="_blank" rel="noopener noreferrer">QR 707</a></td>
 <td>DOH</td>
 <td> </td>
 <td>InAir</td>
@@ -662,7 +662,7 @@ thead input {
 <td>19</td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/EK/231" target="_blank" rel="noopener noreferrer">EK 231</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/EK/231" target="_blank" rel="noopener noreferrer">EK 231</a></td>
 <td>DXB</td>
 <td>  Cafe Americana</td>
 <td>InGate</td>
@@ -675,7 +675,7 @@ thead input {
 <td>20</td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/229" target="_blank" rel="noopener noreferrer">UA 229</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/229" target="_blank" rel="noopener noreferrer">UA 229</a></td>
 <td>DUB</td>
 <td>D32  | 🚌 ╔8</td>
 <td>InAir</td>
@@ -688,7 +688,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/EI/117" target="_blank" rel="noopener noreferrer">EI 117</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/EI/117" target="_blank" rel="noopener noreferrer">EI 117</a></td>
 <td>DUB</td>
 <td> </td>
 <td>InAir</td>
@@ -701,7 +701,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/9X/124" target="_blank" rel="noopener noreferrer">9X 124</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/9X/124" target="_blank" rel="noopener noreferrer">9X 124</a></td>
 <td>DUJ</td>
 <td> </td>
 <td>Unknown</td>
@@ -714,7 +714,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/9X/126" target="_blank" rel="noopener noreferrer">9X 126</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/9X/126" target="_blank" rel="noopener noreferrer">9X 126</a></td>
 <td>DUJ</td>
 <td> </td>
 <td>Landed</td>
@@ -727,7 +727,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1750" target="_blank" rel="noopener noreferrer">UA 1750</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1750" target="_blank" rel="noopener noreferrer">UA 1750</a></td>
 <td>FLL</td>
 <td>C23  | 🚆6╩7</td>
 <td>InGate</td>
@@ -740,7 +740,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/596" target="_blank" rel="noopener noreferrer">UA 596</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/596" target="_blank" rel="noopener noreferrer">UA 596</a></td>
 <td>RSW</td>
 <td>D21  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -753,7 +753,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/988" target="_blank" rel="noopener noreferrer">UA 988</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/988" target="_blank" rel="noopener noreferrer">UA 988</a></td>
 <td>FRA</td>
 <td>C2  | 🚆6╩7</td>
 <td>InAir</td>
@@ -766,7 +766,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/LH/418" target="_blank" rel="noopener noreferrer">LH 418</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/LH/418" target="_blank" rel="noopener noreferrer">LH 418</a></td>
 <td>FRA</td>
 <td>B45  | 🚆10╩11</td>
 <td>InAir</td>
@@ -779,7 +779,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/933" target="_blank" rel="noopener noreferrer">UA 933</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/933" target="_blank" rel="noopener noreferrer">UA 933</a></td>
 <td>FRA</td>
 <td> </td>
 <td>Cancelled</td>
@@ -792,7 +792,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/AV/654" target="_blank" rel="noopener noreferrer">AV 654</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/AV/654" target="_blank" rel="noopener noreferrer">AV 654</a></td>
 <td>GUA</td>
 <td>  Cafe Americana</td>
 <td>InGate</td>
@@ -805,7 +805,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1562" target="_blank" rel="noopener noreferrer">UA 1562</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1562" target="_blank" rel="noopener noreferrer">UA 1562</a></td>
 <td>GUA</td>
 <td>  Cafe Americana</td>
 <td>InGate</td>
@@ -818,7 +818,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1274" target="_blank" rel="noopener noreferrer">UA 1274</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1274" target="_blank" rel="noopener noreferrer">UA 1274</a></td>
 <td>BDL</td>
 <td>D24  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -831,11 +831,11 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/6011" target="_blank" rel="noopener noreferrer">UA 6011</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/6011" target="_blank" rel="noopener noreferrer">UA 6011</a></td>
 <td>BDL</td>
 <td>A1A  | 🚆6╩7</td>
-<td>Landed</td>
-<td>02/20 11:41</td>
+<td>InGate</td>
+<td>02/20 11:44</td>
 <td></td>
 <td></td>
 <td>6</td>
@@ -844,7 +844,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/344" target="_blank" rel="noopener noreferrer">UA 344</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/344" target="_blank" rel="noopener noreferrer">UA 344</a></td>
 <td>HNL</td>
 <td>C8  | 🚆6╩7</td>
 <td>InGate</td>
@@ -857,7 +857,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/471" target="_blank" rel="noopener noreferrer">UA 471</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/471" target="_blank" rel="noopener noreferrer">UA 471</a></td>
 <td>IAH</td>
 <td>D24  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -870,11 +870,11 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4240" target="_blank" rel="noopener noreferrer">UA 4240</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4240" target="_blank" rel="noopener noreferrer">UA 4240</a></td>
 <td>HSV</td>
 <td>A4A  | 🚆6╩7</td>
-<td>Landed</td>
-<td>02/20 11:36</td>
+<td>InGate</td>
+<td>02/20 11:41</td>
 <td></td>
 <td></td>
 <td>6</td>
@@ -883,7 +883,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3494" target="_blank" rel="noopener noreferrer">UA 3494</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3494" target="_blank" rel="noopener noreferrer">UA 3494</a></td>
 <td>IND</td>
 <td>A2A  | 🚆6╩7</td>
 <td>InGate</td>
@@ -896,7 +896,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3709" target="_blank" rel="noopener noreferrer">UA 3709</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3709" target="_blank" rel="noopener noreferrer">UA 3709</a></td>
 <td>IND</td>
 <td>C20  | 🚆6╩7</td>
 <td>InGate</td>
@@ -909,7 +909,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/TK/7" target="_blank" rel="noopener noreferrer">TK 7</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/TK/7" target="_blank" rel="noopener noreferrer">TK 7</a></td>
 <td>IST</td>
 <td> </td>
 <td>InAir</td>
@@ -922,7 +922,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/6171" target="_blank" rel="noopener noreferrer">UA 6171</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/6171" target="_blank" rel="noopener noreferrer">UA 6171</a></td>
 <td>JAX</td>
 <td>A1G  | 🚆6╩7</td>
 <td>InGate</td>
@@ -935,7 +935,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/SV/35" target="_blank" rel="noopener noreferrer">SV 35</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/SV/35" target="_blank" rel="noopener noreferrer">SV 35</a></td>
 <td>JED</td>
 <td> </td>
 <td>InAir</td>
@@ -948,7 +948,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/5046" target="_blank" rel="noopener noreferrer">UA 5046</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/5046" target="_blank" rel="noopener noreferrer">UA 5046</a></td>
 <td>JST</td>
 <td>A6A  | 🚆6╩7</td>
 <td>InGate</td>
@@ -961,7 +961,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4369" target="_blank" rel="noopener noreferrer">UA 4369</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4369" target="_blank" rel="noopener noreferrer">UA 4369</a></td>
 <td>TYS</td>
 <td>A4F  | 🚆6╩7</td>
 <td>Landed</td>
@@ -974,7 +974,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/9X/243" target="_blank" rel="noopener noreferrer">9X 243</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/9X/243" target="_blank" rel="noopener noreferrer">9X 243</a></td>
 <td>LNS</td>
 <td> </td>
 <td>Landed</td>
@@ -987,7 +987,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/9X/245" target="_blank" rel="noopener noreferrer">9X 245</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/9X/245" target="_blank" rel="noopener noreferrer">9X 245</a></td>
 <td>LNS</td>
 <td> </td>
 <td>Landed</td>
@@ -1000,7 +1000,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/662" target="_blank" rel="noopener noreferrer">UA 662</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/662" target="_blank" rel="noopener noreferrer">UA 662</a></td>
 <td>LAS</td>
 <td>C25  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1013,7 +1013,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1627" target="_blank" rel="noopener noreferrer">UA 1627</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1627" target="_blank" rel="noopener noreferrer">UA 1627</a></td>
 <td>LAS</td>
 <td>D18  | 🚌 ╔8</td>
 <td>InAir</td>
@@ -1026,7 +1026,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/TP/231" target="_blank" rel="noopener noreferrer">TP 231</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/TP/231" target="_blank" rel="noopener noreferrer">TP 231</a></td>
 <td>LIS</td>
 <td> </td>
 <td>InAir</td>
@@ -1039,7 +1039,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/943" target="_blank" rel="noopener noreferrer">UA 943</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/943" target="_blank" rel="noopener noreferrer">UA 943</a></td>
 <td>LIS</td>
 <td>C12  | 🚆6╩7</td>
 <td>InAir</td>
@@ -1052,7 +1052,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/919" target="_blank" rel="noopener noreferrer">UA 919</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/919" target="_blank" rel="noopener noreferrer">UA 919</a></td>
 <td>LHR</td>
 <td>C1  | 🚆6╩7</td>
 <td>InAir</td>
@@ -1065,7 +1065,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/BA/217" target="_blank" rel="noopener noreferrer">BA 217</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/BA/217" target="_blank" rel="noopener noreferrer">BA 217</a></td>
 <td>LHR</td>
 <td> </td>
 <td>InAir</td>
@@ -1078,7 +1078,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/BA/293" target="_blank" rel="noopener noreferrer">BA 293</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/BA/293" target="_blank" rel="noopener noreferrer">BA 293</a></td>
 <td>LHR</td>
 <td> </td>
 <td>OutGate</td>
@@ -1091,7 +1091,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/925" target="_blank" rel="noopener noreferrer">UA 925</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/925" target="_blank" rel="noopener noreferrer">UA 925</a></td>
 <td>LHR</td>
 <td>C7  | 🚆6╩7</td>
 <td>InAir</td>
@@ -1104,7 +1104,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1607" target="_blank" rel="noopener noreferrer">UA 1607</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1607" target="_blank" rel="noopener noreferrer">UA 1607</a></td>
 <td>LAX</td>
 <td>C26  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1117,7 +1117,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1892" target="_blank" rel="noopener noreferrer">UA 1892</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1892" target="_blank" rel="noopener noreferrer">UA 1892</a></td>
 <td>LAX</td>
 <td>C4  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1130,7 +1130,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/2411" target="_blank" rel="noopener noreferrer">UA 2411</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/2411" target="_blank" rel="noopener noreferrer">UA 2411</a></td>
 <td>LAX</td>
 <td>D5  | 🚌 ╔8</td>
 <td>Delayed</td>
@@ -1143,7 +1143,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3547" target="_blank" rel="noopener noreferrer">UA 3547</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3547" target="_blank" rel="noopener noreferrer">UA 3547</a></td>
 <td>SDF</td>
 <td>D27  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1156,7 +1156,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1567" target="_blank" rel="noopener noreferrer">UA 1567</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1567" target="_blank" rel="noopener noreferrer">UA 1567</a></td>
 <td>MEX</td>
 <td>C12  | 🚆6╩7</td>
 <td>InAir</td>
@@ -1169,7 +1169,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1719" target="_blank" rel="noopener noreferrer">UA 1719</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1719" target="_blank" rel="noopener noreferrer">UA 1719</a></td>
 <td>MIA</td>
 <td>C27  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1182,7 +1182,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/DL/3917" target="_blank" rel="noopener noreferrer">DL 3917</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/DL/3917" target="_blank" rel="noopener noreferrer">DL 3917</a></td>
 <td>MSP</td>
 <td>B72  | 🚆10╩11</td>
 <td>InAir</td>
@@ -1195,7 +1195,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3413" target="_blank" rel="noopener noreferrer">UA 3413</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3413" target="_blank" rel="noopener noreferrer">UA 3413</a></td>
 <td>YUL</td>
 <td>D25  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1208,7 +1208,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/AC/8723" target="_blank" rel="noopener noreferrer">AC 8723</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/AC/8723" target="_blank" rel="noopener noreferrer">AC 8723</a></td>
 <td>YUL</td>
 <td>Z10  | 🚶╚8</td>
 <td>Proposed</td>
@@ -1221,7 +1221,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/9X/181" target="_blank" rel="noopener noreferrer">9X 181</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/9X/181" target="_blank" rel="noopener noreferrer">9X 181</a></td>
 <td>MGW</td>
 <td> </td>
 <td>Landed</td>
@@ -1234,7 +1234,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/9X/177" target="_blank" rel="noopener noreferrer">9X 177</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/9X/177" target="_blank" rel="noopener noreferrer">9X 177</a></td>
 <td>MGW</td>
 <td> </td>
 <td>Landed</td>
@@ -1247,7 +1247,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/109" target="_blank" rel="noopener noreferrer">UA 109</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/109" target="_blank" rel="noopener noreferrer">UA 109</a></td>
 <td>MUC</td>
 <td>C2  | 🚆6╩7</td>
 <td>InAir</td>
@@ -1260,7 +1260,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/2374" target="_blank" rel="noopener noreferrer">UA 2374</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/2374" target="_blank" rel="noopener noreferrer">UA 2374</a></td>
 <td>MSY</td>
 <td>D10  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1273,7 +1273,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/2397" target="_blank" rel="noopener noreferrer">UA 2397</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/2397" target="_blank" rel="noopener noreferrer">UA 2397</a></td>
 <td>MSY</td>
 <td>D20  | 🚌 ╔8</td>
 <td>Delayed</td>
@@ -1286,11 +1286,11 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/DL/5381" target="_blank" rel="noopener noreferrer">DL 5381</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/DL/5381" target="_blank" rel="noopener noreferrer">DL 5381</a></td>
 <td>JFK</td>
 <td>B76  | 🚆10╩11</td>
 <td>InAir</td>
-<td>02/20 12:05</td>
+<td>02/20 12:01</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1299,7 +1299,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3515" target="_blank" rel="noopener noreferrer">UA 3515</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3515" target="_blank" rel="noopener noreferrer">UA 3515</a></td>
 <td>LGA</td>
 <td>D25  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1312,7 +1312,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/6088" target="_blank" rel="noopener noreferrer">UA 6088</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/6088" target="_blank" rel="noopener noreferrer">UA 6088</a></td>
 <td>LGA</td>
 <td>A3C  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1325,7 +1325,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4434" target="_blank" rel="noopener noreferrer">UA 4434</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4434" target="_blank" rel="noopener noreferrer">UA 4434</a></td>
 <td>LGA</td>
 <td>C28  | 🚆6╩7</td>
 <td>InAir</td>
@@ -1338,7 +1338,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/6117" target="_blank" rel="noopener noreferrer">UA 6117</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/6117" target="_blank" rel="noopener noreferrer">UA 6117</a></td>
 <td>LGA</td>
 <td>A1B  | 🚆6╩7</td>
 <td>OutGate</td>
@@ -1351,7 +1351,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1228" target="_blank" rel="noopener noreferrer">UA 1228</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1228" target="_blank" rel="noopener noreferrer">UA 1228</a></td>
 <td>EWR</td>
 <td>D11  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1364,7 +1364,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4388" target="_blank" rel="noopener noreferrer">UA 4388</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4388" target="_blank" rel="noopener noreferrer">UA 4388</a></td>
 <td>EWR</td>
 <td>C24  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1377,7 +1377,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1366" target="_blank" rel="noopener noreferrer">UA 1366</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1366" target="_blank" rel="noopener noreferrer">UA 1366</a></td>
 <td>ORF</td>
 <td>D2  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1390,7 +1390,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4259" target="_blank" rel="noopener noreferrer">UA 4259</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4259" target="_blank" rel="noopener noreferrer">UA 4259</a></td>
 <td>ORF</td>
 <td>A6B  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1403,7 +1403,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1875" target="_blank" rel="noopener noreferrer">UA 1875</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1875" target="_blank" rel="noopener noreferrer">UA 1875</a></td>
 <td>MCO</td>
 <td>C25  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1416,7 +1416,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4459" target="_blank" rel="noopener noreferrer">UA 4459</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4459" target="_blank" rel="noopener noreferrer">UA 4459</a></td>
 <td>YOW</td>
 <td>A6C  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1429,7 +1429,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/CM/404" target="_blank" rel="noopener noreferrer">CM 404</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/CM/404" target="_blank" rel="noopener noreferrer">CM 404</a></td>
 <td>PTY</td>
 <td>  Cafe Americana</td>
 <td>InGate</td>
@@ -1442,7 +1442,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/CM/443" target="_blank" rel="noopener noreferrer">CM 443</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/CM/443" target="_blank" rel="noopener noreferrer">CM 443</a></td>
 <td>PTY</td>
 <td> </td>
 <td>InAir</td>
@@ -1455,7 +1455,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/914" target="_blank" rel="noopener noreferrer">UA 914</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/914" target="_blank" rel="noopener noreferrer">UA 914</a></td>
 <td>CDG</td>
 <td>C3  | 🚆6╩7</td>
 <td>InAir</td>
@@ -1468,7 +1468,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/AF/54" target="_blank" rel="noopener noreferrer">AF 54</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/AF/54" target="_blank" rel="noopener noreferrer">AF 54</a></td>
 <td>CDG</td>
 <td> </td>
 <td>InAir</td>
@@ -1481,7 +1481,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1557" target="_blank" rel="noopener noreferrer">UA 1557</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1557" target="_blank" rel="noopener noreferrer">UA 1557</a></td>
 <td>PHX</td>
 <td>D3  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1494,7 +1494,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3586" target="_blank" rel="noopener noreferrer">UA 3586</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3586" target="_blank" rel="noopener noreferrer">UA 3586</a></td>
 <td>PIT</td>
 <td>A2B  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1507,7 +1507,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3679" target="_blank" rel="noopener noreferrer">UA 3679</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3679" target="_blank" rel="noopener noreferrer">UA 3679</a></td>
 <td>PWM</td>
 <td>D29  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1520,7 +1520,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4245" target="_blank" rel="noopener noreferrer">UA 4245</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4245" target="_blank" rel="noopener noreferrer">UA 4245</a></td>
 <td>PVD</td>
 <td>A2E  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1533,7 +1533,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1964" target="_blank" rel="noopener noreferrer">UA 1964</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1964" target="_blank" rel="noopener noreferrer">UA 1964</a></td>
 <td>RDU</td>
 <td>C18  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1546,7 +1546,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/2163" target="_blank" rel="noopener noreferrer">UA 2163</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/2163" target="_blank" rel="noopener noreferrer">UA 2163</a></td>
 <td>RDU</td>
 <td>D5  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1559,7 +1559,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4503" target="_blank" rel="noopener noreferrer">UA 4503</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4503" target="_blank" rel="noopener noreferrer">UA 4503</a></td>
 <td>RIC</td>
 <td>A4C  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1572,7 +1572,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4186" target="_blank" rel="noopener noreferrer">UA 4186</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4186" target="_blank" rel="noopener noreferrer">UA 4186</a></td>
 <td>RIC</td>
 <td>C26  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1585,7 +1585,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4334" target="_blank" rel="noopener noreferrer">UA 4334</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4334" target="_blank" rel="noopener noreferrer">UA 4334</a></td>
 <td>ROA</td>
 <td>A4A  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1598,7 +1598,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4367" target="_blank" rel="noopener noreferrer">UA 4367</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4367" target="_blank" rel="noopener noreferrer">UA 4367</a></td>
 <td>ROC</td>
 <td>A2E  | 🚆6╩7</td>
 <td>InAir</td>
@@ -1611,7 +1611,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/885" target="_blank" rel="noopener noreferrer">UA 885</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/885" target="_blank" rel="noopener noreferrer">UA 885</a></td>
 <td>FCO</td>
 <td>C6  | 🚆6╩7</td>
 <td>InAir</td>
@@ -1624,7 +1624,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1347" target="_blank" rel="noopener noreferrer">UA 1347</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1347" target="_blank" rel="noopener noreferrer">UA 1347</a></td>
 <td>SAT</td>
 <td>D30  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1637,7 +1637,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/2129" target="_blank" rel="noopener noreferrer">UA 2129</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/2129" target="_blank" rel="noopener noreferrer">UA 2129</a></td>
 <td>SAN</td>
 <td>D5  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1650,7 +1650,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/2049" target="_blank" rel="noopener noreferrer">UA 2049</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/2049" target="_blank" rel="noopener noreferrer">UA 2049</a></td>
 <td>SAN</td>
 <td>D7  | 🚌 ╔8</td>
 <td>InAir</td>
@@ -1663,7 +1663,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/AS/322" target="_blank" rel="noopener noreferrer">AS 322</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/AS/322" target="_blank" rel="noopener noreferrer">AS 322</a></td>
 <td>SAN</td>
 <td>B65  | 🚆10╩11</td>
 <td>InAir</td>
@@ -1676,7 +1676,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1873" target="_blank" rel="noopener noreferrer">UA 1873</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1873" target="_blank" rel="noopener noreferrer">UA 1873</a></td>
 <td>SAN</td>
 <td>C23  | 🚆6╩7</td>
 <td>InAir</td>
@@ -1689,7 +1689,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/2117" target="_blank" rel="noopener noreferrer">UA 2117</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/2117" target="_blank" rel="noopener noreferrer">UA 2117</a></td>
 <td>SFO</td>
 <td>D19  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1702,7 +1702,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/2138" target="_blank" rel="noopener noreferrer">UA 2138</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/2138" target="_blank" rel="noopener noreferrer">UA 2138</a></td>
 <td>SFO</td>
 <td>D1  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1715,7 +1715,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1322" target="_blank" rel="noopener noreferrer">UA 1322</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1322" target="_blank" rel="noopener noreferrer">UA 1322</a></td>
 <td>SFO</td>
 <td>D26  | 🚌 ╔8</td>
 <td>OutGate</td>
@@ -1728,7 +1728,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/AV/590" target="_blank" rel="noopener noreferrer">AV 590</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/AV/590" target="_blank" rel="noopener noreferrer">AV 590</a></td>
 <td>SAL</td>
 <td>  Cafe Americana</td>
 <td>InGate</td>
@@ -1741,7 +1741,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/AV/580" target="_blank" rel="noopener noreferrer">AV 580</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/AV/580" target="_blank" rel="noopener noreferrer">AV 580</a></td>
 <td>SAL</td>
 <td>  Cafe Americana</td>
 <td>InGate</td>
@@ -1754,7 +1754,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/AV/76" target="_blank" rel="noopener noreferrer">AV 76</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/AV/76" target="_blank" rel="noopener noreferrer">AV 76</a></td>
 <td>SAL</td>
 <td> </td>
 <td>InAir</td>
@@ -1767,7 +1767,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/860" target="_blank" rel="noopener noreferrer">UA 860</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/860" target="_blank" rel="noopener noreferrer">UA 860</a></td>
 <td>GRU</td>
 <td>  Cafe Americana</td>
 <td>InGate</td>
@@ -1780,7 +1780,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3514" target="_blank" rel="noopener noreferrer">UA 3514</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3514" target="_blank" rel="noopener noreferrer">UA 3514</a></td>
 <td>SAV</td>
 <td>D6  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1793,7 +1793,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/AS/348" target="_blank" rel="noopener noreferrer">AS 348</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/AS/348" target="_blank" rel="noopener noreferrer">AS 348</a></td>
 <td>SEA</td>
 <td>B65  | 🚆10╩11</td>
 <td>InGate</td>
@@ -1806,7 +1806,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/DL/544" target="_blank" rel="noopener noreferrer">DL 544</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/DL/544" target="_blank" rel="noopener noreferrer">DL 544</a></td>
 <td>SEA</td>
 <td>B76  | 🚆10╩11</td>
 <td>InAir</td>
@@ -1819,7 +1819,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1360" target="_blank" rel="noopener noreferrer">UA 1360</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1360" target="_blank" rel="noopener noreferrer">UA 1360</a></td>
 <td>SEA</td>
 <td>C27  | 🚆6╩7</td>
 <td>InAir</td>
@@ -1832,7 +1832,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/KE/93" target="_blank" rel="noopener noreferrer">KE 93</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/KE/93" target="_blank" rel="noopener noreferrer">KE 93</a></td>
 <td>ICN</td>
 <td>  Cafe Americana</td>
 <td>InGate</td>
@@ -1845,7 +1845,7 @@ thead input {
 <td>20</td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4506" target="_blank" rel="noopener noreferrer">UA 4506</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4506" target="_blank" rel="noopener noreferrer">UA 4506</a></td>
 <td>STL</td>
 <td>C22  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1858,7 +1858,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/1445" target="_blank" rel="noopener noreferrer">UA 1445</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/1445" target="_blank" rel="noopener noreferrer">UA 1445</a></td>
 <td>STT</td>
 <td>D24  | 🚌 ╔8</td>
 <td>Delayed</td>
@@ -1871,7 +1871,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4462" target="_blank" rel="noopener noreferrer">UA 4462</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4462" target="_blank" rel="noopener noreferrer">UA 4462</a></td>
 <td>SYR</td>
 <td>A6C  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1884,7 +1884,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/4888" target="_blank" rel="noopener noreferrer">UA 4888</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/4888" target="_blank" rel="noopener noreferrer">UA 4888</a></td>
 <td>SYR</td>
 <td>A5C  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1897,7 +1897,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/2331" target="_blank" rel="noopener noreferrer">UA 2331</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/2331" target="_blank" rel="noopener noreferrer">UA 2331</a></td>
 <td>TPA</td>
 <td>C17  | 🚆6╩7</td>
 <td>InGate</td>
@@ -1910,7 +1910,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/NH/102" target="_blank" rel="noopener noreferrer">NH 102</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/NH/102" target="_blank" rel="noopener noreferrer">NH 102</a></td>
 <td>HND</td>
 <td>  Cafe Americana</td>
 <td>InGate</td>
@@ -1923,7 +1923,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/804" target="_blank" rel="noopener noreferrer">UA 804</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/804" target="_blank" rel="noopener noreferrer">UA 804</a></td>
 <td>HND</td>
 <td>C1  | 🚆6╩7</td>
 <td>InAir</td>
@@ -1936,7 +1936,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3634" target="_blank" rel="noopener noreferrer">UA 3634</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3634" target="_blank" rel="noopener noreferrer">UA 3634</a></td>
 <td>YYZ</td>
 <td>D29  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1949,7 +1949,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/AC/8616" target="_blank" rel="noopener noreferrer">AC 8616</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/AC/8616" target="_blank" rel="noopener noreferrer">AC 8616</a></td>
 <td>YYZ</td>
 <td>Z10  | 🚶╚8</td>
 <td>InGate</td>
@@ -1962,7 +1962,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/3636" target="_blank" rel="noopener noreferrer">UA 3636</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/3636" target="_blank" rel="noopener noreferrer">UA 3636</a></td>
 <td>YYZ</td>
 <td>D23  | 🚌 ╔8</td>
 <td>InGate</td>
@@ -1975,7 +1975,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/AC/8618" target="_blank" rel="noopener noreferrer">AC 8618</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/AC/8618" target="_blank" rel="noopener noreferrer">AC 8618</a></td>
 <td>YYZ</td>
 <td>Z10  | 🚶╚8</td>
 <td>Proposed</td>
@@ -1988,7 +1988,7 @@ thead input {
 <td></td>
 </tr>
 <tr>
-    <td><a href="https://www.flightstats.com/v2/flight-tracker/UA/53" target="_blank" rel="noopener noreferrer">UA 53</a></td>
+    <td><a href="https://www.flightstats.com/v2/flight-details/UA/53" target="_blank" rel="noopener noreferrer">UA 53</a></td>
 <td>ZRH</td>
 <td>C7  | 🚆6╩7</td>
 <td>InAir</td>
@@ -2020,7 +2020,7 @@ thead input {
       }
     });
 </script>
-<p id="update" onclick="myFunction()">Information current as of Feb 20, 2024 11:49 AM</p><p id="info" onclick="myFunction()">Click here to refresh this page</p>
+<p id="update" onclick="myFunction()">Information current as of Feb 20, 2024 11:50 AM</p><p id="info" onclick="myFunction()">Click here to refresh this page</p>
     <script>
         function myFunction() {
           document.getElementById("info").innerHTML = "Page refreshed at ";
