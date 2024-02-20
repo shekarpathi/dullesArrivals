@@ -52,7 +52,8 @@ def formatGate(gate, customs):
 
 while retryCount < 5 and response_code != 200:
     headers = dict()
-    headers["Cookie"] = "gdprText=1; ct_check_js=1c40e376161c5de64b00f3eb4ca54aed; ct_ps_timestamp=1708001301; ct_fkp_timestamp=0; ct_pointer_data=0; ct_timezone=-5; apbct_antibot=e057b330c453aaf1b084653edef1acc2866210a559d6700bc40c126dd2634986; ct_has_scrolled=false; alertsText=Yes; flight-info=1"
+    headers[
+        "Cookie"] = "gdprText=1; ct_check_js=1c40e376161c5de64b00f3eb4ca54aed; ct_ps_timestamp=1708001301; ct_fkp_timestamp=0; ct_pointer_data=0; ct_timezone=-5; apbct_antibot=e057b330c453aaf1b084653edef1acc2866210a559d6700bc40c126dd2634986; ct_has_scrolled=false; alertsText=Yes; flight-info=1"
 
     response = requests.get(url, headers=headers)
     response_code = response.status_code
@@ -90,7 +91,7 @@ $(document).ready(function () {
         .clone(true)
         .addClass('filters')
         .appendTo('#example thead');
- 
+
     var table = $('#example').DataTable({
     "autoWidth": false,
         "columnDefs": [
@@ -100,12 +101,12 @@ $(document).ready(function () {
          width: 1
       }
       ],
-      
+
         orderCellsTop: true,
         fixedHeader: true,
         initComplete: function () {
             var api = this.api();
- 
+
             // For each column
             api
                 .columns()
@@ -117,7 +118,7 @@ $(document).ready(function () {
                     );
                     var title = $(cell).text();
                     $(cell).html('<input type="text" placeholder="' + title + '" />');
- 
+
                     // On every keypress in this input
                     $(
                         'input',
@@ -128,7 +129,7 @@ $(document).ready(function () {
                             // Get the search value
                             $(this).attr('title', $(this).val());
                             var regexr = '({search})'; //$(this).parents('th').find('select').val();
- 
+
                             var cursorPosition = this.selectionStart;
                             // Search the column for that value
                             api
@@ -144,7 +145,7 @@ $(document).ready(function () {
                         })
                         .on('keyup', function (e) {
                             e.stopPropagation();
- 
+
                             $(this).trigger('change');
                             $(this)
                                 .focus()[0]
