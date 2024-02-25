@@ -28,7 +28,7 @@ def formatTime(ss):
 def formatGate(gate, customs):
     rgate = ''
     if customs == "In Customs":
-        suffix = " Cafe Americana"
+        suffix = " Cafe Americana (Bag 15)"
     else:
         if gate is not None:
             rgate = gate
