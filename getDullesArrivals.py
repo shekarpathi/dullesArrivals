@@ -36,15 +36,15 @@ def formatGate(gate, customs):
         if gate is not None:
             rgate = gate
             if gate[0] == "A":
-                suffix = " ↘️ 🚆6╩7"
+                suffix = " 🚆6-7"
             elif gate[0] == "C":
-                suffix = " ↘️ 🚆6╩7"
+                suffix = " 🚆6-7"
             elif gate[0] == "B":
-                suffix = " ↙️ 🚆10╩11"
+                suffix = " 🚆10-11"
             elif gate[0] == "Z":
-                suffix = " ⬇️ 🚶╚8"
+                suffix = " 🚶8"
             elif gate[0] == "D":
-                suffix = " ↙️ 🚌 ╔8"
+                suffix = " 🚌 8"
             else:
                 suffix = ''
         else:
