@@ -1,10 +1,13 @@
 import time
 from datetime import datetime
 from pytz import timezone
+import os
 
 import requests, json
 
 url = "https://www.flydulles.com/arrivals-and-departures/json"
+arrivalsFileName = "arrivals.html"
+wwwPath = '/usr/share/httpd/noindex'
 
 response_code = 401
 retryCount = 0
@@ -70,14 +73,21 @@ if not success:
     print('Could not get the response after 5 tries, hence exiting')
     exit(3)
 
-arrivalsFile = open("arrivals.html", "w")
-arrivalsFile.write("""<!DOCTYPE html>
+
+isExist = os.path.exists(wwwPath)
+print(isExist)
+if isExist:
+    arrivalsFileHandle = open(wwwPath + '/index.html', "w")
+else:
+    arrivalsFileHandle = open(arrivalsFileName, "w")
+
+arrivalsFileHandle.write("""<!DOCTYPE html>
 <html>
 <head>
 \t<meta http-equiv="refresh" content="600">
 \t<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 \t<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">\n""")
-arrivalsFile.write("""<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+arrivalsFileHandle.write("""<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
@@ -172,9 +182,9 @@ thead input {
 
 </head>\n""")
 
-arrivalsFile.write(
+arrivalsFileHandle.write(
     '<table data-order=\'[[ 4, "asc" ]]\' data-page-length=\'300\' id="example" class="cell-border" style="width:100%">\n')
-arrivalsFile.write("""<thead>
+arrivalsFileHandle.write("""<thead>
             <tr>
                 <th>Number</th>
                 <th>Origin</th>
@@ -216,16 +226,16 @@ for i in json_data['arrivals']:
     #     'dep_airport_code'] + " | " + gate + " | " + status + " | " + mod_status + " | " + actualtime + " | " + customsAt + " | " + baggage + " | " + claim + " | " + claim1 + " | " + claim2 + " | " + claim3)
     t = t + 1
     if status != 'Scheduled':
-        arrivalsFile.write('<tr>\n')
-        arrivalsFile.write(
+        arrivalsFileHandle.write('<tr>\n')
+        arrivalsFileHandle.write(
             '    <td><a href="https://www.flightstats.com/v2/flight-details/%s/%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
                 i['IATA'], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'], gate, status,
                 actualtime, mod_status, customsAt,
                 baggage, claim, claim1, claim2))
-        arrivalsFile.write('</tr>\n')
-arrivalsFile.write('</tbody>\n')
-arrivalsFile.write('</table>\n')
-arrivalsFile.write("""
+        arrivalsFileHandle.write('</tr>\n')
+arrivalsFileHandle.write('</tbody>\n')
+arrivalsFileHandle.write('</table>\n')
+arrivalsFileHandle.write("""
 <script>
     const rows = document.querySelectorAll('td');
     rows.forEach((row) => {
@@ -244,9 +254,9 @@ arrivalsFile.write("""
     });
 </script>
 """)
-arrivalsFile.write("<p id=\"update\" onclick=\"myFunction()\">Information current as of " + getCurrentTime() + "</p>")
-arrivalsFile.write("<p id=\"info\" onclick=\"myFunction()\">Click here to refresh this page</p>")
-arrivalsFile.write("""
+arrivalsFileHandle.write("<p id=\"update\" onclick=\"myFunction()\">Information current as of " + getCurrentTime() + "</p>")
+arrivalsFileHandle.write("<p id=\"info\" onclick=\"myFunction()\">Click here to refresh this page</p>")
+arrivalsFileHandle.write("""
     <script>
         function myFunction() {
           document.getElementById("info").innerHTML = "Page refreshed at ";
@@ -254,6 +264,6 @@ arrivalsFile.write("""
         }
     </script>
 """)
-arrivalsFile.write('</html>\n')
+arrivalsFileHandle.write('</html>\n')
 
 # https://htmlcolorcodes.com/color-names/
