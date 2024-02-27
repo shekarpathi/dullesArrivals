@@ -5,6 +5,7 @@ from pytz import timezone
 import requests, json
 
 url = "https://www.flydulles.com/arrivals-and-departures/json"
+arrivalsFileName = "/usr/share/httpd/noindex/index.html"
 
 response_code = 401
 retryCount = 0
@@ -70,7 +71,7 @@ if not success:
     print('Could not get the response after 5 tries, hence exiting')
     exit(3)
 
-arrivalsFile = open("arrivals.html", "w")
+arrivalsFile = open(arrivalsFileName, "w")
 arrivalsFile.write("""<!DOCTYPE html>
 <html>
 <head>
