@@ -73,7 +73,6 @@ if not success:
     print('Could not get the response after 5 tries, hence exiting')
     exit(3)
 
-
 isExist = os.path.exists(wwwPath)
 print(isExist)
 if isExist:
@@ -81,13 +80,14 @@ if isExist:
 else:
     arrivalsFileHandle = open(arrivalsFileName, "w")
 
-arrivalsFileHandle.write("""<!DOCTYPE html>
+arrivalsFileHandle.write("""
+<!DOCTYPE html>
 <html>
 <head>
-\t<meta http-equiv="refresh" content="600">
-\t<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-\t<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">\n""")
-arrivalsFileHandle.write("""<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<meta http-equiv="refresh" content="600">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
@@ -179,12 +179,12 @@ thead input {
   background-color:red;
 }
 </style>
+</head>\n
+""")
 
-</head>\n""")
-
-arrivalsFileHandle.write(
-    '<table data-order=\'[[ 4, "asc" ]]\' data-page-length=\'300\' id="example" class="cell-border" style="width:100%">\n')
-arrivalsFileHandle.write("""<thead>
+arrivalsFileHandle.write("""
+    <table data-order=\'[[ 4, "asc" ]]\' data-page-length=\'300\' id="example" class="cell-border" style="width:100%">
+    <thead>
             <tr>
                 <th>Number</th>
                 <th>Origin</th>
@@ -199,7 +199,8 @@ arrivalsFileHandle.write("""<thead>
                 <th>Carousel2</th>
             </tr>
         </thead>
-        <tbody>\n""")
+        <tbody>\n
+    """)
 
 # print(json.dumps(json_data, sort_keys=True, indent=4, separators=(",", ": ")))
 # print(json_data['_links']['next'])
@@ -226,44 +227,42 @@ for i in json_data['arrivals']:
     #     'dep_airport_code'] + " | " + gate + " | " + status + " | " + mod_status + " | " + actualtime + " | " + customsAt + " | " + baggage + " | " + claim + " | " + claim1 + " | " + claim2 + " | " + claim3)
     t = t + 1
     if status != 'Scheduled':
-        arrivalsFileHandle.write('<tr>\n')
         arrivalsFileHandle.write(
-            '    <td><a href="https://www.flightstats.com/v2/flight-details/%s/%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
+            '<tr>\n    <td><a href="https://www.flightstats.com/v2/flight-details/%s/%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
                 i['IATA'], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'], gate, status,
                 actualtime, mod_status, customsAt,
                 baggage, claim, claim1, claim2))
         arrivalsFileHandle.write('</tr>\n')
-arrivalsFileHandle.write('</tbody>\n')
-arrivalsFileHandle.write('</table>\n')
+
 arrivalsFileHandle.write("""
-<script>
-    const rows = document.querySelectorAll('td');
-    rows.forEach((row) => {
-      if (row.innerHTML === 'InAir') {
-        const parent = row.parentNode;
-        parent.style.backgroundColor = 'Cornsilk';
-      }
-      else if (row.innerHTML === 'InGate') {
-        const parent = row.parentNode;
-        parent.style.backgroundColor = 'HoneyDew';
-      }
-      else if (row.innerHTML === 'Delayed') {
-        const parent = row.parentNode;
-        parent.style.backgroundColor = 'SeaShell';
-      }
-    });
-</script>
-""")
-arrivalsFileHandle.write("<p id=\"update\" onclick=\"myFunction()\">Information current as of " + getCurrentTime() + "</p>")
-arrivalsFileHandle.write("<p id=\"info\" onclick=\"myFunction()\">Click here to refresh this page</p>")
-arrivalsFileHandle.write("""
+    </tbody>
+    </table>
+    <script>
+        const rows = document.querySelectorAll('td');
+        rows.forEach((row) => {
+          if (row.innerHTML === 'InAir') {
+            const parent = row.parentNode;
+            parent.style.backgroundColor = 'Cornsilk';
+          }
+          else if (row.innerHTML === 'InGate') {
+            const parent = row.parentNode;
+            parent.style.backgroundColor = 'HoneyDew';
+          }
+          else if (row.innerHTML === 'Delayed') {
+            const parent = row.parentNode;
+            parent.style.backgroundColor = 'SeaShell';
+          }
+        });
+    </script>
+    <p id=\"update\" onclick=\"myFunction()\">Information current as of " + getCurrentTime() + "</p>
+    <p id=\"info\" onclick=\"myFunction()\">Click here to refresh this page</p>
     <script>
         function myFunction() {
           document.getElementById("info").innerHTML = "Page refreshed at ";
           location.reload()
         }
     </script>
+</html>
 """)
-arrivalsFileHandle.write('</html>\n')
 
 # https://htmlcolorcodes.com/color-names/
