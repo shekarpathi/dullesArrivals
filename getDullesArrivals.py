@@ -4,7 +4,6 @@ from datetime import datetime
 from pytz import timezone
 import os
 import requests, json
-import pandas as pd
 import csv
 
 url = "https://www.flydulles.com/arrivals-and-departures/json"
