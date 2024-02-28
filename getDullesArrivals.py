@@ -1,9 +1,11 @@
+import math
 import time
 from datetime import datetime
 from pytz import timezone
 import os
-
 import requests, json
+import pandas as pd
+import csv
 
 url = "https://www.flydulles.com/arrivals-and-departures/json"
 arrivalsFileName = "arrivals.html"
@@ -12,7 +14,23 @@ wwwPath = '/usr/share/httpd/noindex'
 response_code = 401
 retryCount = 0
 success = False
+airportdict = {}
 
+
+def readcsv2():
+    preclearairports = ['AUH', 'DUB', 'SNN', 'AUA', 'BDA', 'NAS', 'YYC', 'YYZ', 'YEG', 'YHZ', 'YUL', 'YOW', 'YVR', 'YYJ', 'YWG']
+    with open('airport_codes.csv', 'r') as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            if row[9] != '' and "_airport" in row[1] != '':
+                # print(row[0], row[1], row[5], row[9])
+                if row[5] == 'US' or row[9] in preclearairports:
+                    # print(row[9], row[5])
+                    airportdict[row[9]] = 'Domestic'
+                else:
+                    # print(row[9])
+                    airportdict[row[9]] = 'International'
+        csvfile.close()
 
 def getCurrentTime():
     now = datetime.now(tz=timezone('America/New_York'))
@@ -73,6 +91,7 @@ if not success:
     print('Could not get the response after 5 tries, hence exiting')
     exit(3)
 
+readcsv2()
 isExist = os.path.exists(wwwPath)
 print(isExist)
 if isExist:
@@ -183,11 +202,12 @@ thead input {
 """)
 
 arrivalsFileHandle.write("""
-    <table data-order=\'[[ 4, "asc" ]]\' data-page-length=\'300\' id="example" class="cell-border" style="width:100%">
+    <table data-order=\'[[ 5, "asc" ]]\' data-page-length=\'300\' id="example" class="cell-border" style="width:100%">
     <thead>
             <tr>
                 <th>Number</th>
                 <th>Origin</th>
+                <th>Dom/Int</th>
                 <th>Gate</th>
                 <th>Status</th>
                 <th>Gate Time</th>
@@ -228,8 +248,8 @@ for i in json_data['arrivals']:
     t = t + 1
     if status != 'Scheduled':
         arrivalsFileHandle.write(
-            '<tr>\n    <td><a href="https://www.flightstats.com/v2/flight-details/%s/%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
-                i['IATA'], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'], gate, status,
+            '<tr>\n    <td><a href="https://www.flightstats.com/v2/flight-details/%s/%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
+                i['IATA'], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'], airportdict[i['dep_airport_code']], gate, status,
                 actualtime, mod_status, customsAt,
                 baggage, claim, claim1, claim2))
         arrivalsFileHandle.write('</tr>\n')
@@ -254,7 +274,7 @@ arrivalsFileHandle.write("""
           }
         });
     </script>
-    <p id=\"update\" onclick=\"myFunction()\">Information current as of " + getCurrentTime() + "</p>
+    <p id=\"update\" onclick=\"myFunction()\">Information current as of %s</p>
     <p id=\"info\" onclick=\"myFunction()\">Click here to refresh this page</p>
     <script>
         function myFunction() {
@@ -263,6 +283,6 @@ arrivalsFileHandle.write("""
         }
     </script>
 </html>
-""")
+""" % getCurrentTime())
 
 # https://htmlcolorcodes.com/color-names/
