@@ -1,6 +1,5 @@
-import math
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pytz import timezone
 import os
 import requests, json
@@ -17,7 +16,8 @@ airportdict = {}
 
 
 def readcsv2():
-    preclearairports = ['AUH', 'DUB', 'SNN', 'AUA', 'BDA', 'NAS', 'YYC', 'YYZ', 'YEG', 'YHZ', 'YUL', 'YOW', 'YVR', 'YYJ', 'YWG']
+    preclearairports = ['AUH', 'DUB', 'SNN', 'AUA', 'BDA', 'NAS', 'YYC', 'YYZ', 'YEG', 'YHZ', 'YUL', 'YOW', 'YVR',
+                        'YYJ', 'YWG', 'SJU', 'STT']
     with open('airport_codes.csv', 'r') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
@@ -31,14 +31,41 @@ def readcsv2():
                     airportdict[row[9]] = 'International'
         csvfile.close()
 
+def getCustomsString(mod_status, customsAt) -> str:
+    if mod_status != '':
+        return (mod_status + ' since ' + customsAt)
+    else:
+        return ''
+
+def getCarousel(c, c1, c2, c3):
+    if c == '' and c1 == '':
+        return (c2 + ',' + c3).rstrip(',')
+    else:
+        return c
+
 def getCurrentTime():
     now = datetime.now(tz=timezone('America/New_York'))
     return now.strftime("%b %d, %Y %I:%M %p")
 
 
-def formatTime(ss):
-    if ss is not None:
-        datetime_obj = datetime.strptime(ss, "%Y-%m-%d %H:%M:%S")
+def formatTime(timeString) -> str:
+    if timeString is not None:
+        print(timeString)
+        passedTime = datetime.strptime(timeString, "%Y-%m-%d %H:%M:%S")
+        now = datetime.today()
+        past = now - passedTime
+        if past.days < 0:
+            past = past * -1
+            print('+%s' % past.seconds)
+            convert = time.strftime("+F %Hh %Mm", time.gmtime(past.seconds))
+            print(convert)
+        else:
+            print('-%s' % past.seconds)
+            convert = time.strftime("-P %Hh %Mm", time.gmtime(past.seconds))
+            print(convert)
+        print('----\n')
+
+        datetime_obj = datetime.strptime(timeString, "%Y-%m-%d %H:%M:%S")
         # print(datetime_obj.strftime("%m/%d %H:%M"))
         return datetime_obj.strftime("%m/%d %H:%M")
     else:
@@ -211,11 +238,7 @@ arrivalsFileHandle.write("""
                 <th>Status</th>
                 <th>Gate Time</th>
                 <th>Customs</th>
-                <th>In Customs since</th>
                 <th>Baggage Carousel</th>
-                <th>Carousel</th>
-                <th>Carousel1</th>
-                <th>Carousel2</th>
             </tr>
         </thead>
         <tbody>\n
@@ -224,33 +247,29 @@ arrivalsFileHandle.write("""
 # print(json.dumps(json_data, sort_keys=True, indent=4, separators=(",", ": ")))
 # print(json_data['_links']['next'])
 t = 1
-
 for i in json_data['arrivals']:
     status = i['status']
-    # actualtime = i['actualtime']
-    actualtime = formatTime(i['actualtime'])
-    # actualtime = i['actualtime'] if i['actualtime'] is not None else ''
-    customsAt = formatTime(i['customsAt'])
-    # customsAt = i['customsAt'] if i['customsAt'] is not None else ''
-
-    mod_status = i['mod_status'] if i['mod_status'] is not None else ''
-    gate = formatGate(i['gate'], i['mod_status'])
-
-    baggage = i['baggage'] if i['baggage'] is not None else ''
-    claim = i['claim'] if i['claim'] is not None else ''
-    claim1 = i['claim1'] if i['claim1'] is not None else ''
-    claim2 = i['claim2'] if i['claim2'] is not None else ''
-    claim3 = i['claim3'] if i['claim3'] is not None else ''
-
-    # print(i['IATA'] + " | " + i['flightnumber'] + " | " + i[
-    #     'dep_airport_code'] + " | " + gate + " | " + status + " | " + mod_status + " | " + actualtime + " | " + customsAt + " | " + baggage + " | " + claim + " | " + claim1 + " | " + claim2 + " | " + claim3)
     t = t + 1
     if status != 'Scheduled':
+        # actualtime = i['actualtime']
+        actualtime = formatTime(i['actualtime'])
+        customsAt = formatTime(i['customsAt'])
+
+        mod_status = i['mod_status'] if i['mod_status'] is not None else ''
+        gate = formatGate(i['gate'], i['mod_status'])
+
+        baggage = i['baggage'] if i['baggage'] is not None else ''
+        claim = i['claim'] if i['claim'] is not None else ''
+        claim1 = i['claim1'] if i['claim1'] is not None else ''
+        claim2 = i['claim2'] if i['claim2'] is not None else ''
+        claim3 = i['claim3'] if i['claim3'] is not None else ''
         arrivalsFileHandle.write(
-            '<tr>\n    <td><a href="https://www.flightstats.com/v2/flight-details/%s/%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
-                i['IATA'], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'], airportdict[i['dep_airport_code']], gate, status,
-                actualtime, mod_status, customsAt,
-                baggage, claim, claim1, claim2))
+            '<tr>\n    <td><a href="https://www.flightstats.com/v2/flight-details/%s/%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
+                i['IATA'], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'],
+                airportdict[i['dep_airport_code']], gate, status,
+                actualtime, getCustomsString(mod_status, customsAt),
+                # baggage, claim, claim1, claim2
+                getCarousel(baggage, claim, claim1, claim2)))
         arrivalsFileHandle.write('</tr>\n')
 
 arrivalsFileHandle.write("""
