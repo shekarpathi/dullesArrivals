@@ -13,9 +13,10 @@ response_code = 401
 retryCount = 0
 success = False
 airportdict = {}
+airlinedict = {}
 
 
-def readcsv2():
+def readAirportCodesCsv():
     preclearairports = ['AUH', 'DUB', 'SNN', 'AUA', 'BDA', 'NAS', 'YYC', 'YYZ', 'YEG', 'YHZ', 'YUL', 'YOW', 'YVR',
                         'YYJ', 'YWG', 'SJU', 'STT']
     with open('airport_codes.csv', 'r') as csvfile:
@@ -29,6 +30,13 @@ def readcsv2():
                 else:
                     # print(row[9])
                     airportdict[row[9]] = 'International'
+        csvfile.close()
+
+def readAirlineCodesCsv():
+    with open('airline_codes.csv', 'r') as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            airlinedict[row[0]] = row[1]
         csvfile.close()
 
 def getCustomsString(mod_status, customsAt) -> str:
@@ -117,7 +125,8 @@ if not success:
     print('Could not get the response after 5 tries, hence exiting')
     exit(3)
 
-readcsv2()
+readAirlineCodesCsv()
+readAirportCodesCsv()
 isExist = os.path.exists(wwwPath)
 print(isExist)
 if isExist:
@@ -264,12 +273,19 @@ for i in json_data['arrivals']:
         claim2 = i['claim2'] if i['claim2'] is not None else ''
         claim3 = i['claim3'] if i['claim3'] is not None else ''
         arrivalsFileHandle.write(
-            '<tr>\n    <td><a href="https://www.flightstats.com/v2/flight-details/%s/%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
-                i['IATA'], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'],
+            '<tr>\n    <td><a href="https://www.flightaware.com/live/flight/%s%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
+                airlinedict[i['IATA']], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'],
                 airportdict[i['dep_airport_code']], gate, status,
                 actualtime, getCustomsString(mod_status, customsAt),
                 # baggage, claim, claim1, claim2
                 getCarousel(baggage, claim, claim1, claim2)))
+        # arrivalsFileHandle.write(
+        #     '<tr>\n    <td><a href="https://www.flightstats.com/v2/flight-details/%s/%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
+        #         i['IATA'], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'],
+        #         airportdict[i['dep_airport_code']], gate, status,
+        #         actualtime, getCustomsString(mod_status, customsAt),
+        #         # baggage, claim, claim1, claim2
+        #         getCarousel(baggage, claim, claim1, claim2)))
         arrivalsFileHandle.write('</tr>\n')
 
 arrivalsFileHandle.write("""
@@ -304,3 +320,4 @@ arrivalsFileHandle.write("""
 """ % getCurrentTime())
 
 # https://htmlcolorcodes.com/color-names/
+# https://www.bansard.com/sites/default/files/download_documents/Bansard-airlines-codes-IATA-ICAO.xlsx
