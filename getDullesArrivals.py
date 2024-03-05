@@ -26,10 +26,10 @@ def readAirportCodesCsv():
                 # print(row[0], row[1], row[5], row[9])
                 if row[5] == 'US' or row[9] in preclearairports:
                     # print(row[9], row[5])
-                    airportdict[row[9]] = 'Domestic'
+                    airportdict[row[9]] = ['Domestic', row[7]]
                 else:
                     # print(row[9])
-                    airportdict[row[9]] = 'International'
+                    airportdict[row[9]] = ['International', row[7]]
         csvfile.close()
 
 def readAirlineCodesCsv():
@@ -88,15 +88,15 @@ def formatGate(gate, customs):
         if gate is not None:
             rgate = gate
             if gate[0] == "A":
-                suffix = " 🚆6-7"
+                suffix = "&nbsp;&nbsp;&nbsp;&nbsp;🚆6-7"
             elif gate[0] == "C":
-                suffix = " 🚆6-7"
+                suffix = "&nbsp;&nbsp;&nbsp;&nbsp;🚆6-7"
             elif gate[0] == "B":
-                suffix = " 🚆10-11"
+                suffix = "&nbsp;&nbsp;&nbsp;&nbsp;🚆10-11"
             elif gate[0] == "Z":
-                suffix = " 🚶8"
+                suffix = "&nbsp;&nbsp;&nbsp;&nbsp;🚶8"
             elif gate[0] == "D":
-                suffix = " 🚌 8"
+                suffix = "&nbsp;&nbsp;&nbsp;&nbsp;🚌 8"
             else:
                 suffix = ''
         else:
@@ -137,7 +137,7 @@ else:
 arrivalsFileHandle.write("""
 <!DOCTYPE html>
 <html>
-<head>
+<head title=Dulles Arrivals>
 <meta http-equiv="refresh" content="600">
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
@@ -273,9 +273,9 @@ for i in json_data['arrivals']:
         claim2 = i['claim2'] if i['claim2'] is not None else ''
         claim3 = i['claim3'] if i['claim3'] is not None else ''
         arrivalsFileHandle.write(
-            '<tr>\n    <td><a href="https://www.flightaware.com/live/flight/%s%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
-                airlinedict[i['IATA']], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'],
-                airportdict[i['dep_airport_code']], gate, status,
+            '<tr>\n    <td><a href="https://www.flightaware.com/live/flight/%s%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
+                airlinedict[i['IATA']], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'], airportdict[i['dep_airport_code']][1],
+                airportdict[i['dep_airport_code']][0], gate, status,
                 actualtime, getCustomsString(mod_status, customsAt),
                 # baggage, claim, claim1, claim2
                 getCarousel(baggage, claim, claim1, claim2)))
