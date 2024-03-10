@@ -159,6 +159,7 @@ if not success:
 readAirlineCodesCsv()
 readAirportCodesCsv()
 isExist = os.path.exists(wwwPath)
+print(isExist)
 if isExist:
     arrivalsFileHandle = open(wwwPath + '/index.html', "w")
     fisFileHandle = open(wwwPath + '/fis.html', "w")
