@@ -45,6 +45,8 @@ jobs:
         git status
         git fetch origin
         ls -ltra /var/www/html
+        echo 'Getting hostname'
+        hostname
         
     - name: Run script to get data for IAD arrivals
       run: |
