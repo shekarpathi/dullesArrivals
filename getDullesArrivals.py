@@ -1,5 +1,5 @@
 import time
-from datetime import datetime, timedelta
+from datetime import datetime
 from pytz import timezone
 import os
 import requests, json
@@ -8,6 +8,9 @@ import csv
 url = "https://www.flydulles.com/arrivals-and-departures/json"
 arrivalsFileName = "arrivals.html"
 wwwPath = '/usr/share/httpd/noindex'
+fisTableHTML: str = ''
+
+fisArray = []
 
 response_code = 401
 retryCount = 0
@@ -32,6 +35,7 @@ def readAirportCodesCsv():
                     airportdict[row[9]] = ['International', row[7]]
         csvfile.close()
 
+
 def readAirlineCodesCsv():
     with open('airline_codes.csv', 'r') as csvfile:
         reader = csv.reader(csvfile)
@@ -39,11 +43,13 @@ def readAirlineCodesCsv():
             airlinedict[row[0]] = row[1]
         csvfile.close()
 
+
 def getCustomsString(mod_status, customsAt) -> str:
     if mod_status != '':
         return (mod_status + ' since ' + customsAt)
     else:
         return ''
+
 
 def getCarousel(c, c1, c2, c3):
     if c == '' and c1 == '':
@@ -51,9 +57,32 @@ def getCarousel(c, c1, c2, c3):
     else:
         return c
 
+
 def getCurrentTime():
     now = datetime.now(tz=timezone('America/New_York'))
     return now.strftime("%b %d, %Y %I:%M %p")
+
+
+def isTimeBetween2and6(timeString) -> bool:
+    if timeString is not None:
+
+        print(timeString)
+        time_split = timeString.split(" ")
+        print(time_split[1])
+        hrs = time_split[1].replace(':', '')
+        print(hrs)
+        if (int(hrs) > 140000 and int(hrs) < 180000):
+            return True
+    else:
+        return False
+
+
+def formatTimeFor2To6(timeString) -> str:
+    if timeString is not None:
+        datetime_object = datetime.strptime(timeString, '%Y-%m-%d %H:%M:%S')
+        str_date = datetime_object.strftime("%I:%M %p")
+        print(str_date)
+        return str_date
 
 
 def formatTime(timeString) -> str:
@@ -80,10 +109,13 @@ def formatTime(timeString) -> str:
         return ''
 
 
-def formatGate(gate, customs):
+def formatGate(gate, domesticOrInternational):
     rgate = ''
-    if customs == "In Customs":
-        suffix = " Cafe Americana (Bag 15)"
+    if domesticOrInternational == "International":
+        if gate != None:
+            suffix = " %s - Bag 15" % gate
+        else:
+            suffix = " Bag 15"
     else:
         if gate is not None:
             rgate = gate
@@ -128,11 +160,12 @@ if not success:
 readAirlineCodesCsv()
 readAirportCodesCsv()
 isExist = os.path.exists(wwwPath)
-print(isExist)
 if isExist:
     arrivalsFileHandle = open(wwwPath + '/index.html', "w")
+    fisFileHandle = open(wwwPath + '/fis.html', "w")
 else:
     arrivalsFileHandle = open(arrivalsFileName, "w")
+    fisFileHandle = open('fis.html', "w")
 
 arrivalsFileHandle.write("""
 <!DOCTYPE html>
@@ -263,9 +296,10 @@ for i in json_data['arrivals']:
         # actualtime = i['actualtime']
         actualtime = formatTime(i['actualtime'])
         customsAt = formatTime(i['customsAt'])
+        print(isTimeBetween2and6(i['actualtime']))
 
         mod_status = i['mod_status'] if i['mod_status'] is not None else ''
-        gate = formatGate(i['gate'], i['mod_status'])
+        gate = formatGate(i['gate'], airportdict[i['dep_airport_code']][0])
 
         baggage = i['baggage'] if i['baggage'] is not None else ''
         claim = i['claim'] if i['claim'] is not None else ''
@@ -274,19 +308,47 @@ for i in json_data['arrivals']:
         claim3 = i['claim3'] if i['claim3'] is not None else ''
         arrivalsFileHandle.write(
             '<tr>\n    <td><a href="https://www.flightaware.com/live/flight/%s%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
-                airlinedict[i['IATA']], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'], airportdict[i['dep_airport_code']][1],
+                airlinedict[i['IATA']], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'],
+                airportdict[i['dep_airport_code']][1],
                 airportdict[i['dep_airport_code']][0], gate, status,
                 actualtime, getCustomsString(mod_status, customsAt),
                 # baggage, claim, claim1, claim2
                 getCarousel(baggage, claim, claim1, claim2)))
-        # arrivalsFileHandle.write(
-        #     '<tr>\n    <td><a href="https://www.flightstats.com/v2/flight-details/%s/%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
-        #         i['IATA'], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'],
-        #         airportdict[i['dep_airport_code']], gate, status,
-        #         actualtime, getCustomsString(mod_status, customsAt),
-        #         # baggage, claim, claim1, claim2
-        #         getCarousel(baggage, claim, claim1, claim2)))
         arrivalsFileHandle.write('</tr>\n')
+
+        if airportdict[i['dep_airport_code']][0] == 'International' and (
+                airlinedict[i['IATA']] == 'UAL' or airlinedict[i['IATA']] == 'DLH' or airlinedict[i['IATA']] == 'AUA' or
+                airlinedict[i['IATA']] == 'AVA' or airlinedict[i['IATA']] == 'CCA') and isTimeBetween2and6(
+                i['actualtime']):
+            s = ('https://www.flightaware.com/live/flight/%s%s' % (airlinedict[i['IATA']], i['flightnumber']))
+            fisArray.append([s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
+
+fisArray.sort(key=lambda x: x[1])
+for fis in fisArray:
+    if fis[4] == 'InAir':
+        color = 'style="background-color:#ADDFFF"'
+    elif fis[4] == 'Landed':
+        color = 'style="background-color:#AF9B60"'
+    elif fis[4] == 'InGate':
+        color = 'style="background-color:#22CE83"'
+    else:
+        color = ''
+    fisTableHTML += '<tr %s>\n\t\t<td>%s</td><td>%s</td>  <td><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (color,fis[1], fis[3], fis[0], fis[2], fis[4])
+
+fisFileHandle.write("""<!DOCTYPE html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+	<title>FIS 2-6 Arrivals</title>
+	<meta http-equiv="refresh" content="120">
+</head>
+<body>
+  <table>%s</table>\n</body>\n</html>""" % fisTableHTML)
+fisFileHandle.close()
 
 arrivalsFileHandle.write("""
     </tbody>
@@ -318,6 +380,7 @@ arrivalsFileHandle.write("""
     </script>
 </html>
 """ % getCurrentTime())
+arrivalsFileHandle.close()
 
 # https://htmlcolorcodes.com/color-names/
 # https://www.bansard.com/sites/default/files/download_documents/Bansard-airlines-codes-IATA-ICAO.xlsx
