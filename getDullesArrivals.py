@@ -10,7 +10,9 @@ arrivalsFileName = "arrivals.html"
 # wwwPath = '/usr/share/httpd/noindex'
 wwwPath = '/var/www/html'
 fisTableHTML: str = ''
+iabTableHTML: str = ''
 fisArray = []
+iabArray = []
 response_code = 401
 retryCount = 0
 success = False
@@ -70,7 +72,7 @@ def isTimeBetween2and6(timeString) -> bool:
         print(time_split[1])
         hrs = time_split[1].replace(':', '')
         print(hrs)
-        if (int(hrs) > 140000 and int(hrs) < 170000):
+        if (int(hrs) > 140000 and int(hrs) < 180000):
             return True
     else:
         return False
@@ -160,14 +162,17 @@ readAirlineCodesCsv()
 readAirportCodesCsv()
 
 if os.getenv("GITHUB_ACTIONS") == "true":
-    arrivalsFileHandle = open('arrivals.html', "w")
+    arrivalsFileHandle = open(arrivalsFileName, "w")
     fisFileHandle = open('fis.html', "w")
+    iabFileHandle = open('iab.html', "w")
 elif (os.path.exists(wwwPath)):
     arrivalsFileHandle = open(wwwPath + '/index.html', "w")
     fisFileHandle = open(wwwPath + '/fis.html', "w")
+    iabFileHandle = open(wwwPath + '/iab.html', "w")
 else:
     arrivalsFileHandle = open('arrivals.html', "w")
     fisFileHandle = open('fis.html', "w")
+    iabFileHandle = open('iab.html', "w")
 
 arrivalsFileHandle.write("""
 <!DOCTYPE html>
@@ -318,12 +323,11 @@ for i in json_data['arrivals']:
                 getCarousel(baggage, claim, claim1, claim2)))
         arrivalsFileHandle.write('</tr>\n')
 
-        if airportdict[i['dep_airport_code']][0] == 'International' and (
-                airlinedict[i['IATA']] == 'UAL' or airlinedict[i['IATA']] == 'DLH' or airlinedict[i['IATA']] == 'AUA' or
-                airlinedict[i['IATA']] == 'AVA' or airlinedict[i['IATA']] == 'CCA') and isTimeBetween2and6(
-                i['actualtime']):
+        if airportdict[i['dep_airport_code']][0] == 'International' and isTimeBetween2and6(i['actualtime']):
             s = ('https://www.flightaware.com/live/flight/%s%s' % (airlinedict[i['IATA']], i['flightnumber']))
-            fisArray.append([s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
+            iabArray.append([s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
+            if (airlinedict[i['IATA']] == 'UAL' or airlinedict[i['IATA']] == 'DLH' or airlinedict[i['IATA']] == 'AUA' or airlinedict[i['IATA']] == 'AVA' or airlinedict[i['IATA']] == 'CCA'):
+                fisArray.append([s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
 
 fisArray.sort(key=lambda x: x[1])
 for fis in fisArray:
@@ -351,6 +355,36 @@ table, th, td {
 <body>
   <table>%s</table>\n</body>\n</html>""" % fisTableHTML)
 fisFileHandle.close()
+
+# #################
+iabArray.sort(key=lambda x: x[1])
+for iab in iabArray:
+    if iab[4] == 'InAir':
+        color = 'style="background-color:#ADDFFF"'
+    elif iab[4] == 'Landed':
+        color = 'style="background-color:#AF9B60"'
+    elif iab[4] == 'InGate':
+        color = 'style="background-color:#22CE83"'
+    else:
+        color = ''
+    iabTableHTML += '<tr %s>\n\t\t<td>%s</td><td>%s</td>  <td><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (color,iab[1], iab[3], iab[0], iab[2], iab[4])
+
+iabFileHandle.write("""<!DOCTYPE html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+	<title>IAB 2-6 Arrivals</title>
+	<meta http-equiv="refresh" content="120">
+</head>
+<body>
+  <table>%s</table>\n</body>\n</html>""" % iabTableHTML)
+iabFileHandle.close()
+# #################
+
 
 arrivalsFileHandle.write("""
     </tbody>
