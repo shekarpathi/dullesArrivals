@@ -47,6 +47,8 @@ jobs:
         ls -ltra /var/www/html
         echo 'Getting hostname'
         hostname
+        uname
+        uname -a
         
     - name: Run script to get data for IAD arrivals
       run: |
