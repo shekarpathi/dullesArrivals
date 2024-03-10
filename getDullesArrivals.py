@@ -158,13 +158,15 @@ if not success:
 
 readAirlineCodesCsv()
 readAirportCodesCsv()
-isExist = os.path.exists(wwwPath)
-print(isExist)
-if isExist:
+
+if os.getenv("GITHUB_ACTIONS") == "true":
+    arrivalsFileHandle = open('arrivals.html', "w")
+    fisFileHandle = open('fis.html', "w")
+elif (os.path.exists(wwwPath)):
     arrivalsFileHandle = open(wwwPath + '/index.html', "w")
     fisFileHandle = open(wwwPath + '/fis.html', "w")
 else:
-    arrivalsFileHandle = open(arrivalsFileName, "w")
+    arrivalsFileHandle = open('arrivals.html', "w")
     fisFileHandle = open('fis.html', "w")
 
 arrivalsFileHandle.write("""
