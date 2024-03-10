@@ -170,9 +170,9 @@ elif (os.path.exists(wwwPath)):
     fisFileHandle = open(wwwPath + '/fis.html', "w")
     iabFileHandle = open(wwwPath + '/iab.html', "w")
 else:
-    arrivalsFileHandle = open('arrivals.html', "w")
-    fisFileHandle = open('fis.html', "w")
-    iabFileHandle = open('iab.html', "w")
+    arrivalsFileHandle = open(arrivalsFileName, "w")
+    fisFileHandle = open('fis_mac.html', "w")
+    iabFileHandle = open('iab_mac.html', "w")
 
 arrivalsFileHandle.write("""
 <!DOCTYPE html>
