@@ -8,7 +8,10 @@ terraform {
 }
 
 provider "aws" {
- region = "us-east-1"
+ region = "us-east-1",
+   "Parameters": {
+    "TimeZone": "Australia/Sydney (AUS Eastern Standard Time)"
+  }
 }
 
 data "aws_vpc" "default" {
@@ -75,7 +78,8 @@ resource "aws_instance" "IADArrivServ" {
       "sudo systemctl enable httpd",
       "ssh-keygen -q -b 4096 -t rsa -N \"\" -f ~/.ssh/id_rsa",
       "eval \"$(ssh-agent -s)\"",
-      "ssh-add ~/.ssh/id_rsa"
+      "ssh-add ~/.ssh/id_rsa",
+      "sudo timedatectl set-timezone America/New_York"
     ]
   }
 

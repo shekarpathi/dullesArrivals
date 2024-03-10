@@ -7,11 +7,10 @@ import csv
 
 url = "https://www.flydulles.com/arrivals-and-departures/json"
 arrivalsFileName = "arrivals.html"
-wwwPath = '/usr/share/httpd/noindex'
+# wwwPath = '/usr/share/httpd/noindex'
+wwwPath = '/var/www/html'
 fisTableHTML: str = ''
-
 fisArray = []
-
 response_code = 401
 retryCount = 0
 success = False
@@ -71,7 +70,7 @@ def isTimeBetween2and6(timeString) -> bool:
         print(time_split[1])
         hrs = time_split[1].replace(':', '')
         print(hrs)
-        if (int(hrs) > 140000 and int(hrs) < 180000):
+        if (int(hrs) > 140000 and int(hrs) < 170000):
             return True
     else:
         return False
