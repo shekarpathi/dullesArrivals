@@ -1,13 +1,11 @@
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pytz import timezone
 import os
 import requests, json
 import csv
 
 url = "https://www.flydulles.com/arrivals-and-departures/json"
-arrivalsFileName = "arrivals.html"
-# wwwPath = '/usr/share/httpd/noindex'
 wwwPath = '/var/www/html'
 fisTableHTML: str = ''
 iabTableHTML: str = ''
@@ -162,126 +160,33 @@ readAirlineCodesCsv()
 readAirportCodesCsv()
 
 if os.getenv("GITHUB_ACTIONS") == "true":
-    arrivalsFileHandle = open(arrivalsFileName, "w")
+    arrivalsFileHandle = open('arrivals.html', "w")
     fisFileHandle = open('fis.html', "w")
     iabFileHandle = open('iab.html', "w")
+    depFileHandle = open('departures.html', "w")
 elif (os.path.exists(wwwPath)):
     arrivalsFileHandle = open(wwwPath + '/index.html', "w")
     fisFileHandle = open(wwwPath + '/fis.html', "w")
     iabFileHandle = open(wwwPath + '/iab.html', "w")
+    depFileHandle = open(wwwPath + '/departures.html', "w")
 else:
-    arrivalsFileHandle = open(arrivalsFileName, "w")
+    arrivalsFileHandle = open('arrivals_mac.html', "w")
     fisFileHandle = open('fis_mac.html', "w")
     iabFileHandle = open('iab_mac.html', "w")
+    depFileHandle = open('departures_mac.html', "w")
+
+arrivalsHeadFileHandle = open("arrivals.head.html", "r")
+
+arrivalsFileHandle.write(arrivalsHeadFileHandle.read())
+
 
 arrivalsFileHandle.write("""
-<!DOCTYPE html>
-<html>
-<head title=Dulles Arrivals>
-<meta http-equiv="refresh" content="600">
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
-<script type="text/javascript">
-
-
-$(document).ready(function () {
-    // Setup - add a text input to each footer cell
-    $('#example thead tr')
-        .clone(true)
-        .addClass('filters')
-        .appendTo('#example thead');
-
-    var table = $('#example').DataTable({
-    "autoWidth": false,
-        "columnDefs": [
-        {"className": "dt-left", "targets": "_all", "width": "5%"},
-      {
-        targets: 1,
-         width: 1
-      }
-      ],
-
-        orderCellsTop: true,
-        fixedHeader: true,
-        initComplete: function () {
-            var api = this.api();
-
-            // For each column
-            api
-                .columns()
-                .eq(0)
-                .each(function (colIdx) {
-                    // Set the header cell to contain the input element
-                    var cell = $('.filters th').eq(
-                        $(api.column(colIdx).header()).index()
-                    );
-                    var title = $(cell).text();
-                    $(cell).html('<input type="text" placeholder="' + title + '" />');
-
-                    // On every keypress in this input
-                    $(
-                        'input',
-                        $('.filters th').eq($(api.column(colIdx).header()).index())
-                    )
-                        .off('keyup change')
-                        .on('change', function (e) {
-                            // Get the search value
-                            $(this).attr('title', $(this).val());
-                            var regexr = '({search})'; //$(this).parents('th').find('select').val();
-
-                            var cursorPosition = this.selectionStart;
-                            // Search the column for that value
-                            api
-                                .column(colIdx)
-                                .search(
-                                    this.value != ''
-                                        ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                        : '',
-                                    this.value != '',
-                                    this.value == ''
-                                )
-                                .draw();
-                        })
-                        .on('keyup', function (e) {
-                            e.stopPropagation();
-
-                            $(this).trigger('change');
-                            $(this)
-                                .focus()[0]
-                                .setSelectionRange(cursorPosition, cursorPosition);
-                        });
-                });
-        },
-    });
-});
-
-</script>
-
-<style type="text/css" class="init">
-thead input {
-        width: 100%;
-    }
-    .selected{
-  background-color:green;
-}
-.bad{
-  background-color:red;
-}
-</style>
-</head>\n
-""")
-
-arrivalsFileHandle.write("""
-    <table data-order=\'[[ 5, "asc" ]]\' data-page-length=\'300\' id="example" class="cell-border" style="width:100%">
+    <table data-order=\'[[ 6, "asc" ]]\' data-page-length=\'300\' id="example" class="cell-border order-column" style="width:100%">
     <thead>
             <tr>
-                <th>Number</th>
+                <th>Flight</th>
                 <th>Origin</th>
+                <th>Origin IATA</th>
                 <th>Dom/Int</th>
                 <th>Gate</th>
                 <th>Status</th>
@@ -304,7 +209,7 @@ for i in json_data['arrivals']:
         actualtime = formatTime(i['actualtime'])
         customsAt = formatTime(i['customsAt'])
         print(isTimeBetween2and6(i['actualtime']))
-
+        flight = '<a href="https://www.flightaware.com/live/flight/%s%s" target="_blank" rel="noopener noreferrer">%s %s</a>' % (airlinedict[i['IATA']], i['flightnumber'], i['IATA'], i['flightnumber'])
         mod_status = i['mod_status'] if i['mod_status'] is not None else ''
         gate = formatGate(i['gate'], airportdict[i['dep_airport_code']][0])
 
@@ -314,9 +219,10 @@ for i in json_data['arrivals']:
         claim2 = i['claim2'] if i['claim2'] is not None else ''
         claim3 = i['claim3'] if i['claim3'] is not None else ''
         arrivalsFileHandle.write(
-            '<tr>\n    <td><a href="https://www.flightaware.com/live/flight/%s%s" target="_blank" rel="noopener noreferrer">%s %s</a></td>\n<td>%s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
-                airlinedict[i['IATA']], i['flightnumber'], i['IATA'], i['flightnumber'], i['dep_airport_code'],
+            '<tr>\n\t<td>%s</td>\n<td class="%s">%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
+                flight, i['status'],
                 airportdict[i['dep_airport_code']][1],
+                i['dep_airport_code'],
                 airportdict[i['dep_airport_code']][0], gate, status,
                 actualtime, getCustomsString(mod_status, customsAt),
                 # baggage, claim, claim1, claim2
@@ -325,9 +231,14 @@ for i in json_data['arrivals']:
 
         if airportdict[i['dep_airport_code']][0] == 'International' and isTimeBetween2and6(i['actualtime']):
             s = ('https://www.flightaware.com/live/flight/%s%s' % (airlinedict[i['IATA']], i['flightnumber']))
-            iabArray.append([s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
-            if (airlinedict[i['IATA']] == 'UAL' or airlinedict[i['IATA']] == 'DLH' or airlinedict[i['IATA']] == 'AUA' or airlinedict[i['IATA']] == 'AVA' or airlinedict[i['IATA']] == 'CCA'):
-                fisArray.append([s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
+            iabArray.append(
+                [s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
+            if (airlinedict[i['IATA']] == 'UAL' or airlinedict[i['IATA']] == 'DLH' or airlinedict[i['IATA']] == 'AUA' or
+                    airlinedict[i['IATA']] == 'AVA' or airlinedict[i['IATA']] == 'CCA'):
+                fisArray.append(
+                    [s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'],
+                     status])
+# arrivalsFileHandle.close()
 
 fisArray.sort(key=lambda x: x[1])
 for fis in fisArray:
@@ -339,7 +250,8 @@ for fis in fisArray:
         color = 'style="background-color:#22CE83"'
     else:
         color = ''
-    fisTableHTML += '<tr %s>\n\t\t<td>%s</td><td>%s</td>  <td><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (color,fis[1], fis[3], fis[0], fis[2], fis[4])
+    fisTableHTML += '<tr %s>\n\t\t<td>%s</td><td>%s</td>  <td><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (
+        color, fis[1], fis[3], fis[0], fis[2], fis[4])
 
 fisFileHandle.write("""<!DOCTYPE html>
 <head>
@@ -349,8 +261,8 @@ table, th, td {
   border-collapse: collapse;
 }
 </style>
-	<title>FIS 2-6 Arrivals</title>
-	<meta http-equiv="refresh" content="120">
+    <title>FIS 2-6 Arrivals</title>
+    <meta http-equiv="refresh" content="120">
 </head>
 <body>
   <table>%s</table>\n</body>\n</html>""" % fisTableHTML)
@@ -367,7 +279,8 @@ for iab in iabArray:
         color = 'style="background-color:#22CE83"'
     else:
         color = ''
-    iabTableHTML += '<tr %s>\n\t\t<td>%s</td><td>%s</td>  <td><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (color,iab[1], iab[3], iab[0], iab[2], iab[4])
+    iabTableHTML += '<tr %s>\n\t\t<td>%s</td><td>%s</td>  <td><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (
+        color, iab[1], iab[3], iab[0], iab[2], iab[4])
 
 iabFileHandle.write("""<!DOCTYPE html>
 <head>
@@ -377,8 +290,8 @@ table, th, td {
   border-collapse: collapse;
 }
 </style>
-	<title>IAB 2-6 Arrivals</title>
-	<meta http-equiv="refresh" content="120">
+    <title>IAB 2-6 Arrivals</title>
+    <meta http-equiv="refresh" content="120">
 </head>
 <body>
   <table>%s</table>\n</body>\n</html>""" % iabTableHTML)
@@ -420,3 +333,73 @@ arrivalsFileHandle.close()
 
 # https://htmlcolorcodes.com/color-names/
 # https://www.bansard.com/sites/default/files/download_documents/Bansard-airlines-codes-IATA-ICAO.xlsx
+
+
+# #########################
+fhd = open('dep.json', 'w')
+fhd.write(json.dumps(json_data['departures'], indent=2))
+fhd.close()
+depArray = []
+for i in json_data['departures']:
+    date_format = '%Y-%m-%d %H:%M:%S'
+    if i['actualtime'] is not None:
+        # use this for time computation
+        passedDate = datetime.strptime(i['actualtime'], date_format)
+        printableDate = i['actualtime']
+    else:
+        # use i['publishedTime'] for time computation
+        passedDate = datetime.strptime(i['publishedTime'], date_format)
+        printableDate = i['publishedTime']
+
+    if i['mod_gate'] is None:
+        printableGate = i['gate']
+    else:
+        printableGate = i['mod_gate']
+
+    currentTime = datetime.now()
+    currentTimeMinusTwo = currentTime - timedelta(days=0, hours=2)
+    currentTimePlusTen = currentTime + timedelta(days=0, hours=10)
+    if (currentTimeMinusTwo < passedDate) and (currentTimePlusTen > passedDate) and (printableGate != None):
+        depArray.append([i['IATA'], i['flightnumber'], i['airline'], i['city'], i['airportcode'],
+                         printableDate, printableGate, i['status']])
+depArray.sort(key=lambda x: x[5])
+depTableHTML: str = ''
+for dep in depArray:
+    if dep[7] == 'InAir':
+        color = 'style="background-color:#ADDFFF"'
+    elif dep[7] == 'Delayed':
+        color = 'style="background-color:#FFEBB0"'
+    elif dep[7] == 'Scheduled':
+        color = 'style="background-color:#72FFD3"'
+    else:
+        color = ''
+    url = 'https://www.flightaware.com/live/flight/%s%s' % (airlinedict[dep[0]], dep[1])
+    depTableHTML += ("""
+        <tr %s>
+            <td><a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s %s</a></td>
+            <td>%s</td>
+            <td>%s</td>
+            <td>%s</td>
+            <td>%s</td>
+            <td>%s</td>
+            <td>%s</td>
+        </tr>\n""" % (color, url, dep[0], dep[1], dep[2], dep[3], dep[4], dep[5], dep[6], dep[7]))
+
+depFileHandle.write("""<!DOCTYPE html>
+<head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <title>IAB 2-6 Arrivals</title>
+    <meta http-equiv="refresh" content="120">
+</head>
+<body>
+    <table>
+        %s
+    </table>
+</body>
+""" % depTableHTML)
+depFileHandle.close()
