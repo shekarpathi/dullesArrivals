@@ -175,9 +175,13 @@ else:
     iabFileHandle = open('iab_mac.html', "w")
     depFileHandle = open('departures_mac.html', "w")
 
+departuressHeadFileHandle = open('departures.head.html', "r")
+depFileHandle.write(departuressHeadFileHandle.read())
+
 arrivalsHeadFileHandle = open("arrivals.head.html", "r")
 arrivalsFileHandle.write(arrivalsHeadFileHandle.read())
 t = 1
+
 for i in json_data['arrivals']:
     status = i['status']
     t = t + 1
@@ -196,7 +200,7 @@ for i in json_data['arrivals']:
         claim2 = i['claim2'] if i['claim2'] is not None else ''
         claim3 = i['claim3'] if i['claim3'] is not None else ''
         arrivalsFileHandle.write(
-            '<tr>\n\t<td>%s</td>\n<td class="%s">%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
+            '<tr>\n\t<td style="width: 5%%">%s</td>\n<td class="%s">%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
                 flight, i['status'],
                 airportdict[i['dep_airport_code']][1],
                 i['dep_airport_code'],
@@ -361,21 +365,25 @@ for dep in depArray:
             <td>%s</td>
         </tr>\n""" % (color, url, dep[0], dep[1], dep[2], dep[3], dep[4], dep[5], dep[6], dep[7]))
 
-depFileHandle.write("""<!DOCTYPE html>
-<head>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-    </style>
-    <title>IAB 2-6 Arrivals</title>
-    <meta http-equiv="refresh" content="120">
-</head>
-<body>
-    <table>
-        %s
-    </table>
-</body>
-""" % depTableHTML)
+depFileHandle.write(depTableHTML)
+depFileHandle.write("</table>\n</body>")
 depFileHandle.close()
+
+# depFileHandle.write("""<!DOCTYPE html>
+# <head>
+#     <style>
+#         table, th, td {
+#             border: 1px solid black;
+#             border-collapse: collapse;
+#         }
+#     </style>
+#     <title>IAB 2-6 Arrivals</title>
+#     <meta http-equiv="refresh" content="120">
+# </head>
+# <body>
+#     <table>
+#         %s
+#     </table>
+# </body>
+# """ % depTableHTML)
+# depFileHandle.close()
