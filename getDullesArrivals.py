@@ -14,8 +14,8 @@ iabArray = []
 response_code = 401
 retryCount = 0
 success = False
-airportdict = {}
-airlinedict = {}
+airportdict: dict = {}
+airlinedict: dict = {}
 
 
 def readAirportCodesCsv():
@@ -176,30 +176,7 @@ else:
     depFileHandle = open('departures_mac.html', "w")
 
 arrivalsHeadFileHandle = open("arrivals.head.html", "r")
-
 arrivalsFileHandle.write(arrivalsHeadFileHandle.read())
-
-
-arrivalsFileHandle.write("""
-    <table data-order=\'[[ 6, "asc" ]]\' data-page-length=\'300\' id="example" class="cell-border order-column" style="width:100%">
-    <thead>
-            <tr>
-                <th>Flight</th>
-                <th>Origin</th>
-                <th>Origin IATA</th>
-                <th>Dom/Int</th>
-                <th>Gate</th>
-                <th>Status</th>
-                <th>Gate Time</th>
-                <th>Customs</th>
-                <th>Baggage Carousel</th>
-            </tr>
-        </thead>
-        <tbody>\n
-    """)
-
-# print(json.dumps(json_data, sort_keys=True, indent=4, separators=(",", ": ")))
-# print(json_data['_links']['next'])
 t = 1
 for i in json_data['arrivals']:
     status = i['status']
@@ -327,7 +304,6 @@ arrivalsFileHandle.write("""
           location.reload()
         }
     </script>
-</html>
 """ % getCurrentTime())
 arrivalsFileHandle.close()
 

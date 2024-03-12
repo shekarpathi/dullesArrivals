@@ -1,5 +1,4 @@
 <!doctype html>
-<html lang="en-US">
 <head title="Dulles Arrivals">
 <meta http-equiv="refresh" content="600">
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -28,23 +27,23 @@
    $(document).ready(function() {
      // Setup - add a text input to each footer cell
      $('#example thead tr').clone(true).addClass('filters').appendTo('#example thead');
-     var table = $('#example').DataTable({
+     let table = $('#example').DataTable({
        orderCellsTop: true,
        fixedHeader: true,
        initComplete: function() {
-         var api = this.api();
+         let api = this.api();
          // For each column
          api.columns().eq(0).each(function(colIdx) {
            // Set the header cell to contain the input element
-           var cell = $('.filters th').eq($(api.column(colIdx).header()).index());
-           var title = $(cell).text();
+           let cell = $('.filters th').eq($(api.column(colIdx).header()).index());
+           let title = $(cell).text();
            $(cell).html('<input type="text" placeholder="' + title + '" />');
            // On every keypress in this input
            $('input', $('.filters th').eq($(api.column(colIdx).header()).index())).off('keyup change').on('change', function(e) {
              // Get the search value
              $(this).attr('title', $(this).val());
-             var regexr = '({search})'; //$(this).parents('th').find('select').val();
-             var cursorPosition = this.selectionStart;
+             let regexr = '({search})'; //$(this).parents('th').find('select').val();
+             let cursorPosition = this.selectionStart;
              // Search the column for that value
              api.column(colIdx).search(this.value != '' ? regexr.replace('{search}', '(((' + this.value + ')))') : '', this.value != '', this.value == '').draw();
            }).on('keyup', function(e) {
@@ -57,10 +56,23 @@
      });
    });
 </script>
-
-
-    <title></title>
+<title>IAD Arrivals</title>
 </head>
 
 <body class="container">
 <h1 class="text-center">IAD Arrivals</h1>
+    <table data-order='[[ 6, "asc" ]]' data-page-length='300' id="example" class="cell-border order-column" style="width:100%">
+    <thead>
+            <tr>
+                <th>Flight</th>
+                <th>Origin</th>
+                <th>Origin IATA</th>
+                <th>Dom/Int</th>
+                <th>Gate</th>
+                <th>Status</th>
+                <th>Gate Time</th>
+                <th>Customs</th>
+                <th>Baggage Carousel</th>
+            </tr>
+        </thead>
+        <tbody>
