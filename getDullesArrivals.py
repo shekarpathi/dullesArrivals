@@ -336,9 +336,9 @@ arrivalsFileHandle.close()
 
 
 # #########################
-fhd = open('dep.json', 'w')
-fhd.write(json.dumps(json_data['departures'], indent=2))
-fhd.close()
+# fhd = open('dep.json', 'w')
+# fhd.write(json.dumps(json_data['departures'], indent=2))
+# fhd.close()
 depArray = []
 for i in json_data['departures']:
     date_format = '%Y-%m-%d %H:%M:%S'
