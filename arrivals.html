@@ -29,6 +29,7 @@
      $('#example thead tr').clone(true).addClass('filters').appendTo('#example thead');
      let table = $('#example').DataTable({
        orderCellsTop: true,
+         autoWidth: false,
        fixedHeader: true,
        initComplete: function() {
          let api = this.api();
@@ -64,7 +65,7 @@
     <table data-order='[[ 6, "asc" ]]' data-page-length='300' id="example" class="cell-border order-column" style="width:100%">
     <thead>
             <tr>
-                <th>Flight</th>
+                <th style="width: 5%">Flight</th>
                 <th>Origin</th>
                 <th>Origin IATA</th>
                 <th>Dom/Int</th>
@@ -77,7 +78,7 @@
         </thead>
         <tbody>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/ETD131" target="_blank" rel="noopener noreferrer">EY 131</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/ETD131" target="_blank" rel="noopener noreferrer">EY 131</a></td>
 <td class="InAir">Abu Dhabi</td>
 <td>AUH</td>
 <td>Domestic</td>
@@ -88,7 +89,7 @@
 <td>11</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL997" target="_blank" rel="noopener noreferrer">UA 997</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL997" target="_blank" rel="noopener noreferrer">UA 997</a></td>
 <td class="InGate">Accra</td>
 <td>ACC</td>
 <td>International</td>
@@ -99,7 +100,7 @@
 <td>17</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/ETH500" target="_blank" rel="noopener noreferrer">ET 500</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/ETH500" target="_blank" rel="noopener noreferrer">ET 500</a></td>
 <td class="Landed">Addis Ababa</td>
 <td>ADD</td>
 <td>International</td>
@@ -110,7 +111,7 @@
 <td>21</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4970" target="_blank" rel="noopener noreferrer">UA 4970</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4970" target="_blank" rel="noopener noreferrer">UA 4970</a></td>
 <td class="InGate">Albany</td>
 <td>ALB</td>
 <td>Domestic</td>
@@ -121,7 +122,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4889" target="_blank" rel="noopener noreferrer">UA 4889</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4889" target="_blank" rel="noopener noreferrer">UA 4889</a></td>
 <td class="InGate">Albany</td>
 <td>ALB</td>
 <td>Domestic</td>
@@ -132,7 +133,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4942" target="_blank" rel="noopener noreferrer">UA 4942</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4942" target="_blank" rel="noopener noreferrer">UA 4942</a></td>
 <td class="InAir">Albany</td>
 <td>ALB</td>
 <td>Domestic</td>
@@ -143,7 +144,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL947" target="_blank" rel="noopener noreferrer">UA 947</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL947" target="_blank" rel="noopener noreferrer">UA 947</a></td>
 <td class="InGate">Amsterdam</td>
 <td>AMS</td>
 <td>International</td>
@@ -154,7 +155,7 @@
 <td>16</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/KLM651" target="_blank" rel="noopener noreferrer">KL 651</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/KLM651" target="_blank" rel="noopener noreferrer">KL 651</a></td>
 <td class="InAir">Amsterdam</td>
 <td>AMS</td>
 <td>International</td>
@@ -165,7 +166,7 @@
 <td>20</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/DAL2178" target="_blank" rel="noopener noreferrer">DL 2178</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/DAL2178" target="_blank" rel="noopener noreferrer">DL 2178</a></td>
 <td class="InGate">Atlanta</td>
 <td>ATL</td>
 <td>Domestic</td>
@@ -176,7 +177,7 @@
 <td>14</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/DAL2332" target="_blank" rel="noopener noreferrer">DL 2332</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/DAL2332" target="_blank" rel="noopener noreferrer">DL 2332</a></td>
 <td class="InGate">Atlanta</td>
 <td>ATL</td>
 <td>Domestic</td>
@@ -187,7 +188,7 @@
 <td>14</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL632" target="_blank" rel="noopener noreferrer">UA 632</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL632" target="_blank" rel="noopener noreferrer">UA 632</a></td>
 <td class="InGate">Atlanta</td>
 <td>ATL</td>
 <td>Domestic</td>
@@ -198,7 +199,7 @@
 <td>4</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/DAL2146" target="_blank" rel="noopener noreferrer">DL 2146</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/DAL2146" target="_blank" rel="noopener noreferrer">DL 2146</a></td>
 <td class="InGate">Atlanta</td>
 <td>ATL</td>
 <td>Domestic</td>
@@ -209,7 +210,7 @@
 <td>14</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6271" target="_blank" rel="noopener noreferrer">UA 6271</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6271" target="_blank" rel="noopener noreferrer">UA 6271</a></td>
 <td class="Delayed">Atlanta</td>
 <td>ATL</td>
 <td>Domestic</td>
@@ -220,7 +221,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/DAL1695" target="_blank" rel="noopener noreferrer">DL 1695</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/DAL1695" target="_blank" rel="noopener noreferrer">DL 1695</a></td>
 <td class="InAir">Atlanta</td>
 <td>ATL</td>
 <td>Domestic</td>
@@ -231,7 +232,7 @@
 <td>14</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL654" target="_blank" rel="noopener noreferrer">UA 654</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL654" target="_blank" rel="noopener noreferrer">UA 654</a></td>
 <td class="InGate">Austin</td>
 <td>AUS</td>
 <td>Domestic</td>
@@ -242,7 +243,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL400" target="_blank" rel="noopener noreferrer">UA 400</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL400" target="_blank" rel="noopener noreferrer">UA 400</a></td>
 <td class="InAir">Austin</td>
 <td>AUS</td>
 <td>Domestic</td>
@@ -253,7 +254,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/CCA817" target="_blank" rel="noopener noreferrer">CA 817</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/CCA817" target="_blank" rel="noopener noreferrer">CA 817</a></td>
 <td class="InAir">Beijing</td>
 <td>PEK</td>
 <td>International</td>
@@ -264,7 +265,7 @@
 <td>20</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/AVA246" target="_blank" rel="noopener noreferrer">AV 246</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/AVA246" target="_blank" rel="noopener noreferrer">AV 246</a></td>
 <td class="InGate">Bogota</td>
 <td>BOG</td>
 <td>International</td>
@@ -275,7 +276,7 @@
 <td>19</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1785" target="_blank" rel="noopener noreferrer">UA 1785</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1785" target="_blank" rel="noopener noreferrer">UA 1785</a></td>
 <td class="InGate">Boston</td>
 <td>BOS</td>
 <td>Domestic</td>
@@ -286,7 +287,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2098" target="_blank" rel="noopener noreferrer">UA 2098</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2098" target="_blank" rel="noopener noreferrer">UA 2098</a></td>
 <td class="InGate">Boston</td>
 <td>BOS</td>
 <td>Domestic</td>
@@ -297,7 +298,7 @@
 <td>4</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1470" target="_blank" rel="noopener noreferrer">UA 1470</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1470" target="_blank" rel="noopener noreferrer">UA 1470</a></td>
 <td class="InAir">Boston</td>
 <td>BOS</td>
 <td>Domestic</td>
@@ -308,7 +309,7 @@
 <td>4</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/FDY392" target="_blank" rel="noopener noreferrer">9X 392</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/FDY392" target="_blank" rel="noopener noreferrer">9X 392</a></td>
 <td class="Landed">Bradford</td>
 <td>BFD</td>
 <td>Domestic</td>
@@ -319,7 +320,7 @@
 <td>10</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/FDY394" target="_blank" rel="noopener noreferrer">9X 394</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/FDY394" target="_blank" rel="noopener noreferrer">9X 394</a></td>
 <td class="Proposed">Bradford</td>
 <td>BFD</td>
 <td>Domestic</td>
@@ -330,7 +331,7 @@
 <td>10</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL951" target="_blank" rel="noopener noreferrer">UA 951</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL951" target="_blank" rel="noopener noreferrer">UA 951</a></td>
 <td class="Cancelled">Brussels</td>
 <td>BRU</td>
 <td>International</td>
@@ -341,7 +342,7 @@
 <td>17</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3512" target="_blank" rel="noopener noreferrer">UA 3512</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3512" target="_blank" rel="noopener noreferrer">UA 3512</a></td>
 <td class="InGate">Buffalo</td>
 <td>BUF</td>
 <td>Domestic</td>
@@ -352,7 +353,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6057" target="_blank" rel="noopener noreferrer">UA 6057</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6057" target="_blank" rel="noopener noreferrer">UA 6057</a></td>
 <td class="InGate">Burlington</td>
 <td>BTV</td>
 <td>Domestic</td>
@@ -363,7 +364,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3440" target="_blank" rel="noopener noreferrer">UA 3440</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3440" target="_blank" rel="noopener noreferrer">UA 3440</a></td>
 <td class="InAir">Burlington</td>
 <td>BTV</td>
 <td>Domestic</td>
@@ -374,7 +375,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/MSR981" target="_blank" rel="noopener noreferrer">MS 981</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/MSR981" target="_blank" rel="noopener noreferrer">MS 981</a></td>
 <td class="Landed">Cairo</td>
 <td>CAI</td>
 <td>International</td>
@@ -385,7 +386,7 @@
 <td>21</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1694" target="_blank" rel="noopener noreferrer">UA 1694</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1694" target="_blank" rel="noopener noreferrer">UA 1694</a></td>
 <td class="InAir">Cancun</td>
 <td>CUN</td>
 <td>International</td>
@@ -396,7 +397,7 @@
 <td>17</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3517" target="_blank" rel="noopener noreferrer">UA 3517</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3517" target="_blank" rel="noopener noreferrer">UA 3517</a></td>
 <td class="InGate">Charleston</td>
 <td>CHS</td>
 <td>Domestic</td>
@@ -407,7 +408,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3401" target="_blank" rel="noopener noreferrer">UA 3401</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3401" target="_blank" rel="noopener noreferrer">UA 3401</a></td>
 <td class="OutGate">Charleston</td>
 <td>CHS</td>
 <td>Domestic</td>
@@ -418,7 +419,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2424" target="_blank" rel="noopener noreferrer">UA 2424</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2424" target="_blank" rel="noopener noreferrer">UA 2424</a></td>
 <td class="InGate">Charlotte</td>
 <td>CLT</td>
 <td>Domestic</td>
@@ -429,7 +430,7 @@
 <td>4</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/AAL5256" target="_blank" rel="noopener noreferrer">AA 5256</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/AAL5256" target="_blank" rel="noopener noreferrer">AA 5256</a></td>
 <td class="InGate">Charlotte</td>
 <td>CLT</td>
 <td>Domestic</td>
@@ -440,7 +441,7 @@
 <td>12</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4342" target="_blank" rel="noopener noreferrer">UA 4342</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4342" target="_blank" rel="noopener noreferrer">UA 4342</a></td>
 <td class="InGate">Charlottesville</td>
 <td>CHO</td>
 <td>Domestic</td>
@@ -451,7 +452,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2386" target="_blank" rel="noopener noreferrer">UA 2386</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2386" target="_blank" rel="noopener noreferrer">UA 2386</a></td>
 <td class="InGate">Chicago</td>
 <td>ORD</td>
 <td>Domestic</td>
@@ -462,7 +463,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2228" target="_blank" rel="noopener noreferrer">UA 2228</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2228" target="_blank" rel="noopener noreferrer">UA 2228</a></td>
 <td class="InGate">Chicago</td>
 <td>ORD</td>
 <td>Domestic</td>
@@ -473,7 +474,7 @@
 <td>4</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2187" target="_blank" rel="noopener noreferrer">UA 2187</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2187" target="_blank" rel="noopener noreferrer">UA 2187</a></td>
 <td class="InAir">Chicago</td>
 <td>ORD</td>
 <td>Domestic</td>
@@ -484,7 +485,7 @@
 <td>4</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3452" target="_blank" rel="noopener noreferrer">UA 3452</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3452" target="_blank" rel="noopener noreferrer">UA 3452</a></td>
 <td class="InGate">Cincinnati / Covington</td>
 <td>CVG</td>
 <td>Domestic</td>
@@ -495,7 +496,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6110" target="_blank" rel="noopener noreferrer">UA 6110</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6110" target="_blank" rel="noopener noreferrer">UA 6110</a></td>
 <td class="OutGate">Cincinnati / Covington</td>
 <td>CVG</td>
 <td>Domestic</td>
@@ -506,7 +507,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1706" target="_blank" rel="noopener noreferrer">UA 1706</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1706" target="_blank" rel="noopener noreferrer">UA 1706</a></td>
 <td class="InGate">Cleveland</td>
 <td>CLE</td>
 <td>Domestic</td>
@@ -517,7 +518,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL762" target="_blank" rel="noopener noreferrer">UA 762</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL762" target="_blank" rel="noopener noreferrer">UA 762</a></td>
 <td class="InGate">Cleveland</td>
 <td>CLE</td>
 <td>Domestic</td>
@@ -528,7 +529,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3650" target="_blank" rel="noopener noreferrer">UA 3650</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3650" target="_blank" rel="noopener noreferrer">UA 3650</a></td>
 <td class="OutGate">Cleveland</td>
 <td>CLE</td>
 <td>Domestic</td>
@@ -539,7 +540,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4373" target="_blank" rel="noopener noreferrer">UA 4373</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4373" target="_blank" rel="noopener noreferrer">UA 4373</a></td>
 <td class="InGate">Columbia</td>
 <td>CAE</td>
 <td>Domestic</td>
@@ -550,7 +551,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3430" target="_blank" rel="noopener noreferrer">UA 3430</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3430" target="_blank" rel="noopener noreferrer">UA 3430</a></td>
 <td class="InGate">Columbus</td>
 <td>CMH</td>
 <td>Domestic</td>
@@ -561,7 +562,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6103" target="_blank" rel="noopener noreferrer">UA 6103</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6103" target="_blank" rel="noopener noreferrer">UA 6103</a></td>
 <td class="InGate">Columbus</td>
 <td>CMH</td>
 <td>Domestic</td>
@@ -572,7 +573,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/SAS925" target="_blank" rel="noopener noreferrer">SK 925</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/SAS925" target="_blank" rel="noopener noreferrer">SK 925</a></td>
 <td class="InAir">Copenhagen</td>
 <td>CPH</td>
 <td>International</td>
@@ -583,7 +584,7 @@
 <td>18</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2639" target="_blank" rel="noopener noreferrer">UA 2639</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2639" target="_blank" rel="noopener noreferrer">UA 2639</a></td>
 <td class="InGate">Dallas-Fort Worth</td>
 <td>DFW</td>
 <td>Domestic</td>
@@ -594,7 +595,7 @@
 <td>4</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL358" target="_blank" rel="noopener noreferrer">UA 358</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL358" target="_blank" rel="noopener noreferrer">UA 358</a></td>
 <td class="InAir">Dallas-Fort Worth</td>
 <td>DFW</td>
 <td>Domestic</td>
@@ -605,7 +606,7 @@
 <td>4</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/AAL1863" target="_blank" rel="noopener noreferrer">AA 1863</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/AAL1863" target="_blank" rel="noopener noreferrer">AA 1863</a></td>
 <td class="InAir">Dallas-Fort Worth</td>
 <td>DFW</td>
 <td>Domestic</td>
@@ -616,7 +617,7 @@
 <td>12</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4258" target="_blank" rel="noopener noreferrer">UA 4258</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4258" target="_blank" rel="noopener noreferrer">UA 4258</a></td>
 <td class="InGate">Dayton</td>
 <td>DAY</td>
 <td>Domestic</td>
@@ -627,7 +628,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/AIC103" target="_blank" rel="noopener noreferrer">AI 103</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/AIC103" target="_blank" rel="noopener noreferrer">AI 103</a></td>
 <td class="Landed">New Delhi</td>
 <td>DEL</td>
 <td>International</td>
@@ -638,7 +639,7 @@
 <td>18,19</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/SWA1698" target="_blank" rel="noopener noreferrer">WN 1698</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/SWA1698" target="_blank" rel="noopener noreferrer">WN 1698</a></td>
 <td class="InGate">Denver</td>
 <td>DEN</td>
 <td>Domestic</td>
@@ -649,7 +650,7 @@
 <td>13</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL418" target="_blank" rel="noopener noreferrer">UA 418</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL418" target="_blank" rel="noopener noreferrer">UA 418</a></td>
 <td class="InGate">Denver</td>
 <td>DEN</td>
 <td>Domestic</td>
@@ -660,7 +661,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/SWA1693" target="_blank" rel="noopener noreferrer">WN 1693</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/SWA1693" target="_blank" rel="noopener noreferrer">WN 1693</a></td>
 <td class="InGate">Denver</td>
 <td>DEN</td>
 <td>Domestic</td>
@@ -671,7 +672,7 @@
 <td>13</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1101" target="_blank" rel="noopener noreferrer">UA 1101</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1101" target="_blank" rel="noopener noreferrer">UA 1101</a></td>
 <td class="InGate">Denver</td>
 <td>DEN</td>
 <td>Domestic</td>
@@ -682,7 +683,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2087" target="_blank" rel="noopener noreferrer">UA 2087</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2087" target="_blank" rel="noopener noreferrer">UA 2087</a></td>
 <td class="InAir">Denver</td>
 <td>DEN</td>
 <td>Domestic</td>
@@ -693,7 +694,7 @@
 <td>7</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/DAL5195" target="_blank" rel="noopener noreferrer">DL 5195</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/DAL5195" target="_blank" rel="noopener noreferrer">DL 5195</a></td>
 <td class="InGate">Detroit</td>
 <td>DTW</td>
 <td>Domestic</td>
@@ -704,7 +705,7 @@
 <td>14</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6011" target="_blank" rel="noopener noreferrer">UA 6011</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6011" target="_blank" rel="noopener noreferrer">UA 6011</a></td>
 <td class="InAir">Detroit</td>
 <td>DTW</td>
 <td>Domestic</td>
@@ -715,7 +716,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/QTR707" target="_blank" rel="noopener noreferrer">QR 707</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/QTR707" target="_blank" rel="noopener noreferrer">QR 707</a></td>
 <td class="InAir">Doha</td>
 <td>DOH</td>
 <td>International</td>
@@ -726,7 +727,7 @@
 <td>21</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAE231" target="_blank" rel="noopener noreferrer">EK 231</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAE231" target="_blank" rel="noopener noreferrer">EK 231</a></td>
 <td class="InGate">Dubai</td>
 <td>DXB</td>
 <td>International</td>
@@ -737,7 +738,7 @@
 <td>19,20</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL229" target="_blank" rel="noopener noreferrer">UA 229</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL229" target="_blank" rel="noopener noreferrer">UA 229</a></td>
 <td class="InAir">Dublin</td>
 <td>DUB</td>
 <td>Domestic</td>
@@ -748,7 +749,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/EIN117" target="_blank" rel="noopener noreferrer">EI 117</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/EIN117" target="_blank" rel="noopener noreferrer">EI 117</a></td>
 <td class="InAir">Dublin</td>
 <td>DUB</td>
 <td>Domestic</td>
@@ -759,7 +760,7 @@
 <td>10</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/FDY124" target="_blank" rel="noopener noreferrer">9X 124</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/FDY124" target="_blank" rel="noopener noreferrer">9X 124</a></td>
 <td class="Landed">Dubois</td>
 <td>DUJ</td>
 <td>Domestic</td>
@@ -770,7 +771,7 @@
 <td>10</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/FDY126" target="_blank" rel="noopener noreferrer">9X 126</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/FDY126" target="_blank" rel="noopener noreferrer">9X 126</a></td>
 <td class="Landed">Dubois</td>
 <td>DUJ</td>
 <td>Domestic</td>
@@ -781,7 +782,7 @@
 <td>10</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/FDY128" target="_blank" rel="noopener noreferrer">9X 128</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/FDY128" target="_blank" rel="noopener noreferrer">9X 128</a></td>
 <td class="Proposed">Dubois</td>
 <td>DUJ</td>
 <td>Domestic</td>
@@ -792,7 +793,7 @@
 <td>10</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1756" target="_blank" rel="noopener noreferrer">UA 1756</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1756" target="_blank" rel="noopener noreferrer">UA 1756</a></td>
 <td class="InGate">Fort Lauderdale</td>
 <td>FLL</td>
 <td>Domestic</td>
@@ -803,7 +804,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL315" target="_blank" rel="noopener noreferrer">UA 315</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL315" target="_blank" rel="noopener noreferrer">UA 315</a></td>
 <td class="InAir">Fort Lauderdale</td>
 <td>FLL</td>
 <td>Domestic</td>
@@ -814,7 +815,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL596" target="_blank" rel="noopener noreferrer">UA 596</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL596" target="_blank" rel="noopener noreferrer">UA 596</a></td>
 <td class="InGate">Fort Myers</td>
 <td>RSW</td>
 <td>Domestic</td>
@@ -825,7 +826,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1349" target="_blank" rel="noopener noreferrer">UA 1349</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1349" target="_blank" rel="noopener noreferrer">UA 1349</a></td>
 <td class="InAir">Fort Myers</td>
 <td>RSW</td>
 <td>Domestic</td>
@@ -836,7 +837,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL988" target="_blank" rel="noopener noreferrer">UA 988</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL988" target="_blank" rel="noopener noreferrer">UA 988</a></td>
 <td class="InAir">Frankfurt am Main</td>
 <td>FRA</td>
 <td>International</td>
@@ -847,7 +848,7 @@
 <td>17</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/DLH418" target="_blank" rel="noopener noreferrer">LH 418</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/DLH418" target="_blank" rel="noopener noreferrer">LH 418</a></td>
 <td class="Cancelled">Frankfurt am Main</td>
 <td>FRA</td>
 <td>International</td>
@@ -858,7 +859,7 @@
 <td>18</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL933" target="_blank" rel="noopener noreferrer">UA 933</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL933" target="_blank" rel="noopener noreferrer">UA 933</a></td>
 <td class="InAir">Frankfurt am Main</td>
 <td>FRA</td>
 <td>International</td>
@@ -869,7 +870,7 @@
 <td>17</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL975" target="_blank" rel="noopener noreferrer">UA 975</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL975" target="_blank" rel="noopener noreferrer">UA 975</a></td>
 <td class="Landed">Geneva</td>
 <td>GVA</td>
 <td>International</td>
@@ -880,7 +881,7 @@
 <td>16</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/AVA654" target="_blank" rel="noopener noreferrer">AV 654</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/AVA654" target="_blank" rel="noopener noreferrer">AV 654</a></td>
 <td class="InGate">Guatemala City</td>
 <td>GUA</td>
 <td>International</td>
@@ -891,7 +892,7 @@
 <td>19</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1562" target="_blank" rel="noopener noreferrer">UA 1562</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1562" target="_blank" rel="noopener noreferrer">UA 1562</a></td>
 <td class="InGate">Guatemala City</td>
 <td>GUA</td>
 <td>International</td>
@@ -902,7 +903,7 @@
 <td>16</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1274" target="_blank" rel="noopener noreferrer">UA 1274</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1274" target="_blank" rel="noopener noreferrer">UA 1274</a></td>
 <td class="InGate">Hartford</td>
 <td>BDL</td>
 <td>Domestic</td>
@@ -913,7 +914,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1893" target="_blank" rel="noopener noreferrer">UA 1893</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1893" target="_blank" rel="noopener noreferrer">UA 1893</a></td>
 <td class="InGate">Hartford</td>
 <td>BDL</td>
 <td>Domestic</td>
@@ -924,7 +925,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL344" target="_blank" rel="noopener noreferrer">UA 344</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL344" target="_blank" rel="noopener noreferrer">UA 344</a></td>
 <td class="InGate">Honolulu</td>
 <td>HNL</td>
 <td>Domestic</td>
@@ -935,7 +936,7 @@
 <td>4</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL471" target="_blank" rel="noopener noreferrer">UA 471</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL471" target="_blank" rel="noopener noreferrer">UA 471</a></td>
 <td class="InGate">Houston</td>
 <td>IAH</td>
 <td>Domestic</td>
@@ -946,7 +947,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL326" target="_blank" rel="noopener noreferrer">UA 326</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL326" target="_blank" rel="noopener noreferrer">UA 326</a></td>
 <td class="InAir">Houston</td>
 <td>IAH</td>
 <td>Domestic</td>
@@ -957,7 +958,7 @@
 <td>7</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4286" target="_blank" rel="noopener noreferrer">UA 4286</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4286" target="_blank" rel="noopener noreferrer">UA 4286</a></td>
 <td class="InGate">Huntsville</td>
 <td>HSV</td>
 <td>Domestic</td>
@@ -968,7 +969,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4340" target="_blank" rel="noopener noreferrer">UA 4340</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4340" target="_blank" rel="noopener noreferrer">UA 4340</a></td>
 <td class="InAir">Huntsville</td>
 <td>HSV</td>
 <td>Domestic</td>
@@ -979,7 +980,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3494" target="_blank" rel="noopener noreferrer">UA 3494</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3494" target="_blank" rel="noopener noreferrer">UA 3494</a></td>
 <td class="InGate">Indianapolis</td>
 <td>IND</td>
 <td>Domestic</td>
@@ -990,7 +991,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3709" target="_blank" rel="noopener noreferrer">UA 3709</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3709" target="_blank" rel="noopener noreferrer">UA 3709</a></td>
 <td class="InGate">Indianapolis</td>
 <td>IND</td>
 <td>Domestic</td>
@@ -1001,7 +1002,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3530" target="_blank" rel="noopener noreferrer">UA 3530</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3530" target="_blank" rel="noopener noreferrer">UA 3530</a></td>
 <td class="InAir">Indianapolis</td>
 <td>IND</td>
 <td>Domestic</td>
@@ -1012,7 +1013,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/THY7" target="_blank" rel="noopener noreferrer">TK 7</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/THY7" target="_blank" rel="noopener noreferrer">TK 7</a></td>
 <td class="InAir">Istanbul</td>
 <td>IST</td>
 <td>International</td>
@@ -1023,7 +1024,7 @@
 <td>21</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6171" target="_blank" rel="noopener noreferrer">UA 6171</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6171" target="_blank" rel="noopener noreferrer">UA 6171</a></td>
 <td class="InGate">Jacksonville</td>
 <td>JAX</td>
 <td>Domestic</td>
@@ -1034,7 +1035,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1757" target="_blank" rel="noopener noreferrer">UA 1757</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1757" target="_blank" rel="noopener noreferrer">UA 1757</a></td>
 <td class="InAir">Jacksonville</td>
 <td>JAX</td>
 <td>Domestic</td>
@@ -1045,7 +1046,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/SVA35" target="_blank" rel="noopener noreferrer">SV 35</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/SVA35" target="_blank" rel="noopener noreferrer">SV 35</a></td>
 <td class="InAir">Jeddah</td>
 <td>JED</td>
 <td>International</td>
@@ -1056,7 +1057,7 @@
 <td>21</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL5046" target="_blank" rel="noopener noreferrer">UA 5046</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL5046" target="_blank" rel="noopener noreferrer">UA 5046</a></td>
 <td class="InGate">Johnstown</td>
 <td>JST</td>
 <td>Domestic</td>
@@ -1067,7 +1068,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6115" target="_blank" rel="noopener noreferrer">UA 6115</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6115" target="_blank" rel="noopener noreferrer">UA 6115</a></td>
 <td class="InAir">Kansas City</td>
 <td>MCI</td>
 <td>Domestic</td>
@@ -1078,7 +1079,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1735" target="_blank" rel="noopener noreferrer">UA 1735</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1735" target="_blank" rel="noopener noreferrer">UA 1735</a></td>
 <td class="InAir">Key West</td>
 <td>EYW</td>
 <td>Domestic</td>
@@ -1089,7 +1090,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4369" target="_blank" rel="noopener noreferrer">UA 4369</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4369" target="_blank" rel="noopener noreferrer">UA 4369</a></td>
 <td class="InGate">Knoxville</td>
 <td>TYS</td>
 <td>Domestic</td>
@@ -1100,7 +1101,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4848" target="_blank" rel="noopener noreferrer">UA 4848</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4848" target="_blank" rel="noopener noreferrer">UA 4848</a></td>
 <td class="OutGate">Knoxville</td>
 <td>TYS</td>
 <td>Domestic</td>
@@ -1111,7 +1112,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/FDY243" target="_blank" rel="noopener noreferrer">9X 243</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/FDY243" target="_blank" rel="noopener noreferrer">9X 243</a></td>
 <td class="Landed">Lancaster</td>
 <td>LNS</td>
 <td>Domestic</td>
@@ -1122,7 +1123,7 @@
 <td>10</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/FDY245" target="_blank" rel="noopener noreferrer">9X 245</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/FDY245" target="_blank" rel="noopener noreferrer">9X 245</a></td>
 <td class="Landed">Lancaster</td>
 <td>LNS</td>
 <td>Domestic</td>
@@ -1133,7 +1134,7 @@
 <td>10</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1818" target="_blank" rel="noopener noreferrer">UA 1818</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1818" target="_blank" rel="noopener noreferrer">UA 1818</a></td>
 <td class="InGate">Las Vegas</td>
 <td>LAS</td>
 <td>Domestic</td>
@@ -1144,7 +1145,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1627" target="_blank" rel="noopener noreferrer">UA 1627</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1627" target="_blank" rel="noopener noreferrer">UA 1627</a></td>
 <td class="InAir">Las Vegas</td>
 <td>LAS</td>
 <td>Domestic</td>
@@ -1155,7 +1156,7 @@
 <td>4</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/TAP231" target="_blank" rel="noopener noreferrer">TP 231</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/TAP231" target="_blank" rel="noopener noreferrer">TP 231</a></td>
 <td class="InGate">Lisbon</td>
 <td>LIS</td>
 <td>International</td>
@@ -1166,7 +1167,7 @@
 <td>18</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL943" target="_blank" rel="noopener noreferrer">UA 943</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL943" target="_blank" rel="noopener noreferrer">UA 943</a></td>
 <td class="InGate">Lisbon</td>
 <td>LIS</td>
 <td>International</td>
@@ -1177,7 +1178,7 @@
 <td>17</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL919" target="_blank" rel="noopener noreferrer">UA 919</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL919" target="_blank" rel="noopener noreferrer">UA 919</a></td>
 <td class="InAir">London</td>
 <td>LHR</td>
 <td>International</td>
@@ -1188,7 +1189,7 @@
 <td>16</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/SHT217" target="_blank" rel="noopener noreferrer">BA 217</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/SHT217" target="_blank" rel="noopener noreferrer">BA 217</a></td>
 <td class="InAir">London</td>
 <td>LHR</td>
 <td>International</td>
@@ -1199,7 +1200,7 @@
 <td>20</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL925" target="_blank" rel="noopener noreferrer">UA 925</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL925" target="_blank" rel="noopener noreferrer">UA 925</a></td>
 <td class="InAir">London</td>
 <td>LHR</td>
 <td>International</td>
@@ -1210,7 +1211,7 @@
 <td>16</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/SHT293" target="_blank" rel="noopener noreferrer">BA 293</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/SHT293" target="_blank" rel="noopener noreferrer">BA 293</a></td>
 <td class="InAir">London</td>
 <td>LHR</td>
 <td>International</td>
@@ -1221,7 +1222,7 @@
 <td>20</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/VIR21" target="_blank" rel="noopener noreferrer">VS 21</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/VIR21" target="_blank" rel="noopener noreferrer">VS 21</a></td>
 <td class="InAir">London</td>
 <td>LHR</td>
 <td>International</td>
@@ -1232,7 +1233,7 @@
 <td>19</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1843" target="_blank" rel="noopener noreferrer">UA 1843</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1843" target="_blank" rel="noopener noreferrer">UA 1843</a></td>
 <td class="InGate">Los Angeles</td>
 <td>LAX</td>
 <td>Domestic</td>
@@ -1243,7 +1244,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL442" target="_blank" rel="noopener noreferrer">UA 442</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL442" target="_blank" rel="noopener noreferrer">UA 442</a></td>
 <td class="InGate">Los Angeles</td>
 <td>LAX</td>
 <td>Domestic</td>
@@ -1254,7 +1255,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1892" target="_blank" rel="noopener noreferrer">UA 1892</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1892" target="_blank" rel="noopener noreferrer">UA 1892</a></td>
 <td class="InGate">Los Angeles</td>
 <td>LAX</td>
 <td>Domestic</td>
@@ -1265,7 +1266,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1140" target="_blank" rel="noopener noreferrer">UA 1140</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1140" target="_blank" rel="noopener noreferrer">UA 1140</a></td>
 <td class="InAir">Los Angeles</td>
 <td>LAX</td>
 <td>Domestic</td>
@@ -1276,7 +1277,7 @@
 <td>7</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/ASA310" target="_blank" rel="noopener noreferrer">AS 310</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/ASA310" target="_blank" rel="noopener noreferrer">AS 310</a></td>
 <td class="InAir">Los Angeles</td>
 <td>LAX</td>
 <td>Domestic</td>
@@ -1287,7 +1288,7 @@
 <td>14</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3543" target="_blank" rel="noopener noreferrer">UA 3543</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3543" target="_blank" rel="noopener noreferrer">UA 3543</a></td>
 <td class="InGate">Louisville</td>
 <td>SDF</td>
 <td>Domestic</td>
@@ -1298,7 +1299,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6138" target="_blank" rel="noopener noreferrer">UA 6138</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6138" target="_blank" rel="noopener noreferrer">UA 6138</a></td>
 <td class="InAir">Louisville</td>
 <td>SDF</td>
 <td>Domestic</td>
@@ -1309,7 +1310,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1567" target="_blank" rel="noopener noreferrer">UA 1567</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1567" target="_blank" rel="noopener noreferrer">UA 1567</a></td>
 <td class="InGate">Mexico City</td>
 <td>MEX</td>
 <td>International</td>
@@ -1320,7 +1321,7 @@
 <td>16</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2074" target="_blank" rel="noopener noreferrer">UA 2074</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2074" target="_blank" rel="noopener noreferrer">UA 2074</a></td>
 <td class="InGate">Miami</td>
 <td>MIA</td>
 <td>Domestic</td>
@@ -1331,7 +1332,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1938" target="_blank" rel="noopener noreferrer">UA 1938</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1938" target="_blank" rel="noopener noreferrer">UA 1938</a></td>
 <td class="InAir">Miami</td>
 <td>MIA</td>
 <td>Domestic</td>
@@ -1342,7 +1343,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/DAL3917" target="_blank" rel="noopener noreferrer">DL 3917</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/DAL3917" target="_blank" rel="noopener noreferrer">DL 3917</a></td>
 <td class="InGate">Minneapolis</td>
 <td>MSP</td>
 <td>Domestic</td>
@@ -1353,7 +1354,7 @@
 <td>14</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6067" target="_blank" rel="noopener noreferrer">UA 6067</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6067" target="_blank" rel="noopener noreferrer">UA 6067</a></td>
 <td class="InAir">Minneapolis</td>
 <td>MSP</td>
 <td>Domestic</td>
@@ -1364,7 +1365,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3413" target="_blank" rel="noopener noreferrer">UA 3413</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3413" target="_blank" rel="noopener noreferrer">UA 3413</a></td>
 <td class="InGate">MontrÃ©al</td>
 <td>YUL</td>
 <td>Domestic</td>
@@ -1375,7 +1376,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/ACA8723" target="_blank" rel="noopener noreferrer">AC 8723</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/ACA8723" target="_blank" rel="noopener noreferrer">AC 8723</a></td>
 <td class="Landed">MontrÃ©al</td>
 <td>YUL</td>
 <td>Domestic</td>
@@ -1386,7 +1387,7 @@
 <td>10</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/FDY181" target="_blank" rel="noopener noreferrer">9X 181</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/FDY181" target="_blank" rel="noopener noreferrer">9X 181</a></td>
 <td class="Landed">Morgantown</td>
 <td>MGW</td>
 <td>Domestic</td>
@@ -1397,7 +1398,7 @@
 <td>10</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/FDY177" target="_blank" rel="noopener noreferrer">9X 177</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/FDY177" target="_blank" rel="noopener noreferrer">9X 177</a></td>
 <td class="Landed">Morgantown</td>
 <td>MGW</td>
 <td>Domestic</td>
@@ -1408,7 +1409,7 @@
 <td>10</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/FDY183" target="_blank" rel="noopener noreferrer">9X 183</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/FDY183" target="_blank" rel="noopener noreferrer">9X 183</a></td>
 <td class="Proposed">Morgantown</td>
 <td>MGW</td>
 <td>Domestic</td>
@@ -1419,7 +1420,7 @@
 <td>10</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL109" target="_blank" rel="noopener noreferrer">UA 109</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL109" target="_blank" rel="noopener noreferrer">UA 109</a></td>
 <td class="InAir">Munich</td>
 <td>MUC</td>
 <td>International</td>
@@ -1430,7 +1431,7 @@
 <td>17</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2125" target="_blank" rel="noopener noreferrer">UA 2125</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2125" target="_blank" rel="noopener noreferrer">UA 2125</a></td>
 <td class="OutGate">Nashville</td>
 <td>BNA</td>
 <td>Domestic</td>
@@ -1441,7 +1442,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2060" target="_blank" rel="noopener noreferrer">UA 2060</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2060" target="_blank" rel="noopener noreferrer">UA 2060</a></td>
 <td class="InGate">New Orleans</td>
 <td>MSY</td>
 <td>Domestic</td>
@@ -1452,7 +1453,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2276" target="_blank" rel="noopener noreferrer">UA 2276</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2276" target="_blank" rel="noopener noreferrer">UA 2276</a></td>
 <td class="InAir">New Orleans</td>
 <td>MSY</td>
 <td>Domestic</td>
@@ -1463,7 +1464,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/DAL5381" target="_blank" rel="noopener noreferrer">DL 5381</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/DAL5381" target="_blank" rel="noopener noreferrer">DL 5381</a></td>
 <td class="InGate">New York</td>
 <td>JFK</td>
 <td>Domestic</td>
@@ -1474,7 +1475,7 @@
 <td>14</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3515" target="_blank" rel="noopener noreferrer">UA 3515</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3515" target="_blank" rel="noopener noreferrer">UA 3515</a></td>
 <td class="InGate">New York</td>
 <td>LGA</td>
 <td>Domestic</td>
@@ -1485,7 +1486,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6088" target="_blank" rel="noopener noreferrer">UA 6088</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6088" target="_blank" rel="noopener noreferrer">UA 6088</a></td>
 <td class="InGate">New York</td>
 <td>LGA</td>
 <td>Domestic</td>
@@ -1496,7 +1497,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3627" target="_blank" rel="noopener noreferrer">UA 3627</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3627" target="_blank" rel="noopener noreferrer">UA 3627</a></td>
 <td class="InGate">New York</td>
 <td>LGA</td>
 <td>Domestic</td>
@@ -1507,7 +1508,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3581" target="_blank" rel="noopener noreferrer">UA 3581</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3581" target="_blank" rel="noopener noreferrer">UA 3581</a></td>
 <td class="OutGate">New York</td>
 <td>LGA</td>
 <td>Domestic</td>
@@ -1518,7 +1519,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2204" target="_blank" rel="noopener noreferrer">UA 2204</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2204" target="_blank" rel="noopener noreferrer">UA 2204</a></td>
 <td class="InGate">Newark</td>
 <td>EWR</td>
 <td>Domestic</td>
@@ -1529,7 +1530,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1228" target="_blank" rel="noopener noreferrer">UA 1228</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1228" target="_blank" rel="noopener noreferrer">UA 1228</a></td>
 <td class="InGate">Newark</td>
 <td>EWR</td>
 <td>Domestic</td>
@@ -1540,7 +1541,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4168" target="_blank" rel="noopener noreferrer">UA 4168</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4168" target="_blank" rel="noopener noreferrer">UA 4168</a></td>
 <td class="InGate">Newark</td>
 <td>EWR</td>
 <td>Domestic</td>
@@ -1551,7 +1552,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3414" target="_blank" rel="noopener noreferrer">UA 3414</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3414" target="_blank" rel="noopener noreferrer">UA 3414</a></td>
 <td class="OutGate">Newark</td>
 <td>EWR</td>
 <td>Domestic</td>
@@ -1562,7 +1563,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6031" target="_blank" rel="noopener noreferrer">UA 6031</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6031" target="_blank" rel="noopener noreferrer">UA 6031</a></td>
 <td class="InGate">Norfolk</td>
 <td>ORF</td>
 <td>Domestic</td>
@@ -1573,7 +1574,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1914" target="_blank" rel="noopener noreferrer">UA 1914</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1914" target="_blank" rel="noopener noreferrer">UA 1914</a></td>
 <td class="InGate">Norfolk</td>
 <td>ORF</td>
 <td>Domestic</td>
@@ -1584,7 +1585,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1606" target="_blank" rel="noopener noreferrer">UA 1606</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1606" target="_blank" rel="noopener noreferrer">UA 1606</a></td>
 <td class="InGate">Orlando</td>
 <td>MCO</td>
 <td>Domestic</td>
@@ -1595,7 +1596,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2245" target="_blank" rel="noopener noreferrer">UA 2245</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2245" target="_blank" rel="noopener noreferrer">UA 2245</a></td>
 <td class="InGate">Orlando</td>
 <td>MCO</td>
 <td>Domestic</td>
@@ -1606,7 +1607,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2065" target="_blank" rel="noopener noreferrer">UA 2065</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2065" target="_blank" rel="noopener noreferrer">UA 2065</a></td>
 <td class="InAir">Orlando</td>
 <td>MCO</td>
 <td>Domestic</td>
@@ -1617,7 +1618,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4459" target="_blank" rel="noopener noreferrer">UA 4459</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4459" target="_blank" rel="noopener noreferrer">UA 4459</a></td>
 <td class="InGate">Ottawa</td>
 <td>YOW</td>
 <td>Domestic</td>
@@ -1628,7 +1629,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4441" target="_blank" rel="noopener noreferrer">UA 4441</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4441" target="_blank" rel="noopener noreferrer">UA 4441</a></td>
 <td class="OutGate">Ottawa</td>
 <td>YOW</td>
 <td>Domestic</td>
@@ -1639,7 +1640,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/CMP448" target="_blank" rel="noopener noreferrer">CM 448</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/CMP448" target="_blank" rel="noopener noreferrer">CM 448</a></td>
 <td class="InGate">Tocumen</td>
 <td>PTY</td>
 <td>International</td>
@@ -1650,7 +1651,7 @@
 <td>18</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/CMP404" target="_blank" rel="noopener noreferrer">CM 404</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/CMP404" target="_blank" rel="noopener noreferrer">CM 404</a></td>
 <td class="InGate">Tocumen</td>
 <td>PTY</td>
 <td>International</td>
@@ -1661,7 +1662,7 @@
 <td>18</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/CMP443" target="_blank" rel="noopener noreferrer">CM 443</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/CMP443" target="_blank" rel="noopener noreferrer">CM 443</a></td>
 <td class="InAir">Tocumen</td>
 <td>PTY</td>
 <td>International</td>
@@ -1672,7 +1673,7 @@
 <td>18</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL914" target="_blank" rel="noopener noreferrer">UA 914</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL914" target="_blank" rel="noopener noreferrer">UA 914</a></td>
 <td class="InAir">Paris</td>
 <td>CDG</td>
 <td>International</td>
@@ -1683,7 +1684,7 @@
 <td>17</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/AFR54" target="_blank" rel="noopener noreferrer">AF 54</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/AFR54" target="_blank" rel="noopener noreferrer">AF 54</a></td>
 <td class="InAir">Paris</td>
 <td>CDG</td>
 <td>International</td>
@@ -1694,7 +1695,7 @@
 <td>20</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1557" target="_blank" rel="noopener noreferrer">UA 1557</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1557" target="_blank" rel="noopener noreferrer">UA 1557</a></td>
 <td class="InGate">Phoenix</td>
 <td>PHX</td>
 <td>Domestic</td>
@@ -1705,7 +1706,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2303" target="_blank" rel="noopener noreferrer">UA 2303</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2303" target="_blank" rel="noopener noreferrer">UA 2303</a></td>
 <td class="InAir">Phoenix</td>
 <td>PHX</td>
 <td>Domestic</td>
@@ -1716,7 +1717,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3619" target="_blank" rel="noopener noreferrer">UA 3619</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3619" target="_blank" rel="noopener noreferrer">UA 3619</a></td>
 <td class="InGate">Pittsburgh</td>
 <td>PIT</td>
 <td>Domestic</td>
@@ -1727,7 +1728,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1783" target="_blank" rel="noopener noreferrer">UA 1783</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1783" target="_blank" rel="noopener noreferrer">UA 1783</a></td>
 <td class="InGate">Pittsburgh</td>
 <td>PIT</td>
 <td>Domestic</td>
@@ -1738,7 +1739,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6207" target="_blank" rel="noopener noreferrer">UA 6207</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6207" target="_blank" rel="noopener noreferrer">UA 6207</a></td>
 <td class="InAir">Pittsburgh</td>
 <td>PIT</td>
 <td>Domestic</td>
@@ -1749,7 +1750,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1797" target="_blank" rel="noopener noreferrer">UA 1797</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1797" target="_blank" rel="noopener noreferrer">UA 1797</a></td>
 <td class="InGate">Portland</td>
 <td>PDX</td>
 <td>Domestic</td>
@@ -1760,7 +1761,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6210" target="_blank" rel="noopener noreferrer">UA 6210</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6210" target="_blank" rel="noopener noreferrer">UA 6210</a></td>
 <td class="InGate">Portland</td>
 <td>PWM</td>
 <td>Domestic</td>
@@ -1771,7 +1772,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4450" target="_blank" rel="noopener noreferrer">UA 4450</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4450" target="_blank" rel="noopener noreferrer">UA 4450</a></td>
 <td class="InAir">Portland</td>
 <td>PWM</td>
 <td>Domestic</td>
@@ -1782,7 +1783,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4414" target="_blank" rel="noopener noreferrer">UA 4414</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4414" target="_blank" rel="noopener noreferrer">UA 4414</a></td>
 <td class="InGate">Providence</td>
 <td>PVD</td>
 <td>Domestic</td>
@@ -1793,7 +1794,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4429" target="_blank" rel="noopener noreferrer">UA 4429</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4429" target="_blank" rel="noopener noreferrer">UA 4429</a></td>
 <td class="OutGate">Providence</td>
 <td>PVD</td>
 <td>Domestic</td>
@@ -1804,7 +1805,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1614" target="_blank" rel="noopener noreferrer">UA 1614</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1614" target="_blank" rel="noopener noreferrer">UA 1614</a></td>
 <td class="InAir">Punta Cana</td>
 <td>PUJ</td>
 <td>International</td>
@@ -1815,7 +1816,7 @@
 <td>16</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6223" target="_blank" rel="noopener noreferrer">UA 6223</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6223" target="_blank" rel="noopener noreferrer">UA 6223</a></td>
 <td class="InGate">Raleigh/Durham</td>
 <td>RDU</td>
 <td>Domestic</td>
@@ -1826,7 +1827,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2163" target="_blank" rel="noopener noreferrer">UA 2163</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2163" target="_blank" rel="noopener noreferrer">UA 2163</a></td>
 <td class="InGate">Raleigh/Durham</td>
 <td>RDU</td>
 <td>Domestic</td>
@@ -1837,7 +1838,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/ICE645" target="_blank" rel="noopener noreferrer">FI 645</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/ICE645" target="_blank" rel="noopener noreferrer">FI 645</a></td>
 <td class="InAir">ReykjavÃ­k</td>
 <td>KEF</td>
 <td>International</td>
@@ -1848,7 +1849,7 @@
 <td>18</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4503" target="_blank" rel="noopener noreferrer">UA 4503</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4503" target="_blank" rel="noopener noreferrer">UA 4503</a></td>
 <td class="InGate">Richmond</td>
 <td>RIC</td>
 <td>Domestic</td>
@@ -1859,7 +1860,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6114" target="_blank" rel="noopener noreferrer">UA 6114</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6114" target="_blank" rel="noopener noreferrer">UA 6114</a></td>
 <td class="InGate">Richmond</td>
 <td>RIC</td>
 <td>Domestic</td>
@@ -1870,7 +1871,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4282" target="_blank" rel="noopener noreferrer">UA 4282</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4282" target="_blank" rel="noopener noreferrer">UA 4282</a></td>
 <td class="OutGate">Richmond</td>
 <td>RIC</td>
 <td>Domestic</td>
@@ -1881,7 +1882,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4338" target="_blank" rel="noopener noreferrer">UA 4338</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4338" target="_blank" rel="noopener noreferrer">UA 4338</a></td>
 <td class="InGate">Roanoke</td>
 <td>ROA</td>
 <td>Domestic</td>
@@ -1892,7 +1893,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4312" target="_blank" rel="noopener noreferrer">UA 4312</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4312" target="_blank" rel="noopener noreferrer">UA 4312</a></td>
 <td class="OutGate">Roanoke</td>
 <td>ROA</td>
 <td>Domestic</td>
@@ -1903,7 +1904,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6082" target="_blank" rel="noopener noreferrer">UA 6082</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6082" target="_blank" rel="noopener noreferrer">UA 6082</a></td>
 <td class="InGate">Rochester</td>
 <td>ROC</td>
 <td>Domestic</td>
@@ -1914,7 +1915,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4860" target="_blank" rel="noopener noreferrer">UA 4860</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4860" target="_blank" rel="noopener noreferrer">UA 4860</a></td>
 <td class="InAir">Rochester</td>
 <td>ROC</td>
 <td>Domestic</td>
@@ -1925,7 +1926,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL885" target="_blank" rel="noopener noreferrer">UA 885</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL885" target="_blank" rel="noopener noreferrer">UA 885</a></td>
 <td class="InAir">Rome</td>
 <td>FCO</td>
 <td>International</td>
@@ -1936,7 +1937,7 @@
 <td>16</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2624" target="_blank" rel="noopener noreferrer">UA 2624</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2624" target="_blank" rel="noopener noreferrer">UA 2624</a></td>
 <td class="InGate">Sacramento</td>
 <td>SMF</td>
 <td>Domestic</td>
@@ -1947,7 +1948,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1347" target="_blank" rel="noopener noreferrer">UA 1347</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1347" target="_blank" rel="noopener noreferrer">UA 1347</a></td>
 <td class="InGate">San Antonio</td>
 <td>SAT</td>
 <td>Domestic</td>
@@ -1958,7 +1959,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2250" target="_blank" rel="noopener noreferrer">UA 2250</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2250" target="_blank" rel="noopener noreferrer">UA 2250</a></td>
 <td class="InAir">San Antonio</td>
 <td>SAT</td>
 <td>Domestic</td>
@@ -1969,7 +1970,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2129" target="_blank" rel="noopener noreferrer">UA 2129</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2129" target="_blank" rel="noopener noreferrer">UA 2129</a></td>
 <td class="InGate">San Diego</td>
 <td>SAN</td>
 <td>Domestic</td>
@@ -1980,7 +1981,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2049" target="_blank" rel="noopener noreferrer">UA 2049</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2049" target="_blank" rel="noopener noreferrer">UA 2049</a></td>
 <td class="InGate">San Diego</td>
 <td>SAN</td>
 <td>Domestic</td>
@@ -1991,7 +1992,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/ASA322" target="_blank" rel="noopener noreferrer">AS 322</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/ASA322" target="_blank" rel="noopener noreferrer">AS 322</a></td>
 <td class="InAir">San Diego</td>
 <td>SAN</td>
 <td>Domestic</td>
@@ -2002,7 +2003,7 @@
 <td>14</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1873" target="_blank" rel="noopener noreferrer">UA 1873</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1873" target="_blank" rel="noopener noreferrer">UA 1873</a></td>
 <td class="InAir">San Diego</td>
 <td>SAN</td>
 <td>Domestic</td>
@@ -2013,7 +2014,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2626" target="_blank" rel="noopener noreferrer">UA 2626</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2626" target="_blank" rel="noopener noreferrer">UA 2626</a></td>
 <td class="InGate">San Francisco</td>
 <td>SFO</td>
 <td>Domestic</td>
@@ -2024,7 +2025,7 @@
 <td>4</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2117" target="_blank" rel="noopener noreferrer">UA 2117</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2117" target="_blank" rel="noopener noreferrer">UA 2117</a></td>
 <td class="InGate">San Francisco</td>
 <td>SFO</td>
 <td>Domestic</td>
@@ -2035,7 +2036,7 @@
 <td>4</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2247" target="_blank" rel="noopener noreferrer">UA 2247</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2247" target="_blank" rel="noopener noreferrer">UA 2247</a></td>
 <td class="InGate">San Francisco</td>
 <td>SFO</td>
 <td>Domestic</td>
@@ -2046,7 +2047,7 @@
 <td>3</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1322" target="_blank" rel="noopener noreferrer">UA 1322</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1322" target="_blank" rel="noopener noreferrer">UA 1322</a></td>
 <td class="InAir">San Francisco</td>
 <td>SFO</td>
 <td>Domestic</td>
@@ -2057,7 +2058,7 @@
 <td>7</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/AVA590" target="_blank" rel="noopener noreferrer">AV 590</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/AVA590" target="_blank" rel="noopener noreferrer">AV 590</a></td>
 <td class="InGate">San Salvador (San Luis Talpa)</td>
 <td>SAL</td>
 <td>International</td>
@@ -2068,7 +2069,7 @@
 <td>19</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/AVA580" target="_blank" rel="noopener noreferrer">AV 580</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/AVA580" target="_blank" rel="noopener noreferrer">AV 580</a></td>
 <td class="InGate">San Salvador (San Luis Talpa)</td>
 <td>SAL</td>
 <td>International</td>
@@ -2079,7 +2080,7 @@
 <td>19</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/AVA582" target="_blank" rel="noopener noreferrer">AV 582</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/AVA582" target="_blank" rel="noopener noreferrer">AV 582</a></td>
 <td class="InAir">San Salvador (San Luis Talpa)</td>
 <td>SAL</td>
 <td>International</td>
@@ -2090,7 +2091,7 @@
 <td>19</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/AVA584" target="_blank" rel="noopener noreferrer">AV 584</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/AVA584" target="_blank" rel="noopener noreferrer">AV 584</a></td>
 <td class="InAir">San Salvador (San Luis Talpa)</td>
 <td>SAL</td>
 <td>International</td>
@@ -2101,7 +2102,7 @@
 <td>19</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL860" target="_blank" rel="noopener noreferrer">UA 860</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL860" target="_blank" rel="noopener noreferrer">UA 860</a></td>
 <td class="InGate">Sao Paulo</td>
 <td>GRU</td>
 <td>International</td>
@@ -2112,7 +2113,7 @@
 <td>16</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1992" target="_blank" rel="noopener noreferrer">UA 1992</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1992" target="_blank" rel="noopener noreferrer">UA 1992</a></td>
 <td class="InAir">Sarasota/Bradenton</td>
 <td>SRQ</td>
 <td>Domestic</td>
@@ -2123,7 +2124,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3490" target="_blank" rel="noopener noreferrer">UA 3490</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3490" target="_blank" rel="noopener noreferrer">UA 3490</a></td>
 <td class="InGate">Savannah</td>
 <td>SAV</td>
 <td>Domestic</td>
@@ -2134,7 +2135,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6026" target="_blank" rel="noopener noreferrer">UA 6026</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6026" target="_blank" rel="noopener noreferrer">UA 6026</a></td>
 <td class="InAir">Savannah</td>
 <td>SAV</td>
 <td>Domestic</td>
@@ -2145,7 +2146,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1360" target="_blank" rel="noopener noreferrer">UA 1360</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1360" target="_blank" rel="noopener noreferrer">UA 1360</a></td>
 <td class="InAir">Seattle</td>
 <td>SEA</td>
 <td>Domestic</td>
@@ -2156,7 +2157,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/DAL952" target="_blank" rel="noopener noreferrer">DL 952</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/DAL952" target="_blank" rel="noopener noreferrer">DL 952</a></td>
 <td class="InAir">Seattle</td>
 <td>SEA</td>
 <td>Domestic</td>
@@ -2167,7 +2168,7 @@
 <td>14</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/ASA406" target="_blank" rel="noopener noreferrer">AS 406</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/ASA406" target="_blank" rel="noopener noreferrer">AS 406</a></td>
 <td class="InAir">Seattle</td>
 <td>SEA</td>
 <td>Domestic</td>
@@ -2178,7 +2179,7 @@
 <td>14</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/KAL93" target="_blank" rel="noopener noreferrer">KE 93</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/KAL93" target="_blank" rel="noopener noreferrer">KE 93</a></td>
 <td class="InGate">Seoul</td>
 <td>ICN</td>
 <td>International</td>
@@ -2189,7 +2190,7 @@
 <td>19,20</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4506" target="_blank" rel="noopener noreferrer">UA 4506</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4506" target="_blank" rel="noopener noreferrer">UA 4506</a></td>
 <td class="InGate">St Louis</td>
 <td>STL</td>
 <td>Domestic</td>
@@ -2200,7 +2201,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4454" target="_blank" rel="noopener noreferrer">UA 4454</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4454" target="_blank" rel="noopener noreferrer">UA 4454</a></td>
 <td class="InAir">St Louis</td>
 <td>STL</td>
 <td>Domestic</td>
@@ -2211,7 +2212,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL1445" target="_blank" rel="noopener noreferrer">UA 1445</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL1445" target="_blank" rel="noopener noreferrer">UA 1445</a></td>
 <td class="InAir">Charlotte Amalie, Harry S. Truman Airport</td>
 <td>STT</td>
 <td>Domestic</td>
@@ -2222,7 +2223,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6158" target="_blank" rel="noopener noreferrer">UA 6158</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6158" target="_blank" rel="noopener noreferrer">UA 6158</a></td>
 <td class="InGate">Syracuse</td>
 <td>SYR</td>
 <td>Domestic</td>
@@ -2233,7 +2234,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL4876" target="_blank" rel="noopener noreferrer">UA 4876</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL4876" target="_blank" rel="noopener noreferrer">UA 4876</a></td>
 <td class="InAir">Syracuse</td>
 <td>SYR</td>
 <td>Domestic</td>
@@ -2244,7 +2245,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2331" target="_blank" rel="noopener noreferrer">UA 2331</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2331" target="_blank" rel="noopener noreferrer">UA 2331</a></td>
 <td class="InGate">Tampa</td>
 <td>TPA</td>
 <td>Domestic</td>
@@ -2255,7 +2256,7 @@
 <td>2</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL2398" target="_blank" rel="noopener noreferrer">UA 2398</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL2398" target="_blank" rel="noopener noreferrer">UA 2398</a></td>
 <td class="InAir">Tampa</td>
 <td>TPA</td>
 <td>Domestic</td>
@@ -2266,7 +2267,7 @@
 <td>1</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/ANA102" target="_blank" rel="noopener noreferrer">NH 102</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/ANA102" target="_blank" rel="noopener noreferrer">NH 102</a></td>
 <td class="InGate">Ota, Tokyo</td>
 <td>HND</td>
 <td>International</td>
@@ -2277,7 +2278,7 @@
 <td>17</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL804" target="_blank" rel="noopener noreferrer">UA 804</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL804" target="_blank" rel="noopener noreferrer">UA 804</a></td>
 <td class="InAir">Ota, Tokyo</td>
 <td>HND</td>
 <td>International</td>
@@ -2288,7 +2289,7 @@
 <td>17</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/PEM2719" target="_blank" rel="noopener noreferrer">PD 2719</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/PEM2719" target="_blank" rel="noopener noreferrer">PD 2719</a></td>
 <td class="InGate">Toronto</td>
 <td>YTZ</td>
 <td>International</td>
@@ -2299,7 +2300,7 @@
 <td>18</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3634" target="_blank" rel="noopener noreferrer">UA 3634</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3634" target="_blank" rel="noopener noreferrer">UA 3634</a></td>
 <td class="InGate">Toronto</td>
 <td>YYZ</td>
 <td>Domestic</td>
@@ -2310,7 +2311,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/ACA8616" target="_blank" rel="noopener noreferrer">AC 8616</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/ACA8616" target="_blank" rel="noopener noreferrer">AC 8616</a></td>
 <td class="InGate">Toronto</td>
 <td>YYZ</td>
 <td>Domestic</td>
@@ -2321,7 +2322,7 @@
 <td>10</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3636" target="_blank" rel="noopener noreferrer">UA 3636</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3636" target="_blank" rel="noopener noreferrer">UA 3636</a></td>
 <td class="InGate">Toronto</td>
 <td>YYZ</td>
 <td>Domestic</td>
@@ -2332,7 +2333,7 @@
 <td>6</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/ACA8618" target="_blank" rel="noopener noreferrer">AC 8618</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/ACA8618" target="_blank" rel="noopener noreferrer">AC 8618</a></td>
 <td class="InGate">Toronto</td>
 <td>YYZ</td>
 <td>Domestic</td>
@@ -2343,7 +2344,7 @@
 <td>10</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL3637" target="_blank" rel="noopener noreferrer">UA 3637</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL3637" target="_blank" rel="noopener noreferrer">UA 3637</a></td>
 <td class="OutGate">Toronto</td>
 <td>YYZ</td>
 <td>Domestic</td>
@@ -2354,7 +2355,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/AUA93" target="_blank" rel="noopener noreferrer">OS 93</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/AUA93" target="_blank" rel="noopener noreferrer">OS 93</a></td>
 <td class="InAir">Vienna</td>
 <td>VIE</td>
 <td>International</td>
@@ -2365,7 +2366,7 @@
 <td>18</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6085" target="_blank" rel="noopener noreferrer">UA 6085</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6085" target="_blank" rel="noopener noreferrer">UA 6085</a></td>
 <td class="InGate">Washington</td>
 <td>IAD</td>
 <td>Domestic</td>
@@ -2376,7 +2377,7 @@
 <td>7</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL6364" target="_blank" rel="noopener noreferrer">UA 6364</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL6364" target="_blank" rel="noopener noreferrer">UA 6364</a></td>
 <td class="InAir">West Palm Beach</td>
 <td>PBI</td>
 <td>Domestic</td>
@@ -2387,7 +2388,7 @@
 <td>5</td>
 </tr>
 <tr>
-	<td><a href="https://www.flightaware.com/live/flight/UAL53" target="_blank" rel="noopener noreferrer">UA 53</a></td>
+	<td style="width: 5%"><a href="https://www.flightaware.com/live/flight/UAL53" target="_blank" rel="noopener noreferrer">UA 53</a></td>
 <td class="InAir">Zurich</td>
 <td>ZRH</td>
 <td>International</td>
@@ -2417,7 +2418,7 @@
           }
         });
     </script>
-    <p id="update" onclick="myFunction()">Information current as of Mar 12, 2024 02:54 PM</p>
+    <p id="update" onclick="myFunction()">Information current as of Mar 12, 2024 02:55 PM</p>
     <p id="info" onclick="myFunction()">Click here to refresh this page</p>
     <script>
         function myFunction() {

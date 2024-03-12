@@ -1,17 +1,81 @@
-<!DOCTYPE html>
-<head>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-    </style>
-    <title>IAB 2-6 Arrivals</title>
-    <meta http-equiv="refresh" content="120">
+<!doctype html>
+<head title="Dulles Arrivals">
+<meta http-equiv="refresh" content="600">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<style>
+    .InGate {
+      background-color: #34ec34;
+    }
+    .InAir {
+      background-color:skyblue;
+    }
+    .Delayed {
+      background-color: #ffc42f;
+    }
+    .OutGate {
+      background-color:burlywood;
+    }
+    .Cancelled {
+      background-color: rgba(245, 2, 2, 0.45);text-decoration: line-through;
+    }
+</style>
+
+<script type="text/javascript">
+   $(document).ready(function() {
+     // Setup - add a text input to each footer cell
+     $('#example thead tr').clone(true).addClass('filters').appendTo('#example thead');
+     let table = $('#example').DataTable({
+       orderCellsTop: true,
+         autoWidth: false,
+       fixedHeader: true,
+       initComplete: function() {
+         let api = this.api();
+         // For each column
+         api.columns().eq(0).each(function(colIdx) {
+           // Set the header cell to contain the input element
+           let cell = $('.filters th').eq($(api.column(colIdx).header()).index());
+           let title = $(cell).text();
+           $(cell).html('<input type="text" placeholder="' + title + '" />');
+           // On every keypress in this input
+           $('input', $('.filters th').eq($(api.column(colIdx).header()).index())).off('keyup change').on('change', function(e) {
+             // Get the search value
+             $(this).attr('title', $(this).val());
+             let regexr = '({search})'; //$(this).parents('th').find('select').val();
+             let cursorPosition = this.selectionStart;
+             // Search the column for that value
+             api.column(colIdx).search(this.value != '' ? regexr.replace('{search}', '(((' + this.value + ')))') : '', this.value != '', this.value == '').draw();
+           }).on('keyup', function(e) {
+             e.stopPropagation();
+             $(this).trigger('change');
+             $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
+           });
+         });
+       },
+     });
+   });
+</script>
+<title>IAD Arrivals</title>
 </head>
-<body>
-    <table>
-        
+
+<body class="container">
+<h1 class="text-center">IAD Departures</h1>
+    <table data-order='[[ 4, "asc" ]]' data-page-length='300' id="example" class="cell-border order-column" style="width:100%">
+    <thead>
+            <tr>
+                <th style="width: 5%">Flight</th>
+                <th>Airline</th>
+                <th>Destination Airport</th>
+                <th>Destination IATA</th>
+                <th>Dep Time</th>
+                <th>Gate</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+
         <tr style="background-color:#72FFD3">
             <td><a href="https://www.flightaware.com/live/flight/UAL1873" target="_blank" rel="noopener noreferrer">UA 1873</a></td>
             <td>United Airlines</td>
@@ -1241,6 +1305,5 @@
             <td>B48</td>
             <td>Scheduled</td>
         </tr>
-
-    </table>
+</table>
 </body>
