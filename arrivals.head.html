@@ -21,6 +21,31 @@
     .Cancelled {
       background-color: rgba(245, 2, 2, 0.45);text-decoration: line-through;
     }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+	* {
+	  box-sizing: border-box;
+	}
+
+	.column {
+	  float: left;
+	  width: 33.33%;
+	  padding: 5px;
+	}
+
+	/* Clearfix (clear floats) */
+	.row::after {
+	  content: "";
+	  clear: both;
+	  display: table;
+	}
+	img {
+	  height: 50px;
+	}
+
 </style>
 
 <script type="text/javascript">
@@ -61,19 +86,27 @@
 </head>
 
 <body class="container">
-<h1 class="text-center">IAD Arrivals</h1>
-    <table data-order='[[ 6, "asc" ]]' data-page-length='300' id="example" class="cell-border order-column" style="width:100%">
+
+<div class="row">
+  <div class="column">
+    <IMG src="arrivals.jpg"  alt="Arrivals" class="center2">
+  </div>
+  <div class="column">
+    <IMG src="TA-Dulles-Logo-web.png"  alt="Travelers Aid" class="center">
+  </div>
+</div>
+    <table data-order='[[ 6, "asc" ]]' data-page-length='10' id="example" class="cell-border order-column" style="width:100%">
     <thead>
             <tr>
                 <th style="width: 5%">Flight</th>
                 <th>Origin</th>
-                <th>Origin IATA</th>
+                <th>IATA</th>
                 <th>Dom/Int</th>
                 <th>Gate</th>
                 <th>Status</th>
                 <th>Gate Time</th>
-                <th>Customs</th>
-                <th>Baggage Carousel</th>
+                <th>Customs since</th>
+                <th>Carousel</th>
             </tr>
         </thead>
         <tbody>

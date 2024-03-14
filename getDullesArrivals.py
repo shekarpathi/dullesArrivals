@@ -45,7 +45,8 @@ def readAirlineCodesCsv():
 
 def getCustomsString(mod_status, customsAt) -> str:
     if mod_status != '':
-        return (mod_status + ' since ' + customsAt)
+        # return (mod_status + ' since ' + customsAt)
+        return (customsAt)
     else:
         return ''
 
