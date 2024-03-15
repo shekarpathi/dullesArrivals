@@ -216,7 +216,7 @@ for i in json_data['arrivals']:
             iabArray.append(
                 [s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
             if (airlinedict[i['IATA']] == 'UAL' or airlinedict[i['IATA']] == 'DLH' or airlinedict[i['IATA']] == 'AUA' or
-                    airlinedict[i['IATA']] == 'AVA' or airlinedict[i['IATA']] == 'CCA'):
+                    airlinedict[i['IATA']] == 'SAB' or airlinedict[i['IATA']] == 'CCA' or airlinedict[i['IATA']] == 'ANA' or airlinedict[i['IATA']] == 'SAS'):
                 fisArray.append(
                     [s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'],
                      status])
