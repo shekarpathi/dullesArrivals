@@ -186,7 +186,7 @@ t = 1
 for i in json_data['arrivals']:
     status = i['status']
     t = t + 1
-    if status != 'Scheduled':
+    if status != 'Scheduled_':
         # actualtime = i['actualtime']
         actualtime = formatTime(i['actualtime'])
         customsAt = formatTime(i['customsAt'])
