@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from pytz import timezone
 import os
 import requests, json
-import csv
+from createAirportCode import readAirportCodesCsv, readAirlineCodesCsv
 
 url = "https://www.flydulles.com/arrivals-and-departures/json"
 wwwPath = '/var/www/html'
@@ -14,34 +14,8 @@ iabArray = []
 response_code = 401
 retryCount = 0
 success = False
-airportdict: dict = {}
-airlinedict: dict = {}
-
-
-def readAirportCodesCsv():
-    preclearairports = ['AUH', 'DUB', 'SNN', 'AUA', 'BDA', 'NAS', 'YYC', 'YYZ', 'YEG', 'YHZ', 'YUL', 'YOW', 'YVR',
-                        'YYJ', 'YWG', 'SJU', 'STT']
-    with open('airport_codes.csv', 'r') as csvfile:
-        reader = csv.reader(csvfile)
-        for row in reader:
-            if row[9] != '' and "_airport" in row[1] != '':
-                # print(row[0], row[1], row[5], row[9])
-                if row[5] == 'US' or row[9] in preclearairports:
-                    # print(row[9], row[5])
-                    airportdict[row[9]] = ['Domestic', row[7]]
-                else:
-                    # print(row[9])
-                    airportdict[row[9]] = ['International', row[7]]
-        csvfile.close()
-
-
-def readAirlineCodesCsv():
-    with open('airline_codes.csv', 'r') as csvfile:
-        reader = csv.reader(csvfile)
-        for row in reader:
-            airlinedict[row[0]] = row[1]
-        csvfile.close()
-
+airportdict: dict = readAirportCodesCsv()
+airlinedict: dict = readAirlineCodesCsv()
 
 def getCustomsString(mod_status, customsAt) -> str:
     if mod_status != '':
@@ -66,11 +40,11 @@ def getCurrentTime():
 def isTimeBetween2and6(timeString) -> bool:
     if timeString is not None:
 
-        print(timeString)
+        # print(timeString)
         time_split = timeString.split(" ")
-        print(time_split[1])
+        # print(time_split[1])
         hrs = time_split[1].replace(':', '')
-        print(hrs)
+        # print(hrs)
         if (int(hrs) > 140000 and int(hrs) < 180000):
             return True
     else:
@@ -81,60 +55,72 @@ def formatTimeFor2To6(timeString) -> str:
     if timeString is not None:
         datetime_object = datetime.strptime(timeString, '%Y-%m-%d %H:%M:%S')
         str_date = datetime_object.strftime("%I:%M %p")
-        print(str_date)
+        # print(str_date)
         return str_date
 
 
 def formatTime(timeString) -> str:
     if timeString is not None:
-        print(timeString)
-        passedTime = datetime.strptime(timeString, "%Y-%m-%d %H:%M:%S")
-        now = datetime.today()
-        past = now - passedTime
-        if past.days < 0:
-            past = past * -1
-            print('+%s' % past.seconds)
-            convert = time.strftime("+F %Hh %Mm", time.gmtime(past.seconds))
-            print(convert)
+
+        element = datetime.strptime(timeString, "%Y-%m-%d %H:%M:%S")
+
+        tuple = element.timetuple()
+        passedTimestamp = time.mktime(tuple)
+
+        dtpassed = datetime.fromtimestamp(passedTimestamp)
+        # print('Datetime Passed: %s' % (dtpassed))
+
+        now = time.time()
+        dtnow = datetime.fromtimestamp(now)
+        # print('Datetime Now: %s' % (dtnow))
+
+        deltaTimeStamp = passedTimestamp - now
+        delta = dtpassed - dtnow
+        if deltaTimeStamp >= 0:
+            minutes, seconds = divmod(delta.seconds, 60)
+            hours, minutes = divmod(minutes, 60)
+            addendum = "<span style=\"background-color: #99ffbb\">In %d:%02d:%02d</span>" % (hours, minutes, seconds)
         else:
-            print('-%s' % past.seconds)
-            convert = time.strftime("-P %Hh %Mm", time.gmtime(past.seconds))
-            print(convert)
-        print('----\n')
+            delta = dtnow - dtpassed
+            minutes, seconds = divmod(delta.seconds, 60)
+            hours, minutes = divmod(minutes, 60)
+            addendum = "<span style=\"background-color: #ffd699\">%d:%02d:%02d ago</span>" % (hours, minutes, seconds)
+        # print(addendum)
+        # print('----\n')
 
         datetime_obj = datetime.strptime(timeString, "%Y-%m-%d %H:%M:%S")
         # print(datetime_obj.strftime("%m/%d %H:%M"))
-        return datetime_obj.strftime("%m/%d %H:%M")
+        return "%s %s" % (datetime_obj.strftime("%m/%d %H:%M"), addendum)
     else:
         return ''
 
 
 def formatGate(gate, domesticOrInternational):
     rgate = ''
-    if domesticOrInternational == "International":
+    if domesticOrInternational == "Int":
         if gate != None:
-            suffix = " %s - Bag 15" % gate
+            suffix = " %s - Bag 15 / Cafe Americana" % gate
         else:
-            suffix = " Bag 15"
+            suffix = " Bag 15 / Cafe Americana"
     else:
         if gate is not None:
             rgate = gate
             if gate[0] == "A":
-                suffix = "&nbsp;&nbsp;&nbsp;&nbsp;🚆6-7"
+                suffix = "🚆6-7 &nbsp;&nbsp"
             elif gate[0] == "C":
-                suffix = "&nbsp;&nbsp;&nbsp;&nbsp;🚆6-7"
+                suffix = "🚆6-7 &nbsp;&nbsp"
             elif gate[0] == "B":
-                suffix = "&nbsp;&nbsp;&nbsp;&nbsp;🚆10-11"
+                suffix = "🚆10-11 &nbsp;&nbsp"
             elif gate[0] == "Z":
-                suffix = "&nbsp;&nbsp;&nbsp;&nbsp;🚶8"
+                suffix = "🚶8 &nbsp;&nbsp"
             elif gate[0] == "D":
-                suffix = "&nbsp;&nbsp;&nbsp;&nbsp;🚌 8"
+                suffix = "🚌 8 &nbsp;&nbsp"
             else:
                 suffix = ''
         else:
             suffix = ''
             rgate = ''
-    return '%s %s' % (rgate, suffix)
+    return '%s %s' % (suffix, rgate)
 
 
 while retryCount < 5 and response_code != 200:
@@ -157,8 +143,8 @@ if not success:
     print('Could not get the response after 5 tries, hence exiting')
     exit(3)
 
-readAirlineCodesCsv()
-readAirportCodesCsv()
+# readAirlineCodesCsv()
+# readAirportCodesCsv()
 
 if os.getenv("GITHUB_ACTIONS") == "true":
     arrivalsFileHandle = open('arrivals.html', "w")
@@ -190,10 +176,18 @@ for i in json_data['arrivals']:
         # actualtime = i['actualtime']
         actualtime = formatTime(i['actualtime'])
         customsAt = formatTime(i['customsAt'])
-        print(isTimeBetween2and6(i['actualtime']))
-        flight = '<a href="https://www.flightaware.com/live/flight/%s%s" target="_blank" rel="noopener noreferrer">%s %s</a>' % (airlinedict[i['IATA']], i['flightnumber'], i['IATA'], i['flightnumber'])
+        # print(isTimeBetween2and6(i['actualtime']))
+        try:
+            flight = '<a href="https://www.flightaware.com/live/flight/%s%s" target="_blank" rel="noopener noreferrer">%s %s</a>' % (airlinedict[i['IATA']][0], i['flightnumber'], i['IATA'], i['flightnumber'])
+        except:
+            r = 0
+            print(i)
         mod_status = i['mod_status'] if i['mod_status'] is not None else ''
-        gate = formatGate(i['gate'], airportdict[i['dep_airport_code']][0])
+        try:
+            gate = formatGate(i['gate'], airportdict[i['dep_airport_code']][0])
+        except Exception as err:
+            print(f"Unexpected {err=}, {type(err)=}")
+
 
         baggage = i['baggage'] if i['baggage'] is not None else ''
         claim = i['claim'] if i['claim'] is not None else ''
@@ -201,22 +195,23 @@ for i in json_data['arrivals']:
         claim2 = i['claim2'] if i['claim2'] is not None else ''
         claim3 = i['claim3'] if i['claim3'] is not None else ''
         arrivalsFileHandle.write(
-            '<tr>\n\t<td style="width: 5%%">%s</td>\n<td class="%s">%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n' % (
+            '<tr>\n\t<td  style="max-width: 10px">%s</td>\n<td  style="max-width: 14px" class="%s">%s</td>\n<td style="max-width: 10px">%s</td>\n<td style="max-width: 10px">%s</td>\n<td style="max-width: 10px">%s</td>\n<td style="max-width: 10px">%s</td>\n<td style="max-width: 10px">%s</td>\n<td style="max-width: 10px">%s</td>\n<td style="max-width: 10px">%s</td>\n' % (
                 flight, i['status'],
-                airportdict[i['dep_airport_code']][1],
+                airportdict[i['dep_airport_code']][3],
                 i['dep_airport_code'],
+                getCarousel(baggage, claim, claim1, claim2),
                 airportdict[i['dep_airport_code']][0], gate, status,
-                actualtime, getCustomsString(mod_status, customsAt),
+                actualtime, getCustomsString(mod_status, customsAt)
                 # baggage, claim, claim1, claim2
-                getCarousel(baggage, claim, claim1, claim2)))
+                ))
         arrivalsFileHandle.write('</tr>\n')
 
         if airportdict[i['dep_airport_code']][0] == 'International' and isTimeBetween2and6(i['actualtime']):
-            s = ('https://www.flightaware.com/live/flight/%s%s' % (airlinedict[i['IATA']], i['flightnumber']))
+            s = ('https://www.flightaware.com/live/flight/%s%s' % (airlinedict[i['IATA']][0], i['flightnumber']))
             iabArray.append(
                 [s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
-            if (airlinedict[i['IATA']] == 'UAL' or airlinedict[i['IATA']] == 'DLH' or airlinedict[i['IATA']] == 'AUA' or
-                    airlinedict[i['IATA']] == 'SAB' or airlinedict[i['IATA']] == 'CCA' or airlinedict[i['IATA']] == 'ANA' or airlinedict[i['IATA']] == 'SAS'):
+            if (airlinedict[i['IATA']][0] == 'UAL' or airlinedict[i['IATA']][0] == 'DLH' or airlinedict[i['IATA']][0] == 'AUA' or
+                    airlinedict[i['IATA']][0] == 'SAB' or airlinedict[i['IATA']][0] == 'CCA' or airlinedict[i['IATA']][0] == 'ANA' or airlinedict[i['IATA']][0] == 'SAS'):
                 fisArray.append(
                     [s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'],
                      status])
@@ -354,7 +349,10 @@ for dep in depArray:
         color = 'style="background-color:#72FFD3"'
     else:
         color = ''
-    url = 'https://www.flightaware.com/live/flight/%s%s' % (airlinedict[dep[0]], dep[1])
+    try:
+        url = 'https://www.flightaware.com/live/flight/%s%s' % (airlinedict[dep[0]], dep[1])
+    except:
+        url = 'https://www.flightaware.com/live'
     depTableHTML += ("""
         <tr %s>
             <td><a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s %s</a></td>
@@ -388,3 +386,9 @@ depFileHandle.close()
 # </body>
 # """ % depTableHTML)
 # depFileHandle.close()
+
+# https://github.com/davidmegginson/ourairports-data/blob/main/airports.csv
+# https://github.com/davidmegginson/ourairports-data
+# https://raw.githubusercontent.com/elmoallistair/datasets/main/airlines.csv
+# https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat
+# https://raw.githubusercontent.com/jpatokal/openflights/master/data/airlines.dat
