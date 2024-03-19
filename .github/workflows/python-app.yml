@@ -19,6 +19,13 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - name: Set timezone
+      uses: szenius/set-timezone@v1.2
+      with:
+        timezoneLinux: "America/New_York"
+        timezoneMacos: "America/New_York"
+        timezoneWindows: "America/New_York"
+
     - name: checkout dullesArrivals repository
       uses: actions/checkout@v4 # checkout the repository content to github runner.
       with:
