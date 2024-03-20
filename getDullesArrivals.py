@@ -99,9 +99,9 @@ def formatGate(gate, domesticOrInternational):
     rgate = ''
     if domesticOrInternational == "Int":
         if gate != None:
-            suffix = " %s - Bag 15 / Cafe Americana" % gate
+            suffix = "%s - Cafè Americana" % gate
         else:
-            suffix = " Bag 15 / Cafe Americana"
+            suffix = "Cafè Americana"
     else:
         if gate is not None:
             rgate = gate
