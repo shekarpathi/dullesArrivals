@@ -186,7 +186,7 @@ for i in json_data['arrivals']:
         try:
             gate = formatGate(i['gate'], airportdict[i['dep_airport_code']][0])
         except Exception as err:
-            print(f"Unexpected {err=}, {type(err)=}")
+            print("Error")
 
 
         baggage = i['baggage'] if i['baggage'] is not None else ''
