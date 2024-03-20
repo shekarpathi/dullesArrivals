@@ -79,12 +79,12 @@ def formatTime(timeString) -> str:
         if deltaTimeStamp >= 0:
             minutes, seconds = divmod(delta.seconds, 60)
             hours, minutes = divmod(minutes, 60)
-            addendum = "<span style=\"background-color: #99ffbb\">In %d:%02d:%02d</span>" % (hours, minutes, seconds)
+            addendum = "<span style=\"background-color: #99ffbb\">In %d:%02d</span>" % (hours, minutes)
         else:
             delta = dtnow - dtpassed
             minutes, seconds = divmod(delta.seconds, 60)
             hours, minutes = divmod(minutes, 60)
-            addendum = "<span style=\"background-color: #ffd699\">%d:%02d:%02d ago</span>" % (hours, minutes, seconds)
+            addendum = "<span style=\"background-color: #ffd699\">%d:%02d ago</span>" % (hours, minutes)
         # print(addendum)
         # print('----\n')
 
