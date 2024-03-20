@@ -206,7 +206,7 @@ for i in json_data['arrivals']:
                 ))
         arrivalsFileHandle.write('</tr>\n')
 
-        if airportdict[i['dep_airport_code']][0] == 'International' and isTimeBetween2and6(i['actualtime']):
+        if airportdict[i['dep_airport_code']][0] == 'Int' and isTimeBetween2and6(i['actualtime']):
             s = ('https://www.flightaware.com/live/flight/%s%s' % (airlinedict[i['IATA']][0], i['flightnumber']))
             iabArray.append(
                 [s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
