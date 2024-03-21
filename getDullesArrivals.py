@@ -37,7 +37,7 @@ def getCurrentTime():
     return now.strftime("%b %d, %Y %I:%M %p")
 
 
-def isTimeBetween2and6(timeString) -> bool:
+def isTimeBetween1and7(timeString) -> bool:
     if timeString is not None:
 
         # print(timeString)
@@ -45,7 +45,7 @@ def isTimeBetween2and6(timeString) -> bool:
         # print(time_split[1])
         hrs = time_split[1].replace(':', '')
         # print(hrs)
-        if (int(hrs) > 140000 and int(hrs) < 180000):
+        if (int(hrs) > 130000 and int(hrs) < 190000):
             return True
     else:
         return False
@@ -195,10 +195,17 @@ for i in json_data['arrivals']:
         claim2 = i['claim2'] if i['claim2'] is not None else ''
         claim3 = i['claim3'] if i['claim3'] is not None else ''
         arrivalsFileHandle.write(
-            '<tr>\n\t<td  style="max-width: 10px">%s</td>\n<td  style="max-width: 14px" class="%s">%s</td>\n<td style="max-width: 10px">%s</td>\n<td style="max-width: 10px">%s</td>\n<td style="max-width: 10px">%s</td>\n<td style="max-width: 10px">%s</td>\n<td style="max-width: 10px">%s</td>\n<td style="max-width: 10px">%s</td>\n<td style="max-width: 10px">%s</td>\n' % (
-                flight, i['status'],
-                airportdict[i['dep_airport_code']][3],
-                i['dep_airport_code'],
+            '<tr>\n\t'
+            '<td>%s</td>\n' #Flight
+            '<td class="%s">%s %s</td>\n' # Origin
+            '<td>%s</td>\n'
+            '<td>%s</td>\n'
+            '<td>%s</td>\n'
+            '<td>%s</td>\n'
+            '<td>%s</td>\n'
+            '<td>%s</td>\n' % (
+                flight,
+                i['status'],  i['dep_airport_code'], airportdict[i['dep_airport_code']][3],
                 getCarousel(baggage, claim, claim1, claim2),
                 airportdict[i['dep_airport_code']][0], gate, status,
                 actualtime, getCustomsString(mod_status, customsAt)
@@ -206,7 +213,7 @@ for i in json_data['arrivals']:
                 ))
         arrivalsFileHandle.write('</tr>\n')
 
-        if airportdict[i['dep_airport_code']][0] == 'Int' and isTimeBetween2and6(i['actualtime']):
+        if airportdict[i['dep_airport_code']][0] == 'Int' and isTimeBetween1and7(i['actualtime']):
             s = ('https://www.flightaware.com/live/flight/%s%s' % (airlinedict[i['IATA']][0], i['flightnumber']))
             iabArray.append([s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
             if airlinedict[i['IATA']][0] == 'UAL':
@@ -239,7 +246,7 @@ table, th, td {
   border-collapse: collapse;
 }
 </style>
-    <title>FIS 2-6 Arrivals</title>
+    <title>FIS 1-7 Arrivals</title>
     <meta http-equiv="refresh" content="120">
 </head>
 <body>
@@ -268,7 +275,7 @@ table, th, td {
   border-collapse: collapse;
 }
 </style>
-    <title>IAB 2-6 Arrivals</title>
+    <title>IAB 1-7 Arrivals</title>
     <meta http-equiv="refresh" content="120">
 </head>
 <body>

@@ -110,13 +110,16 @@ var x = setInterval(function() {
 <title>IAD Departures</title>
 </head>
 
+
 <div class="row">
-  <div class="column">
-    <IMG src="departures.jpg"  alt="Arrivals" class="center2">
-  </div>
-  <div class="column">
-    <IMG src="TA-Dulles-Logo-web.png"  alt="Travelers Aid" class="center">
-  </div>
+    <div class="column">
+        <IMG src="TA-Dulles-Logo-web.png"  alt="Travelers Aid" class="">
+    </div>
+    <div class="column">
+        <IMG src="departures.jpg"  alt="Departures" class="center2">
+        <IMG onclick="myFunction()" src="refresh.png"  alt="Arrivals" class="center2">
+        Refresh in <FG class="center2" id="demo"></FG>
+    </div>
     <div>
         <A href="/" target="arrivals">Arrivals</A><br>
         <A href="/iab.html" target="iab">IAB 2-6pm</A><br>
