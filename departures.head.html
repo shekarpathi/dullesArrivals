@@ -48,6 +48,9 @@
 	img {
 	  height: 50px;
 	}
+    iatafont {
+  font-family: Consolas, monaco, monospace; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 700;
+}
 </style>
 
 <script type="text/javascript">
@@ -84,7 +87,27 @@
      });
    });
 </script>
-<title>IAD Arrivals</title>
+    <script>
+// Set the date we're counting down to
+var countdownMinutes = 1;
+var distance = countdownMinutes * 60 * 1000;
+// Update the count down every 1 second
+var x = setInterval(function() {
+  // Time calculations for days, hours, minutes and seconds
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+    distance = distance - 1000;
+  // If the count down is over, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "Refresh Now";
+  }
+}, 1000);
+</script>
+<title>IAD Departures</title>
 </head>
 
 <div class="row">
@@ -100,7 +123,7 @@
         <A href="/fis.html" target="fis">FIS 2-6pm</A>
     </div>
 </div>
-    <table data-order='[[ 4, "asc" ]]' data-page-length='600' id="example" class="cell-border order-column" style="width:100%">
+    <table data-order='[[ 4, "asc" ]]' data-page-length='600' id="example" class="cell-border order-column" style="width:100%;font-family: Consolas, monaco, monospace; font-size: 14px">
     <thead>
             <tr>
                 <th style="width: 5%">Flight</th>

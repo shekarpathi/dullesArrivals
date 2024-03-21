@@ -208,8 +208,9 @@ for i in json_data['arrivals']:
 
         if airportdict[i['dep_airport_code']][0] == 'Int' and isTimeBetween2and6(i['actualtime']):
             s = ('https://www.flightaware.com/live/flight/%s%s' % (airlinedict[i['IATA']][0], i['flightnumber']))
-            iabArray.append(
-                [s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
+            iabArray.append([s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
+            if airlinedict[i['IATA']][0] == 'UAL':
+                ttt=0
             if (airlinedict[i['IATA']][0] == 'UAL' or airlinedict[i['IATA']][0] == 'DLH' or airlinedict[i['IATA']][0] == 'AUA' or
                     airlinedict[i['IATA']][0] == 'SAB' or airlinedict[i['IATA']][0] == 'CCA' or airlinedict[i['IATA']][0] == 'ANA' or airlinedict[i['IATA']][0] == 'SAS'):
                 fisArray.append(
@@ -346,11 +347,11 @@ for dep in depArray:
     elif dep[7] == 'Delayed':
         color = 'style="background-color:#FFEBB0"'
     elif dep[7] == 'Scheduled':
-        color = 'style="background-color:#72FFD3"'
+        color = 'style="background-color:#E6FFC8"'
     else:
         color = ''
     try:
-        url = 'https://www.flightaware.com/live/flight/%s%s' % (airlinedict[dep[0]], dep[1])
+        url = 'https://www.flightaware.com/live/flight/%s%s' % (airlinedict[dep[0]][0], dep[1])
     except:
         url = 'https://www.flightaware.com/live'
     depTableHTML += ("""
@@ -359,10 +360,10 @@ for dep in depArray:
             <td>%s</td>
             <td>%s</td>
             <td>%s</td>
+            <td class=\"iatafont\">%s</td>
             <td>%s</td>
             <td>%s</td>
-            <td>%s</td>
-        </tr>\n""" % (color, url, dep[0], dep[1], dep[2], dep[3], dep[4], dep[5], dep[6], dep[7]))
+        </tr>\n""" % (color, url, dep[0], dep[1], dep[2], dep[3], dep[4], formatTime(dep[5]), dep[6], dep[7]))
 
 depFileHandle.write(depTableHTML)
 depFileHandle.write("</table>\n</body>")
