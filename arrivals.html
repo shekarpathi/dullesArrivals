@@ -1,6 +1,6 @@
 <!doctype html>
 <head title="Dulles Arrivals">
-<meta http-equiv="refresh" content="600">
+<meta http-equiv="refresh" content="60">
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -45,7 +45,9 @@
 	img {
 	  height: 50px;
 	}
-
+    iatafont {
+  font-family: Consolas, monaco, monospace; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 700;
+}
 </style>
 
 <script type="text/javascript">
@@ -82,6 +84,26 @@
      });
    });
 </script>
+    <script>
+// Set the date we're counting down to
+var countdownMinutes = 1;
+var distance = countdownMinutes * 60 * 1000;
+// Update the count down every 1 second
+var x = setInterval(function() {
+  // Time calculations for days, hours, minutes and seconds
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+    distance = distance - 1000;
+  // If the count down is over, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "Refresh Now";
+  }
+}, 1000);
+</script>
 <title>IAD Arrivals</title>
 </head>
 
@@ -91,6 +113,7 @@
     <div class="column">
         <IMG src="arrivals.jpg"  alt="Arrivals" class="center2">
         <IMG onclick="myFunction()" src="refresh.png"  alt="Arrivals" class="center2">
+        Page will automatically refresh in <FG class="center2" id="demo"></FG>
     </div>
     <div class="column">
         <IMG src="TA-Dulles-Logo-web.png"  alt="Travelers Aid" class="center">
@@ -101,7 +124,7 @@
         <A href="/fis.html" target="fis">FIS 2-6pm</A>
     </div>
 </div>
-    <table data-order='[[ 7, "asc" ]]' data-page-length='600' id="example" class="cell-border order-column" style="width:100%">
+    <table data-order='[[ 7, "asc" ]]' data-page-length='600' id="example" class="cell-border order-column" style="width:100%;font-family: Consolas, monaco, monospace; font-size: 14px">
     <thead>
             <tr>
                 <th style="max-width: 10px">Flight</th>
@@ -124,7 +147,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px"> </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 17:22 <span style="background-color: #99ffbb">In 9:23</span></td>
+<td style="max-width: 10px">03/21 17:22 <span style="background-color: #99ffbb">In 9:20</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -135,7 +158,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 09:23 <span style="background-color: #99ffbb">In 1:24</span></td>
+<td style="max-width: 10px">03/21 09:23 <span style="background-color: #99ffbb">In 1:21</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -146,7 +169,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp A6B</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:13 <span style="background-color: #ffd699">0:45 ago</span></td>
+<td style="max-width: 10px">03/21 07:13 <span style="background-color: #ffd699">0:48 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -157,7 +180,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">C3 - Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 14:22 <span style="background-color: #99ffbb">In 6:23</span></td>
+<td style="max-width: 10px">03/21 14:22 <span style="background-color: #99ffbb">In 6:20</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -168,7 +191,18 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆10-11 &nbsp;&nbsp B74</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 00:28 <span style="background-color: #ffd699">7:30 ago</span></td>
+<td style="max-width: 10px">03/21 00:28 <span style="background-color: #ffd699">7:33 ago</span></td>
+<td style="max-width: 10px"></td>
+</tr>
+<tr>
+	<td  style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/AAY1505" target="_blank" rel="noopener noreferrer">G4 1505</a></td>
+<td  style="max-width: 14px" class="OutGate">Austin</td>
+<td style="max-width: 10px">AUS</td>
+<td style="max-width: 10px">10</td>
+<td style="max-width: 10px">Dom</td>
+<td style="max-width: 10px">🚆10-11 &nbsp;&nbsp B62</td>
+<td style="max-width: 10px">OutGate</td>
+<td style="max-width: 10px">03/21 11:04 <span style="background-color: #99ffbb">In 3:02</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -179,7 +213,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">C6 - Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 15:55 <span style="background-color: #99ffbb">In 7:56</span></td>
+<td style="max-width: 10px">03/21 15:55 <span style="background-color: #99ffbb">In 7:53</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -190,7 +224,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp C19</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:21 <span style="background-color: #ffd699">0:37 ago</span></td>
+<td style="max-width: 10px">03/21 07:21 <span style="background-color: #ffd699">0:40 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -201,7 +235,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">C2 - Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 15:34 <span style="background-color: #99ffbb">In 7:35</span></td>
+<td style="max-width: 10px">03/21 15:34 <span style="background-color: #99ffbb">In 7:32</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -212,7 +246,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚌 8 &nbsp;&nbsp D23</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:48 <span style="background-color: #ffd699">0:10 ago</span></td>
+<td style="max-width: 10px">03/21 07:48 <span style="background-color: #ffd699">0:13 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -223,8 +257,8 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">Cafè Americana </td>
 <td style="max-width: 10px">Landed</td>
-<td style="max-width: 10px">03/21 05:24 <span style="background-color: #ffd699">2:34 ago</span></td>
-<td style="max-width: 10px">03/21 05:52 <span style="background-color: #ffd699">2:05 ago</span></td>
+<td style="max-width: 10px">03/21 05:24 <span style="background-color: #ffd699">2:37 ago</span></td>
+<td style="max-width: 10px">03/21 05:52 <span style="background-color: #ffd699">2:08 ago</span></td>
 </tr>
 <tr>
 	<td  style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4342" target="_blank" rel="noopener noreferrer">UA 4342</a></td>
@@ -234,7 +268,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp A6C</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 06:58 <span style="background-color: #ffd699">1:00 ago</span></td>
+<td style="max-width: 10px">03/21 06:58 <span style="background-color: #ffd699">1:03 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -245,7 +279,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚌 8 &nbsp;&nbsp D30</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 00:26 <span style="background-color: #ffd699">7:32 ago</span></td>
+<td style="max-width: 10px">03/21 00:26 <span style="background-color: #ffd699">7:35 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -256,7 +290,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚌 8 &nbsp;&nbsp D9</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:06 <span style="background-color: #ffd699">0:52 ago</span></td>
+<td style="max-width: 10px">03/21 07:06 <span style="background-color: #ffd699">0:55 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -267,7 +301,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp C24</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 06:51 <span style="background-color: #ffd699">1:07 ago</span></td>
+<td style="max-width: 10px">03/21 06:51 <span style="background-color: #ffd699">1:10 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -278,7 +312,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 16:43 <span style="background-color: #99ffbb">In 8:44</span></td>
+<td style="max-width: 10px">03/21 16:43 <span style="background-color: #99ffbb">In 8:41</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -289,18 +323,18 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆10-11 &nbsp;&nbsp B64</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 00:23 <span style="background-color: #ffd699">7:35 ago</span></td>
+<td style="max-width: 10px">03/21 00:23 <span style="background-color: #ffd699">7:38 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
 	<td  style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/SWA1693" target="_blank" rel="noopener noreferrer">WN 1693</a></td>
-<td  style="max-width: 14px" class="Proposed">Denver</td>
+<td  style="max-width: 14px" class="OutGate">Denver</td>
 <td style="max-width: 10px">DEN</td>
 <td style="max-width: 10px">13</td>
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆10-11 &nbsp;&nbsp B64</td>
-<td style="max-width: 10px">Proposed</td>
-<td style="max-width: 10px">03/21 10:46 <span style="background-color: #99ffbb">In 2:47</span></td>
+<td style="max-width: 10px">OutGate</td>
+<td style="max-width: 10px">03/21 10:46 <span style="background-color: #99ffbb">In 2:44</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -311,7 +345,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 16:57 <span style="background-color: #99ffbb">In 8:58</span></td>
+<td style="max-width: 10px">03/21 16:57 <span style="background-color: #99ffbb">In 8:55</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -322,7 +356,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 09:31 <span style="background-color: #99ffbb">In 1:32</span></td>
+<td style="max-width: 10px">03/21 09:31 <span style="background-color: #99ffbb">In 1:29</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -344,7 +378,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">C4 - Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 16:28 <span style="background-color: #99ffbb">In 8:29</span></td>
+<td style="max-width: 10px">03/21 16:28 <span style="background-color: #99ffbb">In 8:26</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -355,7 +389,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">C7 - Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 15:12 <span style="background-color: #99ffbb">In 7:13</span></td>
+<td style="max-width: 10px">03/21 15:12 <span style="background-color: #99ffbb">In 7:10</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -366,8 +400,8 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">C4 - Cafè Americana </td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 06:00 <span style="background-color: #ffd699">1:58 ago</span></td>
-<td style="max-width: 10px">03/21 06:28 <span style="background-color: #ffd699">1:29 ago</span></td>
+<td style="max-width: 10px">03/21 06:00 <span style="background-color: #ffd699">2:01 ago</span></td>
+<td style="max-width: 10px">03/21 06:28 <span style="background-color: #ffd699">1:32 ago</span></td>
 </tr>
 <tr>
 	<td  style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1274" target="_blank" rel="noopener noreferrer">UA 1274</a></td>
@@ -377,7 +411,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚌 8 &nbsp;&nbsp D2</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:29 <span style="background-color: #ffd699">0:29 ago</span></td>
+<td style="max-width: 10px">03/21 07:29 <span style="background-color: #ffd699">0:32 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -388,7 +422,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp C8</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 06:30 <span style="background-color: #ffd699">1:28 ago</span></td>
+<td style="max-width: 10px">03/21 06:30 <span style="background-color: #ffd699">1:31 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -399,7 +433,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp A3C</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:15 <span style="background-color: #ffd699">0:43 ago</span></td>
+<td style="max-width: 10px">03/21 07:15 <span style="background-color: #ffd699">0:46 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -432,8 +466,8 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">C3 - Cafè Americana </td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 06:21 <span style="background-color: #ffd699">1:37 ago</span></td>
-<td style="max-width: 10px">03/21 06:47 <span style="background-color: #ffd699">1:11 ago</span></td>
+<td style="max-width: 10px">03/21 06:21 <span style="background-color: #ffd699">1:40 ago</span></td>
+<td style="max-width: 10px">03/21 06:47 <span style="background-color: #ffd699">1:14 ago</span></td>
 </tr>
 <tr>
 	<td  style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/9XX243" target="_blank" rel="noopener noreferrer">9X 243</a></td>
@@ -443,7 +477,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px"> </td>
 <td style="max-width: 10px">Landed</td>
-<td style="max-width: 10px">03/21 07:04 <span style="background-color: #ffd699">0:54 ago</span></td>
+<td style="max-width: 10px">03/21 07:04 <span style="background-color: #ffd699">0:57 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -454,7 +488,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚌 8 &nbsp;&nbsp D26</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 06:49 <span style="background-color: #ffd699">1:09 ago</span></td>
+<td style="max-width: 10px">03/21 06:49 <span style="background-color: #ffd699">1:12 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -465,7 +499,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">C8 - Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 15:16 <span style="background-color: #99ffbb">In 7:17</span></td>
+<td style="max-width: 10px">03/21 15:09 <span style="background-color: #99ffbb">In 7:07</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -476,7 +510,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp C5</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 06:20 <span style="background-color: #ffd699">1:38 ago</span></td>
+<td style="max-width: 10px">03/21 06:20 <span style="background-color: #ffd699">1:41 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -487,7 +521,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp C23</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:50 <span style="background-color: #ffd699">0:08 ago</span></td>
+<td style="max-width: 10px">03/21 07:50 <span style="background-color: #ffd699">0:11 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -498,7 +532,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px"> </td>
 <td style="max-width: 10px">Landed</td>
-<td style="max-width: 10px">03/21 07:03 <span style="background-color: #ffd699">0:55 ago</span></td>
+<td style="max-width: 10px">03/21 07:03 <span style="background-color: #ffd699">0:58 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -509,7 +543,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">C5 - Cafè Americana </td>
 <td style="max-width: 10px">OutGate</td>
-<td style="max-width: 10px">03/21 17:22 <span style="background-color: #99ffbb">In 9:23</span></td>
+<td style="max-width: 10px">03/21 17:22 <span style="background-color: #99ffbb">In 9:20</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -520,18 +554,18 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp C22</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:06 <span style="background-color: #ffd699">0:52 ago</span></td>
+<td style="max-width: 10px">03/21 07:06 <span style="background-color: #ffd699">0:55 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
 	<td  style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6088" target="_blank" rel="noopener noreferrer">UA 6088</a></td>
-<td  style="max-width: 14px" class="InAir">New York</td>
+<td  style="max-width: 14px" class="Landed">New York</td>
 <td style="max-width: 10px">LGA</td>
 <td style="max-width: 10px">6</td>
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp A2A</td>
-<td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 08:03 <span style="background-color: #99ffbb">In 0:04</span></td>
+<td style="max-width: 10px">Landed</td>
+<td style="max-width: 10px">03/21 08:03 <span style="background-color: #99ffbb">In 0:01</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -542,7 +576,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp C6</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:00 <span style="background-color: #ffd699">0:58 ago</span></td>
+<td style="max-width: 10px">03/21 07:00 <span style="background-color: #ffd699">1:01 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -553,7 +587,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp A6E</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:01 <span style="background-color: #ffd699">0:57 ago</span></td>
+<td style="max-width: 10px">03/21 07:01 <span style="background-color: #ffd699">1:00 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -564,8 +598,8 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">Cafè Americana </td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 00:42 <span style="background-color: #ffd699">7:16 ago</span></td>
-<td style="max-width: 10px">03/21 01:04 <span style="background-color: #ffd699">6:54 ago</span></td>
+<td style="max-width: 10px">03/21 00:42 <span style="background-color: #ffd699">7:19 ago</span></td>
+<td style="max-width: 10px">03/21 01:04 <span style="background-color: #ffd699">6:57 ago</span></td>
 </tr>
 <tr>
 	<td  style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/CMP404" target="_blank" rel="noopener noreferrer">CM 404</a></td>
@@ -575,8 +609,8 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">Cafè Americana </td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 04:10 <span style="background-color: #ffd699">3:48 ago</span></td>
-<td style="max-width: 10px">03/21 04:32 <span style="background-color: #ffd699">3:25 ago</span></td>
+<td style="max-width: 10px">03/21 04:10 <span style="background-color: #ffd699">3:51 ago</span></td>
+<td style="max-width: 10px">03/21 04:32 <span style="background-color: #ffd699">3:28 ago</span></td>
 </tr>
 <tr>
 	<td  style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL914" target="_blank" rel="noopener noreferrer">UA 914</a></td>
@@ -586,7 +620,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">C1 - Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 15:43 <span style="background-color: #99ffbb">In 7:44</span></td>
+<td style="max-width: 10px">03/21 15:43 <span style="background-color: #99ffbb">In 7:41</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -597,7 +631,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp C14</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:02 <span style="background-color: #ffd699">0:56 ago</span></td>
+<td style="max-width: 10px">03/21 07:02 <span style="background-color: #ffd699">0:59 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -608,7 +642,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp C22</td>
 <td style="max-width: 10px">Delayed</td>
-<td style="max-width: 10px">03/21 12:13 <span style="background-color: #99ffbb">In 4:14</span></td>
+<td style="max-width: 10px">03/21 12:13 <span style="background-color: #99ffbb">In 4:11</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -619,7 +653,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚌 8 &nbsp;&nbsp D21</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 06:44 <span style="background-color: #ffd699">1:14 ago</span></td>
+<td style="max-width: 10px">03/21 06:44 <span style="background-color: #ffd699">1:17 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -630,7 +664,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp A2B</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:12 <span style="background-color: #ffd699">0:46 ago</span></td>
+<td style="max-width: 10px">03/21 07:12 <span style="background-color: #ffd699">0:49 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -641,7 +675,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp A3B</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 06:48 <span style="background-color: #ffd699">1:10 ago</span></td>
+<td style="max-width: 10px">03/21 06:48 <span style="background-color: #ffd699">1:13 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -652,7 +686,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 15:42 <span style="background-color: #99ffbb">In 7:43</span></td>
+<td style="max-width: 10px">03/21 15:42 <span style="background-color: #99ffbb">In 7:40</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -663,7 +697,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp A6C</td>
 <td style="max-width: 10px">Delayed</td>
-<td style="max-width: 10px">03/21 09:36 <span style="background-color: #99ffbb">In 1:37</span></td>
+<td style="max-width: 10px">03/21 09:36 <span style="background-color: #99ffbb">In 1:34</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -674,7 +708,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp A3A</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:25 <span style="background-color: #ffd699">0:33 ago</span></td>
+<td style="max-width: 10px">03/21 07:25 <span style="background-color: #ffd699">0:36 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -685,7 +719,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 16:11 <span style="background-color: #99ffbb">In 8:12</span></td>
+<td style="max-width: 10px">03/21 16:11 <span style="background-color: #99ffbb">In 8:09</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -696,7 +730,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">C14 - Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 15:50 <span style="background-color: #99ffbb">In 7:51</span></td>
+<td style="max-width: 10px">03/21 15:50 <span style="background-color: #99ffbb">In 7:48</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -707,7 +741,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp C18</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 06:53 <span style="background-color: #ffd699">1:05 ago</span></td>
+<td style="max-width: 10px">03/21 06:53 <span style="background-color: #ffd699">1:08 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -718,7 +752,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚌 8 &nbsp;&nbsp D1</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 04:47 <span style="background-color: #ffd699">3:11 ago</span></td>
+<td style="max-width: 10px">03/21 04:47 <span style="background-color: #ffd699">3:14 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -729,7 +763,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚌 8 &nbsp;&nbsp D19</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 01:23 <span style="background-color: #ffd699">6:35 ago</span></td>
+<td style="max-width: 10px">03/21 01:23 <span style="background-color: #ffd699">6:38 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -740,7 +774,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚌 8 &nbsp;&nbsp D26</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 05:04 <span style="background-color: #ffd699">2:54 ago</span></td>
+<td style="max-width: 10px">03/21 05:04 <span style="background-color: #ffd699">2:57 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -751,7 +785,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp C25</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:10 <span style="background-color: #ffd699">0:48 ago</span></td>
+<td style="max-width: 10px">03/21 07:10 <span style="background-color: #ffd699">0:51 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -762,8 +796,8 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">Cafè Americana </td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 02:27 <span style="background-color: #ffd699">5:31 ago</span></td>
-<td style="max-width: 10px">03/21 02:51 <span style="background-color: #ffd699">5:07 ago</span></td>
+<td style="max-width: 10px">03/21 02:27 <span style="background-color: #ffd699">5:34 ago</span></td>
+<td style="max-width: 10px">03/21 02:51 <span style="background-color: #ffd699">5:10 ago</span></td>
 </tr>
 <tr>
 	<td  style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/AVA580" target="_blank" rel="noopener noreferrer">AV 580</a></td>
@@ -773,8 +807,8 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">Cafè Americana </td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 04:14 <span style="background-color: #ffd699">3:44 ago</span></td>
-<td style="max-width: 10px">03/21 04:38 <span style="background-color: #ffd699">3:20 ago</span></td>
+<td style="max-width: 10px">03/21 04:14 <span style="background-color: #ffd699">3:47 ago</span></td>
+<td style="max-width: 10px">03/21 04:38 <span style="background-color: #ffd699">3:23 ago</span></td>
 </tr>
 <tr>
 	<td  style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL860" target="_blank" rel="noopener noreferrer">UA 860</a></td>
@@ -784,8 +818,8 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">C2 - Cafè Americana </td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:18 <span style="background-color: #ffd699">0:40 ago</span></td>
-<td style="max-width: 10px">03/21 07:39 <span style="background-color: #ffd699">0:19 ago</span></td>
+<td style="max-width: 10px">03/21 07:18 <span style="background-color: #ffd699">0:43 ago</span></td>
+<td style="max-width: 10px">03/21 07:39 <span style="background-color: #ffd699">0:22 ago</span></td>
 </tr>
 <tr>
 	<td  style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/KAL93" target="_blank" rel="noopener noreferrer">KE 93</a></td>
@@ -795,18 +829,18 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 10:56 <span style="background-color: #99ffbb">In 2:57</span></td>
+<td style="max-width: 10px">03/21 10:56 <span style="background-color: #99ffbb">In 2:54</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
 	<td  style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6158" target="_blank" rel="noopener noreferrer">UA 6158</a></td>
-<td  style="max-width: 14px" class="Landed">Syracuse</td>
+<td  style="max-width: 14px" class="InGate">Syracuse</td>
 <td style="max-width: 10px">SYR</td>
 <td style="max-width: 10px">5</td>
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚆6-7 &nbsp;&nbsp A2G</td>
-<td style="max-width: 10px">Landed</td>
-<td style="max-width: 10px">03/21 07:53 <span style="background-color: #ffd699">0:05 ago</span></td>
+<td style="max-width: 10px">InGate</td>
+<td style="max-width: 10px">03/21 07:55 <span style="background-color: #ffd699">0:06 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -817,7 +851,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 10:45 <span style="background-color: #99ffbb">In 2:46</span></td>
+<td style="max-width: 10px">03/21 10:45 <span style="background-color: #99ffbb">In 2:43</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -828,7 +862,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">C3 - Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 16:19 <span style="background-color: #99ffbb">In 8:20</span></td>
+<td style="max-width: 10px">03/21 16:19 <span style="background-color: #99ffbb">In 8:17</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -839,7 +873,7 @@
 <td style="max-width: 10px">Dom</td>
 <td style="max-width: 10px">🚌 8 &nbsp;&nbsp D25</td>
 <td style="max-width: 10px">InGate</td>
-<td style="max-width: 10px">03/21 07:36 <span style="background-color: #ffd699">0:22 ago</span></td>
+<td style="max-width: 10px">03/21 07:36 <span style="background-color: #ffd699">0:25 ago</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -861,7 +895,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">B51 - Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 15:49 <span style="background-color: #99ffbb">In 7:50</span></td>
+<td style="max-width: 10px">03/21 15:49 <span style="background-color: #99ffbb">In 7:47</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 <tr>
@@ -872,7 +906,7 @@
 <td style="max-width: 10px">Int</td>
 <td style="max-width: 10px">C1 - Cafè Americana </td>
 <td style="max-width: 10px">InAir</td>
-<td style="max-width: 10px">03/21 16:23 <span style="background-color: #99ffbb">In 8:24</span></td>
+<td style="max-width: 10px">03/21 16:23 <span style="background-color: #99ffbb">In 8:21</span></td>
 <td style="max-width: 10px"></td>
 </tr>
 
@@ -895,7 +929,7 @@
           }
         });
     </script>
-    <p id="update" onclick="myFunction()">Information current as of Mar 21, 2024 07:58 AM</p>
+    <p id="update" onclick="myFunction()">Information current as of Mar 21, 2024 08:01 AM</p>
     <p id="info" onclick="myFunction()">Click here to refresh this page</p>
     <script>
         function myFunction() {
