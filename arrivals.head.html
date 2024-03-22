@@ -68,7 +68,7 @@
            // Set the header cell to contain the input element
            let cell = $('.filters th').eq($(api.column(colIdx).header()).index());
            let title = $(cell).text();
-           $(cell).html('<input type="text" placeholder="' + title + '" />');
+           $(cell).html('<input style="max-width: 40px" type="text" placeholder="' + title + '" />');
            // On every keypress in this input
            $('input', $('.filters th').eq($(api.column(colIdx).header()).index())).off('keyup change').on('change', function(e) {
              // Get the search value
