@@ -235,16 +235,22 @@ for fis in fisArray:
         color = 'style="background-color:#22CE83"'
     else:
         color = ''
-    fisTableHTML += '<tr %s>\n\t\t<td>%s</td><td>%s</td>  <td><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (
+    fisTableHTML += '<tr %s>\n\t\t<td style="min-width: 100px">%s</td><td style="min-width: 100px">%s</td><td style="min-width: 100px"><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (
         color, fis[1], fis[3], fis[0], fis[2], fis[4])
 
 fisFileHandle.write("""<!DOCTYPE html>
 <head>
 <style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      font-family: Consolas, monaco, monospace;
+      font-size: 24px;
+      font-style: normal;
+      font-variant: normal; 
+      font-weight: 700;
+      padding: 5px;
+    }
 </style>
     <title>FIS 1-7 Arrivals</title>
     <meta http-equiv="refresh" content="120">
