@@ -32,7 +32,7 @@ def getCarousel(c, c1, c2, c3):
         return c
 
 
-def getCurrentTime():
+def getCurrentTime() -> str:
     now = datetime.now(tz=timezone('America/New_York'))
     return now.strftime("%b %d, %Y %I:%M %p")
 
@@ -237,6 +237,7 @@ for fis in fisArray:
         color = ''
     fisTableHTML += '<tr %s>\n\t\t<td style="min-width: 100px">%s</td><td style="min-width: 100px">%s</td><td style="min-width: 100px"><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (
         color, fis[1], fis[3], fis[0], fis[2], fis[4])
+fisTableHTML += '<tr>\n\t\t<td colspan=4>Updated %s</td>\n\t</tr>' % getCurrentTime()
 
 fisFileHandle.write("""<!DOCTYPE html>
 <head>
@@ -256,7 +257,7 @@ fisFileHandle.write("""<!DOCTYPE html>
     <meta http-equiv="refresh" content="120">
 </head>
 <body>
-  <table>%s</table>\n</body>\n</html>""" % fisTableHTML)
+  <table>%s</table>\n</body>\n</html>""" % (fisTableHTML))
 fisFileHandle.close()
 
 # #################
