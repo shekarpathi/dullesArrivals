@@ -363,14 +363,13 @@ for dep in depArray:
         url = 'https://www.flightaware.com/live'
     depTableHTML += ("""
         <tr %s>
-            <td><a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s %s</a></td>
-            <td>%s</td>
-            <td>%s</td>
-            <td>%s</td>
-            <td class=\"iatafont\">%s</td>
-            <td>%s</td>
-            <td>%s</td>
-        </tr>\n""" % (color, url, dep[0], dep[1], dep[2], dep[3], dep[4], formatTime(dep[5]), dep[6], dep[7]))
+            <td style="max-width: 10px"><a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s %s</a></td>
+            <td style="max-width: 20px">%s</td>
+            <td style="max-width: 20px">%s - %s</td>
+            <td style="max-width: 10px" class=\"iatafont\">%s</td>
+            <td style="max-width: 15px">%s</td>
+            <td style="max-width: 15px">%s</td>
+        </tr>\n""" % (color, url, dep[0], dep[1], dep[2], dep[4], dep[3], dep[6], formatTime(dep[5]), dep[7]))
 
 depFileHandle.write(depTableHTML)
 depFileHandle.write("</table>\n</body>")
