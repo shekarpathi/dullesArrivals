@@ -237,7 +237,7 @@ for fis in fisArray:
         color = ''
     fisTableHTML += '<tr %s>\n\t\t<td style="min-width: 100px">%s</td><td style="min-width: 100px">%s</td><td style="min-width: 100px"><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (
         color, fis[1], fis[3], fis[0], fis[2], fis[4])
-fisTableHTML += '<tr>\n\t\t<td colspan=4>Updated %s</td>\n\t</tr>' % getCurrentTime()
+fisTableHTML += '<tr>\n\t\t<td style="background-color:#DFF429" colspan=4>Updated %s</td>\n\t</tr>' % getCurrentTime()
 
 fisFileHandle.write("""<!DOCTYPE html>
 <head>
@@ -273,6 +273,7 @@ for iab in iabArray:
         color = ''
     iabTableHTML += '<tr %s>\n\t\t<td>%s</td><td>%s</td>  <td><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (
         color, iab[1], iab[3], iab[0], iab[2], iab[4])
+iabTableHTML += '<tr>\n\t\t<td style="background-color:#DFF429" colspan=4>Updated %s</td>\n\t</tr>' % getCurrentTime()
 
 iabFileHandle.write("""<!DOCTYPE html>
 <head>
