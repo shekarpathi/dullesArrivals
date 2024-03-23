@@ -245,11 +245,11 @@ fisFileHandle.write("""<!DOCTYPE html>
       border: 1px solid black;
       border-collapse: collapse;
       font-family: Consolas, monaco, monospace;
-      font-size: 24px;
+      font-size: 48px;
       font-style: normal;
       font-variant: normal; 
       font-weight: 700;
-      padding: 5px;
+      padding: 10px;
     }
 </style>
     <title>FIS 1-7 Arrivals</title>
