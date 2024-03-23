@@ -276,10 +276,16 @@ for iab in iabArray:
 iabFileHandle.write("""<!DOCTYPE html>
 <head>
 <style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      font-family: Consolas, monaco, monospace;
+      font-size: 48px;
+      font-style: normal;
+      font-variant: normal; 
+      font-weight: 700;
+      padding: 10px;
+    }
 </style>
     <title>IAB 1-7 Arrivals</title>
     <meta http-equiv="refresh" content="120">
