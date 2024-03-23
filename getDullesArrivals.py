@@ -245,7 +245,7 @@ fisFileHandle.write("""<!DOCTYPE html>
       border: 1px solid black;
       border-collapse: collapse;
       font-family: Consolas, monaco, monospace;
-      font-size: 42px;
+      font-size: 44px;
       font-style: normal;
       font-variant: normal; 
       font-weight: 700;
@@ -280,7 +280,7 @@ iabFileHandle.write("""<!DOCTYPE html>
       border: 1px solid black;
       border-collapse: collapse;
       font-family: Consolas, monaco, monospace;
-      font-size: 42px;
+      font-size: 44px;
       font-style: normal;
       font-variant: normal; 
       font-weight: 700;
