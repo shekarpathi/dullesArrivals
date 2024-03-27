@@ -17,12 +17,48 @@ success = False
 airportdict: dict = readAirportCodesCsv()
 airlinedict: dict = readAirlineCodesCsv()
 
+def isArrivingToday(publishedTime: str) -> bool:
+    if (publishedTime.split(" ")[0] <= datetime.today().date().strftime('%Y-%m-%d')):
+        print('%s %s' % (publishedTime.split(" ")[0], datetime.today().date().strftime('%Y-%m-%d')))
+        return True
+    else:
+        return False
+
+
+
 def getCustomsString(mod_status, customsAt) -> str:
     if mod_status != '':
         # return (mod_status + ' since ' + customsAt)
         return (customsAt)
     else:
         return ''
+
+def getFisTimeString(status, actualtime, mod_status, customsAt) -> str:
+    if mod_status != '':
+        print('Cust: %s' % customsAt.split(" ")[1])
+        # return (mod_status + ' since ' + customsAt)
+        return ('Cust: %s' % customsAt.split(" ")[1])
+    else:
+        if status == 'InGate':
+            return ('Gate: %s' % (actualtime.split(" ")[1]))
+        if status == 'Landed':
+            return ('Land: %s' % (actualtime.split(" ")[1]))
+        if status == 'Delayed':
+            return status
+            # return ('Dela: %s' % (actualtime.split(" ")[1]))
+        if status == 'InAir':
+            return status
+        if status == 'OutGate':
+            return status
+            # return ('InAir: %s' % (actualtime.split(" ")[1]))
+
+
+def isStarAllianceAtFIS(airline) -> bool:
+    starAllianceMembersArray = ['AUA', 'DLH', 'UAL', 'SAB', 'CCA', 'ANA', 'SAS']
+    if airline in starAllianceMembersArray:
+        return True
+    else:
+        return False
 
 
 def getCarousel(c, c1, c2, c3):
@@ -169,10 +205,16 @@ arrivalsHeadFileHandle = open("arrivals.head.html", "r")
 arrivalsFileHandle.write(arrivalsHeadFileHandle.read())
 t = 1
 
+# #########################
+if os.path.isfile('arr.json'):
+    os.remove('arr.json')
+fha = open('arr.json', 'w')
+fha.write(json.dumps(json_data['arrivals'], indent=2))
+fha.close()
 for i in json_data['arrivals']:
     status = i['status']
     t = t + 1
-    if status != 'Scheduled':
+    if status != 'Scheduled' and isArrivingToday(i['publishedTime']):
         # actualtime = i['actualtime']
         actualtime = formatTime(i['actualtime'])
         customsAt = formatTime(i['customsAt'])
@@ -180,7 +222,6 @@ for i in json_data['arrivals']:
         try:
             flight = '<a href="https://www.flightaware.com/live/flight/%s%s" target="_blank" rel="noopener noreferrer">%s %s</a>' % (airlinedict[i['IATA']][0], i['flightnumber'], i['IATA'], i['flightnumber'])
         except:
-            r = 0
             print(i)
         mod_status = i['mod_status'] if i['mod_status'] is not None else ''
         try:
@@ -208,21 +249,21 @@ for i in json_data['arrivals']:
                 i['status'],  i['dep_airport_code'], airportdict[i['dep_airport_code']][3],
                 getCarousel(baggage, claim, claim1, claim2),
                 airportdict[i['dep_airport_code']][0], gate, status,
-                actualtime, getCustomsString(mod_status, customsAt)
+                actualtime,
+                getCustomsString(mod_status, customsAt),
+                # getFisTimeString(status, actualtime, mod_status, customsAt),
                 # baggage, claim, claim1, claim2
                 ))
         arrivalsFileHandle.write('</tr>\n')
 
         if airportdict[i['dep_airport_code']][0] == 'Int' and isTimeBetween1and7(i['actualtime']):
             s = ('https://www.flightaware.com/live/flight/%s%s' % (airlinedict[i['IATA']][0], i['flightnumber']))
+
             iabArray.append([s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
-            if airlinedict[i['IATA']][0] == 'UAL':
-                ttt=0
-            if (airlinedict[i['IATA']][0] == 'UAL' or airlinedict[i['IATA']][0] == 'DLH' or airlinedict[i['IATA']][0] == 'AUA' or
-                    airlinedict[i['IATA']][0] == 'SAB' or airlinedict[i['IATA']][0] == 'CCA' or airlinedict[i['IATA']][0] == 'ANA' or airlinedict[i['IATA']][0] == 'SAS'):
-                fisArray.append(
-                    [s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'],
-                     status])
+
+            if isStarAllianceAtFIS(airlinedict[i['IATA']][0]):
+                fisArray.append([s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], getFisTimeString(status, actualtime, mod_status, customsAt)])
+
 # arrivalsFileHandle.close()
 
 fisArray.sort(key=lambda x: x[1])
@@ -255,6 +296,9 @@ fisFileHandle.write("""<!DOCTYPE html>
 </style>
     <title>FIS 1-7 Arrivals</title>
     <meta http-equiv="refresh" content="120">
+    <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
 </head>
 <body>
   <table>%s</table>\n</body>\n</html>""" % (fisTableHTML))
@@ -290,7 +334,10 @@ iabFileHandle.write("""<!DOCTYPE html>
     }
 </style>
     <title>IAB 1-7 Arrivals</title>
-    <meta http-equiv="refresh" content="120">
+        <meta http-equiv="refresh" content="120">
+        <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="expires" content="0">
 </head>
 <body>
   <table>%s</table>\n</body>\n</html>""" % iabTableHTML)
