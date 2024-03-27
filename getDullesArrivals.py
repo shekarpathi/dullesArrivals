@@ -182,21 +182,25 @@ if not success:
 # readAirlineCodesCsv()
 # readAirportCodesCsv()
 
+
 if os.getenv("GITHUB_ACTIONS") == "true":
     arrivalsFileHandle = open('arrivals.html', "w")
     fisFileHandle = open('fis.html', "w")
     iabFileHandle = open('iab.html', "w")
     depFileHandle = open('departures.html', "w")
+    arrJsonHandle = open('arr.json', "w")
 elif (os.path.exists(wwwPath)):
     arrivalsFileHandle = open(wwwPath + '/index.html', "w")
     fisFileHandle = open(wwwPath + '/fis.html', "w")
     iabFileHandle = open(wwwPath + '/iab.html', "w")
     depFileHandle = open(wwwPath + '/departures.html', "w")
+    arrJsonHandle = open(wwwPath + '/arr.json', "w")
 else:
     arrivalsFileHandle = open('arrivals_mac.html', "w")
     fisFileHandle = open('fis_mac.html', "w")
     iabFileHandle = open('iab_mac.html', "w")
     depFileHandle = open('departures_mac.html', "w")
+    arrJsonHandle = open('arr_mac.json', "w")
 
 departuressHeadFileHandle = open('departures.head.html', "r")
 depFileHandle.write(departuressHeadFileHandle.read())
@@ -206,35 +210,33 @@ arrivalsFileHandle.write(arrivalsHeadFileHandle.read())
 t = 1
 
 # #########################
-if os.path.isfile('arr.json'):
-    os.remove('arr.json')
-fha = open('arr.json', 'w')
-fha.write(json.dumps(json_data['arrivals'], indent=2))
-fha.close()
-for i in json_data['arrivals']:
-    status = i['status']
+arrJsonHandle.write(json.dumps(json_data['arrivals'], indent=2))
+arrJsonHandle.close()
+
+for arrivalRecord in json_data['arrivals']:
+    status = arrivalRecord['status']
     t = t + 1
-    if status != 'Scheduled' and isArrivingToday(i['publishedTime']):
+    if status != 'Scheduled' and isArrivingToday(arrivalRecord['publishedTime']):
         # actualtime = i['actualtime']
-        actualtime = formatTime(i['actualtime'])
-        customsAt = formatTime(i['customsAt'])
+        actualtime = formatTime(arrivalRecord['actualtime'])
+        customsAt = formatTime(arrivalRecord['customsAt'])
         # print(isTimeBetween2and6(i['actualtime']))
         try:
-            flight = '<a href="https://www.flightaware.com/live/flight/%s%s" target="_blank" rel="noopener noreferrer">%s %s</a>' % (airlinedict[i['IATA']][0], i['flightnumber'], i['IATA'], i['flightnumber'])
+            flight = '<a href="https://www.flightaware.com/live/flight/%s%s" target="_blank" rel="noopener noreferrer">%s %s</a>' % (airlinedict[arrivalRecord['IATA']][0], arrivalRecord['flightnumber'], arrivalRecord['IATA'], arrivalRecord['flightnumber'])
         except:
-            print(i)
-        mod_status = i['mod_status'] if i['mod_status'] is not None else ''
+            print(arrivalRecord)
+        mod_status = arrivalRecord['mod_status'] if arrivalRecord['mod_status'] is not None else ''
         try:
-            gate = formatGate(i['gate'], airportdict[i['dep_airport_code']][0])
+            gate = formatGate(arrivalRecord['gate'], airportdict[arrivalRecord['dep_airport_code']][0])
         except Exception as err:
             print("Error")
 
 
-        baggage = i['baggage'] if i['baggage'] is not None else ''
-        claim = i['claim'] if i['claim'] is not None else ''
-        claim1 = i['claim1'] if i['claim1'] is not None else ''
-        claim2 = i['claim2'] if i['claim2'] is not None else ''
-        claim3 = i['claim3'] if i['claim3'] is not None else ''
+        baggage = arrivalRecord['baggage'] if arrivalRecord['baggage'] is not None else ''
+        claim = arrivalRecord['claim'] if arrivalRecord['claim'] is not None else ''
+        claim1 = arrivalRecord['claim1'] if arrivalRecord['claim1'] is not None else ''
+        claim2 = arrivalRecord['claim2'] if arrivalRecord['claim2'] is not None else ''
+        claim3 = arrivalRecord['claim3'] if arrivalRecord['claim3'] is not None else ''
         arrivalsFileHandle.write(
             '<tr>\n\t'
             '<td>%s</td>\n' #Flight
@@ -246,9 +248,9 @@ for i in json_data['arrivals']:
             '<td>%s</td>\n'
             '<td>%s</td>\n' % (
                 flight,
-                i['status'],  i['dep_airport_code'], airportdict[i['dep_airport_code']][3],
+                arrivalRecord['status'],  arrivalRecord['dep_airport_code'], airportdict[arrivalRecord['dep_airport_code']][3],
                 getCarousel(baggage, claim, claim1, claim2),
-                airportdict[i['dep_airport_code']][0], gate, status,
+                airportdict[arrivalRecord['dep_airport_code']][0], gate, status,
                 actualtime,
                 getCustomsString(mod_status, customsAt),
                 # getFisTimeString(status, actualtime, mod_status, customsAt),
@@ -256,13 +258,13 @@ for i in json_data['arrivals']:
                 ))
         arrivalsFileHandle.write('</tr>\n')
 
-        if airportdict[i['dep_airport_code']][0] == 'Int' and isTimeBetween1and7(i['actualtime']):
-            s = ('https://www.flightaware.com/live/flight/%s%s' % (airlinedict[i['IATA']][0], i['flightnumber']))
+        if airportdict[arrivalRecord['dep_airport_code']][0] == 'Int' and isTimeBetween1and7(arrivalRecord['actualtime']):
+            s = ('https://www.flightaware.com/live/flight/%s%s' % (airlinedict[arrivalRecord['IATA']][0], arrivalRecord['flightnumber']))
 
-            iabArray.append([s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], status])
+            iabArray.append([s, formatTimeFor2To6(arrivalRecord['actualtime']), '%s %s' % (arrivalRecord['IATA'], arrivalRecord['flightnumber']), arrivalRecord['city'], status])
 
-            if isStarAllianceAtFIS(airlinedict[i['IATA']][0]):
-                fisArray.append([s, formatTimeFor2To6(i['actualtime']), '%s %s' % (i['IATA'], i['flightnumber']), i['city'], getFisTimeString(status, actualtime, mod_status, customsAt)])
+            if isStarAllianceAtFIS(airlinedict[arrivalRecord['IATA']][0]):
+                fisArray.append([s, formatTimeFor2To6(arrivalRecord['actualtime']), '%s %s' % (arrivalRecord['IATA'], arrivalRecord['flightnumber']), arrivalRecord['city'], getFisTimeString(status, actualtime, mod_status, customsAt)])
 
 # arrivalsFileHandle.close()
 
