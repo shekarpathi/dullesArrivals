@@ -34,7 +34,8 @@ def getCustomsString(mod_status, customsAt) -> str:
         return ''
 
 def getFisTimeString(status, actualtime, mod_status, customsAt) -> str:
-    if mod_status != '':
+    if mod_status != '' and customsAt != '':
+        # print('\n\n\tCustoms at %s\n\n\n\t' % customsAt)
         print('Cust: %s' % customsAt.split(" ")[1])
         # return (mod_status + ' since ' + customsAt)
         return ('Cust: %s' % customsAt.split(" ")[1])
@@ -188,18 +189,21 @@ if os.getenv("GITHUB_ACTIONS") == "true":
     fisFileHandle = open('fis.html', "w")
     iabFileHandle = open('iab.html', "w")
     depFileHandle = open('departures.html', "w")
+    starAllianceDepHandle = open('starAllianceDepartures.html', "w")
     arrJsonHandle = open('arr.json', "w")
 elif (os.path.exists(wwwPath)):
     arrivalsFileHandle = open(wwwPath + '/index.html', "w")
     fisFileHandle = open(wwwPath + '/fis.html', "w")
     iabFileHandle = open(wwwPath + '/iab.html', "w")
     depFileHandle = open(wwwPath + '/departures.html', "w")
+    starAllianceDepHandle = open(wwwPath + '/starAllianceDepartures.html', "w")
     arrJsonHandle = open(wwwPath + '/arr.json', "w")
 else:
     arrivalsFileHandle = open('arrivals_mac.html', "w")
     fisFileHandle = open('fis_mac.html', "w")
     iabFileHandle = open('iab_mac.html', "w")
     depFileHandle = open('departures_mac.html', "w")
+    starAllianceDepHandle = open('starAllianceDepartures_mac.html', "w")
     arrJsonHandle = open('arr_mac.json', "w")
 
 departuressHeadFileHandle = open('departures.head.html', "r")
@@ -261,10 +265,10 @@ for arrivalRecord in json_data['arrivals']:
         if airportdict[arrivalRecord['dep_airport_code']][0] == 'Int' and isTimeBetween1and7(arrivalRecord['actualtime']):
             s = ('https://www.flightaware.com/live/flight/%s%s' % (airlinedict[arrivalRecord['IATA']][0], arrivalRecord['flightnumber']))
 
-            iabArray.append([s, formatTimeFor2To6(arrivalRecord['actualtime']), '%s %s' % (arrivalRecord['IATA'], arrivalRecord['flightnumber']), arrivalRecord['city'], status])
+            iabArray.append([s, formatTimeFor2To6(arrivalRecord['actualtime']), '%s %s' % (arrivalRecord['IATA'], arrivalRecord['flightnumber']), arrivalRecord['city'], getFisTimeString(status, actualtime, mod_status, arrivalRecord['customsAt'])])
 
             if isStarAllianceAtFIS(airlinedict[arrivalRecord['IATA']][0]):
-                fisArray.append([s, formatTimeFor2To6(arrivalRecord['actualtime']), '%s %s' % (arrivalRecord['IATA'], arrivalRecord['flightnumber']), arrivalRecord['city'], getFisTimeString(status, actualtime, mod_status, customsAt)])
+                fisArray.append([s, formatTimeFor2To6(arrivalRecord['actualtime']), '%s %s' % (arrivalRecord['IATA'], arrivalRecord['flightnumber']), arrivalRecord['city'], getFisTimeString(status, actualtime, mod_status, arrivalRecord['customsAt'])])
 
 # arrivalsFileHandle.close()
 
@@ -387,6 +391,7 @@ arrivalsFileHandle.close()
 # fhd.write(json.dumps(json_data['departures'], indent=2))
 # fhd.close()
 depArray = []
+starAllianceDepArray = []
 for i in json_data['departures']:
     date_format = '%Y-%m-%d %H:%M:%S'
     if i['actualtime'] is not None:
