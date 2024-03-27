@@ -35,15 +35,19 @@ def getCustomsString(mod_status, customsAt) -> str:
 
 def getFisTimeString(status, actualtime, mod_status, customsAt) -> str:
     if mod_status != '' and customsAt != '':
+        s1 = customsAt.split(" ")[1]
+        s2 = s1.split(":")[0] + ":" + s1.split(":")[1]
         # print('\n\n\tCustoms at %s\n\n\n\t' % customsAt)
-        print('Cust: %s' % customsAt.split(" ")[1])
+        print('C%s' % s2)
         # return (mod_status + ' since ' + customsAt)
-        return ('Cust: %s' % customsAt.split(" ")[1])
+        return ('C%s' % s2)
     else:
+        s1 = actualtime.split(" ")[1]
+        s2 = s1.split(":")[0] + ":" + s1.split(":")[1]
         if status == 'InGate':
-            return ('Gate: %s' % (actualtime.split(" ")[1]))
+            return ('G%s' % (s2))
         if status == 'Landed':
-            return ('Land: %s' % (actualtime.split(" ")[1]))
+            return ('L%s' % (s2))
         if status == 'Delayed':
             return status
             # return ('Dela: %s' % (actualtime.split(" ")[1]))
@@ -272,6 +276,7 @@ for arrivalRecord in json_data['arrivals']:
 
 # arrivalsFileHandle.close()
 
+fisTableHTML += "<th style=\"background-color:#a3c2c2\" colspan=4>FIS Arrivals from 1-7pm</th>"
 fisArray.sort(key=lambda x: x[1])
 for fis in fisArray:
     if fis[4] == 'InAir':
@@ -311,6 +316,7 @@ fisFileHandle.write("""<!DOCTYPE html>
 fisFileHandle.close()
 
 # #################
+iabTableHTML += "<th style=\"background-color:#c2c2a3\" colspan=4>IAB Arrivals from 1-7pm</th>"
 iabArray.sort(key=lambda x: x[1])
 for iab in iabArray:
     if iab[4] == 'InAir':
