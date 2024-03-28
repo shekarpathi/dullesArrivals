@@ -19,7 +19,7 @@ airlinedict: dict = readAirlineCodesCsv()
 
 def isArrivingToday(publishedTime: str) -> bool:
     if (publishedTime.split(" ")[0] <= datetime.today().date().strftime('%Y-%m-%d')):
-        print('%s %s' % (publishedTime.split(" ")[0], datetime.today().date().strftime('%Y-%m-%d')))
+        # print('%s %s' % (publishedTime.split(" ")[0], datetime.today().date().strftime('%Y-%m-%d')))
         return True
     else:
         return False
@@ -62,7 +62,7 @@ def getFisTimeString(status, actualtime, mod_status, customsAt) -> str:
         return ''
 
 def isStarAllianceAtFIS(airline) -> bool:
-    starAllianceMembersArray = ['AUA', 'DLH', 'UAL', 'SAB', 'CCA', 'ANA', 'SAS']
+    starAllianceMembersArray = ['AUA', 'DLH', 'UAL', 'SAB', 'CCA', 'ANA', 'SAS', 'SWR']
     if airline in starAllianceMembersArray:
         return True
     else:
@@ -133,8 +133,9 @@ def formatTime(timeString) -> str:
         # print('----\n')
 
         datetime_obj = datetime.strptime(timeString, "%Y-%m-%d %H:%M:%S")
-        # print(datetime_obj.strftime("%m/%d %H:%M"))
-        return "%s %s" % (datetime_obj.strftime("%m/%d %H:%M"), addendum)
+        retval = "%s %s" % (datetime_obj.strftime("%m/%d %H:%M"), addendum)
+        # print(retval)
+        return retval
     else:
         return ''
 
