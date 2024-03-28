@@ -92,25 +92,25 @@
    });
 </script>
     <script>
-// Set the date we're counting down to
-var countdownMinutes = 2;
-var distance = countdownMinutes * 60 * 1000;
-// Update the count down every 1 second
-var x = setInterval(function() {
-  // Time calculations for days, hours, minutes and seconds
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Set the date we're counting down to
+        var countdownMinutes = 2;
+        var distance = countdownMinutes * 60 * 1000;
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+          // Time calculations for days, hours, minutes and seconds
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
-    distance = distance - 1000;
-  // If the count down is over, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "Refresh Now";
-  }
-}, 1000);
-</script>
+          // Output the result in an element with id="demo"
+          document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+            distance = distance - 1000;
+          // If the count down is over, write some text
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "Refresh Now";
+          }
+        }, 1000);
+    </script>
 <title>IAD Departures</title>
 </head>
 
@@ -125,7 +125,7 @@ var x = setInterval(function() {
         Refresh in <FG class="center2" id="demo"></FG>
     </div>
     <div>
-        <A href="" target="arrivals">Arrivals</A><br>
+        <A href="arrivals.html" target="arrivals">Arrivals</A><br>
         <A href="iab.html" target="iab">IAB 1-7 pm</A><br>
         <A href="fis.html" target="fis">FIS 1-7 pm</A>
     </div>

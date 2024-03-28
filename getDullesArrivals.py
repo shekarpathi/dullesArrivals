@@ -58,6 +58,7 @@ def getFisTimeString(status, actualtime, mod_status, customsAt) -> str:
                 return status
                 # return ('InAir: %s' % (actualtime.split(" ")[1]))
     except:
+        print('%s | %s | %s | %s' % (status, actualtime,mod_status,customsAt))
         return ''
 
 def isStarAllianceAtFIS(airline) -> bool:
