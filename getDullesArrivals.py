@@ -34,29 +34,31 @@ def getCustomsString(mod_status, customsAt) -> str:
         return ''
 
 def getFisTimeString(status, actualtime, mod_status, customsAt) -> str:
-    if mod_status != '' and customsAt != '':
-        s1 = customsAt.split(" ")[1]
-        s2 = s1.split(":")[0] + ":" + s1.split(":")[1]
-        # print('\n\n\tCustoms at %s\n\n\n\t' % customsAt)
-        print('<del style="background-color:#d1e0e0">C%s</del>' % s2)
-        # return (mod_status + ' since ' + customsAt)
-        return ('<del style="background-color:#d1e0e0">C%s</del>' % s2)
-    else:
-        s1 = actualtime.split(" ")[1]
-        s2 = s1.split(":")[0] + ":" + s1.split(":")[1]
-        if status == 'InGate':
-            return ('G%s' % (s2))
-        if status == 'Landed':
-            return ('L%s' % (s2))
-        if status == 'Delayed':
-            return status
-            # return ('Dela: %s' % (actualtime.split(" ")[1]))
-        if status == 'InAir':
-            return status
-        if status == 'OutGate':
-            return status
-            # return ('InAir: %s' % (actualtime.split(" ")[1]))
-
+    try:
+        if mod_status != '' and customsAt != '':
+            s1 = customsAt.split(" ")[1]
+            s2 = s1.split(":")[0] + ":" + s1.split(":")[1]
+            # print('\n\n\tCustoms at %s\n\n\n\t' % customsAt)
+            print('<del style="background-color:#d1e0e0">C%s</del>' % s2)
+            # return (mod_status + ' since ' + customsAt)
+            return ('<del style="text-decoration-style: double;background-color:#d1e0e0">C%s</del>' % s2)
+        else:
+            s1 = actualtime.split(" ")[1]
+            s2 = s1.split(":")[0] + ":" + s1.split(":")[1]
+            if status == 'InGate':
+                return ('<del style="background-color:#71c5c7">G%s</del>' % s2)
+            if status == 'Landed':
+                return ('L%s' % (s2))
+            if status == 'Delayed':
+                return status
+                # return ('Dela: %s' % (actualtime.split(" ")[1]))
+            if status == 'InAir':
+                return status
+            if status == 'OutGate':
+                return status
+                # return ('InAir: %s' % (actualtime.split(" ")[1]))
+    except:
+        return ''
 
 def isStarAllianceAtFIS(airline) -> bool:
     starAllianceMembersArray = ['AUA', 'DLH', 'UAL', 'SAB', 'CCA', 'ANA', 'SAS']
