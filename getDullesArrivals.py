@@ -11,6 +11,7 @@ fisTableHTML: str = ''
 iabTableHTML: str = ''
 fisArray = []
 iabArray = []
+UADepArray = []
 response_code = 401
 retryCount = 0
 success = False
@@ -27,7 +28,7 @@ def isArrivingToday(publishedTime: str) -> bool:
 
 
 def getCustomsString(mod_status, customsAt) -> str:
-    if mod_status != '':
+    if customsAt != '':
         # return (mod_status + ' since ' + customsAt)
         return (customsAt)
     else:
@@ -424,6 +425,13 @@ for i in json_data['departures']:
     if (currentTimeMinusTwo < passedDate) and (currentTimePlusTen > passedDate) and (printableGate != None):
         depArray.append([i['IATA'], i['flightnumber'], i['airline'], i['city'], i['airportcode'],
                          printableDate, printableGate, i['status']])
+
+    currentTimeMinusOne = currentTime - timedelta(days=0, hours=1)
+    if (currentTimeMinusOne < passedDate) and (currentTimePlusTen > passedDate) and (printableGate != None) and i['IATA'] == 'UA':
+        UADepArray.append([i['IATA'], i['flightnumber'], i['city'], printableDate, printableGate, i['status']])
+
+UADepArray.sort(key=lambda x: x[3])
+print(UADepArray)
 depArray.sort(key=lambda x: x[5])
 depTableHTML: str = ''
 for dep in depArray:
@@ -477,3 +485,58 @@ depFileHandle.close()
 # https://raw.githubusercontent.com/elmoallistair/datasets/main/airlines.csv
 # https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat
 # https://raw.githubusercontent.com/jpatokal/openflights/master/data/airlines.dat
+
+# {
+#   "IATA": "LX",
+#   "airportcode": "IAD",
+#   "baggage": null,
+#   "status": "InAir",
+#   "mod_status": "NOW 4:20 PM",
+#   "airline": "SWISS",
+#   "gate": null,
+#   "mod_gate": null,
+#   "flightnumber": "72",
+#   "dep_airport_code": "ZRH",
+#   "publishedTime": "2024-03-28 17:40:00",
+#   "mwaaTime": "2024-03-28 16:20:00",
+#   "actualtime": "2024-03-28 18:06:00",
+#   "city": "ZURICH",
+#   "claim": null,
+#   "claim1": "18",
+#   "claim2": null,
+#   "claim3": null,
+#   "id": "f2dd68fcdb3e4896841bd9c42c95fc19",
+#   "dep_terminal": null,
+#   "arr_terminal": null,
+#   "dep_gate": "D43",
+#   "incustoms": 1,
+#   "customsAt": null,
+#   "international": 1
+# }
+
+
+# "IATA": "OG",
+# "airportcode": "IAD",
+# "baggage": null,
+# "status": "OutGate",
+# "mod_status": null,
+# "airline": "PLAY",
+# "gate": null,
+# "mod_gate": null,
+# "flightnumber": "141",
+# "dep_airport_code": "KEF",
+# "publishedTime": "2024-03-28 17:55:00",
+# "mwaaTime": null,
+# "actualtime": null,
+# "city": "REYKJAVIK",
+# "claim": null,
+# "claim1": "18",
+# "claim2": null,
+# "claim3": null,
+# "id": "2c31a0839d3e4940a2df98b17bdef60d",
+# "dep_terminal": null,
+# "arr_terminal": null,
+# "dep_gate": "D21",
+# "incustoms": 1,
+# "customsAt": null,
+# "international": 1,
