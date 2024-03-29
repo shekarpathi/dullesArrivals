@@ -40,16 +40,16 @@ def getFisTimeString(status, actualtime, mod_status, customsAt) -> str:
             s1 = customsAt.split(" ")[1]
             s2 = s1.split(":")[0] + ":" + s1.split(":")[1]
             # print('\n\n\tCustoms at %s\n\n\n\t' % customsAt)
-            print('<del style="background-color:#d1e0e0">C%s</del>' % s2)
+            print('<del style="background-color:#d1e0e0">%s C</del>' % s2)
             # return (mod_status + ' since ' + customsAt)
-            return ('<del style="text-decoration-style: double;background-color:#d1e0e0">C%s</del>' % s2)
+            return ('<del style="text-decoration-style: double;background-color:#d1e0e0">%s C</del>' % s2)
         else:
             s1 = actualtime.split(" ")[1]
             s2 = s1.split(":")[0] + ":" + s1.split(":")[1]
             if status == 'InGate':
-                return ('<del style="background-color:#71c5c7">G%s</del>' % s2)
+                return ('<del style="background-color:#71c5c7">%s G</del>' % s2)
             if status == 'Landed':
-                return ('L%s' % (s2))
+                return ('%s L' % s2)
             if status == 'Delayed':
                 return status
                 # return ('Dela: %s' % (actualtime.split(" ")[1]))
@@ -281,7 +281,7 @@ for arrivalRecord in json_data['arrivals']:
 
 # arrivalsFileHandle.close()
 
-fisTableHTML += "<th style=\"background-color:#a3c2c2\" colspan=4>Midfield from 1-7pm</th>"
+fisTableHTML += "<th style=\"background-color:#a3c2c2\" colspan=4>Midfield 1-7pm</th>"
 fisArray.sort(key=lambda x: x[1])
 for fis in fisArray:
     if fis[4] == 'InAir':
@@ -310,7 +310,7 @@ fisFileHandle.write("""<!DOCTYPE html>
       padding: 10px;
     }
 </style>
-    <title>FIS 1-7 Arrivals</title>
+    <title>Midfield 1-7pm Arrivals</title>
     <meta http-equiv="refresh" content="120">
     <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -321,7 +321,7 @@ fisFileHandle.write("""<!DOCTYPE html>
 fisFileHandle.close()
 
 # #################
-iabTableHTML += "<th style=\"background-color:#c2c2a3\" colspan=4>IAB Arrivals from 1-7pm</th>"
+iabTableHTML += "<th style=\"background-color:#c2c2a3\" colspan=4>IAB 1-7pm</th>"
 iabArray.sort(key=lambda x: x[1])
 for iab in iabArray:
     if iab[4] == 'InAir':
@@ -350,7 +350,7 @@ iabFileHandle.write("""<!DOCTYPE html>
       padding: 10px;
     }
 </style>
-    <title>IAB 1-7 Arrivals</title>
+    <title>IAB 1-7pm Arrivals</title>
         <meta http-equiv="refresh" content="120">
         <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
         <meta http-equiv="Pragma" content="no-cache">
