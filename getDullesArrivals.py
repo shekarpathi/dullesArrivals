@@ -208,7 +208,7 @@ elif (os.path.exists(wwwPath)):
     depFileHandle = open(wwwPath + '/departures.html', "w")
     starAllianceDepHandle = open(wwwPath + '/starAllianceDepartures.html', "w")
     arrJsonHandle = open(wwwPath + '/arr.json', "w")
-    uaDepHTMLHandle = open('/uaDep.html', "w")
+    uaDepHTMLHandle = open(wwwPath + '/uaDep.html', "w")
 else:
     arrivalsFileHandle = open('arrivals_mac.html', "w")
     fisFileHandle = open('fis_mac.html', "w")
