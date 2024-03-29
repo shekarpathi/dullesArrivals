@@ -432,6 +432,14 @@ for i in json_data['departures']:
 
 UADepArray.sort(key=lambda x: x[3])
 print(UADepArray)
+uaDepTableHTML: str = ''
+for uaDep in UADepArray:
+    try:
+        url = 'https://www.flightaware.com/live/flight/%s%s' % (airlinedict[uaDep[0]][0], uaDep[1])
+        print(url, uaDep[4])
+    except:
+        url = 'https://www.flightaware.com/live'
+
 depArray.sort(key=lambda x: x[5])
 depTableHTML: str = ''
 for dep in depArray:
