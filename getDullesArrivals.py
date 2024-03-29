@@ -281,7 +281,7 @@ for arrivalRecord in json_data['arrivals']:
 
 # arrivalsFileHandle.close()
 
-fisTableHTML += "<th style=\"background-color:#a3c2c2\" colspan=4>FIS Arrivals from 1-7pm</th>"
+fisTableHTML += "<th style=\"background-color:#a3c2c2\" colspan=4>Midfield from 1-7pm</th>"
 fisArray.sort(key=lambda x: x[1])
 for fis in fisArray:
     if fis[4] == 'InAir':
