@@ -200,6 +200,7 @@ if os.getenv("GITHUB_ACTIONS") == "true":
     depFileHandle = open('departures.html', "w")
     starAllianceDepHandle = open('starAllianceDepartures.html', "w")
     arrJsonHandle = open('arr.json', "w")
+    uaDepHTMLHandle = open('uaDep.html', "w")
 elif (os.path.exists(wwwPath)):
     arrivalsFileHandle = open(wwwPath + '/index.html', "w")
     fisFileHandle = open(wwwPath + '/fis.html', "w")
@@ -207,6 +208,7 @@ elif (os.path.exists(wwwPath)):
     depFileHandle = open(wwwPath + '/departures.html', "w")
     starAllianceDepHandle = open(wwwPath + '/starAllianceDepartures.html', "w")
     arrJsonHandle = open(wwwPath + '/arr.json', "w")
+    uaDepHTMLHandle = open('/uaDep.html', "w")
 else:
     arrivalsFileHandle = open('arrivals_mac.html', "w")
     fisFileHandle = open('fis_mac.html', "w")
@@ -214,6 +216,7 @@ else:
     depFileHandle = open('departures_mac.html', "w")
     starAllianceDepHandle = open('starAllianceDepartures_mac.html', "w")
     arrJsonHandle = open('arr_mac.json', "w")
+    uaDepHTMLHandle = open('uaDep_mac.html', "w")
 
 departuressHeadFileHandle = open('departures.head.html', "r")
 depFileHandle.write(departuressHeadFileHandle.read())
@@ -432,14 +435,53 @@ for i in json_data['departures']:
 
 UADepArray.sort(key=lambda x: x[3])
 print(UADepArray)
-uaDepTableHTML: str = ''
+uaDepTableHTML: str = """
+<html>
+    <head>
+        <script src="sort.js"></script>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                font-family: Consolas, monaco, monospace;
+                font-size: 44px;
+                font-style: normal;
+                font-variant: normal; 
+                font-weight: 700;
+                padding: 10px;
+            }
+        </style>
+        <meta http-equiv="refresh" content="120">
+    </head>
+    <table id="myTable">
+        <th colspan=4>United Departures</th>                    
+    """
 for uaDep in UADepArray:
+    if uaDep[5] == 'InAir':
+        color = 'style="background-color:#ADDFFF"'
+    elif uaDep[5] == 'Delayed':
+        color = 'style="background-color:#FFEBB0"'
+    elif uaDep[5] == 'Scheduled':
+        color = 'style="background-color:#E6FFC8"'
+    else:
+        color = ''
     try:
         url = 'https://www.flightaware.com/live/flight/%s%s' % (airlinedict[uaDep[0]][0], uaDep[1])
         print(url, uaDep[4])
     except:
         url = 'https://www.flightaware.com/live'
+    uaDepTableHTML += ("""
+        <tr %s>
+            <td                           ><a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s %s</a></td>
+            <td ondblclick="sortTable(1)">%s</td>
+            <td ondblclick="sortTable(2)">%s</td>
+            <td ondblclick="sortTable(3)">%s</td>
+        </tr>
+        """ % (color, url, uaDep[0], uaDep[1], uaDep[2], (uaDep[3].split(" ")[1]).split(":")[0] + ":" + (uaDep[3].split(" ")[1]).split(":")[1], uaDep[4]))
 
+uaDepTableHTML += '</table>'
+uaDepHTMLHandle.write(uaDepTableHTML)
+uaDepHTMLHandle.close()
 depArray.sort(key=lambda x: x[5])
 depTableHTML: str = ''
 for dep in depArray:
