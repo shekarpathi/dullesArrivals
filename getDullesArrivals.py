@@ -200,6 +200,7 @@ if os.getenv("GITHUB_ACTIONS") == "true":
     depFileHandle = open('departures.html', "w")
     starAllianceDepHandle = open('starAllianceDepartures.html', "w")
     arrJsonHandle = open('arr.json', "w")
+    depJsonHandle = open('dep.json', "w")
     uaDepHTMLHandle = open('uaDep.html', "w")
 elif (os.path.exists(wwwPath)):
     arrivalsFileHandle = open(wwwPath + '/index.html', "w")
@@ -208,6 +209,7 @@ elif (os.path.exists(wwwPath)):
     depFileHandle = open(wwwPath + '/departures.html', "w")
     starAllianceDepHandle = open(wwwPath + '/starAllianceDepartures.html', "w")
     arrJsonHandle = open(wwwPath + '/arr.json', "w")
+    depJsonHandle = open(wwwPath + '/dep.json', "w")
     uaDepHTMLHandle = open(wwwPath + '/uaDep.html', "w")
 else:
     arrivalsFileHandle = open('arrivals_mac.html', "w")
@@ -216,6 +218,7 @@ else:
     depFileHandle = open('departures_mac.html', "w")
     starAllianceDepHandle = open('starAllianceDepartures_mac.html', "w")
     arrJsonHandle = open('arr_mac.json', "w")
+    depJsonHandle = open('dep_mac.json', "w")
     uaDepHTMLHandle = open('uaDep_mac.html', "w")
 
 departuressHeadFileHandle = open('departures.head.html', "r")
@@ -228,6 +231,8 @@ t = 1
 # #########################
 arrJsonHandle.write(json.dumps(json_data['arrivals'], indent=2))
 arrJsonHandle.close()
+depJsonHandle.write(json.dumps(json_data['departures'], indent=2))
+depJsonHandle.close()
 
 for arrivalRecord in json_data['arrivals']:
     status = arrivalRecord['status']
@@ -439,6 +444,7 @@ uaDepTableHTML: str = """
 <html>
     <head>
         <script src="sort.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <style>
             table, th, td {
                 border: 1px solid black;
@@ -453,8 +459,11 @@ uaDepTableHTML: str = """
         </style>
         <meta http-equiv="refresh" content="120">
     </head>
-    <table id="myTable">
-        <th colspan=4>United Departures</th>                    
+    <table id="uaDep" style="width:100%">
+        <thead>
+            <th colspan=4>United Departures</th>
+        </thead>
+        <tbody id="uaDepTbody">                    
     """
 for uaDep in UADepArray:
     if uaDep[5] == 'InAir':
@@ -473,13 +482,13 @@ for uaDep in UADepArray:
     uaDepTableHTML += ("""
         <tr %s>
             <td                           ><a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s %s</a></td>
-            <td ondblclick="sortTable(1)">%s</td>
-            <td ondblclick="sortTable(2)">%s</td>
-            <td ondblclick="sortTable(3)">%s</td>
+            <td onclick="sortTable(1)">%s</td>
+            <td onclick="sortTable(2)">%s</td>
+            <td onclick="sortTable(3)">%s</td>
         </tr>
         """ % (color, url, uaDep[0], uaDep[1], uaDep[2], (uaDep[3].split(" ")[1]).split(":")[0] + ":" + (uaDep[3].split(" ")[1]).split(":")[1], uaDep[4]))
 
-uaDepTableHTML += '</table>'
+uaDepTableHTML += '</tbody></table>'
 uaDepHTMLHandle.write(uaDepTableHTML)
 uaDepHTMLHandle.close()
 depArray.sort(key=lambda x: x[5])
