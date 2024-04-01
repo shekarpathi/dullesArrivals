@@ -29,13 +29,13 @@ else:
 for n in x:
     iata = df.values[n][0]
     icao = df.values[n][1]
-    comments = df.values[n][5]
-    if isnull(comments):
-        comments = ''
+    # comments = df.values[n][5]
+    # if isnull(comments):
+    #     comments = ''
     if isnull(iata) or isnull(icao):
         continue
-    s = ('%s,%s,%s,%s,%s,%s' % (
-    df.values[n][0], df.values[n][1], df.values[n][2], df.values[n][3], df.values[n][4], comments))
+    s = ('%s,%s,%s,%s,%s' % (
+    df.values[n][0], df.values[n][1], df.values[n][2], df.values[n][3], df.values[n][4]))
     airlinesCsvFileHandle.write('%s\n' % s)
     print(s)
 airlinesCsvFileHandle.close()
