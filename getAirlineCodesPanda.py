@@ -34,7 +34,13 @@ def readAirportCodesCsv() -> dict:
             df.values[n][0], df.values[n][1], df.values[n][2], df.values[n][3], df.values[n][4]))
         airlinesCsvFileHandle.write('%s\n' % s)
         print(s)
+
+    s = ('%s,%s,%s,%s,%s' % (
+        'N3', 'VOS', 'Volaris El Salvador', 'VOLARIS', 'El Salvador'))
+    airlinesCsvFileHandle.write('%s\n' % s)
     airlinesCsvFileHandle.close()
+
+    airportdict['N3'] = ['VOS', 'Volaris El Salvador', 'VOLARIS', 'El Salvador']
     return airportdict
 
 
