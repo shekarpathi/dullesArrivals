@@ -40,7 +40,7 @@ def getFisTimeString(status, actualtime, mod_status, customsAt) -> str:
             s1 = customsAt.split(" ")[1]
             s2 = s1.split(":")[0] + ":" + s1.split(":")[1]
             # print('\n\n\tCustoms at %s\n\n\n\t' % customsAt)
-            print('<del style="background-color:#d1e0e0">%s C</del>' % s2)
+            # print('<del style="background-color:#d1e0e0">%s C</del>' % s2)
             # return (mod_status + ' since ' + customsAt)
             return ('<del style="text-decoration-style: double;background-color:#d1e0e0">%s C</del>' % s2)
         else:
@@ -90,7 +90,7 @@ def isTimeBetween1and7(timeString) -> bool:
         # print(time_split[1])
         hrs = time_split[1].replace(':', '')
         # print(hrs)
-        if (int(hrs) > 130000 and int(hrs) < 190000):
+        if (int(hrs) >= 130000 and int(hrs) <= 190000):
             return True
     else:
         return False
@@ -213,8 +213,8 @@ elif (os.path.exists(wwwPath)):
     uaDepHTMLHandle = open(wwwPath + '/uaDep.html', "w")
 else:
     arrivalsFileHandle = open('arrivals_mac.html', "w")
-    fisFileHandle = open('fis_mac.html', "w")
-    iabFileHandle = open('iab_mac.html', "w")
+    fisFileHandle = open('mac_fis.html', "w")
+    iabFileHandle = open('mac_iab.html', "w")
     depFileHandle = open('departures_mac.html', "w")
     starAllianceDepHandle = open('starAllianceDepartures_mac.html', "w")
     arrJsonHandle = open('arr_mac.json', "w")
