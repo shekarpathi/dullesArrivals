@@ -63,7 +63,7 @@ def getFisTimeString(status, actualtime, mod_status, customsAt) -> str:
         return ''
 
 def isStarAllianceAtFIS(airline) -> bool:
-    starAllianceMembersArray = ['AUA', 'DLH', 'UAL', 'SAB', 'CCA', 'ANA', 'SAS', 'SWR']
+    starAllianceMembersArray = ['AUA', 'DLH', 'UAL', 'SAB', 'CCA', 'ANA', 'SAS', 'SWR', 'BEL']
     if airline in starAllianceMembersArray:
         return True
     else:
