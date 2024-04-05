@@ -454,7 +454,7 @@ uaDepTableHTML: str = """
                 border: 1px solid black;
                 border-collapse: collapse;
                 font-family: Consolas, monaco, monospace;
-                font-size: 44px;
+                font-size: 40px;
                 font-style: normal;
                 font-variant: normal; 
                 font-weight: 700;
@@ -465,7 +465,7 @@ uaDepTableHTML: str = """
                 max-width:1080px;
                 width:100%;display:block;
                 font-family: Consolas, monaco, monospace;
-                font-size: 44px;
+                font-size: 40px;
                 font-style: normal;
                 font-variant: normal;
                 font-weight: 700;
