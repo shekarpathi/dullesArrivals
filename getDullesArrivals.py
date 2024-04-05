@@ -201,7 +201,7 @@ if os.getenv("GITHUB_ACTIONS") == "true":
     starAllianceDepHandle = open('starAllianceDepartures.html', "w")
     arrJsonHandle = open('arr.json', "w")
     depJsonHandle = open('dep.json', "w")
-    uaDepHTMLHandle = open('uaDep.html', "w")
+    uaDepHTMLHandle = open('uadep.html', "w")
 elif (os.path.exists(wwwPath)):
     arrivalsFileHandle = open(wwwPath + '/index.html', "w")
     fisFileHandle = open(wwwPath + '/fis.html', "w")
@@ -210,7 +210,7 @@ elif (os.path.exists(wwwPath)):
     starAllianceDepHandle = open(wwwPath + '/starAllianceDepartures.html', "w")
     arrJsonHandle = open(wwwPath + '/arr.json', "w")
     depJsonHandle = open(wwwPath + '/dep.json', "w")
-    uaDepHTMLHandle = open(wwwPath + '/uaDep.html', "w")
+    uaDepHTMLHandle = open(wwwPath + '/uadep.html', "w")
 else:
     arrivalsFileHandle = open('mac_arrivals.html', "w")
     fisFileHandle = open('mac_fis.html', "w")
@@ -219,7 +219,7 @@ else:
     starAllianceDepHandle = open('mac_starAllianceDepartures.html', "w")
     arrJsonHandle = open('mac_arr.json', "w")
     depJsonHandle = open('mac_dep.json', "w")
-    uaDepHTMLHandle = open('mac_uaDep.html', "w")
+    uaDepHTMLHandle = open('mac_uadep.html', "w")
 
 departuressHeadFileHandle = open('departures.head.html', "r")
 depFileHandle.write(departuressHeadFileHandle.read())
