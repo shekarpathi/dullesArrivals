@@ -3,6 +3,10 @@
     <head>
         <script src="sort.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <link rel = "stylesheet" href = "https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <script src = "https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src = "https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+      
         <style>
             table, th, td {
                 border: 1px solid black;
@@ -16,7 +20,7 @@
             }
             input,textarea
             {
-                max-width:180px;
+                max-width:1080px;
                 width:100%;display:block;
                 font-family: Consolas, monaco, monospace;
                 font-size: 44px;
@@ -24,21 +28,28 @@
                 font-variant: normal;
                 font-weight: 700;
             }
+            th[colspan="4"] {
+                text-align: center;
+            }
         </style>
         <meta http-equiv="refresh" content="120">
     </head>
-    
-    <table id="uaDep" style="width:100%">
+
+    <form>
+        <input id = "filterTable-input" data-type = "search">
+    </form>
+                
+    <table data-role="table" id="uaDep" data-filter="true" data-input="#filterTable-input" class="ui-responsive">
         <thead>
-            <th colspan=4>United Departures</th>
+            <th align="center" colspan=4>United Departures</th>
+            <tr>
+                <th data-priority = "1">Flight</th>
+                <th data-priority = "persist">City</th>
+                <th data-priority = "2">Time</th>
+                <th data-priority = "3">Gate</th>
+            </tr>
         </thead>
         <tbody id="uaDepTbody">                    
-            <tr>
-            <td><input type="text" id="filterFlight" onkeyup="filterTable(2, 0, 'filterFlight', 'uaDep')" placeholder="Flight.." title="Flight"></td>
-            <td><input type="text" id="filterCity" onkeyup="filterTable(2, 1, 'filterCity', 'uaDep')" placeholder="City.." title="Dest"></td>
-            <td></td>
-            <td></td>
-            </tr>
     
         <tr style="background-color:#FFEBB0">
             <td                           ><a href="https://www.flightaware.com/live/flight/UAL2033" target="_blank" rel="noopener noreferrer">UA 2033</a></td>
