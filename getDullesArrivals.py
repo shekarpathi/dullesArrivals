@@ -478,12 +478,12 @@ uaDepTableHTML: str = """
     </head>
 
     <form>
-        <input id = "filterTable-input" data-type = "search">
+        <input id="filterTable-input" data-type="search" placeholder="Search..">
     </form>
                 
     <table data-role="table" id="uaDep" data-filter="true" data-input="#filterTable-input" class="ui-responsive">
         <thead>
-            <th align="center" colspan=4>United Departures</th>
+            <th colspan=4>United Departures</th>
             <tr>
                 <th data-priority = "1">Flight</th>
                 <th data-priority = "persist">City</th>
