@@ -212,14 +212,14 @@ elif (os.path.exists(wwwPath)):
     depJsonHandle = open(wwwPath + '/dep.json', "w")
     uaDepHTMLHandle = open(wwwPath + '/uaDep.html', "w")
 else:
-    arrivalsFileHandle = open('arrivals_mac.html', "w")
+    arrivalsFileHandle = open('mac_arrivals.html', "w")
     fisFileHandle = open('mac_fis.html', "w")
     iabFileHandle = open('mac_iab.html', "w")
-    depFileHandle = open('departures_mac.html', "w")
-    starAllianceDepHandle = open('starAllianceDepartures_mac.html', "w")
-    arrJsonHandle = open('arr_mac.json', "w")
-    depJsonHandle = open('dep_mac.json', "w")
-    uaDepHTMLHandle = open('uaDep_mac.html', "w")
+    depFileHandle = open('mac_departures.html', "w")
+    starAllianceDepHandle = open('mac_starAllianceDepartures.html', "w")
+    arrJsonHandle = open('mac_arr.json', "w")
+    depJsonHandle = open('mac_dep.json', "w")
+    uaDepHTMLHandle = open('mac_uaDep.html', "w")
 
 departuressHeadFileHandle = open('departures.head.html', "r")
 depFileHandle.write(departuressHeadFileHandle.read())
@@ -456,14 +456,31 @@ uaDepTableHTML: str = """
                 font-weight: 700;
                 padding: 10px;
             }
+            input,textarea
+            {
+                max-width:180px;
+                width:100%;display:block;
+                font-family: Consolas, monaco, monospace;
+                font-size: 44px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 700;
+            }
         </style>
         <meta http-equiv="refresh" content="120">
     </head>
+    
     <table id="uaDep" style="width:100%">
         <thead>
             <th colspan=4>United Departures</th>
         </thead>
         <tbody id="uaDepTbody">                    
+            <tr>
+            <td><input type="text" id="filterFlight" onkeyup="filterTable(2, 0, 'filterFlight', 'uaDep')" placeholder="Flight.." title="Flight"></td>
+            <td><input type="text" id="filterCity" onkeyup="filterTable(2, 1, 'filterCity', 'uaDep')" placeholder="City.." title="Dest"></td>
+            <td></td>
+            <td></td>
+            </tr>
     """
 for uaDep in UADepArray:
     if uaDep[5] == 'InAir':
