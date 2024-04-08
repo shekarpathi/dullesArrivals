@@ -1,0 +1,153 @@
+.basebutton {
+    border-radius: 25px;
+    border: 4px solid #73AD21;
+    padding: 2px;
+    width: 140px;
+    height: 32px;
+    font-family: Consolas, monaco, monospace;;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 22px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+}
+
+.cancelled {
+    background-color: #ff4000;
+    border: 4px solid #8585ad;
+    color: white;
+    text-decoration: line-through;
+}
+
+.delayed {
+    background-color: #ff9900;
+    border: 4px solid #8585ad;
+    color: white;
+}
+
+.inair {
+    background-color: #4db8ff;
+    border: 4px solid #80ff80;
+    color: white;
+}
+
+.ingate {
+    background-color: #00e64d;
+    border: 4px solid #4db8ff;
+    color: white;
+}
+
+@keyframes blinker {
+    to {
+        opacity: 0;
+    }
+}
+
+.landed {
+    background-color: #999966;
+    border: 4px solid #00b33c;
+    color: white;
+    animation: blinker 2.0s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+}
+
+.incustoms {
+    background-color: #00cc99;
+    border: 4px solid #00b33c;
+    color: black;
+}
+
+.outgate {
+    background-color: #b35900;
+    border: 4px solid #00b33c;
+    color: white;
+}
+
+.proposed {
+    background-color: #80ffbf;
+    border: 4px solid #cc0044;
+    color: #cc66ff;
+}
+
+/*old css*/
+
+.InGate {
+    background-color: #c9e769;
+}
+
+.Scheduled {
+    background-color: rgba(129, 234, 200, 0.85);
+}
+
+.InAir {
+    background-color: skyblue;
+}
+
+.Delayed {
+    background-color: #ffc42f;
+}
+
+.OutGate {
+    background-color: burlywood;
+}
+
+.Cancelled {
+    background-color: rgba(245, 2, 2, 0.45);
+    text-decoration: line-through;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+img {
+    height: 50px;
+}
+
+iatafont {
+    font-family: Consolas, monaco, monospace;
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+}
+
+iab_table, iab_th, iab_td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-family: Consolas, monaco, monospace;
+    font-size: 44px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    padding: 10px;
+}
+
+/*<p class="basebutton cancelled">Cancelled</p>*/
+/*<p class="basebutton delayed">Delayed ↻</p>*/
+/*<p class="basebutton inair">In Air ↑</p>*/
+/*<p class="basebutton ingate">→ In Gate</p>*/
+/*<p class="basebutton landed">Landed ↘</p>*/
+/*<p class="basebutton incustoms">Customs ↯</p>*/
+/*<p class="basebutton outgate">Outgate →</p>*/
+/*<p class="basebutton proposed">Proposed ⇉</p>*/
