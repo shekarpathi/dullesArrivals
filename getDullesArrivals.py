@@ -71,10 +71,27 @@ def isStarAllianceAtFIS(airline) -> bool:
 
 
 def getCarousel(c, c1, c2, c3):
+    international: str = 'vbvbvbv'
     if c == '' and c1 == '':
-        return (c2 + ',' + c3).rstrip(',')
+        baggageString = (c2 + ',' + c3).rstrip(',')
+        try:
+            if int(baggageString) > 14:
+                international = 'internationalbaggage'
+        except:
+            ghjk= 0
+        if baggageString.__contains__(','):
+            international = 'internationalbaggage'
     else:
-        return c
+        baggageString = c
+        if int(baggageString) > 14:
+            international = 'internationalbaggage'
+
+
+    if baggageString.__contains__(','):
+        retval = '<div style="display:inline;display:block;margin-bottom: 0px;margin-top: 0px;width: 80px;" class="baggage %s">%s</div>' % (international,baggageString)
+    else:
+        retval = '<div style="display:inline;display:block;margin-bottom: 0px;margin-top: 0px;"             class="baggage %s">%s</div>' % (international,baggageString)
+    return retval
 
 
 def getCurrentTime() -> str:
@@ -627,3 +644,16 @@ depFileHandle.close()
 # "incustoms": 1,
 # "customsAt": null,
 # "international": 1,
+
+# grep '"status":' mac_arr.json | cut -d' ' -f6 | sort | uniq
+
+# "Cancelled",
+# "Delayed",
+# "InAir",
+# "InGate",
+# "Landed",
+# "Customs",
+# "OutGate",
+# "Proposed",
+# "Scheduled",
+# "Unknown",

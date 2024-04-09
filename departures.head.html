@@ -7,71 +7,11 @@
     <meta http-equiv="expires" content="0">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link href="https://fonts.cdnfonts.com/css/sf-outer-limits" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="sort.js"></script>
-    <style>
-        .InGate {
-            background-color: #c9e769;
-        }
-
-        .Scheduled {
-            background-color: rgba(129, 234, 200, 0.85);
-        }
-
-        .InAir {
-            background-color: skyblue;
-        }
-
-        .Delayed {
-            background-color: #ffc42f;
-        }
-
-        .OutGate {
-            background-color: burlywood;
-        }
-
-        .Cancelled {
-            background-color: rgba(245, 2, 2, 0.45);
-            text-decoration: line-through;
-        }
-
-        .center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        .column {
-            float: left;
-            width: 33.33%;
-            padding: 5px;
-        }
-
-        /* Clearfix (clear floats) */
-        .row::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        img {
-            height: 50px;
-        }
-
-        iatafont {
-            font-family: Consolas, monaco, monospace;
-            font-size: 16px;
-            font-style: normal;
-            font-variant: normal;
-            font-weight: 700;
-        }
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="pagestyles.css">
     <script type="text/javascript">
         $(document).ready(function () {
             // Setup - add a text input to each footer cell
@@ -160,3 +100,12 @@
     </tr>
     </thead>
     <tbody>
+
+<!--<p class="basebutton cancelled">Cancelled</p>-->
+<!--<p class="basebutton delayed">Delayed ↻</p>-->
+<!--<p class="basebutton inair">In Air ↑</p>-->
+<!--<p class="basebutton ingate">→ In Gate</p>-->
+<!--<p class="basebutton landed">Landed ↘</p>-->
+<!--<p class="basebutton incustoms">Customs ↯</p>-->
+<!--<p class="basebutton outgate">Outgate →</p>-->
+<!--<p class="basebutton proposed">Proposed ⇉</p>-->
