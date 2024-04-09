@@ -465,6 +465,10 @@ uaDepTableHTML: str = """
         <link rel = "stylesheet" href = "https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
         <script src = "https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src = "https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <link href="https://fonts.cdnfonts.com/css/sf-outer-limits" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/br-segma?styles=171045,171039,171040" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="pagestyles.css">
+
       
         <style>
             table, th, td {
@@ -529,7 +533,7 @@ for uaDep in UADepArray:
             <td                           ><a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s %s</a></td>
             <td onclick="sortTable(1)">%s</td>
             <td onclick="sortTable(2)">%s</td>
-            <td onclick="sortTable(3)">%s</td>
+            <td onclick="sortTable(3)"><div style="display:inline;display:block;margin-bottom: 0px;margin-top: 0px;" class="gate">%s</div></td>
         </tr>
         """ % (color, url, uaDep[0], uaDep[1], uaDep[2], (uaDep[3].split(" ")[1]).split(":")[0] + ":" + (uaDep[3].split(" ")[1]).split(":")[1], uaDep[4]))
 
