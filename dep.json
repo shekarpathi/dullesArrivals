@@ -5220,7 +5220,7 @@
     "IATA": "UA",
     "airportcode": "CUN",
     "baggage": "8",
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D18",
@@ -5228,7 +5228,7 @@
     "flightnumber": "1618",
     "publishedTime": "2024-04-09 13:14:00",
     "mwaaTime": null,
-    "actualtime": "2024-04-09 14:05:00",
+    "actualtime": "2024-04-09 14:00:00",
     "city": "CANCUN",
     "id": "32250fb4496945f789f2b801f7ffb340",
     "dep_airport_code": "IAD",
@@ -6076,7 +6076,7 @@
     "flightnumber": "5543",
     "publishedTime": "2024-04-09 14:12:00",
     "mwaaTime": null,
-    "actualtime": "2024-04-09 14:48:00",
+    "actualtime": "2024-04-09 15:09:00",
     "city": "CHARLOTTE",
     "id": "d479639a41894ae581da115fb7de5916",
     "dep_airport_code": "IAD",
@@ -11442,7 +11442,7 @@
     "flightnumber": "1760",
     "publishedTime": "2024-04-09 18:10:00",
     "mwaaTime": null,
-    "actualtime": "2024-04-09 18:27:00",
+    "actualtime": "2024-04-09 18:33:00",
     "city": "DENVER",
     "id": "16523b9ba2fa4b12b6d5d1c3890f4371",
     "dep_airport_code": "IAD",
@@ -20947,7 +20947,7 @@
     "flightnumber": "292",
     "publishedTime": "2024-04-10 22:45:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-04-10 22:45:00",
     "city": "LONDON",
     "id": "c8d6cd895e634e16b3e5759604f36ba0",
     "dep_airport_code": "IAD",
@@ -20981,7 +20981,7 @@
       {
         "aircraft_code": "777",
         "aircraft_code_type": "Iata",
-        "tail_number": null,
+        "tail_number": "GVIIE",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -29307,9 +29307,49 @@
     "arr_terminal": null,
     "arr_gate": null,
     "international": 1,
-    "codeshare": [],
-    "aircraftInfo": [],
-    "departureInfo": []
+    "codeshare": [
+      {
+        "IATA": "UA",
+        "flightnumber": "7065",
+        "airline": "United Airlines"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "7M9",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:54:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "TOCUMEN INTL"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -29360,10 +29400,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "777",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B772",
+        "aircraft_code_type": "Icao",
         "tail_number": "N791UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -29376,7 +29416,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"915\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -31380,7 +31420,7 @@
       {
         "aircraft_code": "739",
         "aircraft_code_type": "Iata",
-        "tail_number": "N65832",
+        "tail_number": "N69819",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -34966,7 +35006,7 @@
     "flightnumber": "1606",
     "publishedTime": "2024-04-09 12:30:00",
     "mwaaTime": null,
-    "actualtime": "2024-04-09 14:00:00",
+    "actualtime": "2024-04-09 14:10:00",
     "city": "SAN FRANCISCO",
     "id": "4fe0f7192bd44c279ed2a0f03eb14bdd",
     "dep_airport_code": "IAD",
@@ -35035,7 +35075,7 @@
     "flightnumber": "2228",
     "publishedTime": "2024-04-09 14:17:00",
     "mwaaTime": null,
-    "actualtime": "2024-04-09 15:10:00",
+    "actualtime": "2024-04-09 15:30:00",
     "city": "SAN FRANCISCO",
     "id": "9fcafa59d84c46c78cc28480245dac93",
     "dep_airport_code": "IAD",
@@ -36481,8 +36521,42 @@
     "arr_gate": null,
     "international": 1,
     "codeshare": [],
-    "aircraftInfo": [],
-    "departureInfo": []
+    "aircraftInfo": [
+      {
+        "aircraft_code": "320",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:17:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "EL SALVADOR INTL"
+      }
+    ]
   },
   {
     "IATA": "UA",
