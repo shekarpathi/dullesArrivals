@@ -75,7 +75,11 @@ def getCarousel(c, c1, c2, c3):
     if c == '' and c1 == '':
         baggageString = (c2 + ',' + c3).rstrip(',')
         try:
-            if int(baggageString) > 14:
+            try:
+                baggageCarousel = int(baggageString)
+            except:
+                baggageCarousel = 0
+            if baggageCarousel > 14:
                 international = 'internationalbaggage'
         except:
             ghjk= 0
@@ -83,7 +87,12 @@ def getCarousel(c, c1, c2, c3):
             international = 'internationalbaggage'
     else:
         baggageString = c
-        if int(baggageString) > 14:
+        try:
+            baggageCarousel = int(baggageString)
+        except:
+            baggageCarousel = 0
+
+        if baggageCarousel > 14:
             international = 'internationalbaggage'
 
 
@@ -253,6 +262,8 @@ depJsonHandle.close()
 
 for arrivalRecord in json_data['arrivals']:
     status = arrivalRecord['status']
+    s = '<div style="display:inline;display:block;margin-bottom: 0px;margin-top: 0px;" class="%s basebutton">%s</div>' % (status,status)
+    status = s
     t = t + 1
     if status != 'Scheduled' and isArrivingToday(arrivalRecord['publishedTime']):
         # actualtime = i['actualtime']
