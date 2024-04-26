@@ -6713,7 +6713,7 @@
     "IATA": "AA",
     "airportcode": "CLT",
     "baggage": "E",
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "American Airlines",
     "gate": "B71",
@@ -6721,7 +6721,7 @@
     "flightnumber": "5447",
     "publishedTime": "2024-04-26 15:38:00",
     "mwaaTime": null,
-    "actualtime": "2024-04-26 18:35:00",
+    "actualtime": "2024-04-26 18:43:00",
     "city": "CHARLOTTE",
     "id": "651196a4a7f6494887de1fd36c2b2cf9",
     "dep_airport_code": "IAD",
@@ -10876,7 +10876,7 @@
   {
     "IATA": "AA",
     "airportcode": "DFW",
-    "baggage": "D30",
+    "baggage": "B5",
     "status": "OutGate",
     "mod_status": null,
     "airline": "American Airlines",
@@ -10890,8 +10890,8 @@
     "id": "3836644ffbb3430c995d785a36684964",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
-    "arr_terminal": "D",
-    "arr_gate": "D31",
+    "arr_terminal": "B",
+    "arr_gate": "B6",
     "international": 0,
     "codeshare": [
       {
@@ -14452,7 +14452,7 @@
       {
         "aircraft_code": "A21N",
         "aircraft_code_type": "Icao",
-        "tail_number": null,
+        "tail_number": "EILRF",
         "weight_class": "L",
         "optional_equipment": null
       }
@@ -19108,7 +19108,7 @@
     "IATA": "UA",
     "airportcode": "JAX",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A1G",
@@ -19182,7 +19182,7 @@
     "IATA": "G4",
     "airportcode": "JAX",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Allegiant Air",
     "gate": "B62",
@@ -20547,10 +20547,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "739",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B739",
+        "aircraft_code_type": "Icao",
         "tail_number": "N37470",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -20563,7 +20563,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"780\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -28156,7 +28156,7 @@
     "IATA": "UA",
     "airportcode": "EWR",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "R24A",
@@ -37418,7 +37418,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "3",
-    "arr_gate": null,
+    "arr_gate": "E10",
     "international": 0,
     "codeshare": [
       {
@@ -40530,6 +40530,75 @@
         "remaining_time": null,
         "elapsed_time": null,
         "scheduled_duration": "05:51:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "SEATTLE-TACOMA INTL"
+      }
+    ]
+  },
+  {
+    "IATA": "AS",
+    "airportcode": "SEA",
+    "baggage": "10",
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Alaska Airlines",
+    "gate": "B63",
+    "mod_gate": null,
+    "flightnumber": "499",
+    "publishedTime": "2024-04-28 07:40:00",
+    "mwaaTime": null,
+    "actualtime": "2024-04-28 07:40:00",
+    "city": "SEATTLE, SEA",
+    "id": "518b6f4e9cec453582b823ad09706e69",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": "N1",
+    "international": 0,
+    "codeshare": [
+      {
+        "IATA": "JL",
+        "flightnumber": "5441",
+        "airline": "Japan Airlines"
+      },
+      {
+        "IATA": "TN",
+        "flightnumber": "2353",
+        "airline": "Air Tahiti Nui"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "73H",
+        "aircraft_code_type": "Iata",
+        "tail_number": "N594AS",
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "05:40:00",
         "map": null,
         "position": null,
         "route": null,
