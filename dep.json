@@ -141,7 +141,7 @@
     "IATA": "UA",
     "airportcode": "ACC",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D26",
@@ -149,7 +149,7 @@
     "flightnumber": "996",
     "publishedTime": "2024-05-08 19:10:00",
     "mwaaTime": null,
-    "actualtime": "2024-05-08 19:10:00",
+    "actualtime": "2024-05-08 19:11:00",
     "city": "ACCRA",
     "id": "db248c97cc784a96af9e360e782742e0",
     "dep_airport_code": "IAD",
@@ -1194,6 +1194,38 @@
         "airport_name": "QUEEN BEATRIX"
       }
     ]
+  },
+  {
+    "IATA": "UA",
+    "airportcode": "AUA",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "United Airlines",
+    "gate": null,
+    "mod_gate": null,
+    "flightnumber": "1203",
+    "publishedTime": "2024-05-10 08:07:00",
+    "mwaaTime": null,
+    "actualtime": "2024-05-10 08:07:00",
+    "city": "ARUBA",
+    "id": "15ed85910e364991825d593b46171e2e",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "739",
+        "aircraft_code_type": "Iata",
+        "tail_number": "N39475",
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": []
   },
   {
     "IATA": "UA",
@@ -4011,7 +4043,15 @@
     "arr_gate": null,
     "international": 1,
     "codeshare": [],
-    "aircraftInfo": [],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "320",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
     "departureInfo": []
   },
   {
@@ -4914,7 +4954,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "D26",
     "mod_gate": null,
     "flightnumber": "950",
     "publishedTime": "2024-05-09 17:35:00",
@@ -7223,7 +7263,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "American Airlines",
-    "gate": "B73",
+    "gate": "B71",
     "mod_gate": null,
     "flightnumber": "5285",
     "publishedTime": "2024-05-08 20:12:00",
@@ -7250,10 +7290,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "CR9",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "CRJ9",
+        "aircraft_code_type": "Icao",
         "tail_number": "N567NN",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -7266,7 +7306,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"JIA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"5285\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -28753,6 +28793,44 @@
   },
   {
     "IATA": "UA",
+    "airportcode": "LGA",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "United Airlines",
+    "gate": null,
+    "mod_gate": null,
+    "flightnumber": "3539",
+    "publishedTime": "2024-05-10 08:10:00",
+    "mwaaTime": null,
+    "actualtime": "2024-05-10 08:10:00",
+    "city": "NEW YORK, LGA",
+    "id": "a948fcdd96f54430951cd8229e21d9f6",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": "B",
+    "arr_gate": "43",
+    "international": 0,
+    "codeshare": [
+      {
+        "IATA": "AV",
+        "flightnumber": "2236",
+        "airline": "Avianca"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "E7W",
+        "aircraft_code_type": "Iata",
+        "tail_number": "N733YX",
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": []
+  },
+  {
+    "IATA": "UA",
     "airportcode": "EWR",
     "baggage": "3",
     "status": "InAir",
@@ -29718,10 +29796,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "319",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A319",
+        "aircraft_code_type": "Icao",
         "tail_number": "N841UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -29734,7 +29812,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1554\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -33361,7 +33439,7 @@
     "flightnumber": "6119",
     "publishedTime": "2024-05-08 17:25:00",
     "mwaaTime": null,
-    "actualtime": "2024-05-08 20:00:00",
+    "actualtime": "2024-05-08 19:38:00",
     "city": "PORTLAND, PWM",
     "id": "d940ccee01434724b815c4726dd720fe",
     "dep_airport_code": "IAD",
@@ -34264,7 +34342,7 @@
     "flightnumber": "1322",
     "publishedTime": "2024-05-08 17:21:00",
     "mwaaTime": null,
-    "actualtime": "2024-05-08 19:06:00",
+    "actualtime": "2024-05-08 19:51:00",
     "city": "RALEIGH",
     "id": "3d707745f91c457fa3ea77868d919bb8",
     "dep_airport_code": "IAD",
@@ -35393,7 +35471,7 @@
     "IATA": "SV",
     "airportcode": "RUH",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Saudi Arabian Airlines",
     "gate": null,
@@ -36497,7 +36575,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C8",
+    "gate": "D29",
     "mod_gate": null,
     "flightnumber": "884",
     "publishedTime": "2024-05-09 17:30:00",
@@ -38234,7 +38312,7 @@
     "IATA": "UA",
     "airportcode": "SFO",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D32",
@@ -38696,7 +38774,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D9",
+    "gate": "C17",
     "mod_gate": null,
     "flightnumber": "2228",
     "publishedTime": "2024-05-09 14:17:00",
@@ -38765,7 +38843,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D26",
+    "gate": "D32",
     "mod_gate": null,
     "flightnumber": "2344",
     "publishedTime": "2024-05-09 18:05:00",
@@ -43826,7 +43904,7 @@
     "IATA": "AC",
     "airportcode": "YYZ",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Air Canada",
     "gate": "H14",
@@ -43890,7 +43968,7 @@
     "IATA": "UA",
     "airportcode": "YYZ",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C20",
