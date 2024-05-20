@@ -3057,13 +3057,13 @@
     "flightnumber": "545",
     "publishedTime": "2024-05-20 13:15:00",
     "mwaaTime": null,
-    "actualtime": "2024-05-20 13:50:00",
+    "actualtime": "2024-05-20 15:15:00",
     "city": "AUSTIN",
     "id": "c1aff87f159148fea571894bf742d879",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "29",
+    "arr_gate": "25",
     "international": 0,
     "codeshare": [],
     "aircraftInfo": [
@@ -4675,10 +4675,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "77W",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B77W",
+        "aircraft_code_type": "Icao",
         "tail_number": "N2644U",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -4691,7 +4691,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"950\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -6711,7 +6711,7 @@
     "IATA": "AA",
     "airportcode": "CLT",
     "baggage": "E",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "American Airlines",
     "gate": "B71",
@@ -6719,7 +6719,7 @@
     "flightnumber": "5543",
     "publishedTime": "2024-05-20 14:14:00",
     "mwaaTime": null,
-    "actualtime": "2024-05-20 14:14:00",
+    "actualtime": "2024-05-20 14:08:00",
     "city": "CHARLOTTE",
     "id": "b631218119ff4ae0a625b3d929c309f4",
     "dep_airport_code": "IAD",
@@ -7122,7 +7122,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C2",
+    "gate": "D5",
     "mod_gate": null,
     "flightnumber": "1412",
     "publishedTime": "2024-05-21 08:15:00",
@@ -10321,7 +10321,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A5B",
+    "gate": "D23",
     "mod_gate": null,
     "flightnumber": "3646",
     "publishedTime": "2024-05-20 22:07:00",
@@ -10698,7 +10698,7 @@
     "IATA": "SK",
     "airportcode": "CPH",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "Scandinavian Airlines",
     "gate": null,
@@ -10717,10 +10717,10 @@
     "codeshare": [],
     "aircraftInfo": [
       {
-        "aircraft_code": "333",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A333",
+        "aircraft_code_type": "Icao",
         "tail_number": null,
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -10733,7 +10733,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"SAS\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"926\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -12535,7 +12535,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D32",
+    "gate": "C4",
     "mod_gate": null,
     "flightnumber": "1366",
     "publishedTime": "2024-05-21 08:15:00",
@@ -14574,7 +14574,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "T2",
-    "arr_gate": "306",
+    "arr_gate": "303",
     "international": 1,
     "codeshare": [
       {
@@ -15193,7 +15193,7 @@
   {
     "IATA": "UA",
     "airportcode": "EDI",
-    "baggage": null,
+    "baggage": "8",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
@@ -15993,7 +15993,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C4",
+    "gate": "C2",
     "mod_gate": null,
     "flightnumber": "932",
     "publishedTime": "2024-05-20 22:05:00",
@@ -16646,8 +16646,42 @@
     "arr_gate": null,
     "international": 1,
     "codeshare": [],
-    "aircraftInfo": [],
-    "departureInfo": []
+    "aircraftInfo": [
+      {
+        "aircraft_code": "320",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 2,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": "[{\"DepAirportCode\":\"GUA\",\"DepCodeNS\":\"Iata\",\"ArrAirportCode\":\"SJO\",\"ArrCodeNS\":\"Iata\"}]",
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:15:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "LA AURORA"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -21129,7 +21163,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "C6",
     "mod_gate": null,
     "flightnumber": "942",
     "publishedTime": "2024-05-21 22:15:00",
@@ -21504,7 +21538,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C2",
+    "gate": "C3",
     "mod_gate": null,
     "flightnumber": "924",
     "publishedTime": "2024-05-20 22:25:00",
@@ -22546,7 +22580,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D10",
+    "gate": "D12",
     "mod_gate": null,
     "flightnumber": "1594",
     "publishedTime": "2024-05-20 19:10:00",
@@ -22585,7 +22619,7 @@
       {
         "aircraft_code": "7M9",
         "aircraft_code_type": "Iata",
-        "tail_number": "N47512",
+        "tail_number": "N37547",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -24361,7 +24395,7 @@
     "IATA": "DL",
     "airportcode": "MSP",
     "baggage": null,
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B78",
@@ -26375,10 +26409,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "7M9",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B39M",
+        "aircraft_code_type": "Icao",
         "tail_number": "N37562",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -26391,7 +26425,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1873\"}",
         "servicetype": "J",
         "leg_seq_num": 2,
         "num_legs": 2,
@@ -26814,7 +26848,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D12",
+    "gate": "D10",
     "mod_gate": null,
     "flightnumber": "1521",
     "publishedTime": "2024-05-20 17:17:00",
@@ -26858,7 +26892,7 @@
       {
         "aircraft_code": "7M9",
         "aircraft_code_type": "Iata",
-        "tail_number": "N37547",
+        "tail_number": "N47512",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -26898,7 +26932,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C27",
+    "gate": "HG2",
     "mod_gate": null,
     "flightnumber": "2253",
     "publishedTime": "2024-05-21 08:20:00",
@@ -30787,9 +30821,49 @@
     "arr_terminal": null,
     "arr_gate": null,
     "international": 1,
-    "codeshare": [],
-    "aircraftInfo": [],
-    "departureInfo": []
+    "codeshare": [
+      {
+        "IATA": "UA",
+        "flightnumber": "7065",
+        "airline": "United Airlines"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "738",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:52:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "TOCUMEN INTL"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -32539,7 +32613,7 @@
     "IATA": "UA",
     "airportcode": "PWM",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C22",
@@ -33730,7 +33804,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C27",
+    "gate": "C2",
     "mod_gate": null,
     "flightnumber": "1392",
     "publishedTime": "2024-05-21 12:47:00",
@@ -35682,7 +35756,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C3",
+    "gate": "D32",
     "mod_gate": null,
     "flightnumber": "126",
     "publishedTime": "2024-05-20 22:25:00",
@@ -36539,7 +36613,7 @@
     "IATA": "UA",
     "airportcode": "SAN",
     "baggage": null,
-    "status": "Delayed",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D3",
@@ -36547,7 +36621,7 @@
     "flightnumber": "2029",
     "publishedTime": "2024-05-20 13:10:00",
     "mwaaTime": null,
-    "actualtime": "2024-05-20 14:00:00",
+    "actualtime": "2024-05-20 13:59:00",
     "city": "SAN DIEGO",
     "id": "889e5ca3787c42b2a30aa630fcfb5001",
     "dep_airport_code": "IAD",
@@ -36739,7 +36813,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C14",
+    "gate": "C4",
     "mod_gate": null,
     "flightnumber": "1930",
     "publishedTime": "2024-05-21 08:20:00",
@@ -36815,7 +36889,7 @@
       {
         "aircraft_code": "7M9",
         "aircraft_code_type": "Iata",
-        "tail_number": "N47512",
+        "tail_number": "N37547",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -38444,7 +38518,7 @@
     "IATA": "N3",
     "airportcode": "SAL",
     "baggage": null,
-    "status": "Proposed",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Volaris El Salvador",
     "gate": null,
@@ -38452,7 +38526,7 @@
     "flightnumber": "4327",
     "publishedTime": "2024-05-20 14:00:00",
     "mwaaTime": null,
-    "actualtime": "2024-05-20 14:00:00",
+    "actualtime": null,
     "city": "SAN SALVADOR",
     "id": "1930c84ce4714e359e8962deeb7a2b53",
     "dep_airport_code": "IAD",
@@ -38937,8 +39011,42 @@
     "arr_gate": null,
     "international": 1,
     "codeshare": [],
-    "aircraftInfo": [],
-    "departureInfo": []
+    "aircraftInfo": [
+      {
+        "aircraft_code": "320",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:17:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "EL SALVADOR INTL"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -42526,7 +42634,7 @@
       {
         "aircraft_code": "DH4",
         "aircraft_code_type": "Iata",
-        "tail_number": "CGLQP",
+        "tail_number": "CGLQC",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -43465,7 +43573,7 @@
     "IATA": "AC",
     "airportcode": "YVR",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "Air Canada",
     "gate": "Z10",
@@ -43473,7 +43581,7 @@
     "flightnumber": "1037",
     "publishedTime": "2024-05-20 17:40:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-05-20 17:40:00",
     "city": "VANCOUVER",
     "id": "25ca63c2f8ca4675b4a97c95ecf56606",
     "dep_airport_code": "IAD",
@@ -43490,10 +43598,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "7M8",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B38M",
+        "aircraft_code_type": "Icao",
         "tail_number": "CGEHY",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -43506,7 +43614,7 @@
         "arr_scheduled_status": "AO",
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"ACA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1037\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -43825,10 +43933,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "764",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B764",
+        "aircraft_code_type": "Icao",
         "tail_number": "N66056",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -43841,7 +43949,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"52\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
