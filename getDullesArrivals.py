@@ -12,6 +12,7 @@ iabTableHTML: str = ''
 fisArray = []
 iabArray = []
 UADepArray = []
+nonUADepArray = []
 response_code = 401
 retryCount = 0
 success = False
@@ -46,16 +47,16 @@ def getFisTimeString(status, actualtime, mod_status, customsAt) -> str:
         else:
             s1 = actualtime.split(" ")[1]
             s2 = s1.split(":")[0] + ":" + s1.split(":")[1]
-            if status == 'InGate':
+            if "InGate" in status:
                 return ('<del style="background-color:#71c5c7">%s G</del>' % s2)
-            if status == 'Landed':
+            if "Landed" in status:
                 return ('%s L' % s2)
-            if status == 'Delayed':
+            if "Delayed" in status:
                 return status
                 # return ('Dela: %s' % (actualtime.split(" ")[1]))
-            if status == 'InAir':
+            if "InAir" in status:
                 return status
-            if status == 'OutGate':
+            if "OutGate" in status:
                 return status
                 # return ('InAir: %s' % (actualtime.split(" ")[1]))
     except:
@@ -262,6 +263,7 @@ depJsonHandle.close()
 
 for arrivalRecord in json_data['arrivals']:
     status = arrivalRecord['status']
+    # s = arrivalRecord['status']
     s = '<div style="display:inline;display:block;margin-bottom: 0px;margin-top: 0px;" class="%s basebutton">%s</div>' % (status,status)
     status = s
     t = t + 1
@@ -310,10 +312,10 @@ for arrivalRecord in json_data['arrivals']:
         if airportdict[arrivalRecord['dep_airport_code']][0] == 'Int' and isTimeBetween1and7(arrivalRecord['actualtime']):
             s = ('https://www.flightaware.com/live/flight/%s%s' % (airlinedict[arrivalRecord['IATA']][0], arrivalRecord['flightnumber']))
 
-            iabArray.append([s, formatTimeFor2To6(arrivalRecord['actualtime']), '%s %s' % (arrivalRecord['IATA'], arrivalRecord['flightnumber']), arrivalRecord['city'], getFisTimeString(status, actualtime, mod_status, arrivalRecord['customsAt'])])
+            iabArray.append([s, formatTimeFor2To6(arrivalRecord['actualtime']), '%s %s' % (arrivalRecord['IATA'], arrivalRecord['flightnumber']), arrivalRecord['city'], getFisTimeString(arrivalRecord['status'], actualtime, mod_status, arrivalRecord['customsAt'])])
 
             if isStarAllianceAtFIS(airlinedict[arrivalRecord['IATA']][0]):
-                fisArray.append([s, formatTimeFor2To6(arrivalRecord['actualtime']), '%s %s' % (arrivalRecord['IATA'], arrivalRecord['flightnumber']), arrivalRecord['city'], getFisTimeString(status, actualtime, mod_status, arrivalRecord['customsAt'])])
+                fisArray.append([s, formatTimeFor2To6(arrivalRecord['actualtime']), '%s %s' % (arrivalRecord['IATA'], arrivalRecord['flightnumber']), arrivalRecord['city'], getFisTimeString(arrivalRecord['status'], actualtime, mod_status, arrivalRecord['customsAt'])])
 
 # arrivalsFileHandle.close()
 
@@ -465,9 +467,13 @@ for i in json_data['departures']:
     currentTimeMinusOne = currentTime - timedelta(days=0, hours=1)
     if (currentTimeMinusOne < passedDate) and (currentTimePlusTen > passedDate) and (printableGate != None) and i['IATA'] == 'UA':
         UADepArray.append([i['IATA'], i['flightnumber'], i['city'], printableDate, printableGate, i['status']])
+    elif (currentTimeMinusOne < passedDate) and (currentTimePlusTen > passedDate) and (printableGate != None) and i['IATA'] != 'UA':
+        nonUADepArray.append([i['IATA'], i['flightnumber'], i['city'], printableDate, printableGate, i['status']])
 
 UADepArray.sort(key=lambda x: x[3])
 print(UADepArray)
+nonUADepArray.sort(key=lambda x: x[3])
+print(nonUADepArray)
 uaDepTableHTML: str = """
 <html>
     <head>
@@ -551,6 +557,8 @@ for uaDep in UADepArray:
 uaDepTableHTML += '</tbody></table>'
 uaDepHTMLHandle.write(uaDepTableHTML)
 uaDepHTMLHandle.close()
+
+
 depArray.sort(key=lambda x: x[5])
 depTableHTML: str = ''
 for dep in depArray:
