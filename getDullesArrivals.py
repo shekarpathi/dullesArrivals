@@ -126,8 +126,8 @@ def isTimeBetween1and7(timeString) -> bool:
 def formatTimeFor2To6(timeString) -> str:
     if timeString is not None:
         datetime_object = datetime.strptime(timeString, '%Y-%m-%d %H:%M:%S')
-        str_date = datetime_object.strftime("%I:%M %p")
-        # print(str_date)
+        str_date = datetime_object.strftime("%-I:%M")
+        # print(str_date) #
         return str_date
 
 
@@ -273,7 +273,7 @@ for arrivalRecord in json_data['arrivals']:
         customsAt = formatTime(arrivalRecord['customsAt'])
         # print(isTimeBetween2and6(i['actualtime']))
         try:
-            flight = '<a href="https://www.flightaware.com/live/flight/%s%s" target="_blank" rel="noopener noreferrer">%s %s</a>' % (airlinedict[arrivalRecord['IATA']][0], arrivalRecord['flightnumber'], arrivalRecord['IATA'], arrivalRecord['flightnumber'])
+            flight = '<a href="https://www.flightaware.com/live/flight/%s%s" rel="noopener noreferrer">%s %s</a>' % (airlinedict[arrivalRecord['IATA']][0], arrivalRecord['flightnumber'], arrivalRecord['IATA'], arrivalRecord['flightnumber'])
         except:
             print(arrivalRecord)
         mod_status = arrivalRecord['mod_status'] if arrivalRecord['mod_status'] is not None else ''
@@ -330,7 +330,7 @@ for fis in fisArray:
         color = 'style="background-color:#22CE83"'
     else:
         color = ''
-    fisTableHTML += '<tr %s>\n\t\t<td style="min-width: 100px">%s</td><td style="min-width: 100px">%s</td><td style="min-width: 100px"><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (
+    fisTableHTML += '<tr %s>\n\t\t<td style="min-width: 100px">%s</td><td style="min-width: 100px">%s</td><td style="min-width: 100px"><a href="%s" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (
         color, fis[1], fis[3], fis[0], fis[2], fis[4])
 fisTableHTML += '<tr>\n\t\t<td style="background-color:#DFF429" colspan=4>Updated %s</td>\n\t</tr>' % getCurrentTime()
 
@@ -370,7 +370,7 @@ for iab in iabArray:
         color = 'style="background-color:#22CE83"'
     else:
         color = ''
-    iabTableHTML += '<tr %s>\n\t\t<td>%s</td><td>%s</td>  <td><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (
+    iabTableHTML += '<tr %s>\n\t\t<td>%s</td><td>%s</td>  <td><a href="%s" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (
         color, iab[1], iab[3], iab[0], iab[2], iab[4])
 iabTableHTML += '<tr>\n\t\t<td style="background-color:#DFF429" colspan=4>Updated %s</td>\n\t</tr>' % getCurrentTime()
 
@@ -547,7 +547,7 @@ for uaDep in UADepArray:
         url = 'https://www.flightaware.com/live'
     uaDepTableHTML += ("""
         <tr %s>
-            <td                           ><a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s %s</a></td>
+            <td                           ><a href=\"%s\" rel=\"noopener noreferrer\">%s %s</a></td>
             <td onclick="sortTable(1)">%s</td>
             <td onclick="sortTable(2)">%s</td>
             <td onclick="sortTable(3)"><div style="display:inline;display:block;margin-bottom: 0px;margin-top: 0px;" class="gate">%s</div></td>
@@ -576,7 +576,7 @@ for dep in depArray:
         url = 'https://www.flightaware.com/live'
     depTableHTML += ("""
         <tr %s>
-            <td style="max-width: 10px"><a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s %s</a></td>
+            <td style="max-width: 10px"><a href=\"%s\" rel=\"noopener noreferrer\">%s %s</a></td>
             <td style="max-width: 20px">%s</td>
             <td style="max-width: 20px">%s - %s</td>
             <td style="max-width: 10px" class=\"iatafont\">%s</td>
