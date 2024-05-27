@@ -2114,7 +2114,7 @@
     "IATA": "DL",
     "airportcode": "ATL",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B74",
@@ -10315,7 +10315,7 @@
   {
     "IATA": "UA",
     "airportcode": "CLE",
-    "baggage": "9",
+    "baggage": "10",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
@@ -16546,10 +16546,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "752",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B752",
+        "aircraft_code_type": "Icao",
         "tail_number": "N19141",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -16562,7 +16562,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"978\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -20920,7 +20920,7 @@
     "IATA": "G4",
     "airportcode": "JAX",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Allegiant Air",
     "gate": "B62",
@@ -23330,7 +23330,7 @@
     "flightnumber": "918",
     "publishedTime": "2024-05-27 18:30:00",
     "mwaaTime": null,
-    "actualtime": "2024-05-27 18:50:00",
+    "actualtime": "2024-05-27 19:10:00",
     "city": "LONDON",
     "id": "841b4dd3385541989a29421e034a2311",
     "dep_airport_code": "IAD",
@@ -23577,7 +23577,7 @@
     "flightnumber": "292",
     "publishedTime": "2024-05-27 22:45:00",
     "mwaaTime": null,
-    "actualtime": "2024-05-27 22:53:00",
+    "actualtime": "2024-05-27 22:54:00",
     "city": "LONDON",
     "id": "e1bbb135c0ec44769e440fead840f8d4",
     "dep_airport_code": "IAD",
@@ -31271,7 +31271,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "B27",
     "international": 0,
     "codeshare": [
       {
@@ -36174,10 +36174,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "739",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B739",
+        "aircraft_code_type": "Icao",
         "tail_number": "N68805",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -36190,7 +36190,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"2382\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -38830,13 +38830,13 @@
     "flightnumber": "2435",
     "publishedTime": "2024-05-27 17:40:00",
     "mwaaTime": null,
-    "actualtime": "2024-05-27 18:50:00",
+    "actualtime": "2024-05-27 19:30:00",
     "city": "SACRAMENTO",
     "id": "679a2342fc054b4d8dddf8fc5273a75f",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "A",
-    "arr_gate": "A16",
+    "arr_gate": null,
     "international": 0,
     "codeshare": [
       {
@@ -43350,7 +43350,7 @@
     "IATA": "AS",
     "airportcode": "SEA",
     "baggage": "12",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Alaska Airlines",
     "gate": "B63",
@@ -43358,7 +43358,7 @@
     "flightnumber": "406",
     "publishedTime": "2024-05-27 18:10:00",
     "mwaaTime": null,
-    "actualtime": "2024-05-27 18:06:00",
+    "actualtime": "2024-05-27 18:10:00",
     "city": "SEATTLE, SEA",
     "id": "0d607ee506a14051a29cfd29d900b4f6",
     "dep_airport_code": "IAD",
@@ -46490,7 +46490,7 @@
     "flightnumber": "3453",
     "publishedTime": "2024-05-27 17:17:00",
     "mwaaTime": null,
-    "actualtime": "2024-05-27 19:00:00",
+    "actualtime": "2024-05-27 19:30:00",
     "city": "TORONTO, YYZ",
     "id": "EA6439CAFD974E8F9431A5821C7DB9B6",
     "dep_airport_code": "IAD",
@@ -46498,9 +46498,51 @@
     "arr_terminal": null,
     "arr_gate": "160",
     "international": 1,
-    "codeshare": [],
+    "codeshare": [
+      {
+        "IATA": "AC",
+        "flightnumber": "3934",
+        "airline": "Air Canada"
+      },
+      {
+        "IATA": "AV",
+        "flightnumber": "2166",
+        "airline": "Avianca"
+      },
+      {
+        "IATA": "CM",
+        "flightnumber": "2804",
+        "airline": "Copa Airlines"
+      }
+    ],
     "aircraftInfo": [],
-    "departureInfo": []
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": "{\"Code\":\"RPA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"3453\"}",
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": "{\"Code\":\"IAD\",\"CodeNamespace\":\"Iata\",\"Name\":\"WASHINGTON DULLES INTERNATIONAL\",\"Location\":{\"CityName\":\"WASHINGTON\",\"StateId\":\"DC\",\"CountryId\":\"US\"}}",
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "01:44:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "LESTER PEARSON INTL"
+      }
+    ]
   },
   {
     "IATA": "UA",
