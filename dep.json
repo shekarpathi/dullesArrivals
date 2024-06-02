@@ -141,7 +141,7 @@
     "IATA": "UA",
     "airportcode": "ACC",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C3",
@@ -149,7 +149,7 @@
     "flightnumber": "996",
     "publishedTime": "2024-06-02 18:50:00",
     "mwaaTime": null,
-    "actualtime": "2024-06-02 18:50:00",
+    "actualtime": "2024-06-02 18:57:00",
     "city": "ACCRA",
     "id": "d178fba81fed44ddbc77ac027e5760c2",
     "dep_airport_code": "IAD",
@@ -3733,10 +3733,10 @@
     "codeshare": [],
     "aircraftInfo": [
       {
-        "aircraft_code": "319",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A319",
+        "aircraft_code_type": "Icao",
         "tail_number": "N326NV",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -3749,7 +3749,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"AAY\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1496\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -4354,6 +4354,30 @@
         "airport_name": "ELDORADO"
       }
     ]
+  },
+  {
+    "IATA": "AV",
+    "airportcode": "BOG",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Avianca",
+    "gate": null,
+    "mod_gate": "B48",
+    "flightnumber": "149",
+    "publishedTime": "2024-06-04 07:45:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "BOGOTA",
+    "id": "4e63efb06a6e4785b8239370fda53fe5",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": "1",
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [],
+    "aircraftInfo": [],
+    "departureInfo": []
   },
   {
     "IATA": "UA",
@@ -12083,7 +12107,7 @@
     "IATA": "AA",
     "airportcode": "DFW",
     "baggage": "C26",
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "American Airlines",
     "gate": "B73",
@@ -12091,7 +12115,7 @@
     "flightnumber": "1390",
     "publishedTime": "2024-06-02 17:17:00",
     "mwaaTime": null,
-    "actualtime": "2024-06-02 19:00:00",
+    "actualtime": "2024-06-02 18:57:00",
     "city": "DALLAS, DFW",
     "id": "aef5fa70df6b4c3eb679b2635f0f2e5c",
     "dep_airport_code": "IAD",
@@ -20175,7 +20199,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "A25",
     "international": 0,
     "codeshare": [
       {
@@ -24602,7 +24626,7 @@
   {
     "IATA": "UA",
     "airportcode": "LAX",
-    "baggage": null,
+    "baggage": "1",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
@@ -24671,7 +24695,7 @@
   {
     "IATA": "UA",
     "airportcode": "LAX",
-    "baggage": null,
+    "baggage": "1",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
@@ -34913,7 +34937,7 @@
     "IATA": "UA",
     "airportcode": "PWM",
     "baggage": null,
-    "status": "OutGate",
+    "status": "NoTakeoffInfo",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A1G",
@@ -34921,13 +34945,13 @@
     "flightnumber": "6016",
     "publishedTime": "2024-06-02 18:15:00",
     "mwaaTime": null,
-    "actualtime": "2024-06-02 18:11:00",
+    "actualtime": "2024-06-02 18:15:00",
     "city": "PORTLAND, PWM",
     "id": "7cfd11e7c37c4c5e845f645569ad3c45",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "1B",
+    "arr_gate": "A1G",
     "international": 0,
     "codeshare": [
       {
@@ -34943,10 +34967,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "E7W",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "E75L",
+        "aircraft_code_type": "Icao",
         "tail_number": "N89313",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -34959,13 +34983,13 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"ASH\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"6016\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
         "aircraft": null,
         "alt_dep_airport": null,
-        "alt_arr_airport": null,
+        "alt_arr_airport": "{\"Code\":\"PWM\",\"CodeNamespace\":\"Iata\",\"Name\":\"WASHINGTON DULLES INTERNATIONAL\",\"Location\":{\"CityName\":\"WASHINGTON\",\"StateId\":\"DC\",\"CountryId\":\"US\"}}",
         "upline_info": null,
         "downline_info": null,
         "remaining_time": null,
@@ -35405,7 +35429,7 @@
     "IATA": "UA",
     "airportcode": "PVD",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C26",
@@ -40596,7 +40620,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "2",
-    "arr_gate": "D4",
+    "arr_gate": "D6",
     "international": 0,
     "codeshare": [
       {
@@ -43565,7 +43589,7 @@
     "IATA": "AS",
     "airportcode": "SEA",
     "baggage": "10",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Alaska Airlines",
     "gate": "B63",
@@ -43573,7 +43597,7 @@
     "flightnumber": "406",
     "publishedTime": "2024-06-02 19:00:00",
     "mwaaTime": null,
-    "actualtime": "2024-06-02 19:15:00",
+    "actualtime": "2024-06-02 19:04:00",
     "city": "SEATTLE, SEA",
     "id": "d997f1c794604954b6daba3be32c45b1",
     "dep_airport_code": "IAD",
@@ -43701,7 +43725,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "N12",
+    "arr_gate": "N19",
     "international": 0,
     "codeshare": [
       {
@@ -43907,7 +43931,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "N17",
+    "arr_gate": "N15",
     "international": 0,
     "codeshare": [
       {
@@ -44206,7 +44230,7 @@
       {
         "aircraft_code": "73J",
         "aircraft_code_type": "Iata",
-        "tail_number": "N964AK",
+        "tail_number": "N920AK",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -44246,7 +44270,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "D8",
     "mod_gate": null,
     "flightnumber": "1893",
     "publishedTime": "2024-06-03 22:15:00",
@@ -44391,7 +44415,23 @@
     "arr_terminal": null,
     "arr_gate": null,
     "international": 0,
-    "codeshare": [],
+    "codeshare": [
+      {
+        "IATA": "KE",
+        "flightnumber": "3026",
+        "airline": "Korean Air"
+      },
+      {
+        "IATA": "KL",
+        "flightnumber": "7897",
+        "airline": "KLM Royal Dutch Airlines"
+      },
+      {
+        "IATA": "MU",
+        "flightnumber": "8778",
+        "airline": "China Eastern Airlines"
+      }
+    ],
     "aircraftInfo": [
       {
         "aircraft_code": "223",
@@ -46296,7 +46336,7 @@
     "IATA": "PD",
     "airportcode": "YTZ",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Porter Airlines Canada Limited",
     "gate": "A19",
