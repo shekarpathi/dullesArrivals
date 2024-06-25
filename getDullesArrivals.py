@@ -179,15 +179,15 @@ def formatGate(gate, domesticOrInternational):
         if gate is not None:
             rgate = gate
             if gate[0] == "A":
-                suffix = "🚆6-7 &nbsp;&nbsp"
+                suffix = "🚆6-7 &nbsp;&nbsp;"
             elif gate[0] == "C":
-                suffix = "🚆6-7 &nbsp;&nbsp"
+                suffix = "🚆6-7 &nbsp;&nbsp;"
             elif gate[0] == "B":
-                suffix = "🚆10-11 &nbsp;&nbsp"
+                suffix = "🚆10-11 &nbsp;&nbsp;"
             elif gate[0] == "Z":
-                suffix = "🚶8 &nbsp;&nbsp"
+                suffix = "🚶8 &nbsp;&nbsp;"
             elif gate[0] == "D":
-                suffix = "🚌 8 &nbsp;&nbsp"
+                suffix = "🚌 8 &nbsp;&nbsp;"
             else:
                 suffix = ''
         else:
