@@ -349,7 +349,7 @@ fisFileHandle.write("""<!DOCTYPE html>
     }
 </style>
     <title>Midfield 1-7pm Arrivals</title>
-    <meta http-equiv="refresh" content="120">
+    <meta http-equiv="refresh" content="300">
     <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -389,7 +389,7 @@ iabFileHandle.write("""<!DOCTYPE html>
     }
 </style>
     <title>IAB 1-7pm Arrivals</title>
-        <meta http-equiv="refresh" content="120">
+        <meta http-equiv="refresh" content="300">
         <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
         <meta http-equiv="Pragma" content="no-cache">
         <meta http-equiv="expires" content="0">
@@ -512,7 +512,7 @@ uaDepTableHTML: str = """
                 text-align: center;
             }
         </style>
-        <meta http-equiv="refresh" content="120">
+        <meta http-equiv="refresh" content="300">
     </head>
 
     <form>
@@ -597,7 +597,7 @@ depFileHandle.close()
 #         }
 #     </style>
 #     <title>IAB 2-6 Arrivals</title>
-#     <meta http-equiv="refresh" content="120">
+#     <meta http-equiv="refresh" content="300">
 # </head>
 # <body>
 #     <table>
