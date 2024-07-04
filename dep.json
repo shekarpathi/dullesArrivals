@@ -962,7 +962,7 @@
     "IATA": "UA",
     "airportcode": "AMS",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C3",
@@ -970,7 +970,7 @@
     "flightnumber": "946",
     "publishedTime": "2024-07-04 18:00:00",
     "mwaaTime": null,
-    "actualtime": "2024-07-04 18:00:00",
+    "actualtime": "2024-07-04 18:20:00",
     "city": "AMSTERDAM",
     "id": "8d2d055796b04026ab04d30cff386522",
     "dep_airport_code": "IAD",
@@ -2254,7 +2254,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D15",
+    "gate": "D16",
     "mod_gate": null,
     "flightnumber": "2221",
     "publishedTime": "2024-07-04 22:05:00",
@@ -3429,10 +3429,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "764",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B764",
+        "aircraft_code_type": "Icao",
         "tail_number": "N68061",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -3445,7 +3445,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"992\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -4060,7 +4060,7 @@
       {
         "aircraft_code": "739",
         "aircraft_code_type": "Iata",
-        "tail_number": "N37521",
+        "tail_number": "N17285",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -4704,7 +4704,7 @@
     "IATA": "SN",
     "airportcode": "BRU",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "Brussels Airlines",
     "gate": null,
@@ -4712,7 +4712,7 @@
     "flightnumber": "516",
     "publishedTime": "2024-07-04 18:00:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-07-04 18:00:00",
     "city": "BRUSSELS",
     "id": "e73cfc9d66b345119633bf336074b291",
     "dep_airport_code": "IAD",
@@ -4729,10 +4729,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "333",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A333",
+        "aircraft_code_type": "Icao",
         "tail_number": null,
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -4745,7 +4745,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"BEL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1BT\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -8332,7 +8332,7 @@
     "IATA": "UA",
     "airportcode": "ORD",
     "baggage": "3",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D18",
@@ -8430,7 +8430,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "1",
-    "arr_gate": "C23",
+    "arr_gate": "B3",
     "international": 0,
     "codeshare": [
       {
@@ -12256,7 +12256,7 @@
     "IATA": "WN",
     "airportcode": "DEN",
     "baggage": null,
-    "status": "Proposed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Southwest Airlines",
     "gate": "B64",
@@ -12264,7 +12264,7 @@
     "flightnumber": "425",
     "publishedTime": "2024-07-04 13:45:00",
     "mwaaTime": null,
-    "actualtime": "2024-07-04 13:45:00",
+    "actualtime": "2024-07-04 13:39:00",
     "city": "DENVER",
     "id": "4efd2a7a539148c185a95015db731238",
     "dep_airport_code": "IAD",
@@ -12476,7 +12476,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "C50",
+    "arr_gate": "C37",
     "international": 0,
     "codeshare": [],
     "aircraftInfo": [
@@ -15477,7 +15477,7 @@
       {
         "aircraft_code": "752",
         "aircraft_code_type": "Iata",
-        "tail_number": "N12109",
+        "tail_number": "N17104",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -15877,7 +15877,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "C5",
     "international": 0,
     "codeshare": [],
     "aircraftInfo": [
@@ -16752,6 +16752,64 @@
     ]
   },
   {
+    "IATA": "AV",
+    "airportcode": "GUA",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Avianca",
+    "gate": null,
+    "mod_gate": null,
+    "flightnumber": "549",
+    "publishedTime": "2024-07-06 02:30:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "GUATEMALA CITY",
+    "id": "11dc4c18e8af4356acdd8279296d71ce",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "320",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": "TA",
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 2,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": "[{\"DepAirportCode\":\"GUA\",\"DepCodeNS\":\"Iata\",\"ArrAirportCode\":\"SAL\",\"ArrCodeNS\":\"Iata\"}]",
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:15:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "LA AURORA"
+      }
+    ]
+  },
+  {
     "IATA": "UA",
     "airportcode": "MDT",
     "baggage": null,
@@ -17162,7 +17220,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "Z7",
+    "gate": "A3A",
     "mod_gate": null,
     "flightnumber": "6021",
     "publishedTime": "2024-07-04 17:20:00",
@@ -22463,7 +22521,7 @@
     "flightnumber": "292",
     "publishedTime": "2024-07-04 22:45:00",
     "mwaaTime": null,
-    "actualtime": "2024-07-04 23:26:00",
+    "actualtime": "2024-07-04 23:30:00",
     "city": "LONDON",
     "id": "381b3271e5f343c3b298463593fdc2a6",
     "dep_airport_code": "IAD",
@@ -24615,10 +24673,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "764",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B764",
+        "aircraft_code_type": "Icao",
         "tail_number": "N66056",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -24631,7 +24689,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"260\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -28259,7 +28317,7 @@
     "IATA": "DL",
     "airportcode": "JFK",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B72",
@@ -31840,6 +31898,70 @@
     ]
   },
   {
+    "IATA": "CM",
+    "airportcode": "PTY",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Copa Airlines",
+    "gate": null,
+    "mod_gate": "A15",
+    "flightnumber": "403",
+    "publishedTime": "2024-07-06 02:36:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "PANAMA CITY",
+    "id": "87c42cd331cd46b8abf0d9b9d680e509",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [
+      {
+        "IATA": "UA",
+        "flightnumber": "7065",
+        "airline": "United Airlines"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "738",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:51:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "TOCUMEN INTL"
+      }
+    ]
+  },
+  {
     "IATA": "UA",
     "airportcode": "CDG",
     "baggage": "2",
@@ -31926,7 +32048,7 @@
   {
     "IATA": "AF",
     "airportcode": "CDG",
-    "baggage": "30",
+    "baggage": "40",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air France",
@@ -32000,7 +32122,7 @@
   {
     "IATA": "AF",
     "airportcode": "CDG",
-    "baggage": "32",
+    "baggage": "31",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air France",
@@ -32227,7 +32349,7 @@
   {
     "IATA": "AF",
     "airportcode": "CDG",
-    "baggage": null,
+    "baggage": "30",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air France",
@@ -32301,7 +32423,7 @@
   {
     "IATA": "AF",
     "airportcode": "CDG",
-    "baggage": null,
+    "baggage": "33",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air France",
@@ -34052,7 +34174,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "Z5",
+    "gate": "Z7",
     "mod_gate": null,
     "flightnumber": "6027",
     "publishedTime": "2024-07-04 17:50:00",
@@ -36200,7 +36322,7 @@
     "IATA": "UA",
     "airportcode": "RIC",
     "baggage": null,
-    "status": "NoTakeoffInfo",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C20",
@@ -36208,13 +36330,13 @@
     "flightnumber": "4398",
     "publishedTime": "2024-07-04 12:50:00",
     "mwaaTime": null,
-    "actualtime": "2024-07-04 12:50:00",
+    "actualtime": "2024-07-04 14:20:00",
     "city": "RICHMOND",
-    "id": "376e24e39ff3408489a14c3567c6a593",
+    "id": "5DF259F2E44C46288FA5118B30CA9EB6",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "C20",
+    "arr_gate": "B1",
     "international": 0,
     "codeshare": [
       {
@@ -36223,30 +36345,22 @@
         "airline": "All Nippon Airways"
       }
     ],
-    "aircraftInfo": [
-      {
-        "aircraft_code": "CRJ7",
-        "aircraft_code_type": "Icao",
-        "tail_number": "N543GJ",
-        "weight_class": "L",
-        "optional_equipment": null
-      }
-    ],
+    "aircraftInfo": [],
     "departureInfo": [
       {
-        "reg_code": "G7",
+        "reg_code": null,
         "scheduled": 1,
         "genral_aviation": null,
         "dep_scheduled_status": null,
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": "{\"Code\":\"GJS\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"4398\"}",
+        "faaId": null,
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
         "aircraft": null,
-        "alt_dep_airport": null,
+        "alt_dep_airport": "{\"Code\":\"IAD\",\"CodeNamespace\":\"Iata\",\"Name\":\"WASHINGTON DULLES INTERNATIONAL\",\"Location\":{\"CityName\":\"WASHINGTON\",\"StateId\":\"DC\",\"CountryId\":\"US\"}}",
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
@@ -37834,10 +37948,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "777",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B772",
+        "aircraft_code_type": "Icao",
         "tail_number": "N78017",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -37850,7 +37964,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"884\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -41210,6 +41324,64 @@
     ]
   },
   {
+    "IATA": "N3",
+    "airportcode": "SAL",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Volaris El Salvador",
+    "gate": null,
+    "mod_gate": "B37",
+    "flightnumber": "4313",
+    "publishedTime": "2024-07-06 02:43:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "SAN SALVADOR",
+    "id": "82fe65e1f23049e6895370e48c7f4db4",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "320",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:17:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "EL SALVADOR INTL"
+      }
+    ]
+  },
+  {
     "IATA": "UA",
     "airportcode": "GRU",
     "baggage": null,
@@ -41463,7 +41635,7 @@
     "IATA": "UA",
     "airportcode": "SAV",
     "baggage": "2",
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A2A",
@@ -41471,7 +41643,7 @@
     "flightnumber": "6070",
     "publishedTime": "2024-07-04 12:43:00",
     "mwaaTime": null,
-    "actualtime": "2024-07-04 13:50:00",
+    "actualtime": "2024-07-04 13:39:00",
     "city": "SAVANNAH",
     "id": "1a5166ce2e364bfba675c38e5a37584d",
     "dep_airport_code": "IAD",
