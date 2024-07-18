@@ -3470,9 +3470,74 @@
     "arr_terminal": "S",
     "arr_gate": null,
     "international": 0,
-    "codeshare": [],
-    "aircraftInfo": [],
-    "departureInfo": []
+    "codeshare": [
+      {
+        "IATA": "AM",
+        "flightnumber": "3975",
+        "airline": "AeroMexico"
+      },
+      {
+        "IATA": "KE",
+        "flightnumber": "6926",
+        "airline": "Korean Air"
+      },
+      {
+        "IATA": "KL",
+        "flightnumber": "5871",
+        "airline": "KLM Royal Dutch Airlines"
+      },
+      {
+        "IATA": "LA",
+        "flightnumber": "6204",
+        "airline": "LATAM Airlines Group"
+      },
+      {
+        "IATA": "VS",
+        "flightnumber": "4471",
+        "airline": "Virgin Atlantic"
+      },
+      {
+        "IATA": "WS",
+        "flightnumber": "8101",
+        "airline": "WestJet Airlines"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "223",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "01:48:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "ATLANTA HARTSFIELD-JACKSON INTL"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -5185,7 +5250,7 @@
     "IATA": "UA",
     "airportcode": "BRU",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C2",
@@ -7884,7 +7949,7 @@
     "flightnumber": "6037",
     "publishedTime": "2024-07-18 17:10:00",
     "mwaaTime": null,
-    "actualtime": "2024-07-18 19:00:00",
+    "actualtime": "2024-07-18 19:16:00",
     "city": "CHARLOTTE",
     "id": "068f3ecd5f2f45c1bb3000db49b0246b",
     "dep_airport_code": "IAD",
@@ -7955,7 +8020,7 @@
     "IATA": "AA",
     "airportcode": "CLT",
     "baggage": "E",
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "American Airlines",
     "gate": "B71",
@@ -7963,7 +8028,7 @@
     "flightnumber": "5447",
     "publishedTime": "2024-07-18 17:38:00",
     "mwaaTime": null,
-    "actualtime": "2024-07-18 19:08:00",
+    "actualtime": "2024-07-18 18:58:00",
     "city": "CHARLOTTE",
     "id": "73f0d9d9fe5045ec909ac0be912d6924",
     "dep_airport_code": "IAD",
@@ -9468,10 +9533,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "739",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B739",
+        "aircraft_code_type": "Icao",
         "tail_number": "N68452",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -9484,7 +9549,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1738\"}",
         "servicetype": "J",
         "leg_seq_num": 2,
         "num_legs": 2,
@@ -10918,10 +10983,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "738",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B738",
+        "aircraft_code_type": "Icao",
         "tail_number": "N14230",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -10934,7 +10999,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1370\"}",
         "servicetype": "J",
         "leg_seq_num": 2,
         "num_legs": 2,
@@ -11346,10 +11411,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "ERJ",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "E145",
+        "aircraft_code_type": "Icao",
         "tail_number": "N12145",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -11362,7 +11427,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UCA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"4364\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -12676,7 +12741,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "E",
-    "arr_gate": "E5",
+    "arr_gate": "E8",
     "international": 0,
     "codeshare": [],
     "aircraftInfo": [
@@ -14516,7 +14581,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "D5",
     "mod_gate": null,
     "flightnumber": "1872",
     "publishedTime": "2024-07-19 19:55:00",
@@ -16382,7 +16447,7 @@
     "IATA": "EI",
     "airportcode": "DUB",
     "baggage": "1",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Aer Lingus",
     "gate": null,
@@ -16523,7 +16588,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D4",
+    "gate": "D1",
     "mod_gate": null,
     "flightnumber": "228",
     "publishedTime": "2024-07-18 22:15:00",
@@ -17827,7 +17892,7 @@
     "IATA": "LH",
     "airportcode": "FRA",
     "baggage": null,
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Lufthansa",
     "gate": "B45",
@@ -17835,7 +17900,7 @@
     "flightnumber": "419",
     "publishedTime": "2024-07-18 18:00:00",
     "mwaaTime": null,
-    "actualtime": "2024-07-18 18:30:00",
+    "actualtime": "2024-07-18 18:52:00",
     "city": "FRANKFURT",
     "id": "29d429c7d49e48f59f8cc76be774a4a3",
     "dep_airport_code": "IAD",
@@ -19197,15 +19262,15 @@
     "IATA": "UA",
     "airportcode": "BDL",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D15",
+    "gate": "D3",
     "mod_gate": null,
     "flightnumber": "444",
     "publishedTime": "2024-07-18 22:30:00",
     "mwaaTime": null,
-    "actualtime": "2024-07-18 22:30:00",
+    "actualtime": "2024-07-18 23:15:00",
     "city": "HARTFORD",
     "id": "e586dc1ed64d49b3891b29c39c720d09",
     "dep_airport_code": "IAD",
@@ -21314,7 +21379,7 @@
     "IATA": "TK",
     "airportcode": "IST",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "Turkish Airlines",
     "gate": null,
@@ -21322,7 +21387,7 @@
     "flightnumber": "8",
     "publishedTime": "2024-07-18 21:50:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-07-18 22:20:00",
     "city": "ISTANBUL",
     "id": "6a485c9e92c04a0c84429c2854a14e56",
     "dep_airport_code": "IAD",
@@ -21359,10 +21424,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "77W",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B77W",
+        "aircraft_code_type": "Icao",
         "tail_number": null,
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -21375,7 +21440,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"THY\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"8\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -21713,7 +21778,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "A8",
     "international": 0,
     "codeshare": [
       {
@@ -21787,7 +21852,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "A8",
     "international": 0,
     "codeshare": [
       {
@@ -23918,10 +23983,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "764",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B764",
+        "aircraft_code_type": "Icao",
         "tail_number": "N76054",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -23934,7 +23999,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"942\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -25382,7 +25447,7 @@
     "IATA": "UA",
     "airportcode": "LAX",
     "baggage": "1",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D5",
@@ -25560,7 +25625,7 @@
     "IATA": "UA",
     "airportcode": "LAX",
     "baggage": "1",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D7",
@@ -25568,7 +25633,7 @@
     "flightnumber": "2303",
     "publishedTime": "2024-07-18 19:15:00",
     "mwaaTime": null,
-    "actualtime": "2024-07-18 19:15:00",
+    "actualtime": "2024-07-18 19:07:00",
     "city": "LOS ANGELES",
     "id": "ce4c7a994c884c829806f0da192ce06d",
     "dep_airport_code": "IAD",
@@ -26610,7 +26675,7 @@
     "IATA": "UA",
     "airportcode": "SDF",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A1A",
@@ -26880,7 +26945,7 @@
     "IATA": "UA",
     "airportcode": "MAD",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C19",
@@ -33104,7 +33169,7 @@
   {
     "IATA": "UA",
     "airportcode": "EWR",
-    "baggage": null,
+    "baggage": "2",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
@@ -33119,7 +33184,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "C",
-    "arr_gate": null,
+    "arr_gate": "C85",
     "international": 0,
     "codeshare": [
       {
@@ -34155,10 +34220,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "739",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B739",
+        "aircraft_code_type": "Icao",
         "tail_number": "N67815",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -34171,7 +34236,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"689\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -36067,7 +36132,7 @@
     "IATA": "UA",
     "airportcode": "PHL",
     "baggage": "UXH",
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A2F",
@@ -36075,7 +36140,7 @@
     "flightnumber": "4820",
     "publishedTime": "2024-07-18 18:31:00",
     "mwaaTime": null,
-    "actualtime": "2024-07-18 19:15:00",
+    "actualtime": "2024-07-18 19:03:00",
     "city": "PHILADELPHIA",
     "id": "45a434b6fa1742379054d96261d914b3",
     "dep_airport_code": "IAD",
@@ -37367,7 +37432,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "E3",
+    "arr_gate": "E6",
     "international": 0,
     "codeshare": [
       {
@@ -42053,9 +42118,54 @@
     "arr_terminal": null,
     "arr_gate": null,
     "international": 0,
-    "codeshare": [],
-    "aircraftInfo": [],
-    "departureInfo": []
+    "codeshare": [
+      {
+        "IATA": "AM",
+        "flightnumber": "4406",
+        "airline": "AeroMexico"
+      },
+      {
+        "IATA": "WS",
+        "flightnumber": "7803",
+        "airline": "WestJet Airlines"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "739",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:33:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "SALT LAKE CITY INTL"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -42528,7 +42638,7 @@
     "IATA": "UA",
     "airportcode": "SAN",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D32",
@@ -45511,7 +45621,7 @@
     "IATA": "UA",
     "airportcode": "SAV",
     "baggage": "2",
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D25",
@@ -45519,7 +45629,7 @@
     "flightnumber": "6039",
     "publishedTime": "2024-07-18 17:30:00",
     "mwaaTime": null,
-    "actualtime": "2024-07-18 18:55:00",
+    "actualtime": "2024-07-18 19:02:00",
     "city": "SAVANNAH",
     "id": "94f3005c955f41018326af8ab3c3b0b4",
     "dep_airport_code": "IAD",
@@ -46298,7 +46408,7 @@
     "IATA": "AS",
     "airportcode": "SEA",
     "baggage": "7",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Alaska Airlines",
     "gate": "B63",
@@ -46855,8 +46965,8 @@
     "id": "00a472c7e79e4500bcdbb608c660a2b6",
     "dep_airport_code": "IAD",
     "dep_terminal": "B",
-    "arr_terminal": "B",
-    "arr_gate": "B6",
+    "arr_terminal": "A",
+    "arr_gate": "A5",
     "international": 0,
     "codeshare": [
       {
@@ -47123,9 +47233,59 @@
     "arr_terminal": null,
     "arr_gate": null,
     "international": 0,
-    "codeshare": [],
-    "aircraftInfo": [],
-    "departureInfo": []
+    "codeshare": [
+      {
+        "IATA": "KE",
+        "flightnumber": "3182",
+        "airline": "Korean Air"
+      },
+      {
+        "IATA": "KL",
+        "flightnumber": "7897",
+        "airline": "KLM Royal Dutch Airlines"
+      },
+      {
+        "IATA": "MU",
+        "flightnumber": "8821",
+        "airline": "China Eastern Airlines"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "223",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "05:46:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "SEATTLE-TACOMA INTL"
+      }
+    ]
   },
   {
     "IATA": "KE",
@@ -48107,7 +48267,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A6E",
+    "gate": "D4",
     "mod_gate": null,
     "flightnumber": "6187",
     "publishedTime": "2024-07-18 22:05:00",
@@ -48570,7 +48730,7 @@
     "IATA": "UA",
     "airportcode": "TPA",
     "baggage": "2",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C17",
@@ -51232,7 +51392,7 @@
     "flightnumber": "52",
     "publishedTime": "2024-07-18 17:45:00",
     "mwaaTime": null,
-    "actualtime": "2024-07-18 19:00:00",
+    "actualtime": "2024-07-18 20:00:00",
     "city": "ZURICH",
     "id": "adfa16bfbe25486996963a6c6cbd195b",
     "dep_airport_code": "IAD",
