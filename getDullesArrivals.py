@@ -328,6 +328,8 @@ for fis in fisArray:
         color = 'style="background-color:#AF9B60"'
     elif fis[4] == 'InGate':
         color = 'style="background-color:#22CE83"'
+    elif uaDep[5] == 'Cancelled':
+        color = 'style="background-color:#ff4d4d"'
     else:
         color = ''
     fisTableHTML += '<tr %s>\n\t\t<td style="min-width: 100px">%s</td><td style="min-width: 100px">%s</td><td style="min-width: 100px"><a href="%s" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (
@@ -368,6 +370,8 @@ for iab in iabArray:
         color = 'style="background-color:#AF9B60"'
     elif iab[4] == 'InGate':
         color = 'style="background-color:#22CE83"'
+    elif uaDep[5] == 'Cancelled':
+        color = 'style="background-color:#ff4d4d"'
     else:
         color = ''
     iabTableHTML += '<tr %s>\n\t\t<td>%s</td><td>%s</td>  <td><a href="%s" rel="noopener noreferrer">%s</a></td>\n\t\t<td>%s</td>\n\t</tr>\n' % (
@@ -538,6 +542,8 @@ for uaDep in UADepArray:
         color = 'style="background-color:#FFEBB0"'
     elif uaDep[5] == 'Scheduled':
         color = 'style="background-color:#E6FFC8"'
+    elif uaDep[5] == 'Cancelled':
+        color = 'style="background-color:#ff4d4d"'
     else:
         color = ''
     try:
