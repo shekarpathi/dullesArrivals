@@ -328,7 +328,7 @@ for fis in fisArray:
         color = 'style="background-color:#AF9B60"'
     elif fis[4] == 'InGate':
         color = 'style="background-color:#22CE83"'
-    elif uaDep[5] == 'Cancelled':
+    elif fis[4] == 'Cancelled':
         color = 'style="background-color:#ff4d4d"'
     else:
         color = ''
