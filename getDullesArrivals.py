@@ -574,6 +574,8 @@ for dep in depArray:
         color = 'style="background-color:#FFEBB0"'
     elif dep[7] == 'Scheduled':
         color = 'style="background-color:#E6FFC8"'
+    elif dep[7] == 'Cancelled':
+        color = 'style="background-color:#ff4d4d"'
     else:
         color = ''
     try:
