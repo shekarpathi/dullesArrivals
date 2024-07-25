@@ -21,22 +21,8 @@ def add_arrivals(conn, arr_rec):
         return cur.lastrowid
     except sqlite3.IntegrityError as ie:
         print(ie)
-        sql = '''UPDATE ARRIVALS SET (id, IATA, airportcode, baggage, status, mod_status, airline, gate, mod_gate, flightnumber,
-        dep_airport_code,publishedTime, mwaaTime, actualtime, city, claim,  claim1,  claim2,  claim3, dep_terminal, arr_terminal,
-         dep_gate, incustoms, customsAt, international, codeshare, aircraft_code, tail_number, weight_class)
-                 VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) WHERE id='c3d670046c1641a48e2adc14bfe496c3' '''
-        cur = conn.cursor()
-        cur.execute(sql, arr_rec)
-        conn.commit()
-        return cur.lastrowid
 
-arrJsonFileHandle = open('mac_arr.json', "r")
-f = open('mac_arr.json')
-data = json.load(f)
 
-connection_obj = sqlite3.connect('arrivals.db')
-cursor_obj = connection_obj.cursor()
-cursor_obj.execute("DROP TABLE IF EXISTS ARRIVALS")
 table = """ CREATE TABLE ARRIVALS (
             id VARCHAR(33) NOT NULL PRIMARY KEY,
             IATA CHAR(5) NOT NULL,
@@ -68,10 +54,18 @@ table = """ CREATE TABLE ARRIVALS (
             tail_number VARCHAR(10),
             weight_class VARCHAR(10)
         ); """
-cursor_obj.execute(table)
-connection_obj.close()
+# connection_obj = sqlite3.connect('arrivals.db')
+# cursor_obj = connection_obj.cursor()
+# cursor_obj.execute("DROP TABLE IF EXISTS ARRIVALS")
+# cursor_obj.execute(table)
+# connection_obj.close()
 
-t = 0
+arrJsonFileHandle = open('mac_arr.json', "r")
+f = open('mac_arr.json')
+data = json.load(f)
+# Closing file
+f.close()
+
 for i in data:
     aircraftInfoRec = i['aircraftInfo']
     codeshareRec = i['codeshare']
@@ -128,6 +122,3 @@ for i in data:
             arrival_id = add_arrivals(conn, arr_rec)
     except sqlite3.Error as e:
         print(e)
-
-# Closing file
-f.close()
