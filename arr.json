@@ -679,11 +679,11 @@
   {
     "IATA": "UA",
     "airportcode": "IAD",
-    "baggage": null,
+    "baggage": "3",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "A5C",
     "mod_gate": null,
     "flightnumber": "4889",
     "dep_airport_code": "ALB",
@@ -691,7 +691,7 @@
     "mwaaTime": null,
     "actualtime": "2024-08-07 11:18:00",
     "city": "ALBANY",
-    "claim": null,
+    "claim": "3",
     "claim1": null,
     "claim2": null,
     "claim3": null,
@@ -709,7 +709,13 @@
         "airline": null
       }
     ],
-    "aircraftInfo": null,
+    "aircraftInfo": {
+      "aircraft_code": "ERJ",
+      "aircraft_code_type": "Iata",
+      "tail_number": "N21154",
+      "weight_class": null,
+      "optional_equipment": null
+    },
     "arrivalInfo": [
       {
         "reg_code": "C5",
@@ -2485,7 +2491,7 @@
     "IATA": "DL",
     "airportcode": "IAD",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B78",
@@ -2494,7 +2500,7 @@
     "dep_airport_code": "ATL",
     "publishedTime": "2024-08-06 23:58:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-06 23:48:00",
+    "actualtime": "2024-08-06 23:46:00",
     "city": "ATLANTA",
     "claim": null,
     "claim1": "14",
@@ -2569,11 +2575,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": null,
-        "elapsed_time": null,
+        "remaining_time": "01:07:48",
+        "elapsed_time": "00:36:12",
         "scheduled_duration": "01:43:00",
         "map": null,
-        "position": null,
+        "position": "{\"Altitude\":\"26700\",\"Speed\":\"429\",\"Heading\":\"58\"}",
         "route": null,
         "airport_name": "ATLANTA HARTSFIELD-JACKSON INTL"
       }
@@ -3708,7 +3714,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "D10",
     "mod_gate": null,
     "flightnumber": "1727",
     "dep_airport_code": "AUS",
@@ -3723,7 +3729,7 @@
     "id": "8a25317f719a4b6bb99d22ce0b523e4f",
     "dep_terminal": null,
     "arr_terminal": null,
-    "dep_gate": "33",
+    "dep_gate": "29",
     "incustoms": 1,
     "customsAt": null,
     "international": 0,
@@ -3734,7 +3740,13 @@
         "airline": null
       }
     ],
-    "aircraftInfo": null,
+    "aircraftInfo": {
+      "aircraft_code": "319",
+      "aircraft_code_type": "Iata",
+      "tail_number": "N825UA",
+      "weight_class": null,
+      "optional_equipment": null
+    },
     "arrivalInfo": [
       {
         "reg_code": null,
@@ -4348,7 +4360,7 @@
     "dep_airport_code": "BOG",
     "publishedTime": "2024-08-07 06:25:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 06:25:00",
+    "actualtime": "2024-08-07 07:04:00",
     "city": "BOGOTA",
     "claim": null,
     "claim1": "19",
@@ -4730,6 +4742,89 @@
     ]
   },
   {
+    "IATA": "VS",
+    "airportcode": "IAD",
+    "baggage": null,
+    "status": "Delayed",
+    "mod_status": null,
+    "airline": "Virgin Atlantic",
+    "gate": null,
+    "mod_gate": null,
+    "flightnumber": "21",
+    "dep_airport_code": "LHR",
+    "publishedTime": "2024-08-06 20:25:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "BOSTON",
+    "claim": null,
+    "claim1": "19",
+    "claim2": null,
+    "claim3": null,
+    "id": "926A1A644CE541D7910F65828B3AC508",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "dep_gate": null,
+    "incustoms": 1,
+    "customsAt": null,
+    "international": 1,
+    "codeshare": [
+      {
+        "IATA": "AF",
+        "flightnumber": "9651",
+        "airline": null
+      },
+      {
+        "IATA": "DL",
+        "flightnumber": "5983",
+        "airline": null
+      },
+      {
+        "IATA": "KL",
+        "flightnumber": "4812",
+        "airline": null
+      },
+      {
+        "IATA": "SQ",
+        "flightnumber": "2521",
+        "airline": null
+      }
+    ],
+    "aircraftInfo": {
+      "aircraft_code": "A35K",
+      "aircraft_code_type": "Icao",
+      "tail_number": null,
+      "weight_class": "L",
+      "optional_equipment": null
+    },
+    "arrivalInfo": [
+      {
+        "reg_code": null,
+        "scheduled": null,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": "{\"Code\":\"VIR\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"21K\"}",
+        "servicetype": "J",
+        "leg_seq_num": null,
+        "num_legs": null,
+        "aircraft": null,
+        "alt_dep_airport": "{\"Code\":\"BOS\",\"CodeNamespace\":\"Iata\",\"Name\":\"GENERAL EDWARD LAWRENCE LOGAN IN\",\"Location\":{\"CityName\":\"BOSTON\",\"StateId\":\"MA\",\"CountryId\":\"US\"}}",
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "07:55:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "HEATHROW"
+      }
+    ]
+  },
+  {
     "IATA": "UA",
     "airportcode": "IAD",
     "baggage": "3",
@@ -4936,7 +5031,7 @@
     "aircraftInfo": {
       "aircraft_code": "7M9",
       "aircraft_code_type": "Iata",
-      "tail_number": "N37562",
+      "tail_number": "N17557",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -5275,7 +5370,13 @@
     "customsAt": null,
     "international": 0,
     "codeshare": [],
-    "aircraftInfo": null,
+    "aircraftInfo": {
+      "aircraft_code": "CNC",
+      "aircraft_code_type": "Iata",
+      "tail_number": null,
+      "weight_class": null,
+      "optional_equipment": null
+    },
     "arrivalInfo": [
       {
         "reg_code": null,
@@ -7190,8 +7291,8 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "07:00:42",
-        "elapsed_time": "08:20:18",
+        "remaining_time": "06:30:45",
+        "elapsed_time": "08:50:15",
         "scheduled_duration": "15:45:00",
         "map": null,
         "position": null,
@@ -8407,7 +8508,7 @@
     "IATA": "AA",
     "airportcode": "IAD",
     "baggage": "12",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "American Airlines",
     "gate": "B71",
@@ -8416,7 +8517,7 @@
     "dep_airport_code": "CLT",
     "publishedTime": "2024-08-07 00:18:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 00:07:00",
+    "actualtime": "2024-08-07 00:05:00",
     "city": "CHARLOTTE",
     "claim": "12",
     "claim1": null,
@@ -8483,7 +8584,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "Z5",
+    "gate": "C26",
     "mod_gate": null,
     "flightnumber": "6013",
     "dep_airport_code": "CLT",
@@ -8678,7 +8779,7 @@
     "aircraftInfo": {
       "aircraft_code": "739",
       "aircraft_code_type": "Iata",
-      "tail_number": "N34455",
+      "tail_number": "N66897",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -9343,11 +9444,11 @@
   {
     "IATA": "UA",
     "airportcode": "IAD",
-    "baggage": null,
+    "baggage": "3",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "A5C",
     "mod_gate": null,
     "flightnumber": "4281",
     "dep_airport_code": "CHO",
@@ -9355,7 +9456,7 @@
     "mwaaTime": null,
     "actualtime": "2024-08-07 11:19:00",
     "city": "CHARLOTTESVILLE",
-    "claim": null,
+    "claim": "3",
     "claim1": null,
     "claim2": null,
     "claim3": null,
@@ -9367,7 +9468,13 @@
     "customsAt": null,
     "international": 0,
     "codeshare": [],
-    "aircraftInfo": null,
+    "aircraftInfo": {
+      "aircraft_code": "ERJ",
+      "aircraft_code_type": "Iata",
+      "tail_number": "N11164",
+      "weight_class": null,
+      "optional_equipment": null
+    },
     "arrivalInfo": [
       {
         "reg_code": "C5",
@@ -9819,7 +9926,7 @@
     "IATA": "UA",
     "airportcode": "IAD",
     "baggage": "4",
-    "status": "InAir",
+    "status": "InGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C19",
@@ -9828,7 +9935,7 @@
     "dep_airport_code": "ORD",
     "publishedTime": "2024-08-06 20:57:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-06 22:34:00",
+    "actualtime": "2024-08-06 22:38:00",
     "city": "CHICAGO, ORD",
     "claim": "4",
     "claim1": null,
@@ -9888,11 +9995,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "00:18:45",
-        "elapsed_time": "01:47:15",
+        "remaining_time": null,
+        "elapsed_time": null,
         "scheduled_duration": "02:01:00",
         "map": null,
-        "position": "{\"Altitude\":\"10800\",\"Speed\":\"342\",\"Heading\":\"80\"}",
+        "position": null,
         "route": null,
         "airport_name": "CHICAGO O'HARE INTL"
       }
@@ -9911,7 +10018,7 @@
     "dep_airport_code": "ORD",
     "publishedTime": "2024-08-07 00:30:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 00:27:00",
+    "actualtime": "2024-08-07 00:40:00",
     "city": "CHICAGO, ORD",
     "claim": "4",
     "claim1": null,
@@ -11704,7 +11811,7 @@
     "aircraftInfo": {
       "aircraft_code": "ERJ",
       "aircraft_code_type": "Iata",
-      "tail_number": null,
+      "tail_number": "N14174",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -12854,7 +12961,7 @@
     "aircraftInfo": {
       "aircraft_code": "73G",
       "aircraft_code_type": "Iata",
-      "tail_number": "N38451",
+      "tail_number": "N78448",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -13744,8 +13851,8 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "07:43:42",
-        "elapsed_time": "07:43:42",
+        "remaining_time": "07:13:44",
+        "elapsed_time": "07:13:44",
         "scheduled_duration": "14:50:00",
         "map": null,
         "position": "{\"Altitude\":null,\"Speed\":null,\"Heading\":\"339\"}",
@@ -14374,11 +14481,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "00:40:45",
-        "elapsed_time": "02:29:15",
+        "remaining_time": "00:10:48",
+        "elapsed_time": "02:59:12",
         "scheduled_duration": "03:20:00",
         "map": null,
-        "position": "{\"Altitude\":\"37000\",\"Speed\":\"502\",\"Heading\":\"104\"}",
+        "position": "{\"Altitude\":\"19100\",\"Speed\":\"404\",\"Heading\":\"154\"}",
         "route": null,
         "airport_name": "DENVER INTL"
       }
@@ -14442,11 +14549,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "02:31:44",
-        "elapsed_time": "00:43:16",
+        "remaining_time": "02:01:47",
+        "elapsed_time": "01:13:13",
         "scheduled_duration": "03:26:00",
         "map": null,
-        "position": "{\"Altitude\":\"33000\",\"Speed\":\"517\",\"Heading\":\"96\"}",
+        "position": "{\"Altitude\":\"35000\",\"Speed\":\"508\",\"Heading\":\"100\"}",
         "route": null,
         "airport_name": "DENVER INTL"
       }
@@ -14532,7 +14639,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "D1",
     "mod_gate": null,
     "flightnumber": "1911",
     "dep_airport_code": "DEN",
@@ -14547,7 +14654,7 @@
     "id": "8678f6d2ddec4ef68c49e0d73287f95d",
     "dep_terminal": null,
     "arr_terminal": null,
-    "dep_gate": "B27",
+    "dep_gate": "B63",
     "incustoms": 1,
     "customsAt": null,
     "international": 0,
@@ -14558,7 +14665,13 @@
         "airline": null
       }
     ],
-    "aircraftInfo": null,
+    "aircraftInfo": {
+      "aircraft_code": "7M9",
+      "aircraft_code_type": "Iata",
+      "tail_number": "N27515",
+      "weight_class": null,
+      "optional_equipment": null
+    },
     "arrivalInfo": [
       {
         "reg_code": null,
@@ -15438,7 +15551,7 @@
   {
     "IATA": "UA",
     "airportcode": "IAD",
-    "baggage": "3",
+    "baggage": "5",
     "status": "InGate",
     "mod_status": null,
     "airline": "United Airlines",
@@ -15450,7 +15563,7 @@
     "mwaaTime": null,
     "actualtime": "2024-08-06 22:16:00",
     "city": "DETROIT, DTW",
-    "claim": "3",
+    "claim": "5",
     "claim1": null,
     "claim2": null,
     "claim3": null,
@@ -16623,8 +16736,8 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "10:47:41",
-        "elapsed_time": "03:20:19",
+        "remaining_time": "10:17:44",
+        "elapsed_time": "03:50:16",
         "scheduled_duration": "14:20:00",
         "map": null,
         "position": null,
@@ -17607,7 +17720,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "D11",
     "mod_gate": null,
     "flightnumber": "2169",
     "dep_airport_code": "FLL",
@@ -17638,7 +17751,13 @@
         "airline": null
       }
     ],
-    "aircraftInfo": null,
+    "aircraftInfo": {
+      "aircraft_code": "7M9",
+      "aircraft_code_type": "Iata",
+      "tail_number": "N27511",
+      "weight_class": null,
+      "optional_equipment": null
+    },
     "arrivalInfo": [
       {
         "reg_code": null,
@@ -18887,8 +19006,8 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "03:08:44",
-        "elapsed_time": "01:24:16",
+        "remaining_time": "02:38:47",
+        "elapsed_time": "01:54:13",
         "scheduled_duration": "04:15:00",
         "map": null,
         "position": null,
@@ -19490,7 +19609,7 @@
     "IATA": "UA",
     "airportcode": "IAD",
     "baggage": "3",
-    "status": "InAir",
+    "status": "InGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D25",
@@ -19499,7 +19618,7 @@
     "dep_airport_code": "BDL",
     "publishedTime": "2024-08-06 21:25:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-06 22:43:00",
+    "actualtime": "2024-08-06 22:40:00",
     "city": "HARTFORD",
     "claim": "3",
     "claim1": null,
@@ -19549,11 +19668,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "00:27:45",
-        "elapsed_time": "01:28:15",
+        "remaining_time": null,
+        "elapsed_time": null,
         "scheduled_duration": "01:30:00",
         "map": null,
-        "position": "{\"Altitude\":\"21200\",\"Speed\":\"402\",\"Heading\":\"353\"}",
+        "position": null,
         "route": null,
         "airport_name": "BRADLEY INTL"
       }
@@ -20162,7 +20281,7 @@
     "IATA": "UA",
     "airportcode": "IAD",
     "baggage": "3",
-    "status": "InAir",
+    "status": "Landed",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D19",
@@ -20171,7 +20290,7 @@
     "dep_airport_code": "IAH",
     "publishedTime": "2024-08-06 22:45:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-06 22:40:00",
+    "actualtime": "2024-08-06 22:50:00",
     "city": "HOUSTON",
     "claim": "3",
     "claim1": null,
@@ -20221,11 +20340,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "00:24:45",
-        "elapsed_time": "02:36:15",
+        "remaining_time": null,
+        "elapsed_time": null,
         "scheduled_duration": "03:02:00",
         "map": null,
-        "position": "{\"Altitude\":\"23500\",\"Speed\":\"431\",\"Heading\":\"78\"}",
+        "position": null,
         "route": null,
         "airport_name": "GEORGE BUSH INTERCONTINENTAL ARP"
       }
@@ -20294,11 +20413,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "01:50:44",
-        "elapsed_time": "01:13:16",
+        "remaining_time": "01:20:48",
+        "elapsed_time": "01:43:12",
         "scheduled_duration": "03:02:00",
         "map": null,
-        "position": "{\"Altitude\":\"35000\",\"Speed\":\"467\",\"Heading\":\"57\"}",
+        "position": "{\"Altitude\":\"35000\",\"Speed\":\"475\",\"Heading\":\"50\"}",
         "route": null,
         "airport_name": "GEORGE BUSH INTERCONTINENTAL ARP"
       }
@@ -20891,7 +21010,7 @@
     "aircraftInfo": {
       "aircraft_code": "ERJ",
       "aircraft_code_type": "Iata",
-      "tail_number": null,
+      "tail_number": "N14198",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -22240,7 +22359,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "C27",
     "mod_gate": null,
     "flightnumber": "1844",
     "dep_airport_code": "JAX",
@@ -22255,7 +22374,7 @@
     "id": "2f07fcf1f53f42d09bd342acc09e2b74",
     "dep_terminal": null,
     "arr_terminal": null,
-    "dep_gate": null,
+    "dep_gate": "A10",
     "incustoms": 1,
     "customsAt": null,
     "international": 0,
@@ -22271,7 +22390,13 @@
         "airline": null
       }
     ],
-    "aircraftInfo": null,
+    "aircraftInfo": {
+      "aircraft_code": "738",
+      "aircraft_code_type": "Iata",
+      "tail_number": "N38257",
+      "weight_class": null,
+      "optional_equipment": null
+    },
     "arrivalInfo": [
       {
         "reg_code": null,
@@ -23552,7 +23677,7 @@
     "aircraftInfo": {
       "aircraft_code": "ERJ",
       "aircraft_code_type": "Iata",
-      "tail_number": null,
+      "tail_number": "N12142",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -24025,7 +24150,13 @@
     "customsAt": null,
     "international": 0,
     "codeshare": [],
-    "aircraftInfo": null,
+    "aircraftInfo": {
+      "aircraft_code": "CNC",
+      "aircraft_code_type": "Iata",
+      "tail_number": null,
+      "weight_class": null,
+      "optional_equipment": null
+    },
     "arrivalInfo": [
       {
         "reg_code": null,
@@ -25104,89 +25235,6 @@
         "remaining_time": null,
         "elapsed_time": null,
         "scheduled_duration": "08:05:00",
-        "map": null,
-        "position": null,
-        "route": null,
-        "airport_name": "HEATHROW"
-      }
-    ]
-  },
-  {
-    "IATA": "VS",
-    "airportcode": "IAD",
-    "baggage": null,
-    "status": "Landed",
-    "mod_status": "In Customs",
-    "airline": "Virgin Atlantic",
-    "gate": null,
-    "mod_gate": null,
-    "flightnumber": "21",
-    "dep_airport_code": "LHR",
-    "publishedTime": "2024-08-06 20:25:00",
-    "mwaaTime": null,
-    "actualtime": "2024-08-06 21:08:00",
-    "city": "LONDON",
-    "claim": null,
-    "claim1": "19",
-    "claim2": null,
-    "claim3": null,
-    "id": "20c333776e4a4ecabaf1cfdb535c4cee",
-    "dep_terminal": "3",
-    "arr_terminal": null,
-    "dep_gate": "16",
-    "incustoms": 0,
-    "customsAt": "2024-08-06 21:38:00",
-    "international": 1,
-    "codeshare": [
-      {
-        "IATA": "AF",
-        "flightnumber": "9651",
-        "airline": null
-      },
-      {
-        "IATA": "DL",
-        "flightnumber": "5983",
-        "airline": null
-      },
-      {
-        "IATA": "KL",
-        "flightnumber": "4812",
-        "airline": null
-      },
-      {
-        "IATA": "SQ",
-        "flightnumber": "2521",
-        "airline": null
-      }
-    ],
-    "aircraftInfo": {
-      "aircraft_code": "A35K",
-      "aircraft_code_type": "Icao",
-      "tail_number": "GVPOP",
-      "weight_class": "L",
-      "optional_equipment": null
-    },
-    "arrivalInfo": [
-      {
-        "reg_code": null,
-        "scheduled": 1,
-        "genral_aviation": null,
-        "dep_scheduled_status": null,
-        "arr_scheduled_status": null,
-        "dep_delay_reason": null,
-        "arr_delay_reason": null,
-        "faaId": "{\"Code\":\"VIR\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"21K\"}",
-        "servicetype": "J",
-        "leg_seq_num": 1,
-        "num_legs": 1,
-        "aircraft": null,
-        "alt_dep_airport": null,
-        "alt_arr_airport": "{\"Code\":\"BOS\",\"CodeNamespace\":\"Iata\",\"Name\":\"GENERAL EDWARD LAWRENCE LOGAN IN\",\"Location\":{\"CityName\":\"BOSTON\",\"StateId\":\"MA\",\"CountryId\":\"US\"}}",
-        "upline_info": null,
-        "downline_info": null,
-        "remaining_time": null,
-        "elapsed_time": null,
-        "scheduled_duration": "07:55:00",
         "map": null,
         "position": null,
         "route": null,
@@ -28451,7 +28499,7 @@
     "dep_airport_code": "MSP",
     "publishedTime": "2024-08-06 23:33:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-06 23:46:00",
+    "actualtime": "2024-08-06 23:41:00",
     "city": "MINNEAPOLIS",
     "claim": null,
     "claim1": "14",
@@ -28516,11 +28564,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "01:30:44",
-        "elapsed_time": "00:46:16",
+        "remaining_time": "00:55:48",
+        "elapsed_time": "01:16:12",
         "scheduled_duration": "02:33:00",
         "map": null,
-        "position": "{\"Altitude\":\"35000\",\"Speed\":\"509\",\"Heading\":\"117\"}",
+        "position": "{\"Altitude\":\"35000\",\"Speed\":\"498\",\"Heading\":\"120\"}",
         "route": null,
         "airport_name": "MINNEAPOLIS-ST PAUL INTL/WOLD-CH"
       }
@@ -28697,7 +28745,7 @@
     "aircraftInfo": {
       "aircraft_code": "E7W",
       "aircraft_code_type": "Iata",
-      "tail_number": "N83329",
+      "tail_number": "N89313",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -29117,7 +29165,7 @@
     "aircraftInfo": {
       "aircraft_code": "ERJ",
       "aircraft_code_type": "Iata",
-      "tail_number": "N27190",
+      "tail_number": "N11150",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -29630,11 +29678,11 @@
   {
     "IATA": "UA",
     "airportcode": "IAD",
-    "baggage": null,
+    "baggage": "3",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "Z9",
     "mod_gate": null,
     "flightnumber": "3590",
     "dep_airport_code": "YUL",
@@ -29642,14 +29690,14 @@
     "mwaaTime": null,
     "actualtime": "2024-08-07 11:26:00",
     "city": "MONTREAL",
-    "claim": null,
+    "claim": "3",
     "claim1": null,
     "claim2": null,
     "claim3": null,
     "id": "277bf69b2be0401c9807d7e576d0d3a9",
     "dep_terminal": null,
     "arr_terminal": null,
-    "dep_gate": null,
+    "dep_gate": "80",
     "incustoms": 1,
     "customsAt": null,
     "international": 1,
@@ -29670,7 +29718,13 @@
         "airline": null
       }
     ],
-    "aircraftInfo": null,
+    "aircraftInfo": {
+      "aircraft_code": "E70",
+      "aircraft_code_type": "Iata",
+      "tail_number": "N762YX",
+      "weight_class": null,
+      "optional_equipment": null
+    },
     "arrivalInfo": [
       {
         "reg_code": "YX",
@@ -30860,7 +30914,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "D14",
     "mod_gate": null,
     "flightnumber": "2060",
     "dep_airport_code": "BNA",
@@ -30896,7 +30950,13 @@
         "airline": null
       }
     ],
-    "aircraftInfo": null,
+    "aircraftInfo": {
+      "aircraft_code": "7M9",
+      "aircraft_code_type": "Iata",
+      "tail_number": "N37513",
+      "weight_class": null,
+      "optional_equipment": null
+    },
     "arrivalInfo": [
       {
         "reg_code": null,
@@ -33439,7 +33499,7 @@
     "id": "fa47023ea8f2418bb2044b50ef1f27e1",
     "dep_terminal": null,
     "arr_terminal": null,
-    "dep_gate": "B30",
+    "dep_gate": "B28",
     "incustoms": 1,
     "customsAt": null,
     "international": 0,
@@ -33551,7 +33611,7 @@
     "aircraftInfo": {
       "aircraft_code": "E7W",
       "aircraft_code_type": "Iata",
-      "tail_number": "N87302",
+      "tail_number": "N86350",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -33977,7 +34037,7 @@
     "IATA": "UA",
     "airportcode": "IAD",
     "baggage": "1",
-    "status": "InAir",
+    "status": "Landed",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C25",
@@ -33986,7 +34046,7 @@
     "dep_airport_code": "MCO",
     "publishedTime": "2024-08-06 21:15:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-06 22:53:00",
+    "actualtime": "2024-08-06 22:55:00",
     "city": "ORLANDO",
     "claim": "1",
     "claim1": null,
@@ -34041,11 +34101,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": "[{\"DepAirportCode\":\"IAD\",\"DepCodeNS\":\"Iata\",\"ArrAirportCode\":\"EWR\",\"ArrCodeNS\":\"Iata\"}]",
-        "remaining_time": "00:37:45",
-        "elapsed_time": "01:41:15",
+        "remaining_time": "00:07:48",
+        "elapsed_time": "02:11:12",
         "scheduled_duration": "02:20:00",
         "map": null,
-        "position": "{\"Altitude\":\"33600\",\"Speed\":\"491\",\"Heading\":\"30\"}",
+        "position": "{\"Altitude\":\"3500\",\"Speed\":\"214\",\"Heading\":\"2\"}",
         "route": null,
         "airport_name": "ORLANDO INTL"
       }
@@ -34058,7 +34118,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "C23",
     "mod_gate": null,
     "flightnumber": "1689",
     "dep_airport_code": "MCO",
@@ -34073,7 +34133,7 @@
     "id": "3342456145e04b77b334ed25b0226369",
     "dep_terminal": "B",
     "arr_terminal": null,
-    "dep_gate": "46",
+    "dep_gate": "44",
     "incustoms": 1,
     "customsAt": null,
     "international": 0,
@@ -34089,7 +34149,13 @@
         "airline": null
       }
     ],
-    "aircraftInfo": null,
+    "aircraftInfo": {
+      "aircraft_code": "739",
+      "aircraft_code_type": "Iata",
+      "tail_number": "N38443",
+      "weight_class": null,
+      "optional_equipment": null
+    },
     "arrivalInfo": [
       {
         "reg_code": null,
@@ -34424,7 +34490,7 @@
     "IATA": "UA",
     "airportcode": "IAD",
     "baggage": "5",
-    "status": "InAir",
+    "status": "InGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A6C",
@@ -34433,7 +34499,7 @@
     "dep_airport_code": "YOW",
     "publishedTime": "2024-08-06 21:11:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-06 22:45:00",
+    "actualtime": "2024-08-06 22:44:00",
     "city": "OTTAWA",
     "claim": "5",
     "claim1": null,
@@ -34478,11 +34544,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "00:21:45",
-        "elapsed_time": "01:23:15",
+        "remaining_time": null,
+        "elapsed_time": null,
         "scheduled_duration": "01:41:00",
         "map": null,
-        "position": "{\"Altitude\":\"21000\",\"Speed\":\"426\",\"Heading\":\"164\"}",
+        "position": null,
         "route": null,
         "airport_name": "OTTAWAINTL"
       }
@@ -34524,7 +34590,7 @@
     "aircraftInfo": {
       "aircraft_code": "CR5",
       "aircraft_code_type": "Iata",
-      "tail_number": "N519GJ",
+      "tail_number": "N546GJ",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -34998,10 +35064,10 @@
       }
     ],
     "aircraftInfo": {
-      "aircraft_code": "738",
-      "aircraft_code_type": "Iata",
+      "aircraft_code": "B738",
+      "aircraft_code_type": "Icao",
       "tail_number": "HP1726",
-      "weight_class": null,
+      "weight_class": "L",
       "optional_equipment": null
     },
     "arrivalInfo": [
@@ -35013,7 +35079,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"CMP\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"404\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -36030,16 +36096,16 @@
     "IATA": "UA",
     "airportcode": "IAD",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Cancelled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "C20",
     "mod_gate": null,
     "flightnumber": "6235",
     "dep_airport_code": "PHL",
     "publishedTime": "2024-08-07 11:23:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 11:23:00",
+    "actualtime": null,
     "city": "PHILADELPHIA",
     "claim": null,
     "claim1": null,
@@ -36064,7 +36130,13 @@
         "airline": null
       }
     ],
-    "aircraftInfo": null,
+    "aircraftInfo": {
+      "aircraft_code": "E7W",
+      "aircraft_code_type": "Iata",
+      "tail_number": "N87337",
+      "weight_class": null,
+      "optional_equipment": null
+    },
     "arrivalInfo": [
       {
         "reg_code": "YV",
@@ -36385,7 +36457,7 @@
     "id": "cbc21e360c134c2babe18e107f7bb8d2",
     "dep_terminal": "3",
     "arr_terminal": null,
-    "dep_gate": "E7",
+    "dep_gate": "E3",
     "incustoms": 1,
     "customsAt": null,
     "international": 0,
@@ -36866,7 +36938,7 @@
     "aircraftInfo": {
       "aircraft_code": "E7W",
       "aircraft_code_type": "Iata",
-      "tail_number": "N93305",
+      "tail_number": "N87302",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -37456,7 +37528,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C26",
+    "gate": "D2",
     "mod_gate": null,
     "flightnumber": "3625",
     "dep_airport_code": "PWM",
@@ -37552,7 +37624,7 @@
     "aircraftInfo": {
       "aircraft_code": "E7W",
       "aircraft_code_type": "Iata",
-      "tail_number": "N86336",
+      "tail_number": "N83329",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -38266,7 +38338,7 @@
     "IATA": "UA",
     "airportcode": "IAD",
     "baggage": null,
-    "status": "InAir",
+    "status": "Landed",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C2",
@@ -38275,7 +38347,7 @@
     "dep_airport_code": "PLS",
     "publishedTime": "2024-08-06 20:28:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-06 22:49:00",
+    "actualtime": "2024-08-06 23:03:00",
     "city": "PROVIDENCIALES",
     "claim": null,
     "claim1": "17",
@@ -38314,11 +38386,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "00:33:45",
-        "elapsed_time": "03:31:15",
+        "remaining_time": "00:06:48",
+        "elapsed_time": "04:01:12",
         "scheduled_duration": "03:13:00",
         "map": null,
-        "position": "{\"Altitude\":\"25000\",\"Speed\":\"431\",\"Heading\":\"83\"}",
+        "position": "{\"Altitude\":\"2100\",\"Speed\":\"210\",\"Heading\":\"359\"}",
         "route": null,
         "airport_name": "PROVIDENCIALES"
       }
@@ -39304,7 +39376,7 @@
     "airportcode": "IAD",
     "baggage": null,
     "status": "InGate",
-    "mod_status": null,
+    "mod_status": "In Customs",
     "airline": "Icelandair",
     "gate": null,
     "mod_gate": null,
@@ -39322,8 +39394,8 @@
     "dep_terminal": null,
     "arr_terminal": null,
     "dep_gate": "D15",
-    "incustoms": 1,
-    "customsAt": null,
+    "incustoms": 0,
+    "customsAt": "2024-08-06 22:47:08",
     "international": 1,
     "codeshare": [
       {
@@ -39357,11 +39429,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "00:00:00",
-        "elapsed_time": "06:23:15",
+        "remaining_time": null,
+        "elapsed_time": null,
         "scheduled_duration": "06:25:00",
         "map": null,
-        "position": "{\"Altitude\":\"4600\",\"Speed\":\"223\",\"Heading\":\"21\"}",
+        "position": null,
         "route": null,
         "airport_name": "REYKJAVIK APT"
       }
@@ -40016,7 +40088,7 @@
     "aircraftInfo": {
       "aircraft_code": "E7W",
       "aircraft_code_type": "Iata",
-      "tail_number": "N85320",
+      "tail_number": "N89317",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -40673,7 +40745,7 @@
     "aircraftInfo": {
       "aircraft_code": "ERJ",
       "aircraft_code_type": "Iata",
-      "tail_number": null,
+      "tail_number": "N11164",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -41157,7 +41229,7 @@
     "IATA": "UA",
     "airportcode": "IAD",
     "baggage": "5",
-    "status": "Landed",
+    "status": "InGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "Z6",
@@ -41166,7 +41238,7 @@
     "dep_airport_code": "ROC",
     "publishedTime": "2024-08-06 21:15:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-06 22:31:00",
+    "actualtime": "2024-08-06 22:30:00",
     "city": "ROCHESTER",
     "claim": "5",
     "claim1": null,
@@ -41221,11 +41293,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "00:15:45",
-        "elapsed_time": "01:07:15",
+        "remaining_time": null,
+        "elapsed_time": null,
         "scheduled_duration": "01:20:00",
         "map": null,
-        "position": "{\"Altitude\":\"6600\",\"Speed\":\"286\",\"Heading\":\"100\"}",
+        "position": null,
         "route": null,
         "airport_name": "GREATER ROCHESTER INTERNATIONAL"
       }
@@ -41235,16 +41307,16 @@
     "IATA": "UA",
     "airportcode": "IAD",
     "baggage": "3",
-    "status": "Scheduled",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D2",
+    "gate": "D6",
     "mod_gate": null,
     "flightnumber": "6335",
     "dep_airport_code": "ROC",
     "publishedTime": "2024-08-07 07:35:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 07:35:00",
+    "actualtime": "2024-08-07 09:05:00",
     "city": "ROCHESTER",
     "claim": "3",
     "claim1": null,
@@ -42163,11 +42235,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "01:26:44",
-        "elapsed_time": "02:21:16",
+        "remaining_time": "00:56:48",
+        "elapsed_time": "02:51:12",
         "scheduled_duration": "03:55:00",
         "map": null,
-        "position": "{\"Altitude\":\"37000\",\"Speed\":\"489\",\"Heading\":\"92\"}",
+        "position": "{\"Altitude\":\"37000\",\"Speed\":\"490\",\"Heading\":\"96\"}",
         "route": null,
         "airport_name": "SALT LAKE CITY INTL"
       }
@@ -42893,7 +42965,7 @@
     "dep_airport_code": "SAN",
     "publishedTime": "2024-08-07 05:19:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 05:19:00",
+    "actualtime": "2024-08-07 05:23:00",
     "city": "SAN DIEGO",
     "claim": null,
     "claim1": null,
@@ -42914,10 +42986,10 @@
       }
     ],
     "aircraftInfo": {
-      "aircraft_code": "7M9",
-      "aircraft_code_type": "Iata",
+      "aircraft_code": "B39M",
+      "aircraft_code_type": "Icao",
       "tail_number": "N47524",
-      "weight_class": null,
+      "weight_class": "L",
       "optional_equipment": null
     },
     "arrivalInfo": [
@@ -42929,7 +43001,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"2129\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -43931,11 +44003,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "02:20:44",
-        "elapsed_time": "02:36:16",
+        "remaining_time": "01:50:47",
+        "elapsed_time": "03:06:13",
         "scheduled_duration": "05:14:00",
         "map": null,
-        "position": "{\"Altitude\":\"33000\",\"Speed\":\"504\",\"Heading\":\"89\"}",
+        "position": "{\"Altitude\":\"33000\",\"Speed\":\"498\",\"Heading\":\"94\"}",
         "route": null,
         "airport_name": "SAN FRANCISCO INTERNATIONAL"
       }
@@ -43948,7 +44020,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Alaska Airlines",
-    "gate": "B63",
+    "gate": "B41",
     "mod_gate": null,
     "flightnumber": "455",
     "dep_airport_code": "SFO",
@@ -44626,11 +44698,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "01:42:44",
-        "elapsed_time": "03:16:16",
+        "remaining_time": "01:12:48",
+        "elapsed_time": "03:46:12",
         "scheduled_duration": "04:40:00",
         "map": null,
-        "position": "{\"Altitude\":\"36100\",\"Speed\":\"448\",\"Heading\":\"16\"}",
+        "position": "{\"Altitude\":\"35000\",\"Speed\":\"454\",\"Heading\":\"42\"}",
         "route": null,
         "airport_name": "JUAN SANTAMARIA INTL"
       }
@@ -45202,11 +45274,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "01:58:44",
-        "elapsed_time": "02:10:16",
+        "remaining_time": "01:28:47",
+        "elapsed_time": "02:40:13",
         "scheduled_duration": "04:20:00",
         "map": null,
-        "position": "{\"Altitude\":\"37000\",\"Speed\":\"448\",\"Heading\":\"29\"}",
+        "position": "{\"Altitude\":\"37000\",\"Speed\":\"444\",\"Heading\":\"30\"}",
         "route": null,
         "airport_name": "EL SALVADOR INTL"
       }
@@ -45216,7 +45288,7 @@
     "IATA": "AV",
     "airportcode": "IAD",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Avianca",
     "gate": null,
@@ -45225,7 +45297,7 @@
     "dep_airport_code": "SAL",
     "publishedTime": "2024-08-07 02:45:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 02:45:00",
+    "actualtime": "2024-08-07 03:26:00",
     "city": "SAN SALVADOR",
     "claim": null,
     "claim1": "19",
@@ -45308,10 +45380,10 @@
       }
     ],
     "aircraftInfo": {
-      "aircraft_code": "320",
-      "aircraft_code_type": "Iata",
+      "aircraft_code": "A20N",
+      "aircraft_code_type": "Icao",
       "tail_number": null,
-      "weight_class": null,
+      "weight_class": "L",
       "optional_equipment": null
     },
     "arrivalInfo": [
@@ -45323,7 +45395,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"TAI\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"580\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -45555,8 +45627,40 @@
     "customsAt": null,
     "international": 1,
     "codeshare": [],
-    "aircraftInfo": null,
-    "arrivalInfo": []
+    "aircraftInfo": {
+      "aircraft_code": "B39M",
+      "aircraft_code_type": "Icao",
+      "tail_number": "N77579",
+      "weight_class": "L",
+      "optional_equipment": null
+    },
+    "arrivalInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1473\"}",
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": "{\"Code\":\"IAD\",\"CodeNamespace\":\"Iata\",\"Name\":\"WASHINGTON DULLES INTERNATIONAL\",\"Location\":{\"CityName\":\"WASHINGTON\",\"StateId\":\"DC\",\"CountryId\":\"US\"}}",
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:10:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "SANTO DOMINGO INTL"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -45684,8 +45788,8 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "07:57:42",
-        "elapsed_time": "01:33:18",
+        "remaining_time": "07:27:45",
+        "elapsed_time": "02:03:15",
         "scheduled_duration": "09:55:00",
         "map": null,
         "position": null,
@@ -46813,11 +46917,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": "02:04:44",
-        "elapsed_time": "02:46:16",
+        "remaining_time": "01:34:47",
+        "elapsed_time": "03:16:13",
         "scheduled_duration": "04:49:00",
         "map": null,
-        "position": "{\"Altitude\":\"33000\",\"Speed\":\"531\",\"Heading\":\"109\"}",
+        "position": "{\"Altitude\":\"35000\",\"Speed\":\"510\",\"Heading\":\"115\"}",
         "route": null,
         "airport_name": "SEATTLE-TACOMA INTL"
       }
@@ -47546,7 +47650,7 @@
     "IATA": "KE",
     "airportcode": "IAD",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Korean Air",
     "gate": null,
@@ -47555,7 +47659,7 @@
     "dep_airport_code": "ICN",
     "publishedTime": "2024-08-07 11:15:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 11:43:00",
+    "actualtime": "2024-08-07 11:50:00",
     "city": "SEOUL",
     "claim": null,
     "claim1": "19",
@@ -47600,8 +47704,8 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": null,
-        "elapsed_time": null,
+        "remaining_time": "13:04:43",
+        "elapsed_time": "00:52:17",
         "scheduled_duration": "13:50:00",
         "map": null,
         "position": null,
@@ -47807,7 +47911,7 @@
     "aircraftInfo": {
       "aircraft_code": "CR5",
       "aircraft_code_type": "Iata",
-      "tail_number": "N546GJ",
+      "tail_number": "N519GJ",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -49109,7 +49213,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "C17",
     "mod_gate": null,
     "flightnumber": "2331",
     "dep_airport_code": "TPA",
@@ -49124,7 +49228,7 @@
     "id": "c6c5422c13ea4916b2a8ced323acb063",
     "dep_terminal": null,
     "arr_terminal": null,
-    "dep_gate": null,
+    "dep_gate": "A6",
     "incustoms": 1,
     "customsAt": null,
     "international": 0,
@@ -49145,7 +49249,13 @@
         "airline": null
       }
     ],
-    "aircraftInfo": null,
+    "aircraftInfo": {
+      "aircraft_code": "738",
+      "aircraft_code_type": "Iata",
+      "tail_number": "N13248",
+      "weight_class": null,
+      "optional_equipment": null
+    },
     "arrivalInfo": [
       {
         "reg_code": null,
@@ -49485,7 +49595,7 @@
     "IATA": "NH",
     "airportcode": "IAD",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "All Nippon Airways",
     "gate": null,
@@ -49494,7 +49604,7 @@
     "dep_airport_code": "HND",
     "publishedTime": "2024-08-07 10:35:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 10:35:00",
+    "actualtime": "2024-08-07 10:38:00",
     "city": "TOKYO, HND",
     "claim": null,
     "claim1": "17",
@@ -49549,8 +49659,8 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": null,
-        "elapsed_time": null,
+        "remaining_time": "11:52:43",
+        "elapsed_time": "00:49:17",
         "scheduled_duration": "12:45:00",
         "map": null,
         "position": null,
@@ -49799,7 +49909,7 @@
     "aircraftInfo": {
       "aircraft_code": "DH4",
       "aircraft_code_type": "Iata",
-      "tail_number": null,
+      "tail_number": "CGLQR",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -50471,7 +50581,7 @@
     "aircraftInfo": {
       "aircraft_code": "E7W",
       "aircraft_code_type": "Iata",
-      "tail_number": "N722YX",
+      "tail_number": "N865RW",
       "weight_class": null,
       "optional_equipment": null
     },
@@ -50799,7 +50909,7 @@
     "IATA": "B6",
     "airportcode": "JFK",
     "baggage": null,
-    "status": "Unknown",
+    "status": "PastFlight",
     "mod_status": "In Customs",
     "airline": "JetBlue Airways",
     "gate": "27",
@@ -50944,7 +51054,7 @@
     "dep_airport_code": "YVR",
     "publishedTime": "2024-08-07 06:41:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 06:41:00",
+    "actualtime": "2024-08-07 06:35:00",
     "city": "VANCOUVER",
     "claim": null,
     "claim1": null,
@@ -50965,10 +51075,10 @@
       }
     ],
     "aircraftInfo": {
-      "aircraft_code": "7M8",
-      "aircraft_code_type": "Iata",
+      "aircraft_code": "B38M",
+      "aircraft_code_type": "Icao",
       "tail_number": "N17315",
-      "weight_class": null,
+      "weight_class": "Q",
       "optional_equipment": null
     },
     "arrivalInfo": [
@@ -50980,7 +51090,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1606\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -51610,7 +51720,7 @@
     "IATA": "9X",
     "airportcode": "IAD",
     "baggage": null,
-    "status": "Delayed",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Southern Airways Express",
     "gate": null,
@@ -51619,7 +51729,7 @@
     "dep_airport_code": "IPT",
     "publishedTime": "2024-08-06 20:50:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-08-06 23:29:00",
     "city": "WILLIAMSPORT",
     "claim": null,
     "claim1": "10",
@@ -51636,7 +51746,7 @@
     "aircraftInfo": {
       "aircraft_code": "C208",
       "aircraft_code_type": "Icao",
-      "tail_number": null,
+      "tail_number": "N1258B",
       "weight_class": "L",
       "optional_equipment": null
     },
@@ -51658,11 +51768,11 @@
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
-        "remaining_time": null,
-        "elapsed_time": null,
+        "remaining_time": "00:44:48",
+        "elapsed_time": "00:23:12",
         "scheduled_duration": "01:30:00",
         "map": null,
-        "position": null,
+        "position": "{\"Altitude\":\"8100\",\"Speed\":\"155\",\"Heading\":\"190\"}",
         "route": null,
         "airport_name": "WILLIAMSPORT RGNL"
       }
