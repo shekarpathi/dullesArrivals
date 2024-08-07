@@ -1984,7 +1984,7 @@
     "IATA": "DL",
     "airportcode": "ATL",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B74",
@@ -2207,10 +2207,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "320",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A320",
+        "aircraft_code_type": "Icao",
         "tail_number": "N422UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -2223,7 +2223,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"2081\"}",
         "servicetype": "J",
         "leg_seq_num": 2,
         "num_legs": 2,
@@ -3521,7 +3521,7 @@
       {
         "aircraft_code": "319",
         "aircraft_code_type": "Iata",
-        "tail_number": "N890UA",
+        "tail_number": "N814UA",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -3812,7 +3812,7 @@
     "IATA": "AV",
     "airportcode": "BOG",
     "baggage": null,
-    "status": "Proposed",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "Avianca",
     "gate": null,
@@ -3820,7 +3820,7 @@
     "flightnumber": "247",
     "publishedTime": "2024-08-07 15:05:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 15:05:00",
+    "actualtime": "2024-08-07 15:36:00",
     "city": "BOGOTA",
     "id": "b0316f9205e544edb3a811730c951f96",
     "dep_airport_code": "IAD",
@@ -8433,7 +8433,7 @@
     "IATA": "UA",
     "airportcode": "CHO",
     "baggage": null,
-    "status": "Delayed",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A6A",
@@ -8441,7 +8441,7 @@
     "flightnumber": "4815",
     "publishedTime": "2024-08-07 12:55:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 14:00:00",
+    "actualtime": "2024-08-07 13:54:00",
     "city": "CHARLOTTESVILLE",
     "id": "7c351240fc0241cab985d70bb0e42bf7",
     "dep_airport_code": "IAD",
@@ -8888,7 +8888,7 @@
     "IATA": "UA",
     "airportcode": "ORD",
     "baggage": "3",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D10",
@@ -8965,7 +8965,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D4",
+    "gate": "D1",
     "mod_gate": null,
     "flightnumber": "2727",
     "publishedTime": "2024-08-07 17:33:00",
@@ -12204,7 +12204,7 @@
     "IATA": "UA",
     "airportcode": "DAY",
     "baggage": null,
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A6C",
@@ -12212,7 +12212,7 @@
     "flightnumber": "4379",
     "publishedTime": "2024-08-07 12:45:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 14:00:00",
+    "actualtime": "2024-08-07 14:08:00",
     "city": "DAYTON",
     "id": "d2b548a3ed854c6bbf2b423ebe5508a8",
     "dep_airport_code": "IAD",
@@ -12868,7 +12868,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "B44",
+    "arr_gate": "B43",
     "international": 0,
     "codeshare": [
       {
@@ -13795,7 +13795,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "B37",
     "international": 0,
     "codeshare": [
       {
@@ -14488,7 +14488,7 @@
       {
         "aircraft_code": "E7W",
         "aircraft_code_type": "Iata",
-        "tail_number": "N85323",
+        "tail_number": "N85356",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -16724,10 +16724,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "77W",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B77W",
+        "aircraft_code_type": "Icao",
         "tail_number": "N2645U",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -16740,7 +16740,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"989\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -17614,8 +17614,42 @@
     "arr_gate": null,
     "international": 1,
     "codeshare": [],
-    "aircraftInfo": [],
-    "departureInfo": []
+    "aircraftInfo": [
+      {
+        "aircraft_code": "320",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 2,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": "[{\"DepAirportCode\":\"GUA\",\"DepCodeNS\":\"Iata\",\"ArrAirportCode\":\"SJO\",\"ArrCodeNS\":\"Iata\"}]",
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:15:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "LA AURORA"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -22368,10 +22402,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "738",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B738",
+        "aircraft_code_type": "Icao",
         "tail_number": "N38268",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -22384,7 +22418,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"780\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -23121,10 +23155,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "777",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B772",
+        "aircraft_code_type": "Icao",
         "tail_number": "N791UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -23137,7 +23171,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"918\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -23323,7 +23357,7 @@
     "IATA": "BA",
     "airportcode": "LHR",
     "baggage": null,
-    "status": "Delayed",
+    "status": "Cancelled",
     "mod_status": null,
     "airline": "British Airways",
     "gate": null,
@@ -23331,7 +23365,7 @@
     "flightnumber": "292",
     "publishedTime": "2024-08-07 22:45:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-08 00:17:00",
+    "actualtime": null,
     "city": "LONDON",
     "id": "ae4bb3d414624e61aee99585e2dced19",
     "dep_airport_code": "IAD",
@@ -24112,7 +24146,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "7",
-    "arr_gate": "73",
+    "arr_gate": "71B",
     "international": 0,
     "codeshare": [
       {
@@ -24269,7 +24303,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D1",
+    "gate": "C23",
     "mod_gate": null,
     "flightnumber": "2303",
     "publishedTime": "2024-08-07 19:15:00",
@@ -24280,7 +24314,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "7",
-    "arr_gate": "71B",
+    "arr_gate": "75B",
     "international": 0,
     "codeshare": [
       {
@@ -26405,7 +26439,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": "B",
     "arr_terminal": "1",
-    "arr_gate": "C24",
+    "arr_gate": "C14",
     "international": 0,
     "codeshare": [
       {
@@ -28307,10 +28341,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "763",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B763",
+        "aircraft_code_type": "Icao",
         "tail_number": "N659UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -28323,7 +28357,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"108\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -29784,7 +29818,7 @@
       {
         "aircraft_code": "E7W",
         "aircraft_code_type": "Iata",
-        "tail_number": "N256SY",
+        "tail_number": "N258SY",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -31737,10 +31771,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "7M9",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B39M",
+        "aircraft_code_type": "Icao",
         "tail_number": "N27509",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -31753,7 +31787,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"2398\"}",
         "servicetype": "J",
         "leg_seq_num": 2,
         "num_legs": 2,
@@ -32793,7 +32827,7 @@
       {
         "aircraft_code": "738",
         "aircraft_code_type": "Iata",
-        "tail_number": "N73276",
+        "tail_number": "N33203",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -33768,7 +33802,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "5",
     "international": 1,
     "codeshare": [
       {
@@ -33832,7 +33866,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "6",
     "international": 1,
     "codeshare": [
       {
@@ -33901,7 +33935,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "6",
     "international": 1,
     "codeshare": [
       {
@@ -34168,10 +34202,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "7M9",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B39M",
+        "aircraft_code_type": "Icao",
         "tail_number": null,
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -34184,7 +34218,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"CMP\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"444\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -35149,7 +35183,7 @@
     "IATA": "UA",
     "airportcode": "PHL",
     "baggage": "UXH",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A3C",
@@ -35364,7 +35398,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "D",
-    "arr_gate": "D9",
+    "arr_gate": "D7",
     "international": 0,
     "codeshare": [
       {
@@ -35673,10 +35707,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "7M9",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B39M",
+        "aircraft_code_type": "Icao",
         "tail_number": "N77559",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -35689,7 +35723,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1938\"}",
         "servicetype": "J",
         "leg_seq_num": 2,
         "num_legs": 2,
@@ -40163,7 +40197,7 @@
     "IATA": "UA",
     "airportcode": "ROC",
     "baggage": null,
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A4F",
@@ -40171,7 +40205,7 @@
     "flightnumber": "4843",
     "publishedTime": "2024-08-07 13:00:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 14:10:00",
+    "actualtime": "2024-08-07 14:09:00",
     "city": "ROCHESTER",
     "id": "26bb03d63c6c4cc09b6fff2c5520e1bd",
     "dep_airport_code": "IAD",
@@ -42534,7 +42568,7 @@
     "flightnumber": "435",
     "publishedTime": "2024-08-07 19:41:00",
     "mwaaTime": null,
-    "actualtime": "2024-08-07 20:00:00",
+    "actualtime": "2024-08-07 20:27:00",
     "city": "SAN FRANCISCO",
     "id": "d38f1b83582b477a9cc77eeb2101fda3",
     "dep_airport_code": "IAD",
@@ -42851,7 +42885,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "3",
-    "arr_gate": null,
+    "arr_gate": "F15",
     "international": 0,
     "codeshare": [
       {
@@ -44207,8 +44241,42 @@
     "arr_gate": null,
     "international": 1,
     "codeshare": [],
-    "aircraftInfo": [],
-    "departureInfo": []
+    "aircraftInfo": [
+      {
+        "aircraft_code": "320",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:17:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "EL SALVADOR INTL"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -45230,7 +45298,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D1",
+    "gate": "D4",
     "mod_gate": null,
     "flightnumber": "326",
     "publishedTime": "2024-08-07 17:20:00",
@@ -46120,7 +46188,7 @@
     "IATA": "KE",
     "airportcode": "ICN",
     "baggage": "10",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Korean Air",
     "gate": null,
@@ -46128,7 +46196,7 @@
     "flightnumber": "94",
     "publishedTime": "2024-08-07 13:40:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-08-07 14:12:00",
     "city": "SEOUL",
     "id": "29d91278e3b444da9d3fa6b790522863",
     "dep_airport_code": "IAD",
@@ -47605,10 +47673,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "738",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B738",
+        "aircraft_code_type": "Icao",
         "tail_number": "N35236",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -47621,7 +47689,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1140\"}",
         "servicetype": "J",
         "leg_seq_num": 2,
         "num_legs": 2,
@@ -48142,7 +48210,7 @@
     "IATA": "PD",
     "airportcode": "YTZ",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Porter Airlines Canada Limited",
     "gate": "A19",
@@ -48536,7 +48604,7 @@
     "IATA": "UA",
     "airportcode": "YYZ",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A6E",
@@ -49300,7 +49368,7 @@
     "IATA": "AC",
     "airportcode": "YVR",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "Air Canada",
     "gate": "Z10",
@@ -49308,7 +49376,7 @@
     "flightnumber": "1037",
     "publishedTime": "2024-08-07 17:45:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-08-07 17:45:00",
     "city": "VANCOUVER",
     "id": "8c07fa7e159c4ed38adbfbc1e090183f",
     "dep_airport_code": "IAD",
@@ -49325,10 +49393,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "7M8",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B38M",
+        "aircraft_code_type": "Icao",
         "tail_number": "CGEKX",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -49341,7 +49409,7 @@
         "arr_scheduled_status": "AO",
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"ACA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1037\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -49613,6 +49681,56 @@
         "position": null,
         "route": null,
         "airport_name": "WIEN/SCHWECHAT"
+      }
+    ]
+  },
+  {
+    "IATA": "AA",
+    "airportcode": "DCA",
+    "baggage": "11",
+    "status": "Delayed",
+    "mod_status": null,
+    "airline": "American Airlines",
+    "gate": null,
+    "mod_gate": null,
+    "flightnumber": "4440",
+    "publishedTime": "2024-08-07 11:56:00",
+    "mwaaTime": null,
+    "actualtime": "2024-08-07 14:50:00",
+    "city": "WASHINGTON",
+    "id": "9CCE3E17AAC84F86820489F59F530000",
+    "dep_airport_code": "MEM",
+    "dep_terminal": null,
+    "arr_terminal": "2",
+    "arr_gate": "D36",
+    "international": 0,
+    "codeshare": [],
+    "aircraftInfo": [],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": "{\"Code\":\"IAD\",\"CodeNamespace\":\"Iata\",\"Name\":\"WASHINGTON DULLES INTERNATIONAL\",\"Location\":{\"CityName\":\"WASHINGTON\",\"StateId\":\"DC\",\"CountryId\":\"US\"}}",
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "02:17:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "RONALD REAGAN WASHINGTON NAT'L"
       }
     ]
   },
@@ -50124,10 +50242,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "763",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B763",
+        "aircraft_code_type": "Icao",
         "tail_number": "N648UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -50140,7 +50258,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"52\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
