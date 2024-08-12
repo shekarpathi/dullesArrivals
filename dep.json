@@ -4946,7 +4946,7 @@
     "IATA": "UA",
     "airportcode": "BOS",
     "baggage": "6",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D11",
@@ -6987,6 +6987,64 @@
         "dep_delay_reason": null,
         "arr_delay_reason": null,
         "faaId": "{\"Code\":\"MSR\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"982\"}",
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "10:30:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "CAIRO INTL"
+      }
+    ]
+  },
+  {
+    "IATA": "MS",
+    "airportcode": "CAI",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Egyptair",
+    "gate": null,
+    "mod_gate": "B40",
+    "flightnumber": "982",
+    "publishedTime": "2024-08-13 12:00:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "CAIRO",
+    "id": "30ffe10ba1904abf8bd6c132c7318b0e",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": "3",
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "773",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -15199,7 +15257,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "C65",
+    "arr_gate": "C66",
     "international": 0,
     "codeshare": [],
     "aircraftInfo": [
@@ -18748,7 +18806,7 @@
     "IATA": "UA",
     "airportcode": "EDI",
     "baggage": "1",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D21",
@@ -26525,7 +26583,7 @@
     "IATA": "UA",
     "airportcode": "LHR",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D3",
@@ -26688,7 +26746,7 @@
     "IATA": "UA",
     "airportcode": "LHR",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C3",
@@ -28714,7 +28772,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "C6",
     "mod_gate": null,
     "flightnumber": "719",
     "publishedTime": "2024-08-13 09:00:00",
@@ -30797,7 +30855,28 @@
     "arr_terminal": "1",
     "arr_gate": null,
     "international": 0,
-    "codeshare": [],
+    "codeshare": [
+      {
+        "IATA": "AF",
+        "flightnumber": "8630",
+        "airline": "Air France"
+      },
+      {
+        "IATA": "KL",
+        "flightnumber": "7895",
+        "airline": "KLM Royal Dutch Airlines"
+      },
+      {
+        "IATA": "VS",
+        "flightnumber": "2757",
+        "airline": "Virgin Atlantic"
+      },
+      {
+        "IATA": "WS",
+        "flightnumber": "7435",
+        "airline": "WestJet Airlines"
+      }
+    ],
     "aircraftInfo": [
       {
         "aircraft_code": "E7W",
@@ -34475,7 +34554,7 @@
     "IATA": "UA",
     "airportcode": "LGA",
     "baggage": "7",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A6E",
@@ -37533,7 +37612,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Copa Airlines",
-    "gate": null,
+    "gate": "A15",
     "mod_gate": "A15",
     "flightnumber": "403",
     "publishedTime": "2024-08-12 02:25:00",
@@ -38082,7 +38161,7 @@
     "IATA": "UA",
     "airportcode": "CDG",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C17",
@@ -42260,7 +42339,7 @@
     "IATA": "FI",
     "airportcode": "KEF",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Icelandair",
     "gate": null,
@@ -53711,10 +53790,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "E7W",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "E75L",
+        "aircraft_code_type": "Icao",
         "tail_number": "N724YX",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -53727,7 +53806,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"RPA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"3515\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
