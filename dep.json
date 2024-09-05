@@ -8011,7 +8011,7 @@
     "IATA": "UA",
     "airportcode": "CHO",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A5A",
@@ -13246,7 +13246,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C17",
+    "gate": "D1",
     "mod_gate": null,
     "flightnumber": "1872",
     "publishedTime": "2024-09-05 19:55:00",
@@ -13898,7 +13898,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "C23",
     "mod_gate": null,
     "flightnumber": "1872",
     "publishedTime": "2024-09-06 19:55:00",
@@ -20827,7 +20827,7 @@
     "IATA": "UA",
     "airportcode": "MCI",
     "baggage": "8",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A2G",
@@ -20835,7 +20835,7 @@
     "flightnumber": "6126",
     "publishedTime": "2024-09-05 18:40:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-05 18:40:00",
+    "actualtime": "2024-09-05 18:39:00",
     "city": "KANSAS CITY",
     "id": "823216df9bb14ec389770fbd3c3a9535",
     "dep_airport_code": "IAD",
@@ -21393,7 +21393,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "7",
+    "arr_gate": "9",
     "international": 0,
     "codeshare": [
       {
@@ -21744,7 +21744,7 @@
     "IATA": "UA",
     "airportcode": "LOS",
     "baggage": null,
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D32",
@@ -21752,7 +21752,7 @@
     "flightnumber": "612",
     "publishedTime": "2024-09-05 18:15:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-05 18:45:00",
+    "actualtime": "2024-09-05 18:41:00",
     "city": "LAGOS",
     "id": "301adcc1209c46928fbc5e799ea85522",
     "dep_airport_code": "IAD",
@@ -22605,7 +22605,7 @@
     "IATA": "TP",
     "airportcode": "LIS",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "TAP Air Portugal",
     "gate": null,
@@ -22630,10 +22630,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "32Q",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A21N",
+        "aircraft_code_type": "Icao",
         "tail_number": null,
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -22646,7 +22646,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"TAP\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"234Y\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -22945,7 +22945,7 @@
     "IATA": "UA",
     "airportcode": "LHR",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C5",
@@ -22953,7 +22953,7 @@
     "flightnumber": "918",
     "publishedTime": "2024-09-05 18:30:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-05 18:40:00",
+    "actualtime": "2024-09-05 19:15:00",
     "city": "LONDON",
     "id": "124f2ea40dd74a62b0dee424971dc3f1",
     "dep_airport_code": "IAD",
@@ -25426,7 +25426,7 @@
   {
     "IATA": "IB",
     "airportcode": "MAD",
-    "baggage": "3",
+    "baggage": "5",
     "status": "Proposed",
     "mod_status": null,
     "airline": "Iberia",
@@ -27954,9 +27954,46 @@
     "arr_terminal": "T2",
     "arr_gate": null,
     "international": 1,
-    "codeshare": [],
+    "codeshare": [
+      {
+        "IATA": "AC",
+        "flightnumber": "3838",
+        "airline": "Air Canada"
+      },
+      {
+        "IATA": "LH",
+        "flightnumber": "9281",
+        "airline": "Deutsche Lufthansa AG"
+      }
+    ],
     "aircraftInfo": [],
-    "departureInfo": []
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": "{\"Code\":\"IAD\",\"CodeNamespace\":\"Iata\",\"Name\":\"WASHINGTON DULLES INTERNATIONAL\",\"Location\":{\"CityName\":\"WASHINGTON\",\"StateId\":\"DC\",\"CountryId\":\"US\"}}",
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "08:25:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "MUNICH"
+      }
+    ]
   },
   {
     "IATA": "LH",
@@ -30786,10 +30823,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "319",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A319",
+        "aircraft_code_type": "Icao",
         "tail_number": "N806UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -30802,7 +30839,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1554\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -31352,7 +31389,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "B",
-    "arr_gate": "48",
+    "arr_gate": "42",
     "international": 0,
     "codeshare": [
       {
@@ -32879,7 +32916,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air France",
-    "gate": null,
+    "gate": "A25",
     "mod_gate": "A25",
     "flightnumber": "51",
     "publishedTime": "2024-09-06 18:25:00",
@@ -33436,7 +33473,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "D",
-    "arr_gate": "D9",
+    "arr_gate": "D7",
     "international": 0,
     "codeshare": [
       {
@@ -33826,7 +33863,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Southwest Airlines",
-    "gate": null,
+    "gate": "B64",
     "mod_gate": null,
     "flightnumber": "1823",
     "publishedTime": "2024-09-06 17:30:00",
@@ -36190,7 +36227,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D9",
+    "gate": "D14",
     "mod_gate": null,
     "flightnumber": "1322",
     "publishedTime": "2024-09-06 17:31:00",
