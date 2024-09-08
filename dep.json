@@ -395,7 +395,7 @@
     "IATA": "UA",
     "airportcode": "ALB",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A4E",
@@ -2965,7 +2965,7 @@
     "IATA": "UA",
     "airportcode": "AUS",
     "baggage": "1",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C17",
@@ -3979,7 +3979,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "B",
-    "arr_gate": "B24",
+    "arr_gate": "B26",
     "international": 0,
     "codeshare": [
       {
@@ -8473,7 +8473,7 @@
     "IATA": "UA",
     "airportcode": "ORD",
     "baggage": "3",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D3",
@@ -10679,7 +10679,7 @@
     "IATA": "UA",
     "airportcode": "CMH",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A2A",
@@ -13988,7 +13988,7 @@
     "IATA": "DL",
     "airportcode": "DTW",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B76",
@@ -14513,18 +14513,18 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Delta Air Lines",
-    "gate": null,
+    "gate": "B76",
     "mod_gate": null,
     "flightnumber": "4025",
     "publishedTime": "2024-09-09 13:23:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-09-09 13:23:00",
     "city": "DETROIT, DTW",
     "id": "51621e6326144d7daa9393434ca00f48",
     "dep_airport_code": "IAD",
-    "dep_terminal": null,
-    "arr_terminal": "M",
-    "arr_gate": null,
+    "dep_terminal": "B",
+    "arr_terminal": "EM",
+    "arr_gate": "B7",
     "international": 0,
     "codeshare": [
       {
@@ -14552,7 +14552,7 @@
       {
         "aircraft_code": "E7W",
         "aircraft_code_type": "Iata",
-        "tail_number": null,
+        "tail_number": "N244SY",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -20422,7 +20422,7 @@
     "IATA": "UA",
     "airportcode": "MCI",
     "baggage": "8",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A2G",
@@ -20893,7 +20893,7 @@
     "IATA": "UA",
     "airportcode": "TYS",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A6A",
@@ -22222,7 +22222,7 @@
     "flightnumber": "234",
     "publishedTime": "2024-09-08 22:20:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-08 22:20:00",
+    "actualtime": "2024-09-08 22:35:00",
     "city": "LISBON",
     "id": "baa20771b98d4d068567ed979912ebe4",
     "dep_airport_code": "IAD",
@@ -25533,10 +25533,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "E7W",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "E75L",
+        "aircraft_code_type": "Icao",
         "tail_number": "N310SY",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -25549,7 +25549,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"SKW\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"3803\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -26472,7 +26472,7 @@
     "flightnumber": "8724",
     "publishedTime": "2024-09-08 09:55:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-08 14:00:00",
+    "actualtime": "2024-09-08 14:30:00",
     "city": "MONTREAL",
     "id": "99434ce7326e41a0b009c570bc36138d",
     "dep_airport_code": "IAD",
@@ -27485,7 +27485,7 @@
     "IATA": "LH",
     "airportcode": "MUC",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "Deutsche Lufthansa AG",
     "gate": "B45",
@@ -27493,7 +27493,7 @@
     "flightnumber": "415",
     "publishedTime": "2024-09-08 22:20:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-08 22:20:00",
+    "actualtime": "2024-09-08 23:55:00",
     "city": "MUNICH",
     "id": "0bd3110a0ba1443eaec7ee883daaf836",
     "dep_airport_code": "IAD",
@@ -32029,6 +32029,70 @@
     ]
   },
   {
+    "IATA": "CM",
+    "airportcode": "PTY",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Copa Airlines",
+    "gate": null,
+    "mod_gate": "A15",
+    "flightnumber": "403",
+    "publishedTime": "2024-09-10 02:25:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "PANAMA CITY",
+    "id": "bcb0cd62f6dd48a381f16102059fda90",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [
+      {
+        "IATA": "UA",
+        "flightnumber": "7065",
+        "airline": "United Airlines"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "738",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:48:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "TOCUMEN INTL"
+      }
+    ]
+  },
+  {
     "IATA": "UA",
     "airportcode": "CDG",
     "baggage": "2",
@@ -33130,10 +33194,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "7M9",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B39M",
+        "aircraft_code_type": "Icao",
         "tail_number": "N17566",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -33146,7 +33210,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1938\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -39696,10 +39760,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "7M9",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B39M",
+        "aircraft_code_type": "Icao",
         "tail_number": "N37536",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -39712,7 +39776,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1318\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 2,
@@ -40187,7 +40251,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "C11",
     "mod_gate": null,
     "flightnumber": "2228",
     "publishedTime": "2024-09-09 14:35:00",
@@ -40216,7 +40280,7 @@
       {
         "aircraft_code": "739",
         "aircraft_code_type": "Iata",
-        "tail_number": "N45440",
+        "tail_number": "N68452",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -40346,7 +40410,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "1",
-    "arr_gate": "B11",
+    "arr_gate": "B10",
     "international": 0,
     "codeshare": [
       {
@@ -42123,7 +42187,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "N9",
+    "arr_gate": "N2",
     "international": 0,
     "codeshare": [
       {
@@ -42350,7 +42414,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "N7",
+    "arr_gate": "C15",
     "international": 0,
     "codeshare": [
       {
@@ -43780,7 +43844,7 @@
     "IATA": "UA",
     "airportcode": "SYR",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A6C",
@@ -44941,7 +45005,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "11",
+    "arr_gate": "7",
     "international": 1,
     "codeshare": [],
     "aircraftInfo": [
@@ -46207,7 +46271,7 @@
     "IATA": "OS",
     "airportcode": "VIE",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "Austrian",
     "gate": "B41",
@@ -46232,10 +46296,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "76W",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B763",
+        "aircraft_code_type": "Icao",
         "tail_number": null,
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -46248,7 +46312,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"AUA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"94\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -46343,7 +46407,7 @@
     "flightnumber": "4234",
     "publishedTime": "2024-09-08 12:55:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-08 13:49:00",
+    "actualtime": "2024-09-08 13:45:00",
     "city": "WILKES-BARRE",
     "id": "b6802766aaae4be48614e54e5a2b7337",
     "dep_airport_code": "IAD",
@@ -46723,10 +46787,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "763",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B763",
+        "aircraft_code_type": "Icao",
         "tail_number": "N655UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -46739,7 +46803,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"52\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
