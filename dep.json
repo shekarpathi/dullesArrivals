@@ -1959,7 +1959,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Delta Air Lines",
-    "gate": "B74",
+    "gate": "B72",
     "mod_gate": null,
     "flightnumber": "1695",
     "publishedTime": "2024-09-10 18:40:00",
@@ -6612,7 +6612,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A6E",
+    "gate": "C22",
     "mod_gate": null,
     "flightnumber": "6022",
     "publishedTime": "2024-09-10 17:30:00",
@@ -16246,10 +16246,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "763",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B763",
+        "aircraft_code_type": "Icao",
         "tail_number": "N642UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -16262,7 +16262,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"974\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -16552,7 +16552,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A2F",
+    "gate": "A4C",
     "mod_gate": null,
     "flightnumber": "4250",
     "publishedTime": "2024-09-10 17:25:00",
@@ -18061,7 +18061,7 @@
     "IATA": "UA",
     "airportcode": "HSV",
     "baggage": null,
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A6C",
@@ -18069,7 +18069,7 @@
     "flightnumber": "4286",
     "publishedTime": "2024-09-10 12:56:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-10 13:41:00",
+    "actualtime": "2024-09-10 13:48:00",
     "city": "HUNTSVILLE",
     "id": "492398df5c214fa191caaafbc52a1ac3",
     "dep_airport_code": "IAD",
@@ -19334,7 +19334,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "A6",
     "international": 0,
     "codeshare": [
       {
@@ -21430,7 +21430,7 @@
     "IATA": "TP",
     "airportcode": "LIS",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "TAP Air Portugal",
     "gate": null,
@@ -21455,10 +21455,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "32Q",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A21N",
+        "aircraft_code_type": "Icao",
         "tail_number": null,
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -21471,7 +21471,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"TAP\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"232Y\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -21896,7 +21896,7 @@
     "flightnumber": "216",
     "publishedTime": "2024-09-10 17:55:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-10 17:59:00",
+    "actualtime": "2024-09-10 18:00:00",
     "city": "LONDON",
     "id": "1b531aa7ea1f47b6bd8d6e57f582afd2",
     "dep_airport_code": "IAD",
@@ -24263,10 +24263,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "764",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B764",
+        "aircraft_code_type": "Icao",
         "tail_number": "N76054",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -24279,7 +24279,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"260\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -25131,7 +25131,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Delta Air Lines",
-    "gate": "B72",
+    "gate": "B76",
     "mod_gate": null,
     "flightnumber": "4919",
     "publishedTime": "2024-09-10 18:25:00",
@@ -28230,7 +28230,7 @@
     "IATA": "UA",
     "airportcode": "LGA",
     "baggage": "7",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D29",
@@ -31244,7 +31244,33 @@
         "optional_equipment": null
       }
     ],
-    "departureInfo": []
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:48:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "TOCUMEN INTL"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -31411,7 +31437,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air France",
-    "gate": null,
+    "gate": "A25",
     "mod_gate": "A25",
     "flightnumber": "53",
     "publishedTime": "2024-09-10 21:20:00",
@@ -33597,7 +33623,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "2",
     "international": 0,
     "codeshare": [],
     "aircraftInfo": [
@@ -33655,7 +33681,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "1B",
     "international": 0,
     "codeshare": [],
     "aircraftInfo": [
@@ -33713,7 +33739,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "1A",
     "international": 0,
     "codeshare": [
       {
@@ -33782,7 +33808,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "2",
     "international": 0,
     "codeshare": [],
     "aircraftInfo": [
@@ -35373,12 +35399,12 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A4C",
+    "gate": "A6C",
     "mod_gate": null,
     "flightnumber": "4471",
     "publishedTime": "2024-09-10 17:45:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-10 17:45:00",
+    "actualtime": "2024-09-10 18:00:00",
     "city": "RICHMOND",
     "id": "4543e1b90894405baafad5ccde9d6dbf",
     "dep_airport_code": "IAD",
@@ -40074,7 +40100,33 @@
         "optional_equipment": null
       }
     ],
-    "departureInfo": []
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:17:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "EL SALVADOR INTL"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -41057,7 +41109,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Delta Air Lines",
-    "gate": "B76",
+    "gate": "B74",
     "mod_gate": null,
     "flightnumber": "508",
     "publishedTime": "2024-09-10 17:55:00",
@@ -41742,7 +41794,7 @@
     "IATA": "KE",
     "airportcode": "ICN",
     "baggage": "11",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Korean Air",
     "gate": null,
@@ -44917,7 +44969,7 @@
     "IATA": "AC",
     "airportcode": "YVR",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "Air Canada",
     "gate": "Z10",
@@ -44925,7 +44977,7 @@
     "flightnumber": "1037",
     "publishedTime": "2024-09-10 17:40:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-09-10 17:40:00",
     "city": "VANCOUVER",
     "id": "4676367e616c47e1a1e6dba92c27118d",
     "dep_airport_code": "IAD",
@@ -44942,10 +44994,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "7M8",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B38M",
+        "aircraft_code_type": "Icao",
         "tail_number": "CFSNU",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -44958,7 +45010,7 @@
         "arr_scheduled_status": "AO",
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"ACA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1037\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
