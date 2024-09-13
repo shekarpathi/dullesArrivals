@@ -144,7 +144,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C14",
+    "gate": "C5",
     "mod_gate": null,
     "flightnumber": "996",
     "publishedTime": "2024-09-13 18:55:00",
@@ -4393,7 +4393,7 @@
     "IATA": "9X",
     "airportcode": "BFD",
     "baggage": null,
-    "status": "Delayed",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Southern Airways Express",
     "gate": null,
@@ -4628,7 +4628,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"950\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -6975,7 +6975,7 @@
     "IATA": "AA",
     "airportcode": "CLT",
     "baggage": "E",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "American Airlines",
     "gate": "B71",
@@ -6983,7 +6983,7 @@
     "flightnumber": "5543",
     "publishedTime": "2024-09-13 13:58:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-13 13:58:00",
+    "actualtime": "2024-09-13 13:46:00",
     "city": "CHARLOTTE",
     "id": "bed70104149c4a7aa268e491651ac492",
     "dep_airport_code": "IAD",
@@ -10218,7 +10218,7 @@
     "IATA": "UA",
     "airportcode": "CAE",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A4F",
@@ -12667,7 +12667,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "B38",
+    "arr_gate": "B47",
     "international": 0,
     "codeshare": [
       {
@@ -16298,10 +16298,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "77W",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B77W",
+        "aircraft_code_type": "Icao",
         "tail_number": "N2243U",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -16314,7 +16314,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"989\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -16816,10 +16816,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "763",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B763",
+        "aircraft_code_type": "Icao",
         "tail_number": "N643UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -16832,7 +16832,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"974\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -16992,6 +16992,30 @@
         "airport_name": "LA AURORA"
       }
     ]
+  },
+  {
+    "IATA": "AV",
+    "airportcode": "GUA",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Avianca",
+    "gate": null,
+    "mod_gate": "B48",
+    "flightnumber": "655",
+    "publishedTime": "2024-09-15 02:35:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "GUATEMALA CITY",
+    "id": "6bbc327e9ec545349fb429877d5e748c",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [],
+    "aircraftInfo": [],
+    "departureInfo": []
   },
   {
     "IATA": "UA",
@@ -20326,7 +20350,7 @@
       {
         "aircraft_code": "CRJ",
         "aircraft_code_type": "Iata",
-        "tail_number": "N920EV",
+        "tail_number": "N900EV",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -22872,7 +22896,7 @@
     "flightnumber": "292",
     "publishedTime": "2024-09-13 22:45:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-13 23:36:00",
+    "actualtime": "2024-09-13 23:46:00",
     "city": "LONDON",
     "id": "9344a039f6274705974a39bf4eff10d5",
     "dep_airport_code": "IAD",
@@ -23652,7 +23676,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D21",
+    "gate": "D15",
     "mod_gate": null,
     "flightnumber": "2276",
     "publishedTime": "2024-09-13 17:48:00",
@@ -26190,7 +26214,33 @@
     "international": 0,
     "codeshare": [],
     "aircraftInfo": [],
-    "departureInfo": []
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": "{\"Code\":\"IAD\",\"CodeNamespace\":\"Iata\",\"Name\":\"WASHINGTON DULLES INTERNATIONAL\",\"Location\":{\"CityName\":\"WASHINGTON\",\"StateId\":\"DC\",\"CountryId\":\"US\"}}",
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "02:27:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "MOBILE REGIONAL"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -29551,7 +29601,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "C",
-    "arr_gate": "C111",
+    "arr_gate": "C103",
     "international": 0,
     "codeshare": [
       {
@@ -31863,7 +31913,7 @@
   {
     "IATA": "AF",
     "airportcode": "CDG",
-    "baggage": "33",
+    "baggage": "42",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air France",
@@ -32090,7 +32140,7 @@
   {
     "IATA": "AF",
     "airportcode": "CDG",
-    "baggage": null,
+    "baggage": "41",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air France",
@@ -32164,7 +32214,7 @@
   {
     "IATA": "AF",
     "airportcode": "CDG",
-    "baggage": null,
+    "baggage": "33",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air France",
@@ -32438,7 +32488,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "D27",
     "mod_gate": null,
     "flightnumber": "6165",
     "publishedTime": "2024-09-13 17:29:00",
@@ -33914,7 +33964,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C18",
+    "gate": "D29",
     "mod_gate": null,
     "flightnumber": "6262",
     "publishedTime": "2024-09-13 17:50:00",
@@ -38673,7 +38723,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D15",
+    "gate": "D21",
     "mod_gate": null,
     "flightnumber": "1831",
     "publishedTime": "2024-09-13 18:00:00",
@@ -39446,7 +39496,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D29",
+    "gate": "C14",
     "mod_gate": null,
     "flightnumber": "1584",
     "publishedTime": "2024-09-13 18:12:00",
@@ -40934,6 +40984,30 @@
     ]
   },
   {
+    "IATA": "N3",
+    "airportcode": "SAL",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Volaris El Salvador",
+    "gate": null,
+    "mod_gate": "B37",
+    "flightnumber": "4313",
+    "publishedTime": "2024-09-15 02:43:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "SAN SALVADOR",
+    "id": "168924903b744d65aa7c8b5db2ea615d",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [],
+    "aircraftInfo": [],
+    "departureInfo": []
+  },
+  {
     "IATA": "UA",
     "airportcode": "GRU",
     "baggage": null,
@@ -41980,7 +42054,7 @@
     "IATA": "AS",
     "airportcode": "SEA",
     "baggage": null,
-    "status": "Delayed",
+    "status": "Scheduled",
     "mod_status": null,
     "airline": "Alaska Airlines",
     "gate": "B63",
@@ -41988,7 +42062,7 @@
     "flightnumber": "406",
     "publishedTime": "2024-09-13 19:09:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-13 19:28:00",
+    "actualtime": "2024-09-13 19:23:00",
     "city": "SEATTLE, SEA",
     "id": "6c79becb06894c049380ca3561af7e90",
     "dep_airport_code": "IAD",
@@ -45838,10 +45912,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "76W",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B763",
+        "aircraft_code_type": "Icao",
         "tail_number": null,
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
