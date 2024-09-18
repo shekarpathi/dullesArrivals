@@ -141,7 +141,7 @@
     "IATA": "UA",
     "airportcode": "ACC",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D5",
@@ -149,7 +149,7 @@
     "flightnumber": "996",
     "publishedTime": "2024-09-18 18:55:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-18 18:55:00",
+    "actualtime": "2024-09-18 19:02:00",
     "city": "ACCRA",
     "id": "e43c74365f8a449abba0a4215bae37a1",
     "dep_airport_code": "IAD",
@@ -600,7 +600,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "C1",
     "international": 0,
     "codeshare": [],
     "aircraftInfo": [
@@ -658,7 +658,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "A4",
     "international": 0,
     "codeshare": [],
     "aircraftInfo": [
@@ -716,7 +716,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "A5",
     "international": 0,
     "codeshare": [
       {
@@ -785,7 +785,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "A3",
     "international": 0,
     "codeshare": [
       {
@@ -1995,10 +1995,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "223",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B712",
+        "aircraft_code_type": "Icao",
         "tail_number": "N608AT",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -2011,7 +2011,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"DAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1695\"}",
         "servicetype": "J",
         "leg_seq_num": 2,
         "num_legs": 2,
@@ -3777,6 +3777,38 @@
     ]
   },
   {
+    "IATA": "AV",
+    "airportcode": "BOG",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Avianca",
+    "gate": null,
+    "mod_gate": "B48",
+    "flightnumber": "149",
+    "publishedTime": "2024-09-20 07:45:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "BOGOTA",
+    "id": "f64285b4e64b4256bb98c8b8f5155dd0",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": "1",
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "320",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": []
+  },
+  {
     "IATA": "UA",
     "airportcode": "BOS",
     "baggage": "6",
@@ -3918,85 +3950,25 @@
     "IATA": "UA",
     "airportcode": "BOS",
     "baggage": "7",
-    "status": "OutGate",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D24",
+    "gate": "D12",
     "mod_gate": null,
     "flightnumber": "688",
     "publishedTime": "2024-09-18 17:35:00",
     "mwaaTime": null,
-    "actualtime": "2024-09-18 17:30:00",
+    "actualtime": "2024-09-18 19:14:00",
     "city": "BOSTON",
-    "id": "426c6a11ecf842feb14cf4b498d8ea1c",
+    "id": "4BC88BC221674637B9D527B61A4DAA86",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "B",
     "arr_gate": "B26",
     "international": 0,
-    "codeshare": [
-      {
-        "IATA": "CM",
-        "flightnumber": "1085",
-        "airline": "Copa Airlines"
-      },
-      {
-        "IATA": "LH",
-        "flightnumber": "7450",
-        "airline": "Deutsche Lufthansa AG"
-      },
-      {
-        "IATA": "NH",
-        "flightnumber": "7104",
-        "airline": "All Nippon Airways"
-      },
-      {
-        "IATA": "OS",
-        "flightnumber": "7887",
-        "airline": "Austrian"
-      },
-      {
-        "IATA": "SN",
-        "flightnumber": "8833",
-        "airline": "Brussels Airlines"
-      }
-    ],
-    "aircraftInfo": [
-      {
-        "aircraft_code": "B738",
-        "aircraft_code_type": "Icao",
-        "tail_number": "N77542",
-        "weight_class": "L",
-        "optional_equipment": null
-      }
-    ],
-    "departureInfo": [
-      {
-        "reg_code": null,
-        "scheduled": 1,
-        "genral_aviation": null,
-        "dep_scheduled_status": null,
-        "arr_scheduled_status": null,
-        "dep_delay_reason": null,
-        "arr_delay_reason": null,
-        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"688\"}",
-        "servicetype": "J",
-        "leg_seq_num": 2,
-        "num_legs": 2,
-        "aircraft": null,
-        "alt_dep_airport": null,
-        "alt_arr_airport": null,
-        "upline_info": null,
-        "downline_info": null,
-        "remaining_time": null,
-        "elapsed_time": null,
-        "scheduled_duration": "01:42:00",
-        "map": null,
-        "position": null,
-        "route": null,
-        "airport_name": "GENERAL EDWARD LAWRENCE LOGAN IN"
-      }
-    ]
+    "codeshare": [],
+    "aircraftInfo": [],
+    "departureInfo": []
   },
   {
     "IATA": "UA",
@@ -9795,10 +9767,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "739",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B739",
+        "aircraft_code_type": "Icao",
         "tail_number": "N78448",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -9811,7 +9783,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1370\"}",
         "servicetype": "J",
         "leg_seq_num": 2,
         "num_legs": 2,
@@ -16704,10 +16676,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "788",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B788",
+        "aircraft_code_type": "Icao",
         "tail_number": "N27908",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -16720,7 +16692,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"932\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -19011,7 +18983,7 @@
     "IATA": "UA",
     "airportcode": "HSV",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A2F",
@@ -24807,7 +24779,7 @@
     "IATA": "UA",
     "airportcode": "SDF",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D25",
@@ -26620,7 +26592,7 @@
     "IATA": "UA",
     "airportcode": "MOB",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A4E",
@@ -30282,7 +30254,7 @@
   {
     "IATA": "UA",
     "airportcode": "EWR",
-    "baggage": null,
+    "baggage": "2",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
@@ -30296,8 +30268,8 @@
     "id": "1b622fe6f8814f7c920fd781b3550aaf",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
-    "arr_terminal": "A",
-    "arr_gate": null,
+    "arr_terminal": "C",
+    "arr_gate": "C81",
     "international": 0,
     "codeshare": [
       {
@@ -31724,7 +31696,7 @@
     "IATA": "UA",
     "airportcode": "YOW",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C22",
@@ -32586,7 +32558,7 @@
     "IATA": "AF",
     "airportcode": "CDG",
     "baggage": "41",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Air France",
     "gate": "A15",
@@ -36704,7 +36676,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "B5",
     "international": 0,
     "codeshare": [
       {
@@ -37040,7 +37012,7 @@
     "IATA": "SV",
     "airportcode": "RUH",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Saudi Arabian Airlines",
     "gate": null,
@@ -37048,7 +37020,7 @@
     "flightnumber": "38",
     "publishedTime": "2024-09-18 19:10:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-09-18 19:02:00",
     "city": "RIYADH",
     "id": "a88df92cb9fb4900aefb30f4f4991da0",
     "dep_airport_code": "IAD",
@@ -40651,7 +40623,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "1",
-    "arr_gate": "B20",
+    "arr_gate": "B16",
     "international": 0,
     "codeshare": [
       {
@@ -42771,7 +42743,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "N8",
+    "arr_gate": "N5",
     "international": 0,
     "codeshare": [
       {
@@ -43099,7 +43071,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "C15",
+    "arr_gate": "N6",
     "international": 0,
     "codeshare": [
       {
