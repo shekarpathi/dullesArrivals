@@ -2038,10 +2038,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "319",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A319",
+        "aircraft_code_type": "Icao",
         "tail_number": "N810UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -2054,7 +2054,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"2081\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -7862,7 +7862,7 @@
     "IATA": "UA",
     "airportcode": "CHO",
     "baggage": null,
-    "status": "InAir",
+    "status": "Landed",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A4B",
@@ -7987,7 +7987,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A3B",
+    "gate": "A4F",
     "mod_gate": null,
     "flightnumber": "4265",
     "publishedTime": "2024-10-06 22:05:00",
@@ -10319,7 +10319,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A6B",
+    "gate": "A6C",
     "mod_gate": null,
     "flightnumber": "4278",
     "publishedTime": "2024-10-07 08:15:00",
@@ -12619,7 +12619,7 @@
     "IATA": "UA",
     "airportcode": "DEN",
     "baggage": "16",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C25",
@@ -12702,7 +12702,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "A23",
+    "arr_gate": "B35",
     "international": 0,
     "codeshare": [
       {
@@ -13838,7 +13838,7 @@
     "IATA": "DL",
     "airportcode": "DTW",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B72",
@@ -16315,7 +16315,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "1",
-    "arr_gate": "Z52",
+    "arr_gate": "Z62",
     "international": 1,
     "codeshare": [
       {
@@ -17036,7 +17036,7 @@
     "IATA": "UA",
     "airportcode": "GSP",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A4F",
@@ -22545,7 +22545,7 @@
     "flightnumber": "234",
     "publishedTime": "2024-10-06 22:20:00",
     "mwaaTime": null,
-    "actualtime": "2024-10-06 22:20:00",
+    "actualtime": "2024-10-06 22:35:00",
     "city": "LISBON",
     "id": "d256e7d943794130abbaf57b5ab9dbe6",
     "dep_airport_code": "IAD",
@@ -26051,7 +26051,7 @@
     "flightnumber": "668",
     "publishedTime": "2024-10-06 13:25:00",
     "mwaaTime": null,
-    "actualtime": "2024-10-06 12:11:00",
+    "actualtime": "2024-10-06 13:26:00",
     "city": "MINNEAPOLIS",
     "id": "ffa0977b3966484283ead4cac2083e72",
     "dep_airport_code": "IAD",
@@ -26758,7 +26758,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A6B",
+    "gate": "A6C",
     "mod_gate": null,
     "flightnumber": "4295",
     "publishedTime": "2024-10-06 17:50:00",
@@ -32490,6 +32490,44 @@
         "airport_name": "TOCUMEN INTL"
       }
     ]
+  },
+  {
+    "IATA": "CM",
+    "airportcode": "PTY",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Copa Airlines",
+    "gate": null,
+    "mod_gate": "A15",
+    "flightnumber": "403",
+    "publishedTime": "2024-10-08 02:25:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "PANAMA CITY",
+    "id": "4b3696f72e5d43d9becaac040e12d6ae",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [
+      {
+        "IATA": "UA",
+        "flightnumber": "7065",
+        "airline": "United Airlines"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "738",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": []
   },
   {
     "IATA": "UA",
@@ -40518,7 +40556,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "D3",
     "mod_gate": null,
     "flightnumber": "2228",
     "publishedTime": "2024-10-07 14:32:00",
@@ -42491,7 +42529,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "C15",
+    "arr_gate": "N11",
     "international": 0,
     "codeshare": [
       {
@@ -43265,7 +43303,7 @@
     "IATA": "KE",
     "airportcode": "ICN",
     "baggage": "12",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Korean Air",
     "gate": null,
@@ -43273,7 +43311,7 @@
     "flightnumber": "94",
     "publishedTime": "2024-10-06 13:25:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-10-06 13:35:00",
     "city": "SEOUL",
     "id": "3c8b454cb2ed4c03af798aa65b802d4a",
     "dep_airport_code": "IAD",
@@ -43745,7 +43783,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A4F",
+    "gate": "A6A",
     "mod_gate": null,
     "flightnumber": "4236",
     "publishedTime": "2024-10-06 18:25:00",
@@ -43763,7 +43801,7 @@
       {
         "aircraft_code": "ERJ",
         "aircraft_code_type": "Iata",
-        "tail_number": "N12195",
+        "tail_number": "N21144",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -43803,7 +43841,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A4E",
+    "gate": "A5B",
     "mod_gate": null,
     "flightnumber": "4864",
     "publishedTime": "2024-10-06 22:05:00",
@@ -44295,7 +44333,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A6C",
+    "gate": "A6B",
     "mod_gate": null,
     "flightnumber": "4860",
     "publishedTime": "2024-10-07 08:20:00",
@@ -46613,7 +46651,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A6A",
+    "gate": "A6B",
     "mod_gate": null,
     "flightnumber": "4249",
     "publishedTime": "2024-10-06 17:55:00",
