@@ -1916,10 +1916,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "319",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A319",
+        "aircraft_code_type": "Icao",
         "tail_number": "N897UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -1932,7 +1932,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"2081\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -6769,7 +6769,7 @@
     "IATA": "AA",
     "airportcode": "CLT",
     "baggage": "E",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "American Airlines",
     "gate": "B73",
@@ -6777,7 +6777,7 @@
     "flightnumber": "5543",
     "publishedTime": "2024-10-09 13:49:00",
     "mwaaTime": null,
-    "actualtime": "2024-10-09 13:49:00",
+    "actualtime": "2024-10-09 13:42:00",
     "city": "CHARLOTTE",
     "id": "45d8ac36c01049d5bdb29eae2ff3a746",
     "dep_airport_code": "IAD",
@@ -8940,7 +8940,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "1",
-    "arr_gate": "C16",
+    "arr_gate": "B10",
     "international": 0,
     "codeshare": [
       {
@@ -13925,7 +13925,7 @@
     "IATA": "DL",
     "airportcode": "DTW",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B72",
@@ -14440,18 +14440,18 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Delta Air Lines",
-    "gate": null,
+    "gate": "B72",
     "mod_gate": null,
     "flightnumber": "3636",
     "publishedTime": "2024-10-10 13:36:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-10-10 13:36:00",
     "city": "DETROIT, DTW",
     "id": "1fef5865f073458b86dcc4cdb3735a2c",
     "dep_airport_code": "IAD",
-    "dep_terminal": null,
-    "arr_terminal": "M",
-    "arr_gate": null,
+    "dep_terminal": "B",
+    "arr_terminal": "EM",
+    "arr_gate": "B11",
     "international": 0,
     "codeshare": [
       {
@@ -14479,7 +14479,7 @@
       {
         "aircraft_code": "E7W",
         "aircraft_code_type": "Iata",
-        "tail_number": null,
+        "tail_number": "N603CZ",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -17477,6 +17477,64 @@
         "position": null,
         "route": null,
         "airport_name": "GREENVILLE-SPARTANBURG INTL"
+      }
+    ]
+  },
+  {
+    "IATA": "AV",
+    "airportcode": "GUA",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Avianca",
+    "gate": null,
+    "mod_gate": "B48",
+    "flightnumber": "655",
+    "publishedTime": "2024-10-11 02:35:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "GUATEMALA CITY",
+    "id": "8338ef1925ef4621a75c7d0c06ac7a5b",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "320",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 2,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": "[{\"DepAirportCode\":\"GUA\",\"DepCodeNS\":\"Iata\",\"ArrAirportCode\":\"SJO\",\"ArrCodeNS\":\"Iata\"}]",
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:15:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "LA AURORA"
       }
     ]
   },
@@ -24058,7 +24116,7 @@
     "flightnumber": "309",
     "publishedTime": "2024-10-09 17:27:00",
     "mwaaTime": null,
-    "actualtime": "2024-10-09 18:48:00",
+    "actualtime": "2024-10-09 19:03:00",
     "city": "LOS ANGELES",
     "id": "c906082c149e4f6e9ccc8534106f24a8",
     "dep_airport_code": "IAD",
@@ -26125,7 +26183,7 @@
     "IATA": "DL",
     "airportcode": "MSP",
     "baggage": null,
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B76",
@@ -26133,7 +26191,7 @@
     "flightnumber": "3700",
     "publishedTime": "2024-10-09 12:11:00",
     "mwaaTime": null,
-    "actualtime": "2024-10-09 13:15:00",
+    "actualtime": "2024-10-09 13:41:00",
     "city": "MINNEAPOLIS",
     "id": "ccd8604688614a69be289cc22a8b3635",
     "dep_airport_code": "IAD",
@@ -28245,7 +28303,7 @@
     "IATA": "UA",
     "airportcode": "BNA",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C25",
@@ -32745,7 +32803,7 @@
   {
     "IATA": "AF",
     "airportcode": "CDG",
-    "baggage": "43",
+    "baggage": "33",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air France",
@@ -32819,7 +32877,7 @@
   {
     "IATA": "AF",
     "airportcode": "CDG",
-    "baggage": "33",
+    "baggage": "30",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air France",
@@ -33046,7 +33104,7 @@
   {
     "IATA": "AF",
     "airportcode": "CDG",
-    "baggage": null,
+    "baggage": "43",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air France",
@@ -33120,7 +33178,7 @@
   {
     "IATA": "AF",
     "airportcode": "CDG",
-    "baggage": null,
+    "baggage": "30",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air France",
@@ -41467,6 +41525,64 @@
     ]
   },
   {
+    "IATA": "N3",
+    "airportcode": "SAL",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Volaris El Salvador",
+    "gate": null,
+    "mod_gate": "B37",
+    "flightnumber": "4313",
+    "publishedTime": "2024-10-11 02:43:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "SAN SALVADOR",
+    "id": "abd3d6dad0374246b593f08444137a74",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "320",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:17:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "EL SALVADOR INTL"
+      }
+    ]
+  },
+  {
     "IATA": "UA",
     "airportcode": "GRU",
     "baggage": null,
@@ -42955,7 +43071,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "N6",
+    "arr_gate": "N15",
     "international": 0,
     "codeshare": [
       {
@@ -46105,7 +46221,7 @@
   {
     "IATA": "AC",
     "airportcode": "YVR",
-    "baggage": null,
+    "baggage": "25",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air Canada",
