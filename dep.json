@@ -257,7 +257,7 @@
     "IATA": "ET",
     "airportcode": "ADD",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "Ethiopian Airlines",
     "gate": null,
@@ -265,7 +265,7 @@
     "flightnumber": "501",
     "publishedTime": "2024-10-28 11:00:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-10-28 11:00:00",
     "city": "ADDIS ABABA",
     "id": "8e9115863e004fe1834ec3704d67069f",
     "dep_airport_code": "IAD",
@@ -303,7 +303,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"ETH\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"501\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -1771,7 +1771,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": "B",
     "arr_terminal": "S",
-    "arr_gate": "B18",
+    "arr_gate": "T08",
     "international": 0,
     "codeshare": [
       {
@@ -7490,10 +7490,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "320",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A320",
+        "aircraft_code_type": "Icao",
         "tail_number": "N420UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -7506,7 +7506,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"673\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -11527,7 +11527,7 @@
     "IATA": "UA",
     "airportcode": "DEN",
     "baggage": "16",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C19",
@@ -11535,7 +11535,7 @@
     "flightnumber": "1341",
     "publishedTime": "2024-10-28 10:05:00",
     "mwaaTime": null,
-    "actualtime": "2024-10-28 10:05:00",
+    "actualtime": "2024-10-28 09:59:00",
     "city": "DENVER",
     "id": "456639fe50f54fe8805cde3ece764b14",
     "dep_airport_code": "IAD",
@@ -12466,7 +12466,7 @@
       {
         "aircraft_code": "73W",
         "aircraft_code_type": "Iata",
-        "tail_number": "N285WN",
+        "tail_number": "N7865A",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -13850,7 +13850,7 @@
     "flightnumber": "118",
     "publishedTime": "2024-10-28 21:45:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-10-28 21:45:00",
     "city": "DUBLIN",
     "id": "1871ad7276d5422785996aa9848083cb",
     "dep_airport_code": "IAD",
@@ -17685,7 +17685,7 @@
   {
     "IATA": "UA",
     "airportcode": "IAH",
-    "baggage": null,
+    "baggage": "C12",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
@@ -17699,8 +17699,8 @@
     "id": "3ace5cdcbdbd420d979cc53055790668",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
-    "arr_terminal": "C",
-    "arr_gate": null,
+    "arr_terminal": "E",
+    "arr_gate": "E20",
     "international": 0,
     "codeshare": [
       {
@@ -18160,7 +18160,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "XE2",
     "mod_gate": null,
     "flightnumber": "4305",
     "publishedTime": "2024-10-28 17:55:00",
@@ -28758,7 +28758,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "A",
-    "arr_gate": null,
+    "arr_gate": "A12",
     "international": 0,
     "codeshare": [
       {
@@ -31398,8 +31398,8 @@
   {
     "IATA": "UA",
     "airportcode": "PHL",
-    "baggage": null,
-    "status": "NoTakeoffInfo",
+    "baggage": "3",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "Z6",
@@ -31407,13 +31407,13 @@
     "flightnumber": "6030",
     "publishedTime": "2024-10-28 08:30:00",
     "mwaaTime": null,
-    "actualtime": "2024-10-28 08:30:00",
+    "actualtime": "2024-10-28 10:30:00",
     "city": "PHILADELPHIA",
-    "id": "dfa3553b4b074ac7b7472b4cafb1b6d6",
+    "id": "61DF0BC511DA49F4A30C953E6F137C21",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
-    "arr_terminal": "D",
-    "arr_gate": "Z6",
+    "arr_terminal": null,
+    "arr_gate": "D7",
     "international": 0,
     "codeshare": [
       {
@@ -31422,30 +31422,22 @@
         "airline": "Copa Airlines"
       }
     ],
-    "aircraftInfo": [
-      {
-        "aircraft_code": "E75L",
-        "aircraft_code_type": "Icao",
-        "tail_number": "N85320",
-        "weight_class": "L",
-        "optional_equipment": null
-      }
-    ],
+    "aircraftInfo": [],
     "departureInfo": [
       {
-        "reg_code": "YV",
+        "reg_code": null,
         "scheduled": 1,
         "genral_aviation": null,
         "dep_scheduled_status": null,
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": "{\"Code\":\"ASH\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"6030\"}",
+        "faaId": null,
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
         "aircraft": null,
-        "alt_dep_airport": null,
+        "alt_dep_airport": "{\"Code\":\"IAD\",\"CodeNamespace\":\"Iata\",\"Name\":\"WASHINGTON DULLES INTERNATIONAL\",\"Location\":{\"CityName\":\"WASHINGTON\",\"StateId\":\"DC\",\"CountryId\":\"US\"}}",
         "alt_arr_airport": null,
         "upline_info": null,
         "downline_info": null,
@@ -37609,7 +37601,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "2",
-    "arr_gate": "24",
+    "arr_gate": "26",
     "international": 0,
     "codeshare": [
       {
@@ -40845,7 +40837,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "D2",
+    "arr_gate": "N18",
     "international": 0,
     "codeshare": [
       {
@@ -40863,7 +40855,7 @@
       {
         "aircraft_code": "7M9",
         "aircraft_code_type": "Iata",
-        "tail_number": "N486AS",
+        "tail_number": "N979AK",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -41348,10 +41340,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "77W",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B77W",
+        "aircraft_code_type": "Icao",
         "tail_number": "HL8009",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -41364,7 +41356,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"KAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"94\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
