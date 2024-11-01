@@ -3012,7 +3012,7 @@
     "IATA": "UA",
     "airportcode": "BCN",
     "baggage": "11",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C8",
@@ -8829,10 +8829,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "739",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B739",
+        "aircraft_code_type": "Icao",
         "tail_number": "N66841",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -8845,7 +8845,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1370\"}",
         "servicetype": "J",
         "leg_seq_num": 3,
         "num_legs": 3,
@@ -13120,8 +13120,8 @@
     "id": "07943fb12c36477895d6ff85170e26be",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
-    "arr_terminal": "E",
-    "arr_gate": null,
+    "arr_terminal": "N",
+    "arr_gate": "D4",
     "international": 0,
     "codeshare": [
       {
@@ -13258,8 +13258,8 @@
     "id": "0feea4ac3b0446cab13d9c8cf71cbbd7",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
-    "arr_terminal": "E",
-    "arr_gate": null,
+    "arr_terminal": "N",
+    "arr_gate": "D2",
     "international": 0,
     "codeshare": [
       {
@@ -15166,7 +15166,7 @@
     "IATA": "LH",
     "airportcode": "FRA",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Deutsche Lufthansa AG",
     "gate": "B45",
@@ -31585,7 +31585,7 @@
     "IATA": "AF",
     "airportcode": "CDG",
     "baggage": "40",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Air France",
     "gate": "A25",
@@ -31593,7 +31593,7 @@
     "flightnumber": "51",
     "publishedTime": "2024-11-01 19:30:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-11-01 19:28:00",
     "city": "PARIS",
     "id": "37cef6e20d9f401b851f2fb78fdf8acf",
     "dep_airport_code": "IAD",
@@ -34732,7 +34732,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "2",
-    "arr_gate": null,
+    "arr_gate": "D17",
     "international": 0,
     "codeshare": [
       {
@@ -34944,7 +34944,7 @@
   {
     "IATA": "UA",
     "airportcode": "RDU",
-    "baggage": null,
+    "baggage": "4",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
@@ -34959,7 +34959,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "2",
-    "arr_gate": null,
+    "arr_gate": "D15",
     "international": 0,
     "codeshare": [
       {
@@ -38350,7 +38350,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "3",
-    "arr_gate": "E2",
+    "arr_gate": "E3",
     "international": 0,
     "codeshare": [
       {
@@ -40990,7 +40990,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Alaska Airlines",
-    "gate": "B67",
+    "gate": "B65",
     "mod_gate": null,
     "flightnumber": "499",
     "publishedTime": "2024-11-02 07:00:00",
@@ -41414,6 +41414,75 @@
         "remaining_time": null,
         "elapsed_time": null,
         "scheduled_duration": "05:50:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "SEATTLE-TACOMA INTL"
+      }
+    ]
+  },
+  {
+    "IATA": "DL",
+    "airportcode": "SEA",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Delta Air Lines",
+    "gate": null,
+    "mod_gate": null,
+    "flightnumber": "1015",
+    "publishedTime": "2024-11-03 08:15:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "SEATTLE, SEA",
+    "id": "289845b079514fd7a44d6d9c1d9cc33b",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 0,
+    "codeshare": [
+      {
+        "IATA": "KE",
+        "flightnumber": "3182",
+        "airline": "Korean Air"
+      },
+      {
+        "IATA": "MU",
+        "flightnumber": "8821",
+        "airline": "China Eastern Airlines"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "223",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "06:02:00",
         "map": null,
         "position": null,
         "route": null,
