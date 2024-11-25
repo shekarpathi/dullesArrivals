@@ -141,7 +141,7 @@
     "IATA": "UA",
     "airportcode": "ACC",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D21",
@@ -149,7 +149,7 @@
     "flightnumber": "996",
     "publishedTime": "2024-11-25 18:15:00",
     "mwaaTime": null,
-    "actualtime": "2024-11-25 18:30:00",
+    "actualtime": "2024-11-25 18:29:00",
     "city": "ACCRA",
     "id": "a1698b67f89e49f683875754070cc499",
     "dep_airport_code": "IAD",
@@ -6627,7 +6627,7 @@
     "IATA": "AA",
     "airportcode": "CLT",
     "baggage": "7",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "American Airlines",
     "gate": "B73",
@@ -23354,7 +23354,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C3",
+    "gate": "C5",
     "mod_gate": null,
     "flightnumber": "918",
     "publishedTime": "2024-11-26 18:30:00",
@@ -25392,7 +25392,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C1",
+    "gate": "C6",
     "mod_gate": null,
     "flightnumber": "260",
     "publishedTime": "2024-11-26 18:55:00",
@@ -28931,7 +28931,7 @@
     "IATA": "DL",
     "airportcode": "JFK",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B76",
@@ -32919,7 +32919,7 @@
     "IATA": "AF",
     "airportcode": "CDG",
     "baggage": "33",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Air France",
     "gate": "A25",
@@ -32927,7 +32927,7 @@
     "flightnumber": "51",
     "publishedTime": "2024-11-25 18:30:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2024-11-25 18:30:00",
     "city": "PARIS",
     "id": "f2641ca7bab041d0a3cc0ee1ea810f11",
     "dep_airport_code": "IAD",
@@ -34709,7 +34709,7 @@
     "IATA": "UA",
     "airportcode": "PWM",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A1G",
@@ -38761,7 +38761,15 @@
         "airline": "WestJet"
       }
     ],
-    "aircraftInfo": [],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "739",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
     "departureInfo": [
       {
         "reg_code": null,
@@ -39253,7 +39261,7 @@
     "IATA": "UA",
     "airportcode": "SAN",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D15",
@@ -43391,7 +43399,15 @@
         "airline": "Air Tahiti Nui"
       }
     ],
-    "aircraftInfo": [],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "73J",
+        "aircraft_code_type": "Iata",
+        "tail_number": "N722AL",
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
     "departureInfo": [
       {
         "reg_code": null,
@@ -43413,6 +43429,70 @@
         "remaining_time": null,
         "elapsed_time": null,
         "scheduled_duration": "05:58:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "SEATTLE-TACOMA INTL"
+      }
+    ]
+  },
+  {
+    "IATA": "DL",
+    "airportcode": "SEA",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Delta Air Lines",
+    "gate": null,
+    "mod_gate": null,
+    "flightnumber": "1015",
+    "publishedTime": "2024-11-27 07:15:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "SEATTLE, SEA",
+    "id": "dbe489a329ea446cac739f536fdf3a7c",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 0,
+    "codeshare": [
+      {
+        "IATA": "MU",
+        "flightnumber": "8821",
+        "airline": "China Eastern Airlines"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "223",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "06:13:00",
         "map": null,
         "position": null,
         "route": null,
@@ -43679,7 +43759,7 @@
     "IATA": "UA",
     "airportcode": "STL",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D32",
@@ -43687,7 +43767,7 @@
     "flightnumber": "4527",
     "publishedTime": "2024-11-25 18:39:00",
     "mwaaTime": null,
-    "actualtime": "2024-11-25 18:39:00",
+    "actualtime": "2024-11-25 18:29:00",
     "city": "ST LOUIS",
     "id": "1732a2e694054dc1acd449c4a719c57c",
     "dep_airport_code": "IAD",
