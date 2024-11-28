@@ -424,7 +424,7 @@ arrivalsFileHandle.write("""
           }
         });
     </script>
-    <p id=\"feedback\">Email admin@dulles.xyz for suggestions/feedback. I will gladly review all of them.</p>
+    <p id=\"feedback\">Email <h2>admin@dulles.xyz</h2> to send suggestions/feedback. No email will be ignored.</p>
     <p id=\"update\" onclick=\"myFunction()\">Information current as of %s</p>
     <p id=\"info\" onclick=\"myFunction()\">Click here to refresh this page</p>
     <script>
