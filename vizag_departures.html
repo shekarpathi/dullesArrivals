@@ -1,100 +1,26 @@
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Flight Arrivals</title>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                font-size: 18px; /* Increase font size for better readability */
-                margin: 0;
-                padding: 0;
-                line-height: 1.6;
-                overflow-x: hidden; /* Prevent horizontal scrolling */
-            }
-    
-            h1 {
-                text-align: center;
-                margin: 20px 0;
-                font-size: 24px; /* Adjust header size for mobile */
-            }
-    
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-    
-            th, td {
-                padding: 12px;
-                text-align: center;
-                border: 1px solid #ddd;
-            }
-    
-            th {
-                background-color: #f4f4f4;
-                font-size: 20px;
-            }
-    
-            td {
-                font-size: 18px;
-            }
-    
-            .baggage-box {
-                background-color: yellow;
-                border-radius: 8px;
-                padding: 4px 8px;
-                display: inline-block;
-            }
-    
-            /* Make the table scrollable on small screens */
-            .table-container {
-                overflow-x: auto;
-                margin: 20px;
-            }
-        </style>
-        <script>
-            $(document).ready(function() {
-                $('#flightsTable').DataTable({
-                    pageLength: 500,
-                    order: [[2, 'asc']],
-                    stateSave: true
-                });
-    
-                // Save and restore scroll position
-                $(window).on('beforeunload', function() {
-                    localStorage.setItem('scrollPosition', $(window).scrollTop());
-                });
-    
-                if (localStorage.getItem('scrollPosition')) {
-                    $(window).scrollTop(localStorage.getItem('scrollPosition'));
-                    localStorage.removeItem('scrollPosition');
-                }
-    
-                // Auto-refresh every minute
-                setInterval(function() {
-                    location.reload();
-                }, 60000);
-            });
-        </script>
-    </head>
-    <body>
-        <h1>Vizag Departures</h1>
-        <div class="table-container">
-            <table id="flightsTable" class="display">
-                <thead>
-                    <tr>
-                        <th>Flight</th>
-                        <th>Destination</th>
-                        <th>Departure</th>
-                        <th>Aircraft</th>
-                    </tr>
-                </thead>
-                <tbody>
+<!DOCTYPE html>
+<head>
+<style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      font-family: Consolas, monaco, monospace;
+      font-size: 44px;
+      font-style: normal;
+      font-variant: normal; 
+      font-weight: 700;
+      padding: 10px;
+    }
+</style>
+    <title>VTZ Departures</title>
+        <meta http-equiv="refresh" content="300">
+        <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="expires" content="0">
+</head>
+<body>
+  <table><th style="background-color:#c2c2a3" colspan=4>VTZ Departures</th>
     
         <tr>
             <td><a href=https://www.flightaware.com/live/flight/IGO307  target="FAW">IGO307</a></td>
