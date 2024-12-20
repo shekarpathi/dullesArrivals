@@ -16,8 +16,8 @@
     "id": "c3f7d5627c8e477cb4f091b4eedc716c",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
-    "arr_terminal": "A",
-    "arr_gate": null,
+    "arr_terminal": "PIER",
+    "arr_gate": "B11",
     "international": 1,
     "codeshare": [
       {
@@ -33,23 +33,23 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "789",
-        "aircraft_code_type": "Iata",
-        "tail_number": null,
-        "weight_class": null,
+        "aircraft_code": "B789",
+        "aircraft_code_type": "Icao",
+        "tail_number": "A6BNG",
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
     "departureInfo": [
       {
-        "reg_code": null,
+        "reg_code": "EY",
         "scheduled": 1,
         "genral_aviation": null,
         "dep_scheduled_status": null,
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"ETD\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"6HZ\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -511,7 +511,7 @@
     "IATA": "UA",
     "airportcode": "ALB",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A5C",
@@ -969,7 +969,7 @@
     "flightnumber": "946",
     "publishedTime": "2024-12-20 18:15:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:15:00",
+    "actualtime": "2024-12-20 18:30:00",
     "city": "AMSTERDAM",
     "id": "7a2dd682784e4c95b642563ec43d79f6",
     "dep_airport_code": "IAD",
@@ -1934,7 +1934,7 @@
     "flightnumber": "2902",
     "publishedTime": "2024-12-20 18:57:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:52:00",
+    "actualtime": "2024-12-20 18:56:00",
     "city": "ATLANTA",
     "id": "f13d411d70244eeea88ad301fac3c57f",
     "dep_airport_code": "IAD",
@@ -1971,10 +1971,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "223",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "BCS3",
+        "aircraft_code_type": "Icao",
         "tail_number": "N325DU",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -1987,7 +1987,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"DAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"2902\"}",
         "servicetype": "J",
         "leg_seq_num": 2,
         "num_legs": 2,
@@ -3138,7 +3138,7 @@
     "IATA": "UA",
     "airportcode": "AUS",
     "baggage": null,
-    "status": "OutGate",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A2G",
@@ -3146,7 +3146,7 @@
     "flightnumber": "6041",
     "publishedTime": "2024-12-20 17:55:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 17:46:00",
+    "actualtime": "2024-12-20 18:20:00",
     "city": "AUSTIN",
     "id": "8633be02e7724656b06689e722999246",
     "dep_airport_code": "IAD",
@@ -4469,7 +4469,7 @@
     "IATA": "UA",
     "airportcode": "BRU",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C14",
@@ -4477,7 +4477,7 @@
     "flightnumber": "950",
     "publishedTime": "2024-12-20 17:50:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:00:00",
+    "actualtime": "2024-12-20 18:30:00",
     "city": "BRUSSELS",
     "id": "ead994fce4d148548844dfeabeacfe14",
     "dep_airport_code": "IAD",
@@ -5823,7 +5823,7 @@
     "IATA": "UA",
     "airportcode": "CUN",
     "baggage": "9",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D10",
@@ -6108,6 +6108,38 @@
         "airport_name": "CANCUN INTL"
       }
     ]
+  },
+  {
+    "IATA": "UA",
+    "airportcode": "CUN",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "United Airlines",
+    "gate": null,
+    "mod_gate": null,
+    "flightnumber": "2860",
+    "publishedTime": "2024-12-22 07:00:00",
+    "mwaaTime": null,
+    "actualtime": "2024-12-22 07:00:00",
+    "city": "CANCUN",
+    "id": "5a23d2fdfa884664977c53de7329993e",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": "3",
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "739",
+        "aircraft_code_type": "Iata",
+        "tail_number": "N61898",
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": []
   },
   {
     "IATA": "UA",
@@ -7292,7 +7324,7 @@
   {
     "IATA": "UA",
     "airportcode": "CLT",
-    "baggage": null,
+    "baggage": "C2",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
@@ -7307,7 +7339,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "A23",
     "international": 0,
     "codeshare": [
       {
@@ -8520,7 +8552,7 @@
     "IATA": "UA",
     "airportcode": "ORD",
     "baggage": "9",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D16",
@@ -9444,7 +9476,7 @@
       {
         "aircraft_code": "CR5",
         "aircraft_code_type": "Iata",
-        "tail_number": "N521GJ",
+        "tail_number": "N548GJ",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -10185,7 +10217,7 @@
     "IATA": "UA",
     "airportcode": "CAE",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A4F",
@@ -11326,7 +11358,7 @@
     "IATA": "UA",
     "airportcode": "DFW",
     "baggage": "E4",
-    "status": "Delayed",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D2",
@@ -11334,7 +11366,7 @@
     "flightnumber": "2116",
     "publishedTime": "2024-12-20 17:45:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:10:00",
+    "actualtime": "2024-12-20 18:07:00",
     "city": "DALLAS, DFW",
     "id": "e54ff8db15fe40f89711d1451bd95a2b",
     "dep_airport_code": "IAD",
@@ -11850,7 +11882,7 @@
     "IATA": "UA",
     "airportcode": "DAY",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A2F",
@@ -14912,7 +14944,7 @@
     "IATA": "EI",
     "airportcode": "DUB",
     "baggage": "1",
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Aer Lingus",
     "gate": null,
@@ -14920,7 +14952,7 @@
     "flightnumber": "116",
     "publishedTime": "2024-12-20 17:10:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:00:00",
+    "actualtime": "2024-12-20 18:12:00",
     "city": "DUBLIN",
     "id": "b7e753f3e1b7423395dcb390f3f2d5ae",
     "dep_airport_code": "IAD",
@@ -15759,7 +15791,7 @@
     "IATA": "UA",
     "airportcode": "FLL",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C9",
@@ -16388,7 +16420,7 @@
       {
         "aircraft_code": "B744",
         "aircraft_code_type": "Icao",
-        "tail_number": null,
+        "tail_number": "DABVZ",
         "weight_class": "L",
         "optional_equipment": null
       }
@@ -17758,7 +17790,7 @@
     "IATA": "UA",
     "airportcode": "GUA",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D1",
@@ -17766,7 +17798,7 @@
     "flightnumber": "1523",
     "publishedTime": "2024-12-20 17:47:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:00:00",
+    "actualtime": "2024-12-20 18:08:00",
     "city": "GUATEMALA CITY",
     "id": "57e9b704c1b5426087bdbdc824f05333",
     "dep_airport_code": "IAD",
@@ -18054,7 +18086,7 @@
     "IATA": "UA",
     "airportcode": "MDT",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D32",
@@ -18062,7 +18094,7 @@
     "flightnumber": "4407",
     "publishedTime": "2024-12-20 18:23:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:23:00",
+    "actualtime": "2024-12-20 18:45:00",
     "city": "HARRISBURG",
     "id": "ec4619130ea74c7cbc252445ab194e9a",
     "dep_airport_code": "IAD",
@@ -20005,7 +20037,7 @@
     "IATA": "UA",
     "airportcode": "HSV",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A4B",
@@ -20019,7 +20051,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "2A",
     "international": 0,
     "codeshare": [
       {
@@ -23064,10 +23096,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "739",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B739",
+        "aircraft_code_type": "Icao",
         "tail_number": "N37468",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -23080,7 +23112,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"780\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -23294,7 +23326,7 @@
     "IATA": "TP",
     "airportcode": "LIS",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "TAP Air Portugal",
     "gate": null,
@@ -23319,10 +23351,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "32Q",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A21N",
+        "aircraft_code_type": "Icao",
         "tail_number": null,
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -23335,7 +23367,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"TAP\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"234Y\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -24661,7 +24693,7 @@
     "IATA": "AS",
     "airportcode": "LAX",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Alaska Airlines",
     "gate": "B65",
@@ -24750,7 +24782,7 @@
     "IATA": "UA",
     "airportcode": "LAX",
     "baggage": "1",
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C8",
@@ -24758,7 +24790,7 @@
     "flightnumber": "2276",
     "publishedTime": "2024-12-20 17:55:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:23:00",
+    "actualtime": "2024-12-20 18:20:00",
     "city": "LOS ANGELES",
     "id": "69bdf16066234e6997e4e8990ed7eabe",
     "dep_airport_code": "IAD",
@@ -24916,7 +24948,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C4",
+    "gate": "C2",
     "mod_gate": null,
     "flightnumber": "1413",
     "publishedTime": "2024-12-20 22:05:00",
@@ -25797,10 +25829,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "E7W",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "E75L",
+        "aircraft_code_type": "Icao",
         "tail_number": "N749YX",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -25813,7 +25845,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"RPA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"3570\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -26038,7 +26070,7 @@
     "IATA": "UA",
     "airportcode": "MEX",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D19",
@@ -26282,7 +26314,7 @@
     "IATA": "UA",
     "airportcode": "MIA",
     "baggage": "6",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D18",
@@ -26617,7 +26649,7 @@
     "IATA": "DL",
     "airportcode": "MSP",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B76",
@@ -26625,7 +26657,7 @@
     "flightnumber": "3843",
     "publishedTime": "2024-12-20 18:22:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:22:00",
+    "actualtime": "2024-12-20 18:16:00",
     "city": "MINNEAPOLIS",
     "id": "2a6c1f404a1a43728d4b7ba98110ae14",
     "dep_airport_code": "IAD",
@@ -27689,7 +27721,7 @@
     "IATA": "UA",
     "airportcode": "MUC",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C17",
@@ -28018,7 +28050,7 @@
     "IATA": "UA",
     "airportcode": "BNA",
     "baggage": "9",
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A1G",
@@ -28026,7 +28058,7 @@
     "flightnumber": "6255",
     "publishedTime": "2024-12-20 17:23:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:05:00",
+    "actualtime": "2024-12-20 18:07:00",
     "city": "NASHVILLE",
     "id": "68c7b4b7546943faba41656a7cfa395c",
     "dep_airport_code": "IAD",
@@ -28415,7 +28447,7 @@
     "IATA": "UA",
     "airportcode": "MSY",
     "baggage": "2",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C11",
@@ -28423,7 +28455,7 @@
     "flightnumber": "1521",
     "publishedTime": "2024-12-20 18:05:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:05:00",
+    "actualtime": "2024-12-20 18:13:00",
     "city": "NEW ORLEANS",
     "id": "598064fbb6294f238d35a46a9c802fad",
     "dep_airport_code": "IAD",
@@ -30114,7 +30146,7 @@
     "IATA": "UA",
     "airportcode": "ORF",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "Z9",
@@ -30201,7 +30233,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C2",
+    "gate": "C14",
     "mod_gate": null,
     "flightnumber": "1437",
     "publishedTime": "2024-12-20 22:32:00",
@@ -31599,7 +31631,7 @@
     "IATA": "UA",
     "airportcode": "YOW",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C26",
@@ -32610,7 +32642,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Air France",
-    "gate": null,
+    "gate": "A25",
     "mod_gate": "A25",
     "flightnumber": "51",
     "publishedTime": "2024-12-21 18:30:00",
@@ -34076,7 +34108,7 @@
       {
         "aircraft_code": "CR5",
         "aircraft_code_type": "Iata",
-        "tail_number": "N548GJ",
+        "tail_number": "N521GJ",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -36790,7 +36822,7 @@
       {
         "aircraft_code": "CR5",
         "aircraft_code_type": "Iata",
-        "tail_number": "N521GJ",
+        "tail_number": "N548GJ",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -37501,7 +37533,7 @@
     "IATA": "UA",
     "airportcode": "ROC",
     "baggage": null,
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A4A",
@@ -37509,7 +37541,7 @@
     "flightnumber": "4871",
     "publishedTime": "2024-12-20 17:25:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:05:00",
+    "actualtime": "2024-12-20 18:10:00",
     "city": "ROCHESTER",
     "id": "c08bfec992eb40bba0fd65d231826df9",
     "dep_airport_code": "IAD",
@@ -37849,7 +37881,7 @@
     "IATA": "UA",
     "airportcode": "FCO",
     "baggage": null,
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D30",
@@ -37857,7 +37889,7 @@
     "flightnumber": "884",
     "publishedTime": "2024-12-20 17:45:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:15:00",
+    "actualtime": "2024-12-20 18:18:00",
     "city": "ROME",
     "id": "24570e16fb874ea7947aac346308f29f",
     "dep_airport_code": "IAD",
@@ -38017,7 +38049,7 @@
     "IATA": "UA",
     "airportcode": "SMF",
     "baggage": "A2",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D20",
@@ -38403,6 +38435,44 @@
     ]
   },
   {
+    "IATA": "DL",
+    "airportcode": "SLC",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Delta Air Lines",
+    "gate": null,
+    "mod_gate": null,
+    "flightnumber": "432",
+    "publishedTime": "2024-12-22 07:05:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "SALT LAKE CITY",
+    "id": "9269dfd09e274567a505dd7b38dcb624",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 0,
+    "codeshare": [
+      {
+        "IATA": "WS",
+        "flightnumber": "8650",
+        "airline": "WestJet"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "738",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": []
+  },
+  {
     "IATA": "UA",
     "airportcode": "SAT",
     "baggage": "3",
@@ -38470,7 +38540,7 @@
     "IATA": "UA",
     "airportcode": "SAT",
     "baggage": "3",
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C27",
@@ -38478,7 +38548,7 @@
     "flightnumber": "1869",
     "publishedTime": "2024-12-20 17:05:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:05:00",
+    "actualtime": "2024-12-20 18:09:00",
     "city": "SAN ANTONIO",
     "id": "4553bd03d79647108a516958ffc6970f",
     "dep_airport_code": "IAD",
@@ -38878,7 +38948,7 @@
     "IATA": "UA",
     "airportcode": "SAN",
     "baggage": "6",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D5",
@@ -38886,7 +38956,7 @@
     "flightnumber": "1831",
     "publishedTime": "2024-12-20 18:15:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:15:00",
+    "actualtime": "2024-12-20 18:13:00",
     "city": "SAN DIEGO",
     "id": "93c856cc31324dbda22b08fb19078a0d",
     "dep_airport_code": "IAD",
@@ -39582,7 +39652,7 @@
     "IATA": "UA",
     "airportcode": "SFO",
     "baggage": "5",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D26",
@@ -39590,13 +39660,13 @@
     "flightnumber": "1757",
     "publishedTime": "2024-12-20 17:50:00",
     "mwaaTime": null,
-    "actualtime": "2024-12-20 18:05:00",
+    "actualtime": "2024-12-20 18:09:00",
     "city": "SAN FRANCISCO",
     "id": "b5f87aa251904972979d9eee58cef776",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
-    "arr_terminal": "3",
-    "arr_gate": "F13",
+    "arr_terminal": "I",
+    "arr_gate": "G5",
     "international": 0,
     "codeshare": [
       {
@@ -39760,10 +39830,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "739",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B739",
+        "aircraft_code_type": "Icao",
         "tail_number": "N37419",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -39776,7 +39846,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"739\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -41938,7 +42008,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C14",
+    "gate": "C4",
     "mod_gate": null,
     "flightnumber": "861",
     "publishedTime": "2024-12-20 22:30:00",
@@ -42196,7 +42266,7 @@
     "IATA": "UA",
     "airportcode": "SAV",
     "baggage": "2",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A1A",
@@ -42572,7 +42642,7 @@
       {
         "aircraft_code": "CR5",
         "aircraft_code_type": "Iata",
-        "tail_number": "N548GJ",
+        "tail_number": "N521GJ",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -42913,7 +42983,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "N1",
+    "arr_gate": "N4",
     "international": 0,
     "codeshare": [
       {
@@ -43334,6 +43404,59 @@
     ]
   },
   {
+    "IATA": "AS",
+    "airportcode": "SEA",
+    "baggage": "13",
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Alaska Airlines",
+    "gate": "B65",
+    "mod_gate": null,
+    "flightnumber": "499",
+    "publishedTime": "2024-12-22 07:00:00",
+    "mwaaTime": null,
+    "actualtime": "2024-12-22 07:00:00",
+    "city": "SEATTLE, SEA",
+    "id": "616e5c788b3a4b64b404ff3075590ed4",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": "N3",
+    "international": 0,
+    "codeshare": [
+      {
+        "IATA": "HA",
+        "flightnumber": "4913",
+        "airline": "Hawaiian Airlines"
+      },
+      {
+        "IATA": "JL",
+        "flightnumber": "5441",
+        "airline": "Japan Airlines"
+      },
+      {
+        "IATA": "QR",
+        "flightnumber": "8811",
+        "airline": "Qatar Airways"
+      },
+      {
+        "IATA": "TN",
+        "flightnumber": "2395",
+        "airline": "Air Tahiti Nui"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "7M9",
+        "aircraft_code_type": "Iata",
+        "tail_number": "N713AL",
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": []
+  },
+  {
     "IATA": "KE",
     "airportcode": "ICN",
     "baggage": null,
@@ -43542,10 +43665,10 @@
     "codeshare": [],
     "aircraftInfo": [
       {
-        "aircraft_code": "E7W",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "E75L",
+        "aircraft_code_type": "Icao",
         "tail_number": "N732YX",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -43558,7 +43681,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"RPA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"3427\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -43780,7 +43903,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "1",
-    "arr_gate": "A14",
+    "arr_gate": "A16",
     "international": 0,
     "codeshare": [
       {
@@ -44341,7 +44464,7 @@
     "IATA": "UA",
     "airportcode": "SCE",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C28",
@@ -45235,7 +45358,7 @@
     "IATA": "UA",
     "airportcode": "TPA",
     "baggage": "2",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D14",
@@ -46133,6 +46256,44 @@
     ]
   },
   {
+    "IATA": "PD",
+    "airportcode": "YTZ",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Porter Airlines",
+    "gate": null,
+    "mod_gate": "A19",
+    "flightnumber": "2718",
+    "publishedTime": "2024-12-22 07:00:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "TORONTO, YTZ",
+    "id": "df5c9a4547794f01b17b93277f553f65",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [
+      {
+        "IATA": "TS",
+        "flightnumber": "7738",
+        "airline": "Air Transat"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "DH4",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": []
+  },
+  {
     "IATA": "UA",
     "airportcode": "YYZ",
     "baggage": null,
@@ -46974,7 +47135,7 @@
     "IATA": "OS",
     "airportcode": "VIE",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Austrian",
     "gate": "B41",
