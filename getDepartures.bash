@@ -9,7 +9,7 @@ token_url="https://www.united.com/api/auth/anonymous-token"
 # URL to fetch the JSON data
 URL="https://www.flydulles.com/arrivals-and-departures/json"
 
-curl -s "$URL" | jq | grep IAD
+curl -s "$URL" | jq | grep departures | wc -l
 
 # Output file
 #DEPARTURES_HTML="departures.html"
