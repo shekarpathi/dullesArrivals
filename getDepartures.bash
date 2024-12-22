@@ -85,6 +85,7 @@ else
   echo "No departures found with publishedTime matching today's date ($TODAY)."
   # Optionally remove the empty file
   rm -f "$DEPARTURES_FILE"
+  exit 1
 fi
 
 echo "$DEPARTURES_JSON" | jq '[.[] | {flight: .flight, airport: .airport, airline: .airline, gate: .gate, departure_time: .departure_time, status: .status, codeshared_flights: .codeshared_flights, board_URL: .boardURL}]' > $DEPARTURES_FILE
