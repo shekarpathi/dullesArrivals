@@ -41,9 +41,7 @@ jobs:
 
     - name: run getDepartures.bash
       run: |
-        sudo apt install -y jq
         chmod +x getDepartures.bash
-        ./getDepartures.bash
 
     - name: setup python 3.8
       uses: actions/setup-python@v5
