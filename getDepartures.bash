@@ -76,6 +76,8 @@ DEPARTURES_JSON=$(curl -s "$URL" | jq --arg today "$TODAY" --argjson now "$NOW" 
   | sort_by(.departure_time)
 ')
 
+ls -ltra $DEPARTURES_FILE
+
 # Check if the operation was successful and if the file has content
 if [ -s "$DEPARTURES_FILE" ]; then
   echo "Departures with today's publishedTime, computed correct_time, and no 'id' field have been written to $DEPARTURES_FILE"
