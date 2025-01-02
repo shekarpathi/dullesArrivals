@@ -1696,7 +1696,7 @@
     "IATA": "DL",
     "airportcode": "IAD",
     "baggage": null,
-    "status": "Landed",
+    "status": "InGate",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B74",
@@ -4841,7 +4841,7 @@
     "IATA": "UA",
     "airportcode": "IAD",
     "baggage": "6",
-    "status": "Landed",
+    "status": "InGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A1C",
@@ -4850,7 +4850,7 @@
     "dep_airport_code": "BUF",
     "publishedTime": "2025-01-02 11:49:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-02 11:52:00",
+    "actualtime": "2025-01-02 12:03:00",
     "city": "BUFFALO",
     "claim": "6",
     "claim1": null,
@@ -8264,7 +8264,7 @@
     "IATA": "UA",
     "airportcode": "IAD",
     "baggage": "5",
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A4C",
@@ -8273,7 +8273,7 @@
     "dep_airport_code": "CHO",
     "publishedTime": "2025-01-02 07:21:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-02 13:06:00",
+    "actualtime": "2025-01-02 12:39:00",
     "city": "CHARLOTTESVILLE",
     "claim": "5",
     "claim1": null,
@@ -11248,7 +11248,7 @@
     "IATA": "UA",
     "airportcode": "IAD",
     "baggage": "6",
-    "status": "Landed",
+    "status": "InGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A6E",
@@ -11257,7 +11257,7 @@
     "dep_airport_code": "CMH",
     "publishedTime": "2025-01-02 11:50:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-02 12:03:00",
+    "actualtime": "2025-01-02 12:05:00",
     "city": "COLUMBUS",
     "claim": "6",
     "claim1": null,
@@ -13170,7 +13170,7 @@
     "dep_airport_code": "DEN",
     "publishedTime": "2025-01-02 13:28:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-02 13:14:00",
+    "actualtime": "2025-01-02 13:08:00",
     "city": "DENVER",
     "claim": "1",
     "claim1": null,
@@ -21522,7 +21522,7 @@
     "IATA": "UA",
     "airportcode": "IAD",
     "baggage": "5",
-    "status": "InAir",
+    "status": "Landed",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "Z9",
@@ -26145,6 +26145,94 @@
     ]
   },
   {
+    "IATA": "UA",
+    "airportcode": "IAD",
+    "baggage": null,
+    "status": "Delayed",
+    "mod_status": null,
+    "airline": "United Airlines",
+    "gate": "C8",
+    "mod_gate": null,
+    "flightnumber": "2732",
+    "dep_airport_code": "LAX",
+    "publishedTime": "2025-01-02 11:24:00",
+    "mwaaTime": null,
+    "actualtime": "2025-01-02 11:47:00",
+    "city": "LOS ANGELES",
+    "claim": null,
+    "claim1": null,
+    "claim2": null,
+    "claim3": null,
+    "id": "6068B94FDFDF4D5199A9D02D06E3AD22",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "dep_gate": "68B",
+    "incustoms": 1,
+    "customsAt": null,
+    "international": 0,
+    "codeshare": [
+      {
+        "IATA": "LH",
+        "flightnumber": "7479",
+        "airline": null
+      },
+      {
+        "IATA": "NZ",
+        "flightnumber": "9573",
+        "airline": null
+      },
+      {
+        "IATA": "OS",
+        "flightnumber": "7868",
+        "airline": null
+      },
+      {
+        "IATA": "SN",
+        "flightnumber": "8857",
+        "airline": null
+      },
+      {
+        "IATA": "VA",
+        "flightnumber": "8366",
+        "airline": null
+      }
+    ],
+    "aircraftInfo": {
+      "aircraft_code": "",
+      "aircraft_code_type": "Iata",
+      "tail_number": "N29981",
+      "weight_class": null,
+      "optional_equipment": null
+    },
+    "arrivalInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": "{\"Code\":\"LAX\",\"CodeNamespace\":\"Iata\",\"Name\":\"LOS ANGELES INTL\",\"Location\":{\"CityName\":\"LOS ANGELES\",\"StateId\":\"CA\",\"CountryId\":\"US\"}}",
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:44:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "LOS ANGELES INTL"
+      }
+    ]
+  },
+  {
     "IATA": "AS",
     "airportcode": "IAD",
     "baggage": "14",
@@ -26222,182 +26310,6 @@
         "scheduled_duration": "04:56:00",
         "map": null,
         "position": "{\"Altitude\":\"29000\",\"Speed\":\"447\",\"Heading\":\"72\"}",
-        "route": null,
-        "airport_name": "LOS ANGELES INTL"
-      }
-    ]
-  },
-  {
-    "IATA": "UA",
-    "airportcode": "IAD",
-    "baggage": null,
-    "status": "Scheduled",
-    "mod_status": null,
-    "airline": "United Airlines",
-    "gate": "C8",
-    "mod_gate": null,
-    "flightnumber": "2732",
-    "dep_airport_code": "LAX",
-    "publishedTime": "2025-01-02 16:24:00",
-    "mwaaTime": null,
-    "actualtime": "2025-01-02 16:19:00",
-    "city": "LOS ANGELES",
-    "claim": null,
-    "claim1": null,
-    "claim2": null,
-    "claim3": null,
-    "id": "660a1d868a2149adb298d76fdc7dc7f2",
-    "dep_terminal": "6",
-    "arr_terminal": null,
-    "dep_gate": "68B",
-    "incustoms": 1,
-    "customsAt": null,
-    "international": 0,
-    "codeshare": [
-      {
-        "IATA": "LH",
-        "flightnumber": "7479",
-        "airline": null
-      },
-      {
-        "IATA": "NZ",
-        "flightnumber": "9573",
-        "airline": null
-      },
-      {
-        "IATA": "OS",
-        "flightnumber": "7868",
-        "airline": null
-      },
-      {
-        "IATA": "SN",
-        "flightnumber": "8857",
-        "airline": null
-      },
-      {
-        "IATA": "VA",
-        "flightnumber": "8366",
-        "airline": null
-      }
-    ],
-    "aircraftInfo": {
-      "aircraft_code": "789",
-      "aircraft_code_type": "Iata",
-      "tail_number": "N29981",
-      "weight_class": null,
-      "optional_equipment": null
-    },
-    "arrivalInfo": [
-      {
-        "reg_code": null,
-        "scheduled": 1,
-        "genral_aviation": null,
-        "dep_scheduled_status": null,
-        "arr_scheduled_status": null,
-        "dep_delay_reason": null,
-        "arr_delay_reason": null,
-        "faaId": null,
-        "servicetype": "J",
-        "leg_seq_num": 1,
-        "num_legs": 1,
-        "aircraft": null,
-        "alt_dep_airport": null,
-        "alt_arr_airport": null,
-        "upline_info": null,
-        "downline_info": null,
-        "remaining_time": null,
-        "elapsed_time": null,
-        "scheduled_duration": "04:44:00",
-        "map": null,
-        "position": null,
-        "route": null,
-        "airport_name": "LOS ANGELES INTL"
-      }
-    ]
-  },
-  {
-    "IATA": "UA",
-    "airportcode": "IAD",
-    "baggage": null,
-    "status": "Delayed",
-    "mod_status": null,
-    "airline": "United Airlines",
-    "gate": "C8",
-    "mod_gate": null,
-    "flightnumber": "2732",
-    "dep_airport_code": "LAX",
-    "publishedTime": "2025-01-02 16:24:00",
-    "mwaaTime": null,
-    "actualtime": "2025-01-02 16:47:00",
-    "city": "LOS ANGELES",
-    "claim": null,
-    "claim1": null,
-    "claim2": null,
-    "claim3": null,
-    "id": "6068B94FDFDF4D5199A9D02D06E3AD22",
-    "dep_terminal": null,
-    "arr_terminal": null,
-    "dep_gate": "68B",
-    "incustoms": 1,
-    "customsAt": null,
-    "international": 0,
-    "codeshare": [
-      {
-        "IATA": "LH",
-        "flightnumber": "7479",
-        "airline": null
-      },
-      {
-        "IATA": "NZ",
-        "flightnumber": "9573",
-        "airline": null
-      },
-      {
-        "IATA": "OS",
-        "flightnumber": "7868",
-        "airline": null
-      },
-      {
-        "IATA": "SN",
-        "flightnumber": "8857",
-        "airline": null
-      },
-      {
-        "IATA": "VA",
-        "flightnumber": "8366",
-        "airline": null
-      }
-    ],
-    "aircraftInfo": {
-      "aircraft_code": "",
-      "aircraft_code_type": "Iata",
-      "tail_number": "N29981",
-      "weight_class": null,
-      "optional_equipment": null
-    },
-    "arrivalInfo": [
-      {
-        "reg_code": null,
-        "scheduled": 1,
-        "genral_aviation": null,
-        "dep_scheduled_status": null,
-        "arr_scheduled_status": null,
-        "dep_delay_reason": null,
-        "arr_delay_reason": null,
-        "faaId": null,
-        "servicetype": "J",
-        "leg_seq_num": 1,
-        "num_legs": 1,
-        "aircraft": null,
-        "alt_dep_airport": "{\"Code\":\"LAX\",\"CodeNamespace\":\"Iata\",\"Name\":\"LOS ANGELES INTL\",\"Location\":{\"CityName\":\"LOS ANGELES\",\"StateId\":\"CA\",\"CountryId\":\"US\"}}",
-        "alt_arr_airport": null,
-        "upline_info": null,
-        "downline_info": null,
-        "remaining_time": null,
-        "elapsed_time": null,
-        "scheduled_duration": "04:44:00",
-        "map": null,
-        "position": null,
         "route": null,
         "airport_name": "LOS ANGELES INTL"
       }
@@ -35505,7 +35417,7 @@
     "dep_airport_code": "PIT",
     "publishedTime": "2025-01-02 11:46:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-02 12:09:00",
+    "actualtime": "2025-01-02 12:25:00",
     "city": "PITTSBURGH",
     "claim": "6",
     "claim1": null,
