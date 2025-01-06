@@ -3244,7 +3244,7 @@
   {
     "IATA": "UA",
     "airportcode": "BOS",
-    "baggage": null,
+    "baggage": "6",
     "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
@@ -3476,7 +3476,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "B",
-    "arr_gate": null,
+    "arr_gate": "B27",
     "international": 0,
     "codeshare": [
       {
@@ -4679,7 +4679,7 @@
     "flightnumber": "3495",
     "publishedTime": "2025-01-06 12:50:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-06 14:30:00",
+    "actualtime": "2025-01-06 14:50:00",
     "city": "BURLINGTON",
     "id": "D15645606B374140BDB5E89DF6B810F9",
     "dep_airport_code": "IAD",
@@ -5428,10 +5428,10 @@
     "codeshare": [],
     "aircraftInfo": [
       {
-        "aircraft_code": "789",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B789",
+        "aircraft_code_type": "Icao",
         "tail_number": "N26960",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -5444,7 +5444,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1011\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -5467,7 +5467,7 @@
     "IATA": "AT",
     "airportcode": "CMN",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "Royal Air Maroc",
     "gate": null,
@@ -5475,7 +5475,7 @@
     "flightnumber": "219",
     "publishedTime": "2025-01-06 20:40:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2025-01-06 20:40:00",
     "city": "CASABLANCA",
     "id": "4c17a2d46c4a49778754d1ef036e297f",
     "dep_airport_code": "IAD",
@@ -5492,10 +5492,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "789",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B789",
+        "aircraft_code_type": "Icao",
         "tail_number": null,
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -5508,7 +5508,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"RAM\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"219W\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -6894,7 +6894,7 @@
     "flightnumber": "4815",
     "publishedTime": "2025-01-06 12:55:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-06 13:08:00",
+    "actualtime": "2025-01-06 14:42:00",
     "city": "CHARLOTTESVILLE",
     "id": "1f4604e559ee429a8e393e9065aa5564",
     "dep_airport_code": "IAD",
@@ -9222,7 +9222,7 @@
     "IATA": "UA",
     "airportcode": "CMH",
     "baggage": null,
-    "status": "Delayed",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A1G",
@@ -9230,7 +9230,7 @@
     "flightnumber": "3516",
     "publishedTime": "2025-01-06 12:45:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-06 15:15:00",
+    "actualtime": "2025-01-06 14:43:00",
     "city": "COLUMBUS",
     "id": "7b583b974ac6469fab048070d42bd69a",
     "dep_airport_code": "IAD",
@@ -9970,7 +9970,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "E",
-    "arr_gate": "E5",
+    "arr_gate": "E9",
     "international": 0,
     "codeshare": [
       {
@@ -14102,7 +14102,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "D26",
     "mod_gate": null,
     "flightnumber": "989",
     "publishedTime": "2025-01-07 17:20:00",
@@ -14886,7 +14886,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A5D",
+    "gate": "A5C",
     "mod_gate": null,
     "flightnumber": "4963",
     "publishedTime": "2025-01-06 17:20:00",
@@ -16431,9 +16431,54 @@
     "arr_terminal": null,
     "arr_gate": "C4",
     "international": 0,
-    "codeshare": [],
-    "aircraftInfo": [],
-    "departureInfo": []
+    "codeshare": [
+      {
+        "IATA": "EK",
+        "flightnumber": "6083",
+        "airline": "Emirates"
+      },
+      {
+        "IATA": "NZ",
+        "flightnumber": "6641",
+        "airline": "Air New Zealand"
+      }
+    ],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "B738",
+        "aircraft_code_type": "Icao",
+        "tail_number": "N37287",
+        "weight_class": "L",
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1344\"}",
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": "{\"Code\":\"IAD\",\"CodeNamespace\":\"Iata\",\"Name\":\"WASHINGTON DULLES INTERNATIONAL\",\"Location\":{\"CityName\":\"WASHINGTON\",\"StateId\":\"DC\",\"CountryId\":\"US\"}}",
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "03:38:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "GEORGE BUSH INTERCONTINENTAL ARP"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -18145,7 +18190,7 @@
     "status": "Delayed",
     "mod_status": null,
     "airline": "Allegiant Air",
-    "gate": null,
+    "gate": "B79",
     "mod_gate": "B79",
     "flightnumber": "370",
     "publishedTime": "2025-01-06 18:50:00",
@@ -18531,7 +18576,7 @@
     "flightnumber": "6157",
     "publishedTime": "2025-01-06 13:05:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-06 14:40:00",
+    "actualtime": "2025-01-06 14:55:00",
     "city": "KANSAS CITY",
     "id": "ca577adac2cf487b90d774e4c95f08b3",
     "dep_airport_code": "IAD",
@@ -18928,7 +18973,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A5C",
+    "gate": "A5D",
     "mod_gate": null,
     "flightnumber": "4914",
     "publishedTime": "2025-01-06 17:30:00",
@@ -21779,7 +21824,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "7",
-    "arr_gate": "76B",
+    "arr_gate": "75A",
     "international": 0,
     "codeshare": [
       {
@@ -27926,7 +27971,7 @@
     "IATA": "UA",
     "airportcode": "YOW",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C24",
@@ -27934,7 +27979,7 @@
     "flightnumber": "4418",
     "publishedTime": "2025-01-06 17:10:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-06 17:10:00",
+    "actualtime": "2025-01-06 18:47:00",
     "city": "OTTAWA",
     "id": "d90cab1613ac4b4d8f06f854f08a4903",
     "dep_airport_code": "IAD",
@@ -30776,7 +30821,7 @@
     "IATA": "UA",
     "airportcode": "PLS",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D3",
@@ -32092,7 +32137,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "B2",
     "international": 0,
     "codeshare": [
       {
@@ -34860,7 +34905,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "3",
-    "arr_gate": "E13",
+    "arr_gate": "F17",
     "international": 0,
     "codeshare": [
       {
@@ -34929,7 +34974,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "3",
-    "arr_gate": "E7",
+    "arr_gate": "E5",
     "international": 0,
     "codeshare": [
       {
@@ -35504,7 +35549,7 @@
     "IATA": "UA",
     "airportcode": "SJU",
     "baggage": "4",
-    "status": "Scheduled",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D24",
@@ -35512,7 +35557,7 @@
     "flightnumber": "2025",
     "publishedTime": "2025-01-06 17:35:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-06 17:35:00",
+    "actualtime": "2025-01-06 18:00:00",
     "city": "SAN JUAN",
     "id": "29a03be167bd48bfb6b7131a9e80e4c3",
     "dep_airport_code": "IAD",
@@ -39969,7 +40014,7 @@
     "IATA": "PD",
     "airportcode": "YTZ",
     "baggage": null,
-    "status": "NoTakeoffInfo",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Porter Airlines",
     "gate": null,
@@ -39977,7 +40022,7 @@
     "flightnumber": "2724",
     "publishedTime": "2025-01-06 13:45:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-06 13:55:00",
+    "actualtime": "2025-01-06 14:30:00",
     "city": "TORONTO, YTZ",
     "id": "6ef1eca9107f446bb14ae6481ce27da4",
     "dep_airport_code": "IAD",
@@ -40270,10 +40315,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "E75",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "E75S",
+        "aircraft_code_type": "Icao",
         "tail_number": "CFRQN",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -40286,7 +40331,7 @@
         "arr_scheduled_status": "AD",
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"JZA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"619\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
