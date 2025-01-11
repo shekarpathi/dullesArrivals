@@ -4014,7 +4014,7 @@
     "IATA": "UA",
     "airportcode": "BOS",
     "baggage": "5",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D1",
@@ -8388,7 +8388,7 @@
     "IATA": "UA",
     "airportcode": "ORD",
     "baggage": "9",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D11",
@@ -9523,7 +9523,7 @@
     "IATA": "UA",
     "airportcode": "CLE",
     "baggage": "9",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C20",
@@ -15038,7 +15038,7 @@
     "IATA": "9X",
     "airportcode": "DUJ",
     "baggage": null,
-    "status": "Proposed",
+    "status": "NoTakeoffInfo",
     "mod_status": null,
     "airline": "Southern Airways Express",
     "gate": null,
@@ -15046,7 +15046,7 @@
     "flightnumber": "129",
     "publishedTime": "2025-01-10 22:20:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-10 22:00:00",
+    "actualtime": null,
     "city": "DUBOIS",
     "id": "83ed6517c2e746009a91e8557c3de65c",
     "dep_airport_code": "IAD",
@@ -20044,7 +20044,7 @@
     "IATA": "TK",
     "airportcode": "IST",
     "baggage": null,
-    "status": "Delayed",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Turkish Airlines",
     "gate": null,
@@ -20052,7 +20052,7 @@
     "flightnumber": "8",
     "publishedTime": "2025-01-10 21:25:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-10 21:56:00",
+    "actualtime": null,
     "city": "ISTANBUL",
     "id": "c1aed5567783437487cdbd063ba27863",
     "dep_airport_code": "IAD",
@@ -23096,7 +23096,7 @@
     "IATA": "UA",
     "airportcode": "LHR",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C7",
@@ -23104,7 +23104,7 @@
     "flightnumber": "924",
     "publishedTime": "2025-01-10 22:30:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-10 22:30:00",
+    "actualtime": "2025-01-10 22:26:00",
     "city": "LONDON",
     "id": "324df0e3f2644c848a67a2fbe0860259",
     "dep_airport_code": "IAD",
@@ -28130,7 +28130,7 @@
     "IATA": "UA",
     "airportcode": "LGA",
     "baggage": "7",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C18",
@@ -28138,7 +28138,7 @@
     "flightnumber": "6144",
     "publishedTime": "2025-01-10 22:10:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-10 22:20:00",
+    "actualtime": "2025-01-10 22:25:00",
     "city": "NEW YORK, LGA",
     "id": "61714d2da0d947e59520a1c0d5fecfda",
     "dep_airport_code": "IAD",
@@ -29153,7 +29153,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "D11",
     "mod_gate": null,
     "flightnumber": "754",
     "publishedTime": "2025-01-12 06:05:00",
@@ -35445,7 +35445,7 @@
     "IATA": "UA",
     "airportcode": "RIC",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "C22",
@@ -40281,7 +40281,7 @@
     "flightnumber": "861",
     "publishedTime": "2025-01-10 22:30:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-10 22:30:00",
+    "actualtime": "2025-01-10 22:45:00",
     "city": "SAO PAULO",
     "id": "67fbf28273b34f91b9b0bd326aac8243",
     "dep_airport_code": "IAD",
@@ -41234,7 +41234,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "C11",
+    "arr_gate": "C17",
     "international": 0,
     "codeshare": [
       {
@@ -41678,7 +41678,7 @@
     "flightnumber": "4527",
     "publishedTime": "2025-01-10 17:35:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-10 22:30:00",
+    "actualtime": "2025-01-10 22:40:00",
     "city": "ST LOUIS",
     "id": "948cb92b3f294466abf00f91c576fe06",
     "dep_airport_code": "IAD",
@@ -41832,7 +41832,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "1",
-    "arr_gate": "A16",
+    "arr_gate": "A14",
     "international": 0,
     "codeshare": [
       {
@@ -43746,7 +43746,23 @@
     "arr_terminal": null,
     "arr_gate": null,
     "international": 1,
-    "codeshare": [],
+    "codeshare": [
+      {
+        "IATA": "SQ",
+        "flightnumber": "5921",
+        "airline": "Singapore Airlines"
+      },
+      {
+        "IATA": "TG",
+        "flightnumber": "6085",
+        "airline": "Thai Airways International"
+      },
+      {
+        "IATA": "UA",
+        "flightnumber": "7941",
+        "airline": "United Airlines"
+      }
+    ],
     "aircraftInfo": [
       {
         "aircraft_code": "788",
@@ -43756,7 +43772,33 @@
         "optional_equipment": null
       }
     ],
-    "departureInfo": []
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "14:20:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "HANEDA INTL"
+      }
+    ]
   },
   {
     "IATA": "PD",
