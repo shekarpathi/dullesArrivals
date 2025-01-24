@@ -1111,7 +1111,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D15",
+    "gate": "D30",
     "mod_gate": null,
     "flightnumber": "946",
     "publishedTime": "2025-01-25 18:15:00",
@@ -3179,8 +3179,8 @@
   {
     "IATA": "AV",
     "airportcode": "BOG",
-    "baggage": null,
-    "status": "Proposed",
+    "baggage": "5",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Avianca",
     "gate": null,
@@ -3188,7 +3188,7 @@
     "flightnumber": "247",
     "publishedTime": "2025-01-24 14:20:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-24 14:20:00",
+    "actualtime": "2025-01-24 14:09:00",
     "city": "BOGOTA",
     "id": "09ec55b086de498c859f1c4524fe7e44",
     "dep_airport_code": "IAD",
@@ -4849,7 +4849,7 @@
       {
         "aircraft_code": "E7W",
         "aircraft_code_type": "Iata",
-        "tail_number": "N774YX",
+        "tail_number": "N769YX",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -10892,7 +10892,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "B32",
+    "arr_gate": "B28",
     "international": 0,
     "codeshare": [
       {
@@ -12719,7 +12719,7 @@
     "IATA": "EI",
     "airportcode": "DUB",
     "baggage": "4",
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "Aer Lingus",
     "gate": null,
@@ -12749,10 +12749,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "32Q",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A21N",
+        "aircraft_code_type": "Icao",
         "tail_number": null,
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -12765,7 +12765,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"EIN\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"11P\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -13823,10 +13823,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "77W",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B77W",
+        "aircraft_code_type": "Icao",
         "tail_number": "N2331U",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -13839,7 +13839,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"989\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -14766,7 +14766,15 @@
     "arr_gate": "A9",
     "international": 0,
     "codeshare": [],
-    "aircraftInfo": [],
+    "aircraftInfo": [
+      {
+        "aircraft_code": "E75L",
+        "aircraft_code_type": "Icao",
+        "tail_number": "N774YX",
+        "weight_class": "L",
+        "optional_equipment": null
+      }
+    ],
     "departureInfo": [
       {
         "reg_code": null,
@@ -14777,7 +14785,7 @@
         "dep_delay_reason": null,
         "arr_delay_reason": null,
         "faaId": "{\"Code\":\"RPA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"3286\"}",
-        "servicetype": null,
+        "servicetype": "J",
         "leg_seq_num": null,
         "num_legs": null,
         "aircraft": null,
@@ -15111,9 +15119,41 @@
     "arr_terminal": null,
     "arr_gate": "B1",
     "international": 0,
-    "codeshare": [],
+    "codeshare": [
+      {
+        "IATA": "AV",
+        "flightnumber": "2075",
+        "airline": "Avianca"
+      }
+    ],
     "aircraftInfo": [],
-    "departureInfo": []
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": "{\"Code\":\"IAD\",\"CodeNamespace\":\"Iata\",\"Name\":\"WASHINGTON DULLES INTERNATIONAL\",\"Location\":{\"CityName\":\"WASHINGTON\",\"StateId\":\"DC\",\"CountryId\":\"US\"}}",
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "00:57:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "HARRISBURG INTERNATIONAL"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -16251,10 +16291,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "739",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B739",
+        "aircraft_code_type": "Icao",
         "tail_number": "N69835",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -16267,7 +16307,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1074\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -16303,8 +16343,8 @@
     "id": "9be554de2145415aa5cffad5c84ff77c",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
-    "arr_terminal": "C",
-    "arr_gate": null,
+    "arr_terminal": "E",
+    "arr_gate": "E4",
     "international": 0,
     "codeshare": [
       {
@@ -21784,7 +21824,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Aeromexico",
-    "gate": null,
+    "gate": "A14",
     "mod_gate": "A14",
     "flightnumber": "456",
     "publishedTime": "2025-01-24 15:38:00",
@@ -22440,7 +22480,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"SKW\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"3680\"}",
         "servicetype": "J",
         "leg_seq_num": 2,
         "num_legs": 2,
@@ -25440,7 +25480,7 @@
   {
     "IATA": "UA",
     "airportcode": "EWR",
-    "baggage": null,
+    "baggage": "8",
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
@@ -25455,7 +25495,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "C",
-    "arr_gate": null,
+    "arr_gate": "C72",
     "international": 0,
     "codeshare": [
       {
@@ -34470,10 +34510,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "7M9",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B39M",
+        "aircraft_code_type": "Icao",
         "tail_number": "N37532",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -34486,7 +34526,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"2025\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -35345,6 +35385,30 @@
         "airport_name": "EL SALVADOR INTL"
       }
     ]
+  },
+  {
+    "IATA": "AV",
+    "airportcode": "SAL",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Avianca",
+    "gate": null,
+    "mod_gate": "B48",
+    "flightnumber": "591",
+    "publishedTime": "2025-01-26 03:00:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "SAN SALVADOR",
+    "id": "e132b8caca014271a1a45d7388c57576",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 1,
+    "codeshare": [],
+    "aircraftInfo": [],
+    "departureInfo": []
   },
   {
     "IATA": "UA",
