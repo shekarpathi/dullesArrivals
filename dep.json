@@ -916,10 +916,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "332",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A332",
+        "aircraft_code_type": "Icao",
         "tail_number": null,
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -932,7 +932,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"KLM\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"183\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -1702,7 +1702,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": "B",
     "arr_terminal": "S",
-    "arr_gate": "B05",
+    "arr_gate": "B29",
     "international": 0,
     "codeshare": [
       {
@@ -1972,7 +1972,7 @@
       {
         "aircraft_code": "320",
         "aircraft_code_type": "Iata",
-        "tail_number": "N378NW",
+        "tail_number": "N343NW",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -2061,7 +2061,7 @@
       {
         "aircraft_code": "319",
         "aircraft_code_type": "Iata",
-        "tail_number": "N315NB",
+        "tail_number": "N348NB",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -2371,18 +2371,18 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Delta Air Lines",
-    "gate": null,
+    "gate": "B74",
     "mod_gate": null,
     "flightnumber": "1400",
     "publishedTime": "2025-02-01 13:40:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2025-02-01 13:40:00",
     "city": "ATLANTA",
     "id": "be8cbac05fa64c27b72c1bcbb4779e3d",
     "dep_airport_code": "IAD",
-    "dep_terminal": null,
+    "dep_terminal": "B",
     "arr_terminal": "S",
-    "arr_gate": null,
+    "arr_gate": "B05",
     "international": 0,
     "codeshare": [
       {
@@ -2425,7 +2425,7 @@
       {
         "aircraft_code": "320",
         "aircraft_code_type": "Iata",
-        "tail_number": null,
+        "tail_number": "N326US",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -5175,7 +5175,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C1",
+    "gate": "C14",
     "mod_gate": null,
     "flightnumber": "1154",
     "publishedTime": "2025-02-01 08:30:00",
@@ -5479,7 +5479,7 @@
     "IATA": "UA",
     "airportcode": "CHS",
     "baggage": null,
-    "status": "OutGate",
+    "status": "NoTakeoffInfo",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "Z7",
@@ -5487,13 +5487,13 @@
     "flightnumber": "3487",
     "publishedTime": "2025-01-31 13:00:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-31 12:59:00",
+    "actualtime": "2025-01-31 13:00:00",
     "city": "CHARLESTON, CHS",
     "id": "1f8b46b6834140f0a568af89f8a039f4",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "B3",
+    "arr_gate": "Z7",
     "international": 0,
     "codeshare": [
       {
@@ -5912,6 +5912,30 @@
     "IATA": "UA",
     "airportcode": "CLT",
     "baggage": "C2",
+    "status": "OutGate",
+    "mod_status": null,
+    "airline": "United Airlines",
+    "gate": "A1C",
+    "mod_gate": null,
+    "flightnumber": "6141",
+    "publishedTime": "2025-01-31 07:35:00",
+    "mwaaTime": null,
+    "actualtime": "2025-01-31 08:40:00",
+    "city": "CHARLOTTE",
+    "id": "7D705C9AE67A4E5ABD2E01A1103B0AE7",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": "A21",
+    "international": 0,
+    "codeshare": [],
+    "aircraftInfo": [],
+    "departureInfo": []
+  },
+  {
+    "IATA": "UA",
+    "airportcode": "CLT",
+    "baggage": "C2",
     "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
@@ -6033,75 +6057,6 @@
         "remaining_time": null,
         "elapsed_time": null,
         "scheduled_duration": "01:33:00",
-        "map": null,
-        "position": null,
-        "route": null,
-        "airport_name": "CHARLOTTE/DOUGLAS INTL"
-      }
-    ]
-  },
-  {
-    "IATA": "UA",
-    "airportcode": "CLT",
-    "baggage": "C2",
-    "status": "OutGate",
-    "mod_status": null,
-    "airline": "United Airlines",
-    "gate": "A1C",
-    "mod_gate": null,
-    "flightnumber": "6141",
-    "publishedTime": "2025-01-31 12:35:00",
-    "mwaaTime": null,
-    "actualtime": "2025-01-31 12:43:00",
-    "city": "CHARLOTTE",
-    "id": "eb498c6e8b12470693aee0dd3e0e6cff",
-    "dep_airport_code": "IAD",
-    "dep_terminal": null,
-    "arr_terminal": null,
-    "arr_gate": "A21",
-    "international": 0,
-    "codeshare": [
-      {
-        "IATA": "AC",
-        "flightnumber": "3560",
-        "airline": "Air Canada"
-      },
-      {
-        "IATA": "NH",
-        "flightnumber": "7152",
-        "airline": "All Nippon Airways"
-      }
-    ],
-    "aircraftInfo": [
-      {
-        "aircraft_code": "E75L",
-        "aircraft_code_type": "Icao",
-        "tail_number": "N85351",
-        "weight_class": "L",
-        "optional_equipment": null
-      }
-    ],
-    "departureInfo": [
-      {
-        "reg_code": "YV",
-        "scheduled": 1,
-        "genral_aviation": null,
-        "dep_scheduled_status": null,
-        "arr_scheduled_status": null,
-        "dep_delay_reason": null,
-        "arr_delay_reason": null,
-        "faaId": "{\"Code\":\"ASH\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"6141\"}",
-        "servicetype": "J",
-        "leg_seq_num": 1,
-        "num_legs": 1,
-        "aircraft": null,
-        "alt_dep_airport": null,
-        "alt_arr_airport": null,
-        "upline_info": null,
-        "downline_info": null,
-        "remaining_time": null,
-        "elapsed_time": null,
-        "scheduled_duration": "01:36:00",
         "map": null,
         "position": null,
         "route": null,
@@ -12705,7 +12660,7 @@
   {
     "IATA": "EI",
     "airportcode": "DUB",
-    "baggage": null,
+    "baggage": "4",
     "status": "Proposed",
     "mod_status": null,
     "airline": "Aer Lingus",
@@ -12720,7 +12675,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "T2",
-    "arr_gate": "304",
+    "arr_gate": "303",
     "international": 1,
     "codeshare": [
       {
@@ -18960,10 +18915,10 @@
     "codeshare": [],
     "aircraftInfo": [
       {
-        "aircraft_code": "788",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B788",
+        "aircraft_code_type": "Icao",
         "tail_number": "N26906",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -18976,7 +18931,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"612\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -19670,7 +19625,7 @@
     "IATA": "TP",
     "airportcode": "LIS",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "TAP Air Portugal",
     "gate": null,
@@ -19678,7 +19633,7 @@
     "flightnumber": "234",
     "publishedTime": "2025-01-31 22:30:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-31 22:30:00",
+    "actualtime": "2025-01-31 23:05:00",
     "city": "LISBON",
     "id": "0e5fae5f9b9c44c4b8689eb51e01ba67",
     "dep_airport_code": "IAD",
@@ -19944,7 +19899,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D5",
+    "gate": "D3",
     "mod_gate": null,
     "flightnumber": "918",
     "publishedTime": "2025-01-31 18:25:00",
@@ -20112,7 +20067,7 @@
     "flightnumber": "292",
     "publishedTime": "2025-01-31 21:55:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-31 21:59:00",
+    "actualtime": "2025-01-31 22:00:00",
     "city": "LONDON",
     "id": "236f424b25e34fb8b198e488a40a5f1d",
     "dep_airport_code": "IAD",
@@ -20956,7 +20911,7 @@
       {
         "aircraft_code": "789",
         "aircraft_code_type": "Iata",
-        "tail_number": "N29991",
+        "tail_number": "N29961",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -24821,7 +24776,7 @@
       {
         "aircraft_code": "E7W",
         "aircraft_code_type": "Iata",
-        "tail_number": "N86347",
+        "tail_number": "N85352",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -25751,7 +25706,7 @@
       {
         "aircraft_code": "E7W",
         "aircraft_code_type": "Iata",
-        "tail_number": "N85351",
+        "tail_number": "N85354",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -27954,7 +27909,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D26",
+    "gate": "C8",
     "mod_gate": null,
     "flightnumber": "915",
     "publishedTime": "2025-01-31 17:35:00",
@@ -33092,7 +33047,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C8",
+    "gate": "C5",
     "mod_gate": null,
     "flightnumber": "1831",
     "publishedTime": "2025-01-31 18:20:00",
@@ -33712,7 +33667,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D3",
+    "gate": "D26",
     "mod_gate": null,
     "flightnumber": "1757",
     "publishedTime": "2025-01-31 18:00:00",
@@ -37935,7 +37890,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "C1",
+    "gate": "D21",
     "mod_gate": null,
     "flightnumber": "2277",
     "publishedTime": "2025-02-01 12:43:00",
@@ -38177,7 +38132,7 @@
     "flightnumber": "803",
     "publishedTime": "2025-01-31 12:35:00",
     "mwaaTime": null,
-    "actualtime": "2025-01-31 13:40:00",
+    "actualtime": "2025-01-31 14:30:00",
     "city": "TOKYO, HND",
     "id": "52617FEC44554363A7A6BB278FD1B0E8",
     "dep_airport_code": "IAD",
@@ -38185,9 +38140,41 @@
     "arr_terminal": null,
     "arr_gate": null,
     "international": 1,
-    "codeshare": [],
+    "codeshare": [
+      {
+        "IATA": "NH",
+        "flightnumber": "7029",
+        "airline": "All Nippon Airways"
+      }
+    ],
     "aircraftInfo": [],
-    "departureInfo": []
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": "{\"Code\":\"IAD\",\"CodeNamespace\":\"Iata\",\"Name\":\"WASHINGTON DULLES INTERNATIONAL\",\"Location\":{\"CityName\":\"WASHINGTON\",\"StateId\":\"DC\",\"CountryId\":\"US\"}}",
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "14:15:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "HANEDA INTL"
+      }
+    ]
   },
   {
     "IATA": "NH",
@@ -39048,7 +39035,7 @@
       {
         "aircraft_code": "E75",
         "aircraft_code_type": "Iata",
-        "tail_number": "CFFYG",
+        "tail_number": "CFRQW",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -39159,7 +39146,7 @@
     "IATA": "OS",
     "airportcode": "VIE",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "Austrian",
     "gate": "B41",
@@ -39184,10 +39171,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "789",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B789",
+        "aircraft_code_type": "Icao",
         "tail_number": null,
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -39200,7 +39187,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"AUA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"94\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
