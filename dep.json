@@ -3397,7 +3397,7 @@
     "IATA": "UA",
     "airportcode": "BOS",
     "baggage": "6",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D24",
@@ -4355,7 +4355,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A3C",
+    "gate": "A5A",
     "mod_gate": null,
     "flightnumber": "4823",
     "publishedTime": "2025-02-02 17:35:00",
@@ -6352,7 +6352,7 @@
       {
         "aircraft_code": "CR9",
         "aircraft_code_type": "Iata",
-        "tail_number": "N570NN",
+        "tail_number": "N566NN",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -11634,7 +11634,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "B27",
     "international": 0,
     "codeshare": [
       {
@@ -14346,10 +14346,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "763",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B763",
+        "aircraft_code_type": "Icao",
         "tail_number": "N647UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -14362,7 +14362,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"748\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -14827,7 +14827,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A5A",
+    "gate": "A1D",
     "mod_gate": null,
     "flightnumber": "4963",
     "publishedTime": "2025-02-02 17:30:00",
@@ -17413,7 +17413,7 @@
     "IATA": "TK",
     "airportcode": "IST",
     "baggage": null,
-    "status": "Proposed",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Turkish Airlines",
     "gate": null,
@@ -17421,7 +17421,7 @@
     "flightnumber": "188",
     "publishedTime": "2025-02-02 14:00:00",
     "mwaaTime": null,
-    "actualtime": "2025-02-02 14:00:00",
+    "actualtime": null,
     "city": "ISTANBUL",
     "id": "ac2f9203a4044b0eb2f060e3da09c50d",
     "dep_airport_code": "IAD",
@@ -18092,7 +18092,7 @@
     "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "A3C",
+    "gate": "A3A",
     "mod_gate": null,
     "flightnumber": "5035",
     "publishedTime": "2025-02-02 12:50:00",
@@ -19122,7 +19122,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": null,
+    "gate": "C8",
     "mod_gate": null,
     "flightnumber": "612",
     "publishedTime": "2025-02-03 18:30:00",
@@ -20923,7 +20923,7 @@
     "IATA": "UA",
     "airportcode": "LAX",
     "baggage": "1",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D11",
@@ -20937,7 +20937,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "7",
-    "arr_gate": "70B",
+    "arr_gate": "70A",
     "international": 0,
     "codeshare": [
       {
@@ -21011,7 +21011,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "7",
-    "arr_gate": "77",
+    "arr_gate": "72A",
     "international": 0,
     "codeshare": [
       {
@@ -21099,8 +21099,8 @@
     "id": "2dc7ff65e1aa4a418b36937088d23221",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
-    "arr_terminal": "7",
-    "arr_gate": "76A",
+    "arr_terminal": "8",
+    "arr_gate": "82",
     "international": 0,
     "codeshare": [
       {
@@ -24740,7 +24740,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "B",
-    "arr_gate": "44",
+    "arr_gate": "45",
     "international": 0,
     "codeshare": [
       {
@@ -26877,7 +26877,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "A",
-    "arr_gate": "24",
+    "arr_gate": "28",
     "international": 0,
     "codeshare": [],
     "aircraftInfo": [
@@ -29099,7 +29099,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "4",
-    "arr_gate": "C3",
+    "arr_gate": "C2",
     "international": 0,
     "codeshare": [],
     "aircraftInfo": [
@@ -30901,7 +30901,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "2",
-    "arr_gate": "D20",
+    "arr_gate": "C8",
     "international": 0,
     "codeshare": [
       {
@@ -35790,8 +35790,42 @@
     "arr_gate": null,
     "international": 1,
     "codeshare": [],
-    "aircraftInfo": [],
-    "departureInfo": []
+    "aircraftInfo": [
+      {
+        "aircraft_code": "320",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": "LR",
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:30:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "EL SALVADOR INTL"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -36496,7 +36530,7 @@
     "IATA": "AS",
     "airportcode": "SEA",
     "baggage": "14",
-    "status": "Scheduled",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "Alaska Airlines",
     "gate": "B65",
@@ -36504,7 +36538,7 @@
     "flightnumber": "351",
     "publishedTime": "2025-02-02 18:57:00",
     "mwaaTime": null,
-    "actualtime": "2025-02-02 18:57:00",
+    "actualtime": "2025-02-02 19:17:00",
     "city": "SEATTLE, SEA",
     "id": "9fd8110cf52a4182a7326348f62ac9c4",
     "dep_airport_code": "IAD",
