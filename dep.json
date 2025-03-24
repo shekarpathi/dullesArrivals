@@ -917,10 +917,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "332",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "A332",
+        "aircraft_code_type": "Icao",
         "tail_number": null,
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -933,7 +933,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"KLM\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"183\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -2135,7 +2135,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Delta Air Lines",
-    "gate": "B79",
+    "gate": "B78",
     "mod_gate": null,
     "flightnumber": "2550",
     "publishedTime": "2025-03-25 06:00:00",
@@ -2215,7 +2215,7 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Delta Air Lines",
-    "gate": "B78",
+    "gate": "B74",
     "mod_gate": null,
     "flightnumber": "1354",
     "publishedTime": "2025-03-25 07:35:00",
@@ -2574,18 +2574,18 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Delta Air Lines",
-    "gate": null,
+    "gate": "B74",
     "mod_gate": null,
     "flightnumber": "1482",
     "publishedTime": "2025-03-25 13:48:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2025-03-25 13:48:00",
     "city": "ATLANTA",
     "id": "4d4b474c5fb842dd9887f445bf123dbc",
     "dep_airport_code": "IAD",
-    "dep_terminal": null,
+    "dep_terminal": "B",
     "arr_terminal": "S",
-    "arr_gate": null,
+    "arr_gate": "B28",
     "international": 0,
     "diversion_status": null,
     "codeshare": [
@@ -2629,7 +2629,7 @@
       {
         "aircraft_code": "319",
         "aircraft_code_type": "Iata",
-        "tail_number": null,
+        "tail_number": "N336NB",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -6415,7 +6415,7 @@
     "IATA": "AA",
     "airportcode": "CLT",
     "baggage": "8",
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "American Airlines",
     "gate": "B73",
@@ -6423,7 +6423,7 @@
     "flightnumber": "5543",
     "publishedTime": "2025-03-24 13:52:00",
     "mwaaTime": null,
-    "actualtime": "2025-03-24 13:52:00",
+    "actualtime": "2025-03-24 13:48:00",
     "city": "CHARLOTTE",
     "id": "c54e0c783b0c4f04b932806089e6ced9",
     "dep_airport_code": "IAD",
@@ -12078,10 +12078,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "777",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B772",
+        "aircraft_code_type": "Icao",
         "tail_number": "N769UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -12094,7 +12094,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1728\"}",
         "servicetype": "J",
         "leg_seq_num": 2,
         "num_legs": 2,
@@ -15958,10 +15958,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "763",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B763",
+        "aircraft_code_type": "Icao",
         "tail_number": "N647UA",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -15974,7 +15974,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"748\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -17014,8 +17014,42 @@
     "international": 1,
     "diversion_status": null,
     "codeshare": [],
-    "aircraftInfo": [],
-    "departureInfo": []
+    "aircraftInfo": [
+      {
+        "aircraft_code": "32N",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": "LR",
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 2,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": "[{\"DepAirportCode\":\"GUA\",\"DepCodeNS\":\"Iata\",\"ArrAirportCode\":\"SJO\",\"ArrCodeNS\":\"Iata\"}]",
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:30:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "LA AURORA"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -20374,7 +20408,7 @@
       {
         "aircraft_code": "CRJ",
         "aircraft_code_type": "Iata",
-        "tail_number": "N496CA",
+        "tail_number": "N967SW",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -20419,7 +20453,7 @@
     "flightnumber": "6157",
     "publishedTime": "2025-03-24 13:00:00",
     "mwaaTime": null,
-    "actualtime": "2025-03-24 14:15:00",
+    "actualtime": "2025-03-24 14:22:00",
     "city": "KANSAS CITY",
     "id": "10b791ce79be4cd0ad9067e727ebb167",
     "dep_airport_code": "IAD",
@@ -24510,7 +24544,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": null,
+    "arr_gate": "A15",
     "international": 0,
     "diversion_status": null,
     "codeshare": [
@@ -25433,7 +25467,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": "B",
     "arr_terminal": "1",
-    "arr_gate": "C17",
+    "arr_gate": "C21",
     "international": 0,
     "diversion_status": null,
     "codeshare": [
@@ -26224,7 +26258,7 @@
     "IATA": "AC",
     "airportcode": "YUL",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "Air Canada",
     "gate": "Z10",
@@ -26232,7 +26266,7 @@
     "flightnumber": "8726",
     "publishedTime": "2025-03-24 15:55:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2025-03-24 15:55:00",
     "city": "MONTREAL",
     "id": "89ad1c5a8a624033a8f94fc6d80bba00",
     "dep_airport_code": "IAD",
@@ -26250,10 +26284,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "E75",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "E75S",
+        "aircraft_code_type": "Icao",
         "tail_number": "CFEKD",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -26266,7 +26300,7 @@
         "arr_scheduled_status": "AO",
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"JZA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"726\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -27658,7 +27692,7 @@
     "IATA": "DL",
     "airportcode": "JFK",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B72",
@@ -30220,10 +30254,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "739",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B739",
+        "aircraft_code_type": "Icao",
         "tail_number": "N75432",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -30236,7 +30270,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1076\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -35992,7 +36026,7 @@
       {
         "aircraft_code": "CR5",
         "aircraft_code_type": "Iata",
-        "tail_number": "N554GJ",
+        "tail_number": "N569GJ",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -40712,8 +40746,42 @@
     "international": 1,
     "diversion_status": null,
     "codeshare": [],
-    "aircraftInfo": [],
-    "departureInfo": []
+    "aircraftInfo": [
+      {
+        "aircraft_code": "320",
+        "aircraft_code_type": "Iata",
+        "tail_number": null,
+        "weight_class": null,
+        "optional_equipment": null
+      }
+    ],
+    "departureInfo": [
+      {
+        "reg_code": null,
+        "scheduled": 1,
+        "genral_aviation": null,
+        "dep_scheduled_status": null,
+        "arr_scheduled_status": null,
+        "dep_delay_reason": null,
+        "arr_delay_reason": null,
+        "faaId": null,
+        "servicetype": "J",
+        "leg_seq_num": 1,
+        "num_legs": 1,
+        "aircraft": null,
+        "alt_dep_airport": null,
+        "alt_arr_airport": null,
+        "upline_info": null,
+        "downline_info": null,
+        "remaining_time": null,
+        "elapsed_time": null,
+        "scheduled_duration": "04:37:00",
+        "map": null,
+        "position": null,
+        "route": null,
+        "airport_name": "EL SALVADOR INTL"
+      }
+    ]
   },
   {
     "IATA": "UA",
@@ -41590,10 +41658,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "7M8",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B38M",
+        "aircraft_code_type": "Icao",
         "tail_number": "N17272",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -41606,7 +41674,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"326\"}",
         "servicetype": "J",
         "leg_seq_num": 2,
         "num_legs": 2,
@@ -44269,7 +44337,7 @@
     "flightnumber": "101",
     "publishedTime": "2025-03-24 12:10:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2025-03-24 13:31:00",
     "city": "TOKYO, HND",
     "id": "9070b2c2edb841d6aa227aae040856ac",
     "dep_airport_code": "IAD",
@@ -44336,7 +44404,7 @@
     "IATA": "UA",
     "airportcode": "HND",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "D3",
@@ -44606,7 +44674,7 @@
     "IATA": "PD",
     "airportcode": "YTZ",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Porter Airlines",
     "gate": "A19",
@@ -45016,7 +45084,7 @@
     "IATA": "AC",
     "airportcode": "YYZ",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "Proposed",
     "mod_status": null,
     "airline": "Air Canada",
     "gate": "Z10",
@@ -45024,7 +45092,7 @@
     "flightnumber": "8619",
     "publishedTime": "2025-03-24 14:45:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2025-03-24 14:45:00",
     "city": "TORONTO, YYZ",
     "id": "7752daf2df724d72a407e1e8d9a361a5",
     "dep_airport_code": "IAD",
@@ -45042,10 +45110,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "E75",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "E75S",
+        "aircraft_code_type": "Icao",
         "tail_number": "CFRQP",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -45058,7 +45126,7 @@
         "arr_scheduled_status": "AO",
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"JZA\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"619\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
