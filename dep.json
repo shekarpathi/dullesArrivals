@@ -1683,7 +1683,7 @@
     "IATA": "DL",
     "airportcode": "ATL",
     "baggage": null,
-    "status": "Scheduled",
+    "status": "OutGate",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B74",
@@ -1691,7 +1691,7 @@
     "flightnumber": "1482",
     "publishedTime": "2025-03-26 13:48:00",
     "mwaaTime": null,
-    "actualtime": "2025-03-26 13:43:00",
+    "actualtime": "2025-03-26 13:38:00",
     "city": "ATLANTA",
     "id": "2c5abc7ec8b04be380a325c86648bdd0",
     "dep_airport_code": "IAD",
@@ -13449,7 +13449,7 @@
     "IATA": "DL",
     "airportcode": "DTW",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "Delta Air Lines",
     "gate": "B76",
@@ -13906,18 +13906,18 @@
     "status": "Scheduled",
     "mod_status": null,
     "airline": "Delta Air Lines",
-    "gate": null,
+    "gate": "B76",
     "mod_gate": null,
     "flightnumber": "4047",
     "publishedTime": "2025-03-27 13:35:00",
     "mwaaTime": null,
-    "actualtime": null,
+    "actualtime": "2025-03-27 13:35:00",
     "city": "DETROIT, DTW",
     "id": "0316e6e93cf84d989131ce80a2e4cda4",
     "dep_airport_code": "IAD",
-    "dep_terminal": null,
-    "arr_terminal": "M",
-    "arr_gate": null,
+    "dep_terminal": "B",
+    "arr_terminal": "EM",
+    "arr_gate": "B19",
     "international": 0,
     "diversion_status": null,
     "codeshare": [
@@ -13951,7 +13951,7 @@
       {
         "aircraft_code": "E7W",
         "aircraft_code_type": "Iata",
-        "tail_number": null,
+        "tail_number": "N258SY",
         "weight_class": null,
         "optional_equipment": null
       }
@@ -17554,6 +17554,31 @@
         "airport_name": "LA AURORA"
       }
     ]
+  },
+  {
+    "IATA": "AV",
+    "airportcode": "GUA",
+    "baggage": null,
+    "status": "Scheduled",
+    "mod_status": null,
+    "airline": "Avianca",
+    "gate": null,
+    "mod_gate": "B48",
+    "flightnumber": "655",
+    "publishedTime": "2025-03-28 02:30:00",
+    "mwaaTime": null,
+    "actualtime": null,
+    "city": "GUATEMALA CITY",
+    "id": "3ab1a97a408440c7a2f237f39dcfc6c1",
+    "dep_airport_code": "IAD",
+    "dep_terminal": null,
+    "arr_terminal": null,
+    "arr_gate": null,
+    "international": 1,
+    "diversion_status": null,
+    "codeshare": [],
+    "aircraftInfo": [],
+    "departureInfo": []
   },
   {
     "IATA": "UA",
@@ -21430,7 +21455,7 @@
     "IATA": "UA",
     "airportcode": "TYS",
     "baggage": null,
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A4F",
@@ -28845,7 +28870,7 @@
     "IATA": "UA",
     "airportcode": "LGA",
     "baggage": "7",
-    "status": "OutGate",
+    "status": "InAir",
     "mod_status": null,
     "airline": "United Airlines",
     "gate": "A1C",
@@ -28859,7 +28884,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "B",
-    "arr_gate": "45",
+    "arr_gate": "44",
     "international": 0,
     "diversion_status": null,
     "codeshare": [
@@ -30973,10 +30998,10 @@
     ],
     "aircraftInfo": [
       {
-        "aircraft_code": "739",
-        "aircraft_code_type": "Iata",
+        "aircraft_code": "B739",
+        "aircraft_code_type": "Icao",
         "tail_number": "N61881",
-        "weight_class": null,
+        "weight_class": "L",
         "optional_equipment": null
       }
     ],
@@ -30989,7 +31014,7 @@
         "arr_scheduled_status": null,
         "dep_delay_reason": null,
         "arr_delay_reason": null,
-        "faaId": null,
+        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"1076\"}",
         "servicetype": "J",
         "leg_seq_num": 1,
         "num_legs": 1,
@@ -32500,7 +32525,13 @@
     "arr_gate": null,
     "international": 1,
     "diversion_status": null,
-    "codeshare": [],
+    "codeshare": [
+      {
+        "IATA": "UA",
+        "flightnumber": "7065",
+        "airline": "United Airlines"
+      }
+    ],
     "aircraftInfo": [],
     "departureInfo": []
   },
@@ -39571,76 +39602,26 @@
     "IATA": "UA",
     "airportcode": "SFO",
     "baggage": "5",
-    "status": "OutGate",
+    "status": "Delayed",
     "mod_status": null,
     "airline": "United Airlines",
-    "gate": "D26",
+    "gate": "D32",
     "mod_gate": null,
     "flightnumber": "2144",
     "publishedTime": "2025-03-26 12:35:00",
     "mwaaTime": null,
-    "actualtime": "2025-03-26 12:33:00",
+    "actualtime": "2025-03-26 13:51:00",
     "city": "SAN FRANCISCO",
-    "id": "dcf63ba68a52441583af6ffb90fd08b2",
+    "id": "8F5E906347014014B3DDAD1580197126",
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": "3",
-    "arr_gate": "F11",
+    "arr_gate": "F14",
     "international": 0,
-    "diversion_status": null,
-    "codeshare": [
-      {
-        "IATA": "ET",
-        "flightnumber": "1358",
-        "airline": "Ethiopian Airlines"
-      },
-      {
-        "IATA": "NZ",
-        "flightnumber": "9175",
-        "airline": "Air New Zealand"
-      },
-      {
-        "IATA": "VA",
-        "flightnumber": "8389",
-        "airline": "Virgin Australia International"
-      }
-    ],
-    "aircraftInfo": [
-      {
-        "aircraft_code": "B753",
-        "aircraft_code_type": "Icao",
-        "tail_number": "N57852",
-        "weight_class": "L",
-        "optional_equipment": null
-      }
-    ],
-    "departureInfo": [
-      {
-        "reg_code": null,
-        "scheduled": 1,
-        "genral_aviation": null,
-        "dep_scheduled_status": null,
-        "arr_scheduled_status": null,
-        "dep_delay_reason": null,
-        "arr_delay_reason": null,
-        "faaId": "{\"Code\":\"UAL\",\"CodeNamespace\":\"Icao\",\"FlightId\":\"2144\"}",
-        "servicetype": "J",
-        "leg_seq_num": 2,
-        "num_legs": 3,
-        "aircraft": null,
-        "alt_dep_airport": null,
-        "alt_arr_airport": null,
-        "upline_info": null,
-        "downline_info": "[{\"DepAirportCode\":\"SFO\",\"DepCodeNS\":\"Iata\",\"ArrAirportCode\":\"MFR\",\"ArrCodeNS\":\"Iata\"}]",
-        "remaining_time": null,
-        "elapsed_time": null,
-        "scheduled_duration": "06:09:00",
-        "map": null,
-        "position": null,
-        "route": null,
-        "airport_name": "SAN FRANCISCO INTERNATIONAL"
-      }
-    ]
+    "diversion_status": "Recovery",
+    "codeshare": [],
+    "aircraftInfo": [],
+    "departureInfo": []
   },
   {
     "IATA": "UA",
@@ -45391,7 +45372,7 @@
     "dep_airport_code": "IAD",
     "dep_terminal": null,
     "arr_terminal": null,
-    "arr_gate": "7",
+    "arr_gate": "11",
     "international": 1,
     "diversion_status": null,
     "codeshare": [
