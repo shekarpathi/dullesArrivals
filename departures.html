@@ -1,0 +1,1958 @@
+<!doctype html>
+<head title="IAD Departures">
+    <meta http-equiv="refresh" content="300">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link href="https://fonts.cdnfonts.com/css/sf-outer-limits" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/br-segma?styles=171045,171039,171040" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="sort.js"></script>
+    <link rel="stylesheet" type="text/css" href="pagestyles.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Setup - add a text input to each footer cell
+            $('#example thead tr').clone(true).addClass('filters').appendTo('#example thead');
+            let table = $('#example').DataTable({
+                orderCellsTop: true,
+                autoWidth: false,
+                fixedHeader: true,
+                initComplete: function () {
+                    let api = this.api();
+                    // For each column
+                    api.columns().eq(0).each(function (colIdx) {
+                        // Set the header cell to contain the input element
+                        let cell = $('.filters th').eq($(api.column(colIdx).header()).index());
+                        let title = $(cell).text();
+                        $(cell).html('<input type="text" placeholder="' + title + '" />');
+                        // On every keypress in this input
+                        $('input', $('.filters th').eq($(api.column(colIdx).header()).index())).off('keyup change').on('change', function (e) {
+                            // Get the search value
+                            $(this).attr('title', $(this).val());
+                            let regexr = '({search})'; //$(this).parents('th').find('select').val();
+                            let cursorPosition = this.selectionStart;
+                            // Search the column for that value
+                            api.column(colIdx).search(this.value != '' ? regexr.replace('{search}', '(((' + this.value + ')))') : '', this.value != '', this.value == '').draw();
+                        }).on('keyup', function (e) {
+                            e.stopPropagation();
+                            $(this).trigger('change');
+                            $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
+                        });
+                    });
+                },
+            });
+        });
+    </script>
+    <script>
+        // Set the date we're counting down to
+        var countdownMinutes = 5;
+        var distance = countdownMinutes * 60 * 1000;
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+            // Time calculations for days, hours, minutes and seconds
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in an element with id="demo"
+            document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+            distance = distance - 1000;
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "Refresh Now";
+            }
+        }, 1000);
+    </script>
+    <title>IAD Departures</title>
+</head>
+
+
+<div class="row">
+    <div class="column">
+        <IMG src="TA-Dulles-Logo-web.png" alt="Travelers Aid" class="">
+    </div>
+    <div class="column">
+        <IMG src="departures.jpg" alt="Departures" class="center2">
+        <IMG onclick="myFunction()" src="refresh.png" alt="Arrivals" class="center2">
+        Refresh in
+        <FG class="center2" id="demo"></FG>
+    </div>
+    <div>
+        <A href="/" target="arrivals">Arrivals</A><br>
+        <A href="iab.html" target="iab">IAB 1-7 pm</A><br>
+        <A href="fis.html" target="fis">FIS 1-7 pm</A><br>
+        <A href="uadep.html" target="uadep">UA Departures</A>
+    </div>
+</div>
+<table data-order='[[ 4, "asc" ]]' data-page-length='600' id="example" class="cell-border order-column"
+       style="width:100%;font-family: Consolas, monaco, monospace; font-size: 14px">
+    <thead>
+    <tr>
+        <th style="max-width: 10px">Flight</th>
+        <th style="max-width: 20px">Airline</th>
+        <th style="max-width: 20px">Destination Airport</th>
+        <th style="max-width: 10px">Gate</th>
+        <th style="max-width: 15px">Dep Time</th>
+        <th style="max-width: 15px">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+
+<!--<p class="basebutton cancelled">Cancelled</p>-->
+<!--<p class="basebutton delayed">Delayed ↻</p>-->
+<!--<p class="basebutton inair">In Air ↑</p>-->
+<!--<p class="basebutton ingate">→ In Gate</p>-->
+<!--<p class="basebutton landed">Landed ↘</p>-->
+<!--<p class="basebutton incustoms">Customs ↯</p>-->
+<!--<p class="basebutton outgate">Outgate →</p>-->
+<!--<p class="basebutton proposed">Proposed ⇉</p>-->
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3652" rel="noopener noreferrer">UA 3652</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">YYZ - TORONTO, YYZ</td>
+            <td style="max-width: 10px" class="iatafont">D27</td>
+            <td style="max-width: 15px">04/20 15:21 <span style="background-color: #ffd699">1:31 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1839" rel="noopener noreferrer">UA 1839</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">BNA - NASHVILLE</td>
+            <td style="max-width: 10px" class="iatafont">C17</td>
+            <td style="max-width: 15px">04/20 15:22 <span style="background-color: #ffd699">1:30 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3643" rel="noopener noreferrer">UA 3643</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">RDU - RALEIGH</td>
+            <td style="max-width: 10px" class="iatafont">A1G</td>
+            <td style="max-width: 15px">04/20 15:22 <span style="background-color: #ffd699">1:30 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1651" rel="noopener noreferrer">UA 1651</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ORD - CHICAGO, ORD</td>
+            <td style="max-width: 10px" class="iatafont">D1</td>
+            <td style="max-width: 15px">04/20 15:23 <span style="background-color: #ffd699">1:29 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4176" rel="noopener noreferrer">UA 4176</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CVG - CINCINNATI</td>
+            <td style="max-width: 10px" class="iatafont">C28</td>
+            <td style="max-width: 15px">04/20 15:25 <span style="background-color: #ffd699">1:27 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1322" rel="noopener noreferrer">UA 1322</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">TPA - TAMPA</td>
+            <td style="max-width: 10px" class="iatafont">D4</td>
+            <td style="max-width: 15px">04/20 15:25 <span style="background-color: #ffd699">1:27 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/AVA247" rel="noopener noreferrer">AV 247</a></td>
+            <td style="max-width: 20px">Avianca</td>
+            <td style="max-width: 20px">BOG - BOGOTA</td>
+            <td style="max-width: 10px" class="iatafont">B48</td>
+            <td style="max-width: 15px">04/20 15:26 <span style="background-color: #ffd699">1:26 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3601" rel="noopener noreferrer">UA 3601</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">IND - INDIANAPOLIS</td>
+            <td style="max-width: 10px" class="iatafont">D23</td>
+            <td style="max-width: 15px">04/20 15:26 <span style="background-color: #ffd699">1:26 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3536" rel="noopener noreferrer">UA 3536</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CLE - CLEVELAND</td>
+            <td style="max-width: 10px" class="iatafont">A1C</td>
+            <td style="max-width: 15px">04/20 15:27 <span style="background-color: #ffd699">1:25 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3503" rel="noopener noreferrer">UA 3503</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CMH - COLUMBUS</td>
+            <td style="max-width: 10px" class="iatafont">D25</td>
+            <td style="max-width: 15px">04/20 15:27 <span style="background-color: #ffd699">1:25 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4403" rel="noopener noreferrer">UA 4403</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">RIC - RICHMOND</td>
+            <td style="max-width: 10px" class="iatafont">C22</td>
+            <td style="max-width: 15px">04/20 15:30 <span style="background-color: #ffd699">1:22 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4187" rel="noopener noreferrer">UA 4187</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">PWM - PORTLAND, PWM</td>
+            <td style="max-width: 10px" class="iatafont">C20</td>
+            <td style="max-width: 15px">04/20 15:35 <span style="background-color: #ffd699">1:17 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL2355" rel="noopener noreferrer">UA 2355</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">LAS - LAS VEGAS</td>
+            <td style="max-width: 10px" class="iatafont">D6</td>
+            <td style="max-width: 15px">04/20 15:39 <span style="background-color: #ffd699">1:13 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1856" rel="noopener noreferrer">UA 1856</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">BOS - BOSTON</td>
+            <td style="max-width: 10px" class="iatafont">D9</td>
+            <td style="max-width: 15px">04/20 15:43 <span style="background-color: #ffd699">1:09 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3704" rel="noopener noreferrer">UA 3704</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">PIT - PITTSBURGH</td>
+            <td style="max-width: 10px" class="iatafont">C24</td>
+            <td style="max-width: 15px">04/20 15:44 <span style="background-color: #ffd699">1:08 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ff4d4d">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3670" rel="noopener noreferrer">UA 3670</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">EWR - NEWARK</td>
+            <td style="max-width: 10px" class="iatafont">C18</td>
+            <td style="max-width: 15px">04/20 15:47 <span style="background-color: #ffd699">1:05 ago</span></td>
+            <td style="max-width: 15px">Cancelled</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/ACA8726" rel="noopener noreferrer">AC 8726</a></td>
+            <td style="max-width: 20px">Air Canada</td>
+            <td style="max-width: 20px">YUL - MONTREAL</td>
+            <td style="max-width: 10px" class="iatafont">Z10</td>
+            <td style="max-width: 15px">04/20 15:49 <span style="background-color: #ffd699">1:03 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL646" rel="noopener noreferrer">UA 646</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">MCO - ORLANDO</td>
+            <td style="max-width: 10px" class="iatafont">D15</td>
+            <td style="max-width: 15px">04/20 15:49 <span style="background-color: #ffd699">1:03 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3678" rel="noopener noreferrer">UA 3678</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">YUL - MONTREAL</td>
+            <td style="max-width: 10px" class="iatafont">C26</td>
+            <td style="max-width: 15px">04/20 15:52 <span style="background-color: #ffd699">1:00 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1411" rel="noopener noreferrer">UA 1411</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">AUS - AUSTIN</td>
+            <td style="max-width: 10px" class="iatafont">D11</td>
+            <td style="max-width: 15px">04/20 15:55 <span style="background-color: #ffd699">0:57 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1548" rel="noopener noreferrer">UA 1548</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">LAX - LOS ANGELES</td>
+            <td style="max-width: 10px" class="iatafont">D10</td>
+            <td style="max-width: 15px">04/20 15:56 <span style="background-color: #ffd699">0:56 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1236" rel="noopener noreferrer">UA 1236</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">DEN - DENVER</td>
+            <td style="max-width: 10px" class="iatafont">C25</td>
+            <td style="max-width: 15px">04/20 15:58 <span style="background-color: #ffd699">0:54 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1340" rel="noopener noreferrer">UA 1340</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">IAH - HOUSTON</td>
+            <td style="max-width: 10px" class="iatafont">D14</td>
+            <td style="max-width: 15px">04/20 15:59 <span style="background-color: #ffd699">0:53 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL2142" rel="noopener noreferrer">UA 2142</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SFO - SAN FRANCISCO</td>
+            <td style="max-width: 10px" class="iatafont">D7</td>
+            <td style="max-width: 15px">04/20 16:14 <span style="background-color: #ffd699">0:38 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ff4d4d">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3286" rel="noopener noreferrer">UA 3286</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SYR - SYRACUSE</td>
+            <td style="max-width: 10px" class="iatafont">D29</td>
+            <td style="max-width: 15px">04/20 16:20 <span style="background-color: #ffd699">0:32 ago</span></td>
+            <td style="max-width: 15px">Cancelled</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL345" rel="noopener noreferrer">UA 345</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">HNL - HONOLULU</td>
+            <td style="max-width: 10px" class="iatafont">D26</td>
+            <td style="max-width: 15px">04/20 16:22 <span style="background-color: #ffd699">0:30 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/CMP444" rel="noopener noreferrer">CM 444</a></td>
+            <td style="max-width: 20px">COPA Airlines</td>
+            <td style="max-width: 20px">PTY - PANAMA CITY</td>
+            <td style="max-width: 10px" class="iatafont">A24</td>
+            <td style="max-width: 15px">04/20 16:30 <span style="background-color: #ffd699">0:22 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr style="background-color:#ADDFFF">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/SWA4082" rel="noopener noreferrer">WN 4082</a></td>
+            <td style="max-width: 20px">Southwest Airlines</td>
+            <td style="max-width: 20px">DEN - DENVER</td>
+            <td style="max-width: 10px" class="iatafont">B64</td>
+            <td style="max-width: 15px">04/20 16:31 <span style="background-color: #ffd699">0:21 ago</span></td>
+            <td style="max-width: 15px">InAir</td>
+        </tr>
+
+        <tr >
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/IBE362" rel="noopener noreferrer">IB 362</a></td>
+            <td style="max-width: 20px">Iberia</td>
+            <td style="max-width: 20px">MAD - MADRID</td>
+            <td style="max-width: 10px" class="iatafont">B44</td>
+            <td style="max-width: 15px">04/20 16:35 <span style="background-color: #ffd699">0:17 ago</span></td>
+            <td style="max-width: 15px">Proposed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/AAL5447" rel="noopener noreferrer">AA 5447</a></td>
+            <td style="max-width: 20px">American Airlines</td>
+            <td style="max-width: 20px">CLT - CHARLOTTE</td>
+            <td style="max-width: 10px" class="iatafont">B73</td>
+            <td style="max-width: 15px">04/20 16:52 <span style="background-color: #ffd699">0:00 ago</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr >
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/AVA583" rel="noopener noreferrer">AV 583</a></td>
+            <td style="max-width: 20px">Avianca</td>
+            <td style="max-width: 20px">SAL - SAN SALVADOR</td>
+            <td style="max-width: 10px" class="iatafont">B48</td>
+            <td style="max-width: 15px">04/20 17:05 <span style="background-color: #99ffbb">In 0:12</span></td>
+            <td style="max-width: 15px">Proposed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/AMX456" rel="noopener noreferrer">AM 456</a></td>
+            <td style="max-width: 20px">Aeromexico</td>
+            <td style="max-width: 20px">MEX - MEXICO CITY</td>
+            <td style="max-width: 10px" class="iatafont">A19</td>
+            <td style="max-width: 15px">04/20 17:06 <span style="background-color: #99ffbb">In 0:13</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL982" rel="noopener noreferrer">UA 982</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ATH - ATHENS</td>
+            <td style="max-width: 10px" class="iatafont">D21</td>
+            <td style="max-width: 15px">04/20 17:10 <span style="background-color: #99ffbb">In 0:17</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4534" rel="noopener noreferrer">UA 4534</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">BTV - BURLINGTON</td>
+            <td style="max-width: 10px" class="iatafont">A4C</td>
+            <td style="max-width: 15px">04/20 17:10 <span style="background-color: #99ffbb">In 0:17</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6085" rel="noopener noreferrer">UA 6085</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CHS - CHARLESTON, CHS</td>
+            <td style="max-width: 10px" class="iatafont">A1G</td>
+            <td style="max-width: 15px">04/20 17:10 <span style="background-color: #99ffbb">In 0:17</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1642" rel="noopener noreferrer">UA 1642</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ORD - CHICAGO, ORD</td>
+            <td style="max-width: 10px" class="iatafont">C23</td>
+            <td style="max-width: 15px">04/20 17:10 <span style="background-color: #99ffbb">In 0:17</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6043" rel="noopener noreferrer">UA 6043</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">LGA - NEW YORK, LGA</td>
+            <td style="max-width: 10px" class="iatafont">Z5</td>
+            <td style="max-width: 15px">04/20 17:10 <span style="background-color: #99ffbb">In 0:17</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#ff4d4d">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3440" rel="noopener noreferrer">UA 3440</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">EWR - NEWARK</td>
+            <td style="max-width: 10px" class="iatafont">A2A</td>
+            <td style="max-width: 15px">04/20 17:10 <span style="background-color: #99ffbb">In 0:17</span></td>
+            <td style="max-width: 15px">Cancelled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4418" rel="noopener noreferrer">UA 4418</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">YOW - OTTAWA</td>
+            <td style="max-width: 10px" class="iatafont">C20</td>
+            <td style="max-width: 15px">04/20 17:10 <span style="background-color: #99ffbb">In 0:17</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL884" rel="noopener noreferrer">UA 884</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">FCO - ROME</td>
+            <td style="max-width: 10px" class="iatafont">D30</td>
+            <td style="max-width: 15px">04/20 17:10 <span style="background-color: #99ffbb">In 0:17</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6068" rel="noopener noreferrer">UA 6068</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">BDL - HARTFORD</td>
+            <td style="max-width: 10px" class="iatafont">C24</td>
+            <td style="max-width: 15px">04/20 17:11 <span style="background-color: #99ffbb">In 0:18</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6101" rel="noopener noreferrer">UA 6101</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">DTW - DETROIT, DTW</td>
+            <td style="max-width: 10px" class="iatafont">A3B</td>
+            <td style="max-width: 15px">04/20 17:14 <span style="background-color: #99ffbb">In 0:21</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4274" rel="noopener noreferrer">UA 4274</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">DAY - DAYTON</td>
+            <td style="max-width: 10px" class="iatafont">A4F</td>
+            <td style="max-width: 15px">04/20 17:15 <span style="background-color: #99ffbb">In 0:22</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL989" rel="noopener noreferrer">UA 989</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">FRA - FRANKFURT</td>
+            <td style="max-width: 10px" class="iatafont">D32</td>
+            <td style="max-width: 15px">04/20 17:15 <span style="background-color: #99ffbb">In 0:22</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4345" rel="noopener noreferrer">UA 4345</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ROC - ROCHESTER</td>
+            <td style="max-width: 10px" class="iatafont">A2E</td>
+            <td style="max-width: 15px">04/20 17:16 <span style="background-color: #99ffbb">In 0:23</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6252" rel="noopener noreferrer">UA 6252</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CLT - CHARLOTTE</td>
+            <td style="max-width: 10px" class="iatafont">A1B</td>
+            <td style="max-width: 15px">04/20 17:17 <span style="background-color: #99ffbb">In 0:24</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4926" rel="noopener noreferrer">UA 4926</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ALB - ALBANY</td>
+            <td style="max-width: 10px" class="iatafont">A4B</td>
+            <td style="max-width: 15px">04/20 17:20 <span style="background-color: #99ffbb">In 0:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4364" rel="noopener noreferrer">UA 4364</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CAE - COLUMBIA</td>
+            <td style="max-width: 10px" class="iatafont">A4E</td>
+            <td style="max-width: 15px">04/20 17:20 <span style="background-color: #99ffbb">In 0:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr >
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/EIN116" rel="noopener noreferrer">EI 116</a></td>
+            <td style="max-width: 20px">Aer Lingus</td>
+            <td style="max-width: 20px">DUB - DUBLIN</td>
+            <td style="max-width: 10px" class="iatafont">B75</td>
+            <td style="max-width: 15px">04/20 17:20 <span style="background-color: #99ffbb">In 0:27</span></td>
+            <td style="max-width: 15px">Proposed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL748" rel="noopener noreferrer">UA 748</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">GVA - GENEVA</td>
+            <td style="max-width: 10px" class="iatafont">C27</td>
+            <td style="max-width: 15px">04/20 17:20 <span style="background-color: #99ffbb">In 0:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4267" rel="noopener noreferrer">UA 4267</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ITH - ITHACA</td>
+            <td style="max-width: 10px" class="iatafont">A6A</td>
+            <td style="max-width: 15px">04/20 17:20 <span style="background-color: #99ffbb">In 0:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6261" rel="noopener noreferrer">UA 6261</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">PVD - PROVIDENCE</td>
+            <td style="max-width: 10px" class="iatafont">A2B</td>
+            <td style="max-width: 15px">04/20 17:20 <span style="background-color: #99ffbb">In 0:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3631" rel="noopener noreferrer">UA 3631</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SYR - SYRACUSE</td>
+            <td style="max-width: 10px" class="iatafont">Z9</td>
+            <td style="max-width: 15px">04/20 17:20 <span style="background-color: #99ffbb">In 0:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#ff4d4d">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3453" rel="noopener noreferrer">UA 3453</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">YYZ - TORONTO, YYZ</td>
+            <td style="max-width: 10px" class="iatafont">D29</td>
+            <td style="max-width: 15px">04/20 17:20 <span style="background-color: #99ffbb">In 0:27</span></td>
+            <td style="max-width: 15px">Cancelled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1580" rel="noopener noreferrer">UA 1580</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">MCO - ORLANDO</td>
+            <td style="max-width: 10px" class="iatafont">C12</td>
+            <td style="max-width: 15px">04/20 17:22 <span style="background-color: #99ffbb">In 0:29</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/DAL4973" rel="noopener noreferrer">DL 4973</a></td>
+            <td style="max-width: 20px">Delta Air Lines</td>
+            <td style="max-width: 20px">DTW - DETROIT, DTW</td>
+            <td style="max-width: 10px" class="iatafont">B78</td>
+            <td style="max-width: 15px">04/20 17:23 <span style="background-color: #99ffbb">In 0:30</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/KLM652" rel="noopener noreferrer">KL 652</a></td>
+            <td style="max-width: 20px">KLM-Royal Dutch Airlines</td>
+            <td style="max-width: 20px">AMS - AMSTERDAM</td>
+            <td style="max-width: 10px" class="iatafont">A15</td>
+            <td style="max-width: 15px">04/20 17:25 <span style="background-color: #99ffbb">In 0:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr >
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/FDY395" rel="noopener noreferrer">9X 395</a></td>
+            <td style="max-width: 20px">Southern Airways Express</td>
+            <td style="max-width: 20px">BFD - BRADFORD</td>
+            <td style="max-width: 10px" class="iatafont">H17</td>
+            <td style="max-width: 15px">04/20 17:25 <span style="background-color: #99ffbb">In 0:32</span></td>
+            <td style="max-width: 15px">Proposed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4338" rel="noopener noreferrer">UA 4338</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">BUF - BUFFALO</td>
+            <td style="max-width: 10px" class="iatafont">A4A</td>
+            <td style="max-width: 15px">04/20 17:25 <span style="background-color: #99ffbb">In 0:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4541" rel="noopener noreferrer">UA 4541</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CVG - CINCINNATI</td>
+            <td style="max-width: 10px" class="iatafont">C26</td>
+            <td style="max-width: 15px">04/20 17:25 <span style="background-color: #99ffbb">In 0:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3566" rel="noopener noreferrer">UA 3566</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CMH - COLUMBUS</td>
+            <td style="max-width: 10px" class="iatafont">D25</td>
+            <td style="max-width: 15px">04/20 17:25 <span style="background-color: #99ffbb">In 0:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/AAL1863" rel="noopener noreferrer">AA 1863</a></td>
+            <td style="max-width: 20px">American Airlines</td>
+            <td style="max-width: 20px">DFW - DALLAS, DFW</td>
+            <td style="max-width: 10px" class="iatafont">B71</td>
+            <td style="max-width: 15px">04/20 17:25 <span style="background-color: #99ffbb">In 0:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4249" rel="noopener noreferrer">UA 4249</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">GSO - GREENSBORO</td>
+            <td style="max-width: 10px" class="iatafont">A6C</td>
+            <td style="max-width: 15px">04/20 17:25 <span style="background-color: #99ffbb">In 0:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4963" rel="noopener noreferrer">UA 4963</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">GSP - GREENVILLE-SPARTANBURG</td>
+            <td style="max-width: 10px" class="iatafont">A3C</td>
+            <td style="max-width: 15px">04/20 17:25 <span style="background-color: #99ffbb">In 0:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3585" rel="noopener noreferrer">UA 3585</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">IND - INDIANAPOLIS</td>
+            <td style="max-width: 10px" class="iatafont">Z7</td>
+            <td style="max-width: 15px">04/20 17:25 <span style="background-color: #99ffbb">In 0:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr >
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/AUA94" rel="noopener noreferrer">OS 94</a></td>
+            <td style="max-width: 20px">Austrian Airlines AG dba Austrian</td>
+            <td style="max-width: 20px">VIE - VIENNA</td>
+            <td style="max-width: 10px" class="iatafont">B41</td>
+            <td style="max-width: 15px">04/20 17:25 <span style="background-color: #99ffbb">In 0:32</span></td>
+            <td style="max-width: 15px">Proposed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/FDY337" rel="noopener noreferrer">9X 337</a></td>
+            <td style="max-width: 20px">Southern Airways Express</td>
+            <td style="max-width: 20px">IPT - WILLIAMSPORT</td>
+            <td style="max-width: 10px" class="iatafont">H17</td>
+            <td style="max-width: 15px">04/20 17:25 <span style="background-color: #99ffbb">In 0:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL2025" rel="noopener noreferrer">UA 2025</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SJU - SAN JUAN</td>
+            <td style="max-width: 10px" class="iatafont">D18</td>
+            <td style="max-width: 15px">04/20 17:28 <span style="background-color: #99ffbb">In 0:35</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1728" rel="noopener noreferrer">UA 1728</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">DEN - DENVER</td>
+            <td style="max-width: 10px" class="iatafont">D3</td>
+            <td style="max-width: 15px">04/20 17:30 <span style="background-color: #99ffbb">In 0:37</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL2264" rel="noopener noreferrer">UA 2264</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">PDX - PORTLAND, PDX</td>
+            <td style="max-width: 10px" class="iatafont">D6</td>
+            <td style="max-width: 15px">04/20 17:30 <span style="background-color: #99ffbb">In 0:37</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1774" rel="noopener noreferrer">UA 1774</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SEA - SEATTLE, SEA</td>
+            <td style="max-width: 10px" class="iatafont">D24</td>
+            <td style="max-width: 15px">04/20 17:30 <span style="background-color: #99ffbb">In 0:37</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL946" rel="noopener noreferrer">UA 946</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">AMS - AMSTERDAM</td>
+            <td style="max-width: 10px" class="iatafont">C6</td>
+            <td style="max-width: 15px">04/20 17:35 <span style="background-color: #99ffbb">In 0:42</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL950" rel="noopener noreferrer">UA 950</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">BRU - BRUSSELS</td>
+            <td style="max-width: 10px" class="iatafont">C2</td>
+            <td style="max-width: 15px">04/20 17:35 <span style="background-color: #99ffbb">In 0:42</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1523" rel="noopener noreferrer">UA 1523</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">GUA - GUATEMALA CITY</td>
+            <td style="max-width: 10px" class="iatafont">D8</td>
+            <td style="max-width: 15px">04/20 17:35 <span style="background-color: #99ffbb">In 0:42</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL108" rel="noopener noreferrer">UA 108</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">MUC - MUNICH</td>
+            <td style="max-width: 10px" class="iatafont">C3</td>
+            <td style="max-width: 15px">04/20 17:35 <span style="background-color: #99ffbb">In 0:42</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4884" rel="noopener noreferrer">UA 4884</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SCE - STATE COLLEGE</td>
+            <td style="max-width: 10px" class="iatafont">A2F</td>
+            <td style="max-width: 15px">04/20 17:35 <span style="background-color: #99ffbb">In 0:42</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL52" rel="noopener noreferrer">UA 52</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ZRH - ZURICH</td>
+            <td style="max-width: 10px" class="iatafont">C11</td>
+            <td style="max-width: 15px">04/20 17:35 <span style="background-color: #99ffbb">In 0:42</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL688" rel="noopener noreferrer">UA 688</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">BOS - BOSTON</td>
+            <td style="max-width: 10px" class="iatafont">D9</td>
+            <td style="max-width: 15px">04/20 17:40 <span style="background-color: #99ffbb">In 0:47</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4840" rel="noopener noreferrer">UA 4840</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CHO - CHARLOTTESVILLE</td>
+            <td style="max-width: 10px" class="iatafont">A5C</td>
+            <td style="max-width: 15px">04/20 17:40 <span style="background-color: #99ffbb">In 0:47</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6132" rel="noopener noreferrer">UA 6132</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CLE - CLEVELAND</td>
+            <td style="max-width: 10px" class="iatafont">A1C</td>
+            <td style="max-width: 15px">04/20 17:40 <span style="background-color: #99ffbb">In 0:47</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr >
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/FDY248" rel="noopener noreferrer">9X 248</a></td>
+            <td style="max-width: 20px">Southern Airways Express</td>
+            <td style="max-width: 20px">LNS - LANCASTER</td>
+            <td style="max-width: 10px" class="iatafont">H17</td>
+            <td style="max-width: 15px">04/20 17:40 <span style="background-color: #99ffbb">In 0:47</span></td>
+            <td style="max-width: 15px">Proposed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4295" rel="noopener noreferrer">UA 4295</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">MOB - MOBILE</td>
+            <td style="max-width: 10px" class="iatafont">A3A</td>
+            <td style="max-width: 15px">04/20 17:40 <span style="background-color: #99ffbb">In 0:47</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4370" rel="noopener noreferrer">UA 4370</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ORF - NORFOLK</td>
+            <td style="max-width: 10px" class="iatafont">A1D</td>
+            <td style="max-width: 15px">04/20 17:40 <span style="background-color: #99ffbb">In 0:47</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3501" rel="noopener noreferrer">UA 3501</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">PIT - PITTSBURGH</td>
+            <td style="max-width: 10px" class="iatafont">C28</td>
+            <td style="max-width: 15px">04/20 17:40 <span style="background-color: #99ffbb">In 0:47</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4339" rel="noopener noreferrer">UA 4339</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ROA - ROANOKE</td>
+            <td style="max-width: 10px" class="iatafont">A5D</td>
+            <td style="max-width: 15px">04/20 17:42 <span style="background-color: #99ffbb">In 0:49</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1360" rel="noopener noreferrer">UA 1360</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">IAH - HOUSTON</td>
+            <td style="max-width: 10px" class="iatafont">D4</td>
+            <td style="max-width: 15px">04/20 17:43 <span style="background-color: #99ffbb">In 0:50</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3602" rel="noopener noreferrer">UA 3602</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">YUL - MONTREAL</td>
+            <td style="max-width: 10px" class="iatafont">C18</td>
+            <td style="max-width: 15px">04/20 17:44 <span style="background-color: #99ffbb">In 0:51</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1286" rel="noopener noreferrer">UA 1286</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ATL - ATLANTA</td>
+            <td style="max-width: 10px" class="iatafont">D16</td>
+            <td style="max-width: 15px">04/20 17:45 <span style="background-color: #99ffbb">In 0:52</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr >
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/TAP232" rel="noopener noreferrer">TP 232</a></td>
+            <td style="max-width: 20px">TAP Air Portugal</td>
+            <td style="max-width: 20px">LIS - LISBON</td>
+            <td style="max-width: 10px" class="iatafont">B50</td>
+            <td style="max-width: 15px">04/20 17:45 <span style="background-color: #99ffbb">In 0:52</span></td>
+            <td style="max-width: 15px">Proposed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6014" rel="noopener noreferrer">UA 6014</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">RDU - RALEIGH</td>
+            <td style="max-width: 10px" class="iatafont">A1A</td>
+            <td style="max-width: 15px">04/20 17:45 <span style="background-color: #99ffbb">In 0:52</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4471" rel="noopener noreferrer">UA 4471</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">RIC - RICHMOND</td>
+            <td style="max-width: 10px" class="iatafont">D27</td>
+            <td style="max-width: 15px">04/20 17:45 <span style="background-color: #99ffbb">In 0:52</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1606" rel="noopener noreferrer">UA 1606</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">LAX - LOS ANGELES</td>
+            <td style="max-width: 10px" class="iatafont">C19</td>
+            <td style="max-width: 15px">04/20 17:47 <span style="background-color: #99ffbb">In 0:54</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1458" rel="noopener noreferrer">UA 1458</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">AUS - AUSTIN</td>
+            <td style="max-width: 10px" class="iatafont">C25</td>
+            <td style="max-width: 15px">04/20 17:49 <span style="background-color: #99ffbb">In 0:56</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1379" rel="noopener noreferrer">UA 1379</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">FLL - FORT LAUDERDALE</td>
+            <td style="max-width: 10px" class="iatafont">D12</td>
+            <td style="max-width: 15px">04/20 17:50 <span style="background-color: #99ffbb">In 0:57</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4914" rel="noopener noreferrer">UA 4914</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">TYS - KNOXVILLE</td>
+            <td style="max-width: 10px" class="iatafont">A5A</td>
+            <td style="max-width: 15px">04/20 17:50 <span style="background-color: #99ffbb">In 0:57</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr >
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/VIR22" rel="noopener noreferrer">VS 22</a></td>
+            <td style="max-width: 20px">Virgin Atlantic</td>
+            <td style="max-width: 20px">LHR - LONDON</td>
+            <td style="max-width: 10px" class="iatafont">A32</td>
+            <td style="max-width: 15px">04/20 17:50 <span style="background-color: #99ffbb">In 0:57</span></td>
+            <td style="max-width: 15px">Proposed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1938" rel="noopener noreferrer">UA 1938</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">PHX - PHOENIX</td>
+            <td style="max-width: 10px" class="iatafont">D7</td>
+            <td style="max-width: 15px">04/20 17:50 <span style="background-color: #99ffbb">In 0:57</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL2435" rel="noopener noreferrer">UA 2435</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SMF - SACRAMENTO</td>
+            <td style="max-width: 10px" class="iatafont">C9</td>
+            <td style="max-width: 15px">04/20 17:50 <span style="background-color: #99ffbb">In 0:57</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1677" rel="noopener noreferrer">UA 1677</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SAT - SAN ANTONIO</td>
+            <td style="max-width: 10px" class="iatafont">D1</td>
+            <td style="max-width: 15px">04/20 17:50 <span style="background-color: #99ffbb">In 0:57</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4527" rel="noopener noreferrer">UA 4527</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">STL - ST LOUIS</td>
+            <td style="max-width: 10px" class="iatafont">C22</td>
+            <td style="max-width: 15px">04/20 17:50 <span style="background-color: #99ffbb">In 0:57</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/FFT4811" rel="noopener noreferrer">F9 4811</a></td>
+            <td style="max-width: 20px">Frontier Airlines Inc.</td>
+            <td style="max-width: 20px">MCO - ORLANDO</td>
+            <td style="max-width: 10px" class="iatafont">B62</td>
+            <td style="max-width: 15px">04/20 17:52 <span style="background-color: #99ffbb">In 0:59</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL2116" rel="noopener noreferrer">UA 2116</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">DFW - DALLAS, DFW</td>
+            <td style="max-width: 10px" class="iatafont">D14</td>
+            <td style="max-width: 15px">04/20 17:55 <span style="background-color: #99ffbb">In 1:02</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1071" rel="noopener noreferrer">UA 1071</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">JAX - JACKSONVILLE</td>
+            <td style="max-width: 10px" class="iatafont">D10</td>
+            <td style="max-width: 15px">04/20 17:55 <span style="background-color: #99ffbb">In 1:02</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL780" rel="noopener noreferrer">UA 780</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">LAS - LAS VEGAS</td>
+            <td style="max-width: 10px" class="iatafont">C14</td>
+            <td style="max-width: 15px">04/20 17:55 <span style="background-color: #99ffbb">In 1:02</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3570" rel="noopener noreferrer">UA 3570</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SDF - LOUISVILLE</td>
+            <td style="max-width: 10px" class="iatafont">A6E</td>
+            <td style="max-width: 15px">04/20 17:55 <span style="background-color: #99ffbb">In 1:02</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1494" rel="noopener noreferrer">UA 1494</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">MSY - NEW ORLEANS</td>
+            <td style="max-width: 10px" class="iatafont">D2</td>
+            <td style="max-width: 15px">04/20 17:55 <span style="background-color: #99ffbb">In 1:02</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#FFEBB0">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1742" rel="noopener noreferrer">UA 1742</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">EWR - NEWARK</td>
+            <td style="max-width: 10px" class="iatafont">D19</td>
+            <td style="max-width: 15px">04/20 17:55 <span style="background-color: #99ffbb">In 1:02</span></td>
+            <td style="max-width: 15px">Delayed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3638" rel="noopener noreferrer">UA 3638</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">PWM - PORTLAND, PWM</td>
+            <td style="max-width: 10px" class="iatafont">D23</td>
+            <td style="max-width: 15px">04/20 17:55 <span style="background-color: #99ffbb">In 1:02</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL2410" rel="noopener noreferrer">UA 2410</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SLC - SALT LAKE CITY</td>
+            <td style="max-width: 10px" class="iatafont">C17</td>
+            <td style="max-width: 15px">04/20 17:55 <span style="background-color: #99ffbb">In 1:02</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3651" rel="noopener noreferrer">UA 3651</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SBN - SOUTH BEND</td>
+            <td style="max-width: 10px" class="iatafont">A2G</td>
+            <td style="max-width: 15px">04/20 17:55 <span style="background-color: #99ffbb">In 1:02</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1140" rel="noopener noreferrer">UA 1140</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">TPA - TAMPA</td>
+            <td style="max-width: 10px" class="iatafont">D20</td>
+            <td style="max-width: 15px">04/20 17:55 <span style="background-color: #99ffbb">In 1:02</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL915" rel="noopener noreferrer">UA 915</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CDG - PARIS</td>
+            <td style="max-width: 10px" class="iatafont">C8</td>
+            <td style="max-width: 15px">04/20 18:00 <span style="background-color: #99ffbb">In 1:07</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL992" rel="noopener noreferrer">UA 992</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">BCN - BARCELONA</td>
+            <td style="max-width: 10px" class="iatafont">D26</td>
+            <td style="max-width: 15px">04/20 18:05 <span style="background-color: #99ffbb">In 1:12</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#FFEBB0">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/ASA507" rel="noopener noreferrer">AS 507</a></td>
+            <td style="max-width: 20px">Alaska Airlines</td>
+            <td style="max-width: 20px">SAN - SAN DIEGO</td>
+            <td style="max-width: 10px" class="iatafont">B65</td>
+            <td style="max-width: 15px">04/20 18:05 <span style="background-color: #99ffbb">In 1:12</span></td>
+            <td style="max-width: 15px">Delayed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1757" rel="noopener noreferrer">UA 1757</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SFO - SAN FRANCISCO</td>
+            <td style="max-width: 10px" class="iatafont">D5</td>
+            <td style="max-width: 15px">04/20 18:05 <span style="background-color: #99ffbb">In 1:12</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr >
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/DLH419" rel="noopener noreferrer">LH 419</a></td>
+            <td style="max-width: 20px">Deutsche Lufthansa AG</td>
+            <td style="max-width: 20px">FRA - FRANKFURT</td>
+            <td style="max-width: 10px" class="iatafont">B45</td>
+            <td style="max-width: 15px">04/20 18:10 <span style="background-color: #99ffbb">In 1:17</span></td>
+            <td style="max-width: 15px">Proposed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL2054" rel="noopener noreferrer">UA 2054</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SAN - SAN DIEGO</td>
+            <td style="max-width: 10px" class="iatafont">D15</td>
+            <td style="max-width: 15px">04/20 18:13 <span style="background-color: #99ffbb">In 1:20</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL260" rel="noopener noreferrer">UA 260</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">MAD - MADRID</td>
+            <td style="max-width: 10px" class="iatafont">D21</td>
+            <td style="max-width: 15px">04/20 18:15 <span style="background-color: #99ffbb">In 1:22</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/ASA417" rel="noopener noreferrer">AS 417</a></td>
+            <td style="max-width: 20px">Alaska Airlines</td>
+            <td style="max-width: 20px">SEA - SEATTLE, SEA</td>
+            <td style="max-width: 10px" class="iatafont">A24</td>
+            <td style="max-width: 15px">04/20 18:22 <span style="background-color: #99ffbb">In 1:29</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1566" rel="noopener noreferrer">UA 1566</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">MEX - MEXICO CITY</td>
+            <td style="max-width: 10px" class="iatafont">D11</td>
+            <td style="max-width: 15px">04/20 18:23 <span style="background-color: #99ffbb">In 1:30</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#FFEBB0">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/DAL1695" rel="noopener noreferrer">DL 1695</a></td>
+            <td style="max-width: 20px">Delta Air Lines</td>
+            <td style="max-width: 20px">ATL - ATLANTA</td>
+            <td style="max-width: 10px" class="iatafont">B74</td>
+            <td style="max-width: 15px">04/20 18:25 <span style="background-color: #99ffbb">In 1:32</span></td>
+            <td style="max-width: 15px">Delayed</td>
+        </tr>
+
+        <tr style="background-color:#FFEBB0">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/ASA309" rel="noopener noreferrer">AS 309</a></td>
+            <td style="max-width: 20px">Alaska Airlines</td>
+            <td style="max-width: 20px">LAX - LOS ANGELES</td>
+            <td style="max-width: 10px" class="iatafont">B67</td>
+            <td style="max-width: 15px">04/20 18:26 <span style="background-color: #99ffbb">In 1:33</span></td>
+            <td style="max-width: 15px">Delayed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL918" rel="noopener noreferrer">UA 918</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">LHR - LONDON</td>
+            <td style="max-width: 10px" class="iatafont">C5</td>
+            <td style="max-width: 15px">04/20 18:30 <span style="background-color: #99ffbb">In 1:37</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/AFR51" rel="noopener noreferrer">AF 51</a></td>
+            <td style="max-width: 20px">Air France</td>
+            <td style="max-width: 20px">CDG - PARIS</td>
+            <td style="max-width: 10px" class="iatafont">A20</td>
+            <td style="max-width: 15px">04/20 18:30 <span style="background-color: #99ffbb">In 1:37</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6039" rel="noopener noreferrer">UA 6039</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SAV - SAVANNAH</td>
+            <td style="max-width: 10px" class="iatafont">Z6</td>
+            <td style="max-width: 15px">04/20 18:30 <span style="background-color: #99ffbb">In 1:37</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3287" rel="noopener noreferrer">UA 3287</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SYR - SYRACUSE</td>
+            <td style="max-width: 10px" class="iatafont">D29</td>
+            <td style="max-width: 15px">04/20 18:30 <span style="background-color: #99ffbb">In 1:37</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4305" rel="noopener noreferrer">UA 4305</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">HSV - HUNTSVILLE</td>
+            <td style="max-width: 10px" class="iatafont">A6B</td>
+            <td style="max-width: 15px">04/20 18:35 <span style="background-color: #99ffbb">In 1:42</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6126" rel="noopener noreferrer">UA 6126</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">MCI - KANSAS CITY</td>
+            <td style="max-width: 10px" class="iatafont">Z5</td>
+            <td style="max-width: 15px">04/20 18:38 <span style="background-color: #99ffbb">In 1:45</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4250" rel="noopener noreferrer">UA 4250</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">MDT - HARRISBURG</td>
+            <td style="max-width: 10px" class="iatafont">A5B</td>
+            <td style="max-width: 15px">04/20 18:45 <span style="background-color: #99ffbb">In 1:52</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr >
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/SVA36" rel="noopener noreferrer">SV 36</a></td>
+            <td style="max-width: 20px">Saudi Arabian Airlines</td>
+            <td style="max-width: 20px">JED - JEDDAH</td>
+            <td style="max-width: 10px" class="iatafont">A31</td>
+            <td style="max-width: 15px">04/20 18:50 <span style="background-color: #99ffbb">In 1:57</span></td>
+            <td style="max-width: 15px">Proposed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/DAL3680" rel="noopener noreferrer">DL 3680</a></td>
+            <td style="max-width: 20px">Delta Air Lines</td>
+            <td style="max-width: 20px">MSP - MINNEAPOLIS</td>
+            <td style="max-width: 10px" class="iatafont">B76</td>
+            <td style="max-width: 15px">04/20 18:52 <span style="background-color: #99ffbb">In 1:59</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL710" rel="noopener noreferrer">UA 710</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">DUB - DUBLIN</td>
+            <td style="max-width: 10px" class="iatafont">C4</td>
+            <td style="max-width: 15px">04/20 19:00 <span style="background-color: #99ffbb">In 2:07</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#FFEBB0">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1873" rel="noopener noreferrer">UA 1873</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">BNA - NASHVILLE</td>
+            <td style="max-width: 10px" class="iatafont">D18</td>
+            <td style="max-width: 15px">04/20 19:00 <span style="background-color: #99ffbb">In 2:07</span></td>
+            <td style="max-width: 15px">Delayed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/ASA435" rel="noopener noreferrer">AS 435</a></td>
+            <td style="max-width: 20px">Alaska Airlines</td>
+            <td style="max-width: 20px">SFO - SAN FRANCISCO</td>
+            <td style="max-width: 10px" class="iatafont">B65</td>
+            <td style="max-width: 15px">04/20 19:01 <span style="background-color: #99ffbb">In 2:08</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#FFEBB0">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/BAW216" rel="noopener noreferrer">BA 216</a></td>
+            <td style="max-width: 20px">British Airways</td>
+            <td style="max-width: 20px">LHR - LONDON</td>
+            <td style="max-width: 10px" class="iatafont">B44</td>
+            <td style="max-width: 15px">04/20 19:05 <span style="background-color: #99ffbb">In 2:12</span></td>
+            <td style="max-width: 15px">Delayed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/BAW290" rel="noopener noreferrer">BA 290</a></td>
+            <td style="max-width: 20px">British Airways</td>
+            <td style="max-width: 20px">LHR - LONDON</td>
+            <td style="max-width: 10px" class="iatafont">B44</td>
+            <td style="max-width: 15px">04/20 19:25 <span style="background-color: #99ffbb">In 2:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/DAL2902" rel="noopener noreferrer">DL 2902</a></td>
+            <td style="max-width: 20px">Delta Air Lines</td>
+            <td style="max-width: 20px">ATL - ATLANTA</td>
+            <td style="max-width: 10px" class="iatafont">B74</td>
+            <td style="max-width: 15px">04/20 19:46 <span style="background-color: #99ffbb">In 2:53</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL454" rel="noopener noreferrer">UA 454</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">DEN - DENVER</td>
+            <td style="max-width: 10px" class="iatafont">D9</td>
+            <td style="max-width: 15px">04/20 19:56 <span style="background-color: #99ffbb">In 3:03</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#FFEBB0">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/SWA3893" rel="noopener noreferrer">WN 3893</a></td>
+            <td style="max-width: 20px">Southwest Airlines</td>
+            <td style="max-width: 20px">PHX - PHOENIX</td>
+            <td style="max-width: 10px" class="iatafont">B64</td>
+            <td style="max-width: 15px">04/20 19:59 <span style="background-color: #99ffbb">In 3:06</span></td>
+            <td style="max-width: 15px">Delayed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/AAL5675" rel="noopener noreferrer">AA 5675</a></td>
+            <td style="max-width: 20px">American Airlines</td>
+            <td style="max-width: 20px">CLT - CHARLOTTE</td>
+            <td style="max-width: 10px" class="iatafont">B73</td>
+            <td style="max-width: 15px">04/20 20:14 <span style="background-color: #99ffbb">In 3:21</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1180" rel="noopener noreferrer">UA 1180</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">LAX - LOS ANGELES</td>
+            <td style="max-width: 10px" class="iatafont">D1</td>
+            <td style="max-width: 15px">04/20 20:18 <span style="background-color: #99ffbb">In 3:25</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr >
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/EIN118" rel="noopener noreferrer">EI 118</a></td>
+            <td style="max-width: 20px">Aer Lingus</td>
+            <td style="max-width: 20px">DUB - DUBLIN</td>
+            <td style="max-width: 10px" class="iatafont">B75</td>
+            <td style="max-width: 15px">04/20 20:25 <span style="background-color: #99ffbb">In 3:32</span></td>
+            <td style="max-width: 15px">Proposed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/ICE644" rel="noopener noreferrer">FI 644</a></td>
+            <td style="max-width: 20px">Icelandair</td>
+            <td style="max-width: 20px">KEF - REYKJAVIK</td>
+            <td style="max-width: 10px" class="iatafont">A31</td>
+            <td style="max-width: 15px">04/20 20:30 <span style="background-color: #99ffbb">In 3:37</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr >
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/SWR73" rel="noopener noreferrer">LX 73</a></td>
+            <td style="max-width: 20px">SWISS</td>
+            <td style="max-width: 20px">ZRH - ZURICH</td>
+            <td style="max-width: 10px" class="iatafont">B49</td>
+            <td style="max-width: 15px">04/20 20:45 <span style="background-color: #99ffbb">In 3:52</span></td>
+            <td style="max-width: 15px">Proposed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/RJA283" rel="noopener noreferrer">RJ 283</a></td>
+            <td style="max-width: 20px">Royal Jordanian</td>
+            <td style="max-width: 20px">AMM - AMMAN</td>
+            <td style="max-width: 10px" class="iatafont">B37</td>
+            <td style="max-width: 15px">04/20 20:50 <span style="background-color: #99ffbb">In 3:57</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/QTR708" rel="noopener noreferrer">QR 708</a></td>
+            <td style="max-width: 20px">Qatar Airways</td>
+            <td style="max-width: 20px">DOH - DOHA</td>
+            <td style="max-width: 10px" class="iatafont">A23</td>
+            <td style="max-width: 15px">04/20 21:00 <span style="background-color: #99ffbb">In 4:07</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#FFEBB0">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/DAL4857" rel="noopener noreferrer">DL 4857</a></td>
+            <td style="max-width: 20px">Delta Air Lines</td>
+            <td style="max-width: 20px">JFK - NEW YORK, JFK</td>
+            <td style="max-width: 10px" class="iatafont">B72</td>
+            <td style="max-width: 15px">04/20 21:00 <span style="background-color: #99ffbb">In 4:07</span></td>
+            <td style="max-width: 15px">Delayed</td>
+        </tr>
+
+        <tr style="background-color:#FFEBB0">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4539" rel="noopener noreferrer">UA 4539</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">PHL - PHILADELPHIA</td>
+            <td style="max-width: 10px" class="iatafont">A5A</td>
+            <td style="max-width: 15px">04/20 21:00 <span style="background-color: #99ffbb">In 4:07</span></td>
+            <td style="max-width: 15px">Delayed</td>
+        </tr>
+
+        <tr >
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/RAM219" rel="noopener noreferrer">AT 219</a></td>
+            <td style="max-width: 20px">Royal Air Maroc</td>
+            <td style="max-width: 20px">CMN - CASABLANCA</td>
+            <td style="max-width: 10px" class="iatafont">A32</td>
+            <td style="max-width: 15px">04/20 21:05 <span style="background-color: #99ffbb">In 4:12</span></td>
+            <td style="max-width: 15px">Proposed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/AFR53" rel="noopener noreferrer">AF 53</a></td>
+            <td style="max-width: 20px">Air France</td>
+            <td style="max-width: 20px">CDG - PARIS</td>
+            <td style="max-width: 10px" class="iatafont">A15</td>
+            <td style="max-width: 15px">04/20 21:20 <span style="background-color: #99ffbb">In 4:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#FFEBB0">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/FFT4707" rel="noopener noreferrer">F9 4707</a></td>
+            <td style="max-width: 20px">Frontier Airlines Inc.</td>
+            <td style="max-width: 20px">ATL - ATLANTA</td>
+            <td style="max-width: 10px" class="iatafont">B62</td>
+            <td style="max-width: 15px">04/20 21:32 <span style="background-color: #99ffbb">In 4:39</span></td>
+            <td style="max-width: 15px">Delayed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/FFT1633" rel="noopener noreferrer">F9 1633</a></td>
+            <td style="max-width: 20px">Frontier Airlines Inc.</td>
+            <td style="max-width: 20px">TPA - TAMPA</td>
+            <td style="max-width: 10px" class="iatafont">B62</td>
+            <td style="max-width: 15px">04/20 21:34 <span style="background-color: #99ffbb">In 4:41</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/THY8" rel="noopener noreferrer">TK 8</a></td>
+            <td style="max-width: 20px">Turkish Airlines</td>
+            <td style="max-width: 20px">IST - ISTANBUL</td>
+            <td style="max-width: 10px" class="iatafont">B41</td>
+            <td style="max-width: 15px">04/20 21:40 <span style="background-color: #99ffbb">In 4:47</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/ETD6" rel="noopener noreferrer">EY 6</a></td>
+            <td style="max-width: 20px">Etihad Airways</td>
+            <td style="max-width: 20px">AUH - ABU DHABI</td>
+            <td style="max-width: 10px" class="iatafont">A16</td>
+            <td style="max-width: 15px">04/20 22:05 <span style="background-color: #99ffbb">In 5:12</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/SAS926" rel="noopener noreferrer">SK 926</a></td>
+            <td style="max-width: 20px">SAS Scandinavian Airlines</td>
+            <td style="max-width: 20px">CPH - COPENHAGEN</td>
+            <td style="max-width: 10px" class="iatafont">B40</td>
+            <td style="max-width: 15px">04/20 22:05 <span style="background-color: #99ffbb">In 5:12</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL228" rel="noopener noreferrer">UA 228</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">DUB - DUBLIN</td>
+            <td style="max-width: 10px" class="iatafont">C19</td>
+            <td style="max-width: 15px">04/20 22:05 <span style="background-color: #99ffbb">In 5:12</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1385" rel="noopener noreferrer">UA 1385</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">LAX - LOS ANGELES</td>
+            <td style="max-width: 10px" class="iatafont">D4</td>
+            <td style="max-width: 15px">04/20 22:05 <span style="background-color: #99ffbb">In 5:12</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL689" rel="noopener noreferrer">UA 689</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">MCO - ORLANDO</td>
+            <td style="max-width: 10px" class="iatafont">C25</td>
+            <td style="max-width: 15px">04/20 22:08 <span style="background-color: #99ffbb">In 5:15</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL347" rel="noopener noreferrer">UA 347</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ATL - ATLANTA</td>
+            <td style="max-width: 10px" class="iatafont">C2</td>
+            <td style="max-width: 15px">04/20 22:09 <span style="background-color: #99ffbb">In 5:16</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4535" rel="noopener noreferrer">UA 4535</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">BTV - BURLINGTON</td>
+            <td style="max-width: 10px" class="iatafont">C24</td>
+            <td style="max-width: 15px">04/20 22:09 <span style="background-color: #99ffbb">In 5:16</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6255" rel="noopener noreferrer">UA 6255</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">IND - INDIANAPOLIS</td>
+            <td style="max-width: 10px" class="iatafont">A3B</td>
+            <td style="max-width: 15px">04/20 22:09 <span style="background-color: #99ffbb">In 5:16</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL932" rel="noopener noreferrer">UA 932</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">FRA - FRANKFURT</td>
+            <td style="max-width: 10px" class="iatafont">C3</td>
+            <td style="max-width: 15px">04/20 22:10 <span style="background-color: #99ffbb">In 5:17</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6196" rel="noopener noreferrer">UA 6196</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">LGA - NEW YORK, LGA</td>
+            <td style="max-width: 10px" class="iatafont">C28</td>
+            <td style="max-width: 15px">04/20 22:10 <span style="background-color: #99ffbb">In 5:17</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4473" rel="noopener noreferrer">UA 4473</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">RIC - RICHMOND</td>
+            <td style="max-width: 10px" class="iatafont">C20</td>
+            <td style="max-width: 15px">04/20 22:10 <span style="background-color: #99ffbb">In 5:17</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3674" rel="noopener noreferrer">UA 3674</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CHS - CHARLESTON, CHS</td>
+            <td style="max-width: 10px" class="iatafont">D29</td>
+            <td style="max-width: 15px">04/20 22:11 <span style="background-color: #99ffbb">In 5:18</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL2275" rel="noopener noreferrer">UA 2275</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">IAH - HOUSTON</td>
+            <td style="max-width: 10px" class="iatafont">D5</td>
+            <td style="max-width: 15px">04/20 22:12 <span style="background-color: #99ffbb">In 5:19</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3646" rel="noopener noreferrer">UA 3646</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CMH - COLUMBUS</td>
+            <td style="max-width: 10px" class="iatafont">D25</td>
+            <td style="max-width: 15px">04/20 22:14 <span style="background-color: #99ffbb">In 5:21</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4451" rel="noopener noreferrer">UA 4451</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">YOW - OTTAWA</td>
+            <td style="max-width: 10px" class="iatafont">A4C</td>
+            <td style="max-width: 15px">04/20 22:14 <span style="background-color: #99ffbb">In 5:21</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4321" rel="noopener noreferrer">UA 4321</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ALB - ALBANY</td>
+            <td style="max-width: 10px" class="iatafont">A5B</td>
+            <td style="max-width: 15px">04/20 22:15 <span style="background-color: #99ffbb">In 5:22</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL942" rel="noopener noreferrer">UA 942</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">LIS - LISBON</td>
+            <td style="max-width: 10px" class="iatafont">D32</td>
+            <td style="max-width: 15px">04/20 22:15 <span style="background-color: #99ffbb">In 5:22</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL924" rel="noopener noreferrer">UA 924</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">LHR - LONDON</td>
+            <td style="max-width: 10px" class="iatafont">C8</td>
+            <td style="max-width: 15px">04/20 22:15 <span style="background-color: #99ffbb">In 5:22</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4932" rel="noopener noreferrer">UA 4932</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">MHT - MANCHESTER</td>
+            <td style="max-width: 10px" class="iatafont">A3A</td>
+            <td style="max-width: 15px">04/20 22:15 <span style="background-color: #99ffbb">In 5:22</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3540" rel="noopener noreferrer">UA 3540</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">PIT - PITTSBURGH</td>
+            <td style="max-width: 10px" class="iatafont">A1C</td>
+            <td style="max-width: 15px">04/20 22:15 <span style="background-color: #99ffbb">In 5:22</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL2071" rel="noopener noreferrer">UA 2071</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SFO - SAN FRANCISCO</td>
+            <td style="max-width: 10px" class="iatafont">D1</td>
+            <td style="max-width: 15px">04/20 22:15 <span style="background-color: #99ffbb">In 5:22</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL755" rel="noopener noreferrer">UA 755</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">BOS - BOSTON</td>
+            <td style="max-width: 10px" class="iatafont">C17</td>
+            <td style="max-width: 15px">04/20 22:19 <span style="background-color: #99ffbb">In 5:26</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL3515" rel="noopener noreferrer">UA 3515</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">YYZ - TORONTO, YYZ</td>
+            <td style="max-width: 10px" class="iatafont">D23</td>
+            <td style="max-width: 15px">04/20 22:19 <span style="background-color: #99ffbb">In 5:26</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4943" rel="noopener noreferrer">UA 4943</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">AVP - WILKES-BARRE</td>
+            <td style="max-width: 10px" class="iatafont">A2E</td>
+            <td style="max-width: 15px">04/20 22:19 <span style="background-color: #99ffbb">In 5:26</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1738" rel="noopener noreferrer">UA 1738</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ORD - CHICAGO, ORD</td>
+            <td style="max-width: 10px" class="iatafont">D7</td>
+            <td style="max-width: 15px">04/20 22:20 <span style="background-color: #99ffbb">In 5:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL495" rel="noopener noreferrer">UA 495</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">DEN - DENVER</td>
+            <td style="max-width: 10px" class="iatafont">C27</td>
+            <td style="max-width: 15px">04/20 22:20 <span style="background-color: #99ffbb">In 5:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6161" rel="noopener noreferrer">UA 6161</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">DTW - DETROIT, DTW</td>
+            <td style="max-width: 10px" class="iatafont">A2G</td>
+            <td style="max-width: 15px">04/20 22:20 <span style="background-color: #99ffbb">In 5:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/FDY129" rel="noopener noreferrer">9X 129</a></td>
+            <td style="max-width: 20px">Southern Airways Express</td>
+            <td style="max-width: 20px">DUJ - DUBOIS</td>
+            <td style="max-width: 10px" class="iatafont">H17</td>
+            <td style="max-width: 15px">04/20 22:20 <span style="background-color: #99ffbb">In 5:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL978" rel="noopener noreferrer">UA 978</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">EDI - EDINBURGH</td>
+            <td style="max-width: 10px" class="iatafont">D3</td>
+            <td style="max-width: 15px">04/20 22:20 <span style="background-color: #99ffbb">In 5:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4304" rel="noopener noreferrer">UA 4304</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">TYS - KNOXVILLE</td>
+            <td style="max-width: 10px" class="iatafont">A4B</td>
+            <td style="max-width: 15px">04/20 22:20 <span style="background-color: #99ffbb">In 5:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/TAP234" rel="noopener noreferrer">TP 234</a></td>
+            <td style="max-width: 20px">TAP Air Portugal</td>
+            <td style="max-width: 20px">LIS - LISBON</td>
+            <td style="max-width: 10px" class="iatafont">B50</td>
+            <td style="max-width: 15px">04/20 22:20 <span style="background-color: #99ffbb">In 5:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6273" rel="noopener noreferrer">UA 6273</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">PVD - PROVIDENCE</td>
+            <td style="max-width: 10px" class="iatafont">A1B</td>
+            <td style="max-width: 15px">04/20 22:20 <span style="background-color: #99ffbb">In 5:27</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4353" rel="noopener noreferrer">UA 4353</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">BUF - BUFFALO</td>
+            <td style="max-width: 10px" class="iatafont">A5C</td>
+            <td style="max-width: 15px">04/20 22:24 <span style="background-color: #99ffbb">In 5:31</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4265" rel="noopener noreferrer">UA 4265</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CHO - CHARLOTTESVILLE</td>
+            <td style="max-width: 10px" class="iatafont">A6A</td>
+            <td style="max-width: 15px">04/20 22:24 <span style="background-color: #99ffbb">In 5:31</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4849" rel="noopener noreferrer">UA 4849</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">GSO - GREENSBORO</td>
+            <td style="max-width: 10px" class="iatafont">A4E</td>
+            <td style="max-width: 15px">04/20 22:25 <span style="background-color: #99ffbb">In 5:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4270" rel="noopener noreferrer">UA 4270</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ITH - ITHACA</td>
+            <td style="max-width: 10px" class="iatafont">A4A</td>
+            <td style="max-width: 15px">04/20 22:25 <span style="background-color: #99ffbb">In 5:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1997" rel="noopener noreferrer">UA 1997</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">EWR - NEWARK</td>
+            <td style="max-width: 10px" class="iatafont">C6</td>
+            <td style="max-width: 15px">04/20 22:25 <span style="background-color: #99ffbb">In 5:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL1668" rel="noopener noreferrer">UA 1668</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ORF - NORFOLK</td>
+            <td style="max-width: 10px" class="iatafont">D11</td>
+            <td style="max-width: 15px">04/20 22:25 <span style="background-color: #99ffbb">In 5:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6282" rel="noopener noreferrer">UA 6282</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">ROC - ROCHESTER</td>
+            <td style="max-width: 10px" class="iatafont">A1A</td>
+            <td style="max-width: 15px">04/20 22:25 <span style="background-color: #99ffbb">In 5:32</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6234" rel="noopener noreferrer">UA 6234</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CLT - CHARLOTTE</td>
+            <td style="max-width: 10px" class="iatafont">A2B</td>
+            <td style="max-width: 15px">04/20 22:29 <span style="background-color: #99ffbb">In 5:36</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6172" rel="noopener noreferrer">UA 6172</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">BDL - HARTFORD</td>
+            <td style="max-width: 10px" class="iatafont">C18</td>
+            <td style="max-width: 15px">04/20 22:30 <span style="background-color: #99ffbb">In 5:37</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL4466" rel="noopener noreferrer">UA 4466</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">SYR - SYRACUSE</td>
+            <td style="max-width: 10px" class="iatafont">C26</td>
+            <td style="max-width: 15px">04/20 22:30 <span style="background-color: #99ffbb">In 5:37</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL2057" rel="noopener noreferrer">UA 2057</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CLE - CLEVELAND</td>
+            <td style="max-width: 10px" class="iatafont">D9</td>
+            <td style="max-width: 15px">04/20 22:35 <span style="background-color: #99ffbb">In 5:42</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL330" rel="noopener noreferrer">UA 330</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">CDG - PARIS</td>
+            <td style="max-width: 10px" class="iatafont">C11</td>
+            <td style="max-width: 15px">04/20 22:35 <span style="background-color: #99ffbb">In 5:42</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL861" rel="noopener noreferrer">UA 861</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">GRU - SAO PAULO</td>
+            <td style="max-width: 10px" class="iatafont">C7</td>
+            <td style="max-width: 15px">04/20 22:35 <span style="background-color: #99ffbb">In 5:42</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/BAW292" rel="noopener noreferrer">BA 292</a></td>
+            <td style="max-width: 20px">British Airways</td>
+            <td style="max-width: 20px">LHR - LONDON</td>
+            <td style="max-width: 10px" class="iatafont">B44</td>
+            <td style="max-width: 15px">04/20 22:40 <span style="background-color: #99ffbb">In 5:47</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL6059" rel="noopener noreferrer">UA 6059</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">RDU - RALEIGH</td>
+            <td style="max-width: 10px" class="iatafont">A2A</td>
+            <td style="max-width: 15px">04/20 22:42 <span style="background-color: #99ffbb">In 5:49</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/UAL612" rel="noopener noreferrer">UA 612</a></td>
+            <td style="max-width: 20px">United Airlines</td>
+            <td style="max-width: 20px">LOS - LAGOS</td>
+            <td style="max-width: 10px" class="iatafont">C1</td>
+            <td style="max-width: 15px">04/20 23:00 <span style="background-color: #99ffbb">In 6:07</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/DLH415" rel="noopener noreferrer">LH 415</a></td>
+            <td style="max-width: 20px">Deutsche Lufthansa AG</td>
+            <td style="max-width: 20px">MUC - MUNICH</td>
+            <td style="max-width: 10px" class="iatafont">B45</td>
+            <td style="max-width: 15px">04/20 23:05 <span style="background-color: #99ffbb">In 6:12</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#FFEBB0">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/AAY2981" rel="noopener noreferrer">G4 2981</a></td>
+            <td style="max-width: 20px">Allegiant Air LLC</td>
+            <td style="max-width: 20px">SRQ - SARASOTA</td>
+            <td style="max-width: 10px" class="iatafont">B79</td>
+            <td style="max-width: 15px">04/20 23:44 <span style="background-color: #99ffbb">In 6:51</span></td>
+            <td style="max-width: 15px">Delayed</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/CMP403" rel="noopener noreferrer">CM 403</a></td>
+            <td style="max-width: 20px">COPA Airlines</td>
+            <td style="max-width: 20px">PTY - PANAMA CITY</td>
+            <td style="max-width: 10px" class="iatafont">A15</td>
+            <td style="max-width: 15px">04/21 02:19 <span style="background-color: #99ffbb">In 9:26</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+
+        <tr style="background-color:#E6FFC8">
+            <td style="max-width: 10px"><a href="https://www.flightaware.com/live/flight/VOS4313" rel="noopener noreferrer">N3 4313</a></td>
+            <td style="max-width: 20px">Volaris El Salvador</td>
+            <td style="max-width: 20px">SAL - SAN SALVADOR</td>
+            <td style="max-width: 10px" class="iatafont">A14</td>
+            <td style="max-width: 15px">04/21 02:22 <span style="background-color: #99ffbb">In 9:29</span></td>
+            <td style="max-width: 15px">Scheduled</td>
+        </tr>
+</table>
+</body>
