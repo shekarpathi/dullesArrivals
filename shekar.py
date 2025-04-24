@@ -37,25 +37,22 @@ def flatten_baggageclaim(entry):
     return entry
 
 def flatten_tail_number(entry):
-    entry["tail_number"] = "AAAAAA"
+    if "aircraftInfo" not in entry:
+        return None
     if (
-        "aircraftInfo" in entry and
-        isinstance(entry["aircraftInfo"], list)
+        isinstance(entry["aircraftInfo"], list) and
+        len(entry["aircraftInfo"]) > 0
     ):
-        if (
-            len(entry["aircraftInfo"]) > 0 and
-            isinstance(entry["aircraftInfo"][0], dict) and
-            "tail_number" in entry["aircraftInfo"][0]
-        ):
-            entry["tail_number"] = entry["aircraftInfo"][0]["tail_number"]
+        aircraft_info = entry["aircraftInfo"][0]
+    else:
+        aircraft_info = entry.get("aircraftInfo", {})
+
+    if (isinstance(aircraft_info, dict)):
+        tail_number = aircraft_info.get("tail_number", None)
+        if tail_number:
+            entry["tail_number"] = tail_number.lower()
         else:
             entry["tail_number"] = None
-    else:
-        if "aircraftInfo" in entry:
-            aircraft_info = entry.get("aircraftInfo", {})
-            if (isinstance(aircraft_info, dict) and
-            "tail_number" in entry["aircraftInfo"]):
-                entry["tail_number"] = aircraft_info.get("tail_number", None)
 
     entry["tail_number"] = "{}{}".format("https://www.flightradar24.com/data/aircraft/", entry["tail_number"])  # "UA121"
     entry.pop("aircraftInfo", None)
@@ -69,10 +66,7 @@ def flatten_tail_number(entry):
     entry.pop("mod_gate", None)
     entry["status"] = entry.get("status") or entry.get("mod_status")
     entry.pop("mod_status", None)
-
-    print(entry["tail_number"])
     return entry
-
 
 def format_time_am_pm(datetime_str):
     try:
