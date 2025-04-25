@@ -23,6 +23,7 @@ def fetch_flight_data(flight_number, token, date_str):
     url = f"https://www.united.com/api/flight/status/{flight_number}/{date_str}"
     headers = {
         "X-Authorization-Api": f"bearer {token}",
+        "Accept-Encoding": "gzip, deflate, br",
         "User-Agent": "Mozilla/5.0 Gecko/20100101 Firefox/133.0",
         "Accept": "application/json",
         "Sec-Fetch-Site": "same-origin",
