@@ -1,11 +1,17 @@
 import requests
 from datetime import datetime
 
+user_agent="Mozilla/5.0 Gecko/20100101 Firefox/133.0"
+accept_language="en-US,en;q=0.5"
+accept_encoding="gzip, deflate, br"
+
 def get_bearer_token():
     token_url = "https://www.united.com/api/auth/anonymous-token"
     headers_token = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:137.0) Gecko/20100101 Firefox/137.0",
+        "User-Agent": "Mozilla/5.0 Gecko/20100101 Firefox/133.0",
         "Accept": "application/json",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Accept-Encoding": "gzip, deflate, br",
         "Sec-Fetch-Site": "same-origin",
         "Priority": "u=0"
     }
@@ -16,9 +22,11 @@ def get_bearer_token():
 def fetch_flight_data(flight_number, token, date_str):
     url = f"https://www.united.com/api/flight/status/{flight_number}/{date_str}"
     headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:137.0) Gecko/20100101 Firefox/137.0",
+        "X-Authorization-Api": f"Bearer {token}",
+        "User-Agent": "Mozilla/5.0 Gecko/20100101 Firefox/133.0",
         "Accept": "application/json",
-        "X-Authorization-Api": f"bearer {token}",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Accept-Encoding": "gzip, deflate, br",
         "Sec-Fetch-Site": "same-origin",
         "Priority": "u=0"
     }
