@@ -1,6 +1,8 @@
 import requests
 import json
 from datetime import datetime
+import united
+import globals
 
 def fetch_flight_data(url):
     response = requests.get(url)
@@ -36,26 +38,44 @@ def flatten_baggageclaim(entry):
     entry.pop("dep_gate", None)
     return entry
 
+
 def flatten_tail_number(entry):
+    entry["tail_number"] = None
     if "aircraftInfo" not in entry:
         return None
-    if (
-        isinstance(entry["aircraftInfo"], list) and
-        len(entry["aircraftInfo"]) > 0
-    ):
+    if (isinstance(entry["aircraftInfo"], list) and len(entry["aircraftInfo"]) > 0):
         aircraft_info = entry["aircraftInfo"][0]
-    else:
+    elif isinstance(entry["aircraftInfo"], dict):
         aircraft_info = entry.get("aircraftInfo", {})
 
-    if (isinstance(aircraft_info, dict)):
-        tail_number = aircraft_info.get("tail_number", None)
-        if tail_number:
-            entry["tail_number"] = tail_number.lower()
-        else:
-            entry["tail_number"] = None
+    try:
+        if (isinstance(aircraft_info, dict)):
+            print(entry["flightnumber"])
+            if entry["flightnumber"] == "946":
+                print(aircraft_info)
 
-    entry["tail_number"] = "{}{}".format("https://www.flightradar24.com/data/aircraft/", entry["tail_number"])  # "UA121"
-    entry.pop("aircraftInfo", None)
+            try:
+                tail_number = aircraft_info.get("tail_number", None)
+                if tail_number:
+                    entry["tail_number"] = tail_number.lower()
+                else:
+                    entry["tail_number"] = None
+            except Exception:
+                entry["tail_number"] = None
+
+        entry["tail_number"] = "{}{}".format("https://www.flightradar24.com/data/aircraft/", entry["tail_number"])  # "UA121"
+        entry.pop("aircraftInfo", None)
+    except Exception:
+        entry["tail_number"] = None
+        entry.pop("aircraftInfo", None)
+        print("Error processing tail number for flight:", entry.get("flightnumber"))
+        # print("Aircraft Info:", aircraft_info)
+        # print("Entry:", entry)
+
+    return entry
+
+
+def remove_unwanted_data(entry):
     entry.pop("id", None)
     entry.pop("mwaaTime", None)
     entry.pop("dep_airport_code", None)
@@ -101,6 +121,7 @@ def format_time_diff(time_str):
 def clean_arrival(entry):
     entry = flatten_codeshare(entry)
     entry = flatten_tail_number(entry)
+    entry = remove_unwanted_data(entry)
     entry = flatten_baggageclaim(entry)
     entry.pop("arrivalInfo", None)
     entry["GateArrivalTime"] = entry.get("actualtime") or entry.get("publishedTime")
@@ -148,6 +169,7 @@ def clean_departure(entry):
 
     entry = flatten_codeshare(entry)
     entry = flatten_tail_number(entry)
+    entry = remove_unwanted_data(entry)
     entry.pop("departureInfo", None)
 
     entry["GateDepartureTime"] = entry.get("actualtime") or entry.get("publishedTime")
@@ -160,6 +182,23 @@ def clean_departure(entry):
     entry.pop("publishedTime", None)
     entry.pop("arr_gate", None)
     entry.pop("baggage", None)
+
+    # Add boarding_time for UA flights
+    if entry["IATA"] == "UA":
+        print(entry.get("IATACode"))
+        flight_number = entry["flightnumber"]
+        if flight_number:
+            try:
+                data = united.fetch_flight_data(flight_number, globals.bearer_token, datetime.today().strftime("%Y-%m-%d"))
+                boarding_time = united.print_boarding_times_from_data(data, flight_number)
+                entry["boarding_time"] = boarding_time
+                # print(f"UA boarding time for flight {entry["boarding_time"]}")
+            except Exception as e:
+                entry["boarding_time"] = "N/A"
+                print(f"Error fetching UA boarding time for flight {flight_number}: {e}")
+        else:
+            entry["boarding_time"] = "N/A"
+    
     return entry
 
 def sort_by_datetime_field(entries, fieldname):
@@ -205,4 +244,5 @@ def main():
         print(f"An unexpected error occurred: {e}")
 
 if __name__ == "__main__":
+    print(globals.bearer_token)
     main()

@@ -53,6 +53,9 @@
     .scheduled {
       background-color: #e5ffe5;
     }
+    .cancelled {
+      background-color: #ffcccc;
+    }
     #searchBox {
       display: block;
       margin: 1rem auto;
@@ -67,7 +70,7 @@
 </head>
 <body>
   <header>
-    <img src="ChatGPTImageDepartures.png" alt="Dep_Logo" />
+    <img src="ChatGPTImageDepartures.png" alt="Dulles Terminal Logo" style="height: 40px; object-fit: cover;" />
     <h1>Departures</h1>
   </header>
 
@@ -131,6 +134,8 @@
           row.classList.add('delayed');
         } else if (["Scheduled", "Proposed"].includes(entry.status)) {
           row.classList.add('scheduled');
+        } else if (entry.status === "Cancelled") {
+          row.classList.add('cancelled');
         }
         row.innerHTML = `
           <td>${entry.IATA} ${entry.flightnumber}</td>
