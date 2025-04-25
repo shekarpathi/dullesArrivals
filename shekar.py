@@ -5,7 +5,7 @@ import united
 import globals
 
 def fetch_flight_data(url):
-    response = requests.get(url, response = requests.get(url))
+    response = requests.get(url, timeout=(5, 10))  # 5 seconds connect timeout, 10 seconds read timeout
     response.raise_for_status()
     return response.json()
 
