@@ -15,7 +15,7 @@ def get_bearer_token():
         "Sec-Fetch-Site": "same-origin",
         "Priority": "u=0"
     }
-    response = requests.get(token_url, headers=headers_token)
+    response = requests.get(token_url, headers=headers_token, timeout=(5,10)) # 5 seconds connect timeout, 10 seconds read timeout
     response.raise_for_status()
     return response.json().get("data", {}).get("token", {}).get("hash")
 
@@ -30,7 +30,7 @@ def fetch_flight_data(flight_number, token, date_str):
         "Sec-Fetch-Site": "same-origin",
         "Priority": "u=0"
     }
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, timeout=(5,10)) # 5 seconds connect timeout, 10 seconds read timeout
     response.raise_for_status()
     return response.json()
 
