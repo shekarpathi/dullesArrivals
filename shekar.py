@@ -184,20 +184,20 @@ def clean_departure(entry):
     entry.pop("baggage", None)
 
     # Add boarding_time for UA flights
-    if entry["IATA"] == "UA":
-        print(entry.get("IATACode"))
-        flight_number = entry["flightnumber"]
-        if flight_number:
-            try:
-                data = united.fetch_flight_data(flight_number, globals.bearer_token, datetime.today().strftime("%Y-%m-%d"))
-                boarding_time = united.print_boarding_times_from_data(data, flight_number)
-                entry["boarding_time"] = boarding_time
-                # print(f"UA boarding time for flight {entry["boarding_time"]}")
-            except Exception as e:
-                entry["boarding_time"] = "N/A"
-                print(f"Error fetching UA boarding time for flight {flight_number}: {e}")
-        else:
-            entry["boarding_time"] = "N/A"
+    # if entry["IATA"] == "UA":
+    #     print(entry.get("IATACode"))
+    #     flight_number = entry["flightnumber"]
+    #     if flight_number:
+    #         try:
+    #             data = united.fetch_flight_data(flight_number, globals.bearer_token, datetime.today().strftime("%Y-%m-%d"))
+    #             boarding_time = united.print_boarding_times_from_data(data, flight_number)
+    #             entry["boarding_time"] = boarding_time
+    #             # print(f"UA boarding time for flight {entry["boarding_time"]}")
+    #         except Exception as e:
+    #             entry["boarding_time"] = "N/A"
+    #             print(f"Error fetching UA boarding time for flight {flight_number}: {e}")
+    #     else:
+    #         entry["boarding_time"] = "N/A"
     
     return entry
 
