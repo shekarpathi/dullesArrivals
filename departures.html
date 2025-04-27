@@ -11,18 +11,40 @@
       padding: 0;
       background-color: #f4f4f9;
     }
+  
     header {
       background-color: #003366;
       color: white;
       padding: 1rem 2rem;
       display: flex;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+  
     header img {
       height: 40px;
       margin-right: 1rem;
     }
+  
     h1 { margin: 0; }
+  
+    #searchBox {
+      display: block;
+      margin: 0 auto;
+      padding: 0.75rem;
+      width: 80%;
+      max-width: 600px;
+      font-size: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: white;
+      position: sticky;
+      top: 70px; /* below header */
+      z-index: 999;
+    }
+  
     table {
       width: 100%;
       border-collapse: collapse;
@@ -31,19 +53,27 @@
       background-color: white;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+  
     th, td {
       padding: 0.75rem;
       border-bottom: 1px solid #ddd;
       text-align: left;
     }
-    th {
+  
+    thead th {
       background-color: #003366;
       color: white;
       cursor: pointer;
+      position: sticky;
+      top: 130px; /* below search box */
+      z-index: 998;
     }
+  
     tr:hover {
       background-color: #f1f1f1;
     }
+  
+    /* Row backgrounds */
     .highlight {
       background-color: #ffe5e5;
     }
@@ -56,26 +86,39 @@
     .cancelled {
       background-color: #ffcccc;
     }
-    #searchBox {
-      display: block;
-      margin: 1rem auto;
-      padding: 0.5rem;
-      width: 80%;
-      max-width: 600px;
-      font-size: 1rem;
-      border-radius: 4px;
-      border: 1px solid #ccc;
+  
+    /* Status text colors */
+    .status-text {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+    }
+    .landed-text, .scheduled-text {
+      color: #0E8F2A;
+    }
+    .cancelled-text {
+      color: #ef1515;
+    }
+    .delayed-text {
+      color: #f1746d;
+    }
+    .inair-text {
+      color: #14b4e1;
+    }
+    .outgate-text {
+      color: #e68906;
     }
   </style>
-</head>
+      </head>
 <body>
   <header>
     <img src="ChatGPTImageDepartures.png" alt="Dulles Terminal Logo" style="height: 40px; object-fit: cover;" />
     <h1>Departures</h1>
   </header>
-
+  
   <input type="text" id="searchBox" placeholder="Search flights...">
-
+  
   <table>
     <thead>
       <tr>
@@ -92,7 +135,7 @@
     </thead>
     <tbody id="flight-table-body"></tbody>
   </table>
-
+      
   <script>
     let currentData = [];
     let currentSortField = localStorage.getItem('sortField') || 'DepartureTime';
@@ -130,19 +173,27 @@
         const row = document.createElement('tr');
         if (["OutGate", "InAir"].includes(entry.status)) {
           row.classList.add('highlight');
+          statusClass = 'outgate-text status-text';
         } else if (entry.status === "Delayed") {
           row.classList.add('delayed');
+          statusClass = 'delayed-text status-text';
         } else if (["Scheduled", "Proposed"].includes(entry.status)) {
           row.classList.add('scheduled');
+          statusClass = 'scheduled-text status-text';
         } else if (entry.status === "Cancelled") {
           row.classList.add('cancelled');
+          statusClass = 'cancelled-text status-text';
         }
+        else {
+            statusClass = 'status-text'; // fallback
+        }
+
         row.innerHTML = `
           <td>${entry.IATA} ${entry.flightnumber}</td>
           <td>${entry.airline}</td>
           <td>${entry.city}</td>
           <td>${entry.gate}</td>
-          <td>${entry.status}</td>
+          <td><div class="${statusClass}">${entry.status}</div></td>
           <td>${entry.DepartureTime}</td>
           <td>${entry.DepartureInfo || ''}</td>
           <td>${entry.codeShares || ''}</td>
