@@ -67,7 +67,7 @@ def flatten_tail_number(entry):
             date = today.day
 
             # Construct the URL
-            entry["tail_number"] = f"https://www.flightstats.com/v2/flight-tracker/{entry["IATA"]}/{entry["flightnumber"]}?year={year}&month={month}&date={date}"
+            entry["tail_number"] = f"https://www.flightstats.com/v2/flight-tracker/{entry['IATA']}/{entry['flightnumber']}?year={year}&month={month}&date={date}"
 
             try:
                 aircraft_code = aircraft_info.get("aircraft_code", None)
