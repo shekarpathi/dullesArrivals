@@ -50,10 +50,6 @@ def flatten_tail_number(entry):
 
     try:
         if (isinstance(aircraft_info, dict)):
-            print(entry["flightnumber"])
-            if entry["flightnumber"] == "946":
-                print(aircraft_info)
-
             try:
                 tail_number = aircraft_info.get("tail_number", None)
                 if tail_number:
@@ -62,8 +58,26 @@ def flatten_tail_number(entry):
                     entry["tail_number"] = None
             except Exception:
                 entry["tail_number"] = None
+            entry["tail_number"] = "{}{}".format("https://www.flightradar24.com/data/aircraft/", entry["tail_number"])  # "UA121"
 
-        entry["tail_number"] = "{}{}".format("https://www.flightradar24.com/data/aircraft/", entry["tail_number"])  # "UA121"
+            # Get today's date
+            today = datetime.today()
+            year = today.year
+            month = today.month
+            date = today.day
+
+            # Construct the URL
+            entry["tail_number"] = f"https://www.flightstats.com/v2/flight-tracker/{entry["IATA"]}/{entry["flightnumber"]}?year={year}&month={month}&date={date}"
+
+            try:
+                aircraft_code = aircraft_info.get("aircraft_code", None)
+                if aircraft_code:
+                    entry["aircraft_code"] = aircraft_code
+                else:
+                    entry["aircraft_code"] = None
+            except Exception:
+                entry["aircraft_code"] = None
+
         entry.pop("aircraftInfo", None)
     except Exception:
         entry["tail_number"] = None
@@ -78,9 +92,10 @@ def flatten_tail_number(entry):
 def remove_unwanted_data(entry):
     entry.pop("id", None)
     entry.pop("mwaaTime", None)
-    entry.pop("dep_airport_code", None)
+    # entry.pop("dep_airport_code", None)
     entry.pop("dep_terminal", None)
     entry.pop("arr_terminal", None)
+    # entry.pop("international", None)
     entry.pop("diversion_status", None)
     entry["gate"] = entry.get("gate") or entry.get("mod_gate")
     entry.pop("mod_gate", None)
@@ -123,6 +138,7 @@ def clean_arrival(entry):
     entry = flatten_tail_number(entry)
     entry = remove_unwanted_data(entry)
     entry = flatten_baggageclaim(entry)
+    entry = get_international_domestic(entry)
     entry.pop("arrivalInfo", None)
     entry["GateArrivalTime"] = entry.get("actualtime") or entry.get("publishedTime")
     
@@ -132,6 +148,34 @@ def clean_arrival(entry):
 
     entry.pop("actualtime", None)
     entry.pop("publishedTime", None)
+    return entry
+
+def get_international_domestic(entry):
+    try:
+        preclearairports = ['AUH', 'DUB', 'SNN', 'AUA', 'BDA', 'NAS', 'YYC', 'YYZ', 'YEG', 'YHZ', 'YUL', 'YOW', 'YVR',
+                            'YYJ', 'YWG', 'SJU', 'STT']
+        starAllianceMembersArray = ['OS', 'DL', 'UA', 'SAB', 'CA', 'NH', 'SK', 'LX', 'SN']
+
+        entry["iab"] = False
+        entry["fis"] = False
+        if entry["international"] == 1 and entry["dep_airport_code"] in preclearairports:
+            entry["international"] = 0
+
+        if entry["international"] == 1:
+            entry["iab"] = True
+            if entry["IATA"] in starAllianceMembersArray:
+                entry["fis"] = True
+    except Exception:
+        entry["iab"] = False
+        entry["fis"] = False
+        print("Error processing international/domestic status for flight:", entry.get("flightnumber"))
+        # print("Entry:", entry)
+        # print("International:", entry["international"])
+    
+    if entry["customsAt"] != None:
+        entry["status"] = "Customs " + format_time_am_pm(entry["customsAt"])
+    else:
+        entry["status"] = entry.get("status") or entry.get("mod_status")
     return entry
 
 def clean_departure(entry):

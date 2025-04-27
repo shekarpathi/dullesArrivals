@@ -7,7 +7,8 @@ accept_encoding="gzip, deflate, br"
 
 def get_bearer_token():
     token_url = "https://www.united.com/api/auth/anonymous-token"
-    headers_token = {
+    headers_token = { 
+        "Host": "www.united.com",
         "User-Agent": "Mozilla/5.0 Gecko/20100101 Firefox/133.0",
         "Accept": "application/json",
         "Accept-Language": "en-US,en;q=0.5",
@@ -22,11 +23,10 @@ def get_bearer_token():
 def fetch_flight_data(flight_number, token, date_str):
     url = f"https://www.united.com/api/flight/status/{flight_number}/{date_str}"
     headers = {
-        "X-Authorization-Api": f"bearer {token}",
-        "Accept-Language": "en-US,en;q=0.5",
-        "Accept-Encoding": "gzip, deflate, br",
+        "Host": "www.united.com",
         "User-Agent": "Mozilla/5.0 Gecko/20100101 Firefox/133.0",
         "Accept": "application/json",
+        "X-Authorization-Api": f"bearer {token}",
         "Sec-Fetch-Site": "same-origin",
         "Priority": "u=0"
     }
@@ -66,7 +66,8 @@ def print_boarding_times_from_data(data, flight_number):
                 print("  Boarding End Time:  ", format_time(board_end))
                 print("-" * 40)
                 boarding_times = (format_time(board_start), format_time(board_end))
-    return boarding_times
+                result = f"BS: {board_start}\nBE: {board_end}"
+    return result
 
 def main():
     flight_numbers = [5028, 545, 2029, 1491, 1670, 408, 1234, 1235, 1236, 1237, 1238, 1239]
