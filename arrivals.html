@@ -23,27 +23,52 @@
       margin-right: 1rem;
     }
     h1 { margin: 0; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
+  
+    #searchBox {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.5rem;
+      width: 80%;
+      max-width: 600px;
+      font-size: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+  
+    #table-container {
+      height: 600px; /* Adjust this height as needed */
+      overflow-y: scroll;
       margin: 2rem auto;
       max-width: 1200px;
       background-color: white;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+  
     th, td {
       padding: 0.75rem;
       border-bottom: 1px solid #ddd;
       text-align: left;
     }
-    th {
+  
+    thead th {
       background-color: #003366;
       color: white;
       cursor: pointer;
+      position: sticky;
+      top: 0;
+      z-index: 2;
     }
+  
     tr:hover {
       background-color: #f1f1f1;
     }
+  
+    /* Status-specific row colors */
     .highlight {
       background-color: #ffe5e5;
     }
@@ -59,18 +84,31 @@
     .cancelled {
       background-color: #ffcccc;
     }
-    #searchBox {
-      display: block;
-      margin: 1rem auto;
-      padding: 0.5rem;
-      width: 80%;
-      max-width: 600px;
-      font-size: 1rem;
-      border-radius: 4px;
-      border: 1px solid #ccc;
+  
+    /* Status text colors */
+    .status-text {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+    }
+    .landed-text, .scheduled-text {
+      color: #0E8F2A;
+    }
+    .cancelled-text {
+      color: #ef1515;
+    }
+    .delayed-text {
+      color: #f1746d;
+    }
+    .inair-text {
+      color: #14b4e1;
+    }
+    .ingate-text {
+      color: #e68906;
     }
   </style>
-</head>
+    </head>
 <body>
   <header>
     <img src="ChatGPTImageArrivals.png" alt="Dulles Terminal Logo" style="height: 40px; object-fit: cover;" />
@@ -79,24 +117,26 @@
 
   <input type="text" id="searchBox" placeholder="Search flights...">
 
-  <table>
-    <thead>
-      <tr>
-        <th data-field="IATA">Flight</th>
-        <th data-field="airline">Airline</th>
-        <th data-field="city">City</th>
-        <th data-field="gate">Gate</th>
-        <th data-field="status">Status</th>
-        <th data-field="baggage_claim">Baggage Claim</th>
-        <th data-field="ArrivalTime">Arrival Time</th>
-        <th data-field="ArrivalInfo">Arrival Info</th>
-        <th data-field="codeShares">Code Shares</th>
-        <th data-field="tail_number">Tail Number</th>
-      </tr>
-    </thead>
-    <tbody id="flight-table-body"></tbody>
-  </table>
-
+  <div id="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th data-field="IATA">Flight</th>
+          <th data-field="airline">Airline</th>
+          <th data-field="city">City</th>
+          <th data-field="gate">Gate</th>
+          <th data-field="status">Status</th>
+          <th data-field="baggage_claim">Baggage Claim</th>
+          <th data-field="ArrivalTime">Arrival Time</th>
+          <th data-field="ArrivalInfo">Arrival Info</th>
+          <th data-field="codeShares">Code Shares</th>
+          <th data-field="tail_number">Tail Number</th>
+        </tr>
+      </thead>
+      <tbody id="flight-table-body"></tbody>
+    </table>
+  </div>
+    
   <script>
     let currentData = [];
     let currentSortField = localStorage.getItem('arrivals_sortField') || 'ArrivalTime';
@@ -132,31 +172,37 @@
 
       filtered.forEach(entry => {
         const row = document.createElement('tr');
-        if (["OutGate"].includes(entry.status)) {
-          row.classList.add('highlight');
-        } else if (["InAir"].includes(entry.status)) {
-          row.classList.add('highlight');
+        if (["OutGate", "InAir"].includes(entry.status)) {
+            row.classList.add('highlight');
+            statusClass = 'inair-text status-text';
         } else if (entry.status === "Delayed") {
-          row.classList.add('delayed');
+            row.classList.add('delayed');
+            statusClass = 'delayed-text status-text';
         } else if (entry.status === "InGate") {
-          row.classList.add('ingate');
+            row.classList.add('ingate');
+            statusClass = 'ingate-text status-text';
         } else if (["Scheduled", "Proposed"].includes(entry.status)) {
-          row.classList.add('scheduled');
+            row.classList.add('scheduled');
+            statusClass = 'scheduled-text status-text';
         } else if (entry.status === "Cancelled") {
-          row.classList.add('cancelled');
+            row.classList.add('cancelled');
+            statusClass = 'cancelled-text status-text';
+        } else {
+            statusClass = 'status-text'; // fallback
         }
+
         row.innerHTML = `
-          <td>${entry.IATA} ${entry.flightnumber}</td>
-          <td>${entry.airline}</td>
-          <td>${entry.city}</td>
-          <td>${entry.gate || ''}</td>
-          <td>${entry.status}</td>
-          <td>${entry.baggage_claim || ''}</td>
-          <td>${entry.ArrivalTime}</td>
-          <td>${entry.ArrivalInfo || ''}</td>
-          <td>${entry.codeShares || ''}</td>
-          <td><a href="${entry.tail_number}" target="_blank">Link</a></td>
-        `;
+            <td>${entry.IATA} ${entry.flightnumber}</td>
+            <td>${entry.airline}</td>
+            <td>${entry.city}</td>
+            <td>${entry.gate || ''}</td>
+            <td><div class="${statusClass}">${entry.status}</div></td>
+            <td>${entry.baggage_claim || ''}</td>
+            <td>${entry.ArrivalTime}</td>
+            <td>${entry.ArrivalInfo || ''}</td>
+            <td>${entry.codeShares || ''}</td>
+            <td><a href="${entry.tail_number}" target="_blank">Link</a></td>
+            `;
         tbody.appendChild(row);
       });
     }
