@@ -121,8 +121,9 @@
     <table>
       <thead>
         <tr>
-          <th data-field="IATA">Flight</th>
-          <th data-field="airline">Airline</th>
+            <th data-field="index">#</th>
+            <th data-field="IATA">Flight</th>
+            <th data-field="airline">Airline</th>
           <th data-field="city">City</th>
           <th data-field="gate">Gate</th>
           <th data-field="status">Status</th>
@@ -192,7 +193,8 @@
         }
 
         row.innerHTML = `
-            <td>${entry.IATA} ${entry.flightnumber}</td>
+            <td>${entry.index}</td>
+            <td>${entry.IATA}${entry.flightnumber}</td>
             <td>${entry.airline}</td>
             <td>${entry.city}</td>
             <td>${entry.gate || ''}</td>

@@ -68,6 +68,7 @@ def flatten_tail_number(entry):
 
             # Construct the URL
             entry["tail_number"] = f"https://www.flightstats.com/v2/flight-tracker/{entry['IATA']}/{entry['flightnumber']}?year={year}&month={month}&date={date}"
+            entry["tail_number"] = f"https://www.flightradar24.com/{entry['IATA']}{entry['flightnumber']}"
 
             try:
                 aircraft_code = aircraft_info.get("aircraft_code", None)
@@ -252,7 +253,12 @@ def sort_by_datetime_field(entries, fieldname):
             return datetime.strptime(value, "%Y-%m-%d %H:%M:%S") if value else datetime.max
         except Exception:
             return datetime.max
-    return sorted(entries, key=parse_datetime)
+    entrys = sorted(entries, key=parse_datetime)
+    i = 1
+    for entry in entrys:
+        entry["index"] = i
+        i += 1
+    return entrys
 
 def filter_process_and_sort(entries, cleaner, sort_field):
     cleaned = [cleaner(entry) for entry in entries if is_published_today(entry)]
