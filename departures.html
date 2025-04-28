@@ -165,9 +165,18 @@
       });
 
       filtered.sort((a, b) => {
-        const valA = a[currentSortField] || '';
-        const valB = b[currentSortField] || '';
+        let valA = a[currentSortField];
+        let valB = b[currentSortField];
+
+        if (currentSortField === 'index') {
+        valA = parseInt(valA, 10) || 0;
+        valB = parseInt(valB, 10) || 0;
+        return currentSortDirection === 'asc' ? valA - valB : valB - valA;
+        } else {
+        valA = (valA || '').toString();
+        valB = (valB || '').toString();
         return currentSortDirection === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        }
       });
 
       filtered.forEach(entry => {
