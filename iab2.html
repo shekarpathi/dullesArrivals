@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>IAB Arrivals</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      font-size: 1.2rem;
+      overflow-x: hidden;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header img {
+      height: 40px;
+      margin-right: 1rem;
+    }
+    h1 { margin: 0; font-size: 1.8rem; }
+
+    #searchBox {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.75rem;
+      width: 90%;
+      max-width: 600px;
+      font-size: 1.2rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    #table-container {
+      height: calc(100vh - 160px);
+      overflow-y: auto;
+      margin: 0 auto;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1.2rem;
+      table-layout: fixed;
+      word-wrap: break-word;
+    }
+
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    thead, thead th {
+      background-color: #003366;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: underline;
+    }
+
+    .in-air {
+      background-color: #d0e7f9;
+    }
+    .landed {
+      background-color: #a8d0e6;
+    }
+    .in-gate {
+      background-color: #d4edda;
+    }
+
+    .strike {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <img src="ChatGPTImageArrivals.png" alt="Dulles Terminal Logo" style="height: 40px; object-fit: cover;" />
+  <h1>IAB Flights</h1>
+</header>
+
+<input type="text" id="searchBox" placeholder="Search any text...">
+
+<div id="table-container">
+  <table id="iab-table" class="display">
+    <thead style="position: sticky; top: 0px; z-index: 999;">
+      <tr>
+        <th>Flight</th>
+        <th>Gate Time</th>
+        <th>Status</th>
+        <th>Bag</th>
+        <th style="display:none;">Index</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script>
+let table;
+
+async function loadIABFlights(preserveState = false) {
+  try {
+    const response = await fetch('arrivals.json');
+    const data = await response.json();
+
+    if (!preserveState) {
+      table = $('#iab-table').DataTable({
+        destroy: true,
+        data: [],
+        searching: false,
+        paging: false,
+        info: false,
+        order: [[4, 'asc']],
+        columnDefs: [{ targets: 4, visible: false }],
+        columns: [
+          { title: "Flight - From" },
+          { title: "Gate Arrival Time" },
+          { title: "Status" },
+          { title: "Bag" },
+          { title: "Index" }
+        ]
+      });
+    }
+
+    let rows = [];
+
+    data.forEach(entry => {
+      if (entry.iab) {
+        let flightFrom = `${entry.IATA}${entry.flightnumber} - ${entry.city || ''}`;
+        let gateArrivalTime = entry.GateArrivalTime || '';
+        if (gateArrivalTime.includes(' ')) {
+          gateArrivalTime = gateArrivalTime.split(' ')[1];
+        }
+        let baggageClaim = entry.baggage_claim || '';
+        let status = entry.status || '';
+        let index = entry.index || 0;
+
+        let rowClass = "";
+        if (entry.customsAt !== null && entry.customsAt !== undefined) {
+          rowClass = "strike";
+        }
+
+        let statusContent = `<span class='${rowClass}'>${status}</span>`;
+        if (status === 'InAir' || status === 'Landed') {
+          const url = `https://www.flightradar24.com/${entry.IATA}${entry.flightnumber}`;
+          statusContent = `<a href='${url}' target='_blank' class='${rowClass}'>${status}</a>`;
+        }
+
+        let row = [`<span class='${rowClass}'>${flightFrom}</span>`, `<span class='${rowClass}'>${gateArrivalTime}</span>`, statusContent, `<span class='${rowClass}'>${baggageClaim}</span>`, index];
+        rows.push(row);
+      }
+    });
+
+    let settings = table.settings();
+    let order = table.order();
+
+    table.clear().rows.add(rows).draw();
+
+    if (preserveState) {
+      table.order(order).draw(false);
+    }
+
+    $('#iab-table tbody tr').each(function(index) {
+      let status = $(this).find('td:eq(2)').text();
+      if (status.includes('InAir')) {
+        $(this).addClass('in-air');
+      } else if (status.includes('Landed')) {
+        $(this).addClass('landed');
+      } else if (status.includes('InGate')) {
+        $(this).addClass('in-gate');
+      }
+    });
+
+  } catch (error) {
+    console.error('Error loading arrivals.json:', error);
+  }
+}
+
+$(document).ready(function() {
+  loadIABFlights();
+  setInterval(() => loadIABFlights(true), 15000);
+
+  $('#searchBox').on('input', function() {
+    const value = $(this).val();
+    table.search(value).draw();
+  });
+});
+</script>
+</body>
+</html>
