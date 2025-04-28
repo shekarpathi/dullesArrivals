@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider Arrivals/Departures Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    .switch-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: orange;
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #4CAF50; /* Green when ON */
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    #urlText {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    iframe {
+      margin-top: 20px;
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Arrivals / Departures Toggle</h2>
+<div class="switch-container">
+  <div>Arrivals</div>
+  <label class="switch">
+    <input type="checkbox" id="toggleSwitch" onchange="updateStatus()">
+    <span class="slider"></span>
+  </label>
+  <div>Departures</div>
+</div>
+<div id="urlText">https://www.dulles.xyz/arrivals.html</div>
+<iframe id="pageFrame" src="https://www.dulles.xyz/arrivals.html"></iframe>
+
+<script>
+function updateStatus() {
+  const toggle = document.getElementById('toggleSwitch');
+  const urlText = document.getElementById('urlText');
+  const pageFrame = document.getElementById('pageFrame');
+
+  if (toggle.checked) {
+    urlText.textContent = 'https://www.dulles.xyz/departures.html';
+    pageFrame.src = 'https://www.dulles.xyz/departures.html';
+  } else {
+    urlText.textContent = 'https://www.dulles.xyz/arrivals.html';
+    pageFrame.src = 'https://www.dulles.xyz/arrivals.html';
+  }
+}
+</script>
+
+</body>
+</html>
