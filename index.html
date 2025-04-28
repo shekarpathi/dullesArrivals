@@ -15,6 +15,13 @@
       padding: 20px;
     }
 
+    .status-text {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-weight: bold;
+      font-size: 24px;
+      text-align: center;
+    }
+
     .switch-container {
       display: flex;
       align-items: center;
@@ -77,14 +84,13 @@
 </head>
 <body>
 
-<h2>Dulles Arrivals & Departures</h2>
 <div class="switch-container">
-  <div>Arrivals</div>
+  <div class="status-text">Arrivals</div>
   <label class="switch">
     <input type="checkbox" id="toggleSwitch" onchange="updateStatus()">
     <span class="slider"></span>
   </label>
-  <div>Departures</div>
+  <div class="status-text">Departures</div>
 </div>
 <iframe id="pageFrame" src="https://www.dulles.xyz/arrivals.html"></iframe>
 
