@@ -35,7 +35,7 @@
   <table>
     <thead>
       <tr>
-        <th style="background-color:#c2c2a3" colspan="5">Dulles IAB Apr 29, 2025</th>
+        <th id="date-header" style="background-color:#c2c2a3" colspan="5">Dulles IAB</th>
       </tr>
       <tr>
         <th>Gate Time</th>
@@ -49,6 +49,12 @@
     </tbody>
   </table>
 <script>
+// Set current date
+const dateHeader = document.getElementById('date-header');
+const today = new Date();
+const options = { month: 'short', day: 'numeric', year: 'numeric' };
+dateHeader.innerHTML = `Dulles IAB ${today.toLocaleDateString('en-US', options)}`;
+
 fetch('arrivals.json')
   .then(response => response.json())
   .then(data => {
