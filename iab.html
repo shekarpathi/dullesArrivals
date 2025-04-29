@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>IAB Arrivals</title>
-  <meta http-equiv="refresh" content="300">
   <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
@@ -55,48 +54,54 @@ const today = new Date();
 const options = { month: 'short', day: 'numeric', year: 'numeric' };
 dateHeader.innerHTML = `Dulles IAB ${today.toLocaleDateString('en-US', options)}`;
 
-fetch('arrivals.json')
-  .then(response => response.json())
-  .then(data => {
-    const table = document.getElementById('flights-body');
-    data.filter(entry => entry.iab).forEach(entry => {
-      const gateTime = entry.GateArrivalTime ? new Date(entry.GateArrivalTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : '';
-      const flight = `${entry.IATA}${entry.flightnumber}`;
-      const city = entry.city || '';
-      let status = entry.status || '';
-      let bag = entry.baggage_claim || '';
+function loadFlights() {
+  fetch('arrivals.json')
+    .then(response => response.json())
+    .then(data => {
+      const table = document.getElementById('flights-body');
+      table.innerHTML = '';
+      data.filter(entry => entry.iab).forEach(entry => {
+        const gateTime = entry.GateArrivalTime ? new Date(entry.GateArrivalTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : '';
+        const flight = `${entry.IATA}${entry.flightnumber}`;
+        const city = entry.city || '';
+        let status = entry.status || '';
+        let bag = entry.baggage_claim || '';
 
-      const tr = document.createElement('tr');
+        const tr = document.createElement('tr');
 
-      let rowClass = '';
-      if (status.startsWith('Customs')) {
-        rowClass = 'customs-line';
-      } else if (["InAir", "OutGate", "Scheduled"].includes(status)) {
-        rowClass = 'inair-line';
-      } else if (status === 'Cancelled') {
-        rowClass = 'cancelled-line';
-      }
+        let rowClass = '';
+        if (status.startsWith('Customs')) {
+          rowClass = 'customs-line';
+        } else if (["InAir", "OutGate", "Scheduled"].includes(status)) {
+          rowClass = 'inair-line';
+        } else if (status === 'Cancelled') {
+          rowClass = 'cancelled-line';
+        }
 
-      let statusCell = `<td>${status.replace(/^Customs/, 'C')}</td>`;
-      if (status.startsWith('Customs')) {
-        statusCell = `<td class="customs-status">${status.replace(/^Customs/, 'C')}</td>`;
-      }
+        let statusCell = `<td>${status.replace(/^Customs/, 'C')}</td>`;
+        if (status.startsWith('Customs')) {
+          statusCell = `<td class="customs-status">${status.replace(/^Customs/, 'C')}</td>`;
+        }
 
-      tr.innerHTML = `
-        <td>${gateTime}</td>
-        <td>${flight}</td>
-        <td>${city}</td>
-        ${statusCell}
-        <td>${bag}</td>
-      `;
+        tr.innerHTML = `
+          <td>${gateTime}</td>
+          <td>${flight}</td>
+          <td>${city}</td>
+          ${statusCell}
+          <td>${bag}</td>
+        `;
 
-      if (rowClass) {
-        tr.classList.add(rowClass);
-      }
+        if (rowClass) {
+          tr.classList.add(rowClass);
+        }
 
-      table.appendChild(tr);
+        table.appendChild(tr);
+      });
     });
-  });
+}
+
+loadFlights();
+setInterval(loadFlights, 30000);
 </script>
 </body>
 </html>
