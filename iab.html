@@ -1,174 +1,214 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-<style>
-    table, th, td {
-      border: 1px solid black;
-      border-collapse: collapse;
-      font-family: Consolas, monaco, monospace;
-      font-size: 44px;
-      font-style: normal;
-      font-variant: normal; 
-      font-weight: 700;
-      padding: 10px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>IAB Arrivals</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      font-size: 1.2rem;
+      overflow-x: hidden;
     }
-</style>
-    <title>IAB 1-7pm Arrivals</title>
-        <meta http-equiv="refresh" content="300">
-        <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
-        <meta http-equiv="Pragma" content="no-cache">
-        <meta http-equiv="expires" content="0">
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header img {
+      height: 40px;
+      margin-right: 1rem;
+    }
+    h1 { margin: 0; font-size: 1.8rem; }
+
+    #searchBox {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.75rem;
+      width: 90%;
+      max-width: 600px;
+      font-size: 1.2rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    #table-container {
+      height: calc(100vh - 160px);
+      overflow-y: auto;
+      margin: 0 auto;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1.2rem;
+      table-layout: fixed;
+      word-wrap: break-word;
+    }
+
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    thead, thead th {
+      background-color: #003366;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: underline;
+    }
+
+    .in-air {
+      background-color: #d0e7f9;
+    }
+    .landed {
+      background-color: #a8d0e6;
+    }
+    .in-gate {
+      background-color: #d4edda;
+    }
+
+    .strike {
+      text-decoration: line-through;
+    }
+  </style>
 </head>
 <body>
-  <table><th style="background-color:#c2c2a3" colspan=4>IAB 1-7pm</th><tr >
-		<td>1:39</td><td>AMSTERDAM</td>  <td><a href="https://www.flightaware.com/live/flight/UAL947" rel="noopener noreferrer">UA 947</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">13:58 C</del></td>
-	</tr>
-<tr >
-		<td>1:41</td><td>MADRID</td>  <td><a href="https://www.flightaware.com/live/flight/UAL261" rel="noopener noreferrer">UA 261</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">13:58 C</del></td>
-	</tr>
-<tr >
-		<td>2:00</td><td>BOGOTA</td>  <td><a href="https://www.flightaware.com/live/flight/AVA246" rel="noopener noreferrer">AV 246</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">14:18 C</del></td>
-	</tr>
-<tr >
-		<td>2:01</td><td>BRUSSELS</td>  <td><a href="https://www.flightaware.com/live/flight/UAL951" rel="noopener noreferrer">UA 951</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">14:18 C</del></td>
-	</tr>
-<tr >
-		<td>2:04</td><td>ROME</td>  <td><a href="https://www.flightaware.com/live/flight/UAL885" rel="noopener noreferrer">UA 885</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">14:24 C</del></td>
-	</tr>
-<tr >
-		<td>2:15</td><td>BARCELONA</td>  <td><a href="https://www.flightaware.com/live/flight/UAL991" rel="noopener noreferrer">UA 991</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">14:40 C</del></td>
-	</tr>
-<tr >
-		<td>2:23</td><td>PARIS</td>  <td><a href="https://www.flightaware.com/live/flight/UAL914" rel="noopener noreferrer">UA 914</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">14:42 C</del></td>
-	</tr>
-<tr >
-		<td>2:28</td><td>VIENNA</td>  <td><a href="https://www.flightaware.com/live/flight/AUA93" rel="noopener noreferrer">OS 93</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">14:45 C</del></td>
-	</tr>
-<tr >
-		<td>2:34</td><td>MUNICH</td>  <td><a href="https://www.flightaware.com/live/flight/UAL109" rel="noopener noreferrer">UA 109</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">14:51 C</del></td>
-	</tr>
-<tr >
-		<td>2:47</td><td>FRANKFURT</td>  <td><a href="https://www.flightaware.com/live/flight/UAL988" rel="noopener noreferrer">UA 988</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:02 C</del></td>
-	</tr>
-<tr >
-		<td>2:48</td><td>MEXICO CITY</td>  <td><a href="https://www.flightaware.com/live/flight/UAL1567" rel="noopener noreferrer">UA 1567</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:08 C</del></td>
-	</tr>
-<tr >
-		<td>2:52</td><td>PANAMA CITY</td>  <td><a href="https://www.flightaware.com/live/flight/CMP443" rel="noopener noreferrer">CM 443</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:08 C</del></td>
-	</tr>
-<tr >
-		<td>2:58</td><td>MEXICO CITY</td>  <td><a href="https://www.flightaware.com/live/flight/AMX455" rel="noopener noreferrer">AM 455</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:08 C</del></td>
-	</tr>
-<tr >
-		<td>3:01</td><td>ZURICH</td>  <td><a href="https://www.flightaware.com/live/flight/UAL53" rel="noopener noreferrer">UA 53</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:08 C</del></td>
-	</tr>
-<tr >
-		<td>3:05</td><td>LONDON</td>  <td><a href="https://www.flightaware.com/live/flight/UAL919" rel="noopener noreferrer">UA 919</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:29 C</del></td>
-	</tr>
-<tr >
-		<td>3:09</td><td>EDINBURGH</td>  <td><a href="https://www.flightaware.com/live/flight/UAL979" rel="noopener noreferrer">UA 979</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:29 C</del></td>
-	</tr>
-<tr >
-		<td>3:14</td><td>ATHENS</td>  <td><a href="https://www.flightaware.com/live/flight/UAL983" rel="noopener noreferrer">UA 983</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:44 C</del></td>
-	</tr>
-<tr >
-		<td>3:14</td><td>MADRID</td>  <td><a href="https://www.flightaware.com/live/flight/IBE361" rel="noopener noreferrer">IB 361</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:44 C</del></td>
-	</tr>
-<tr >
-		<td>3:21</td><td>TOKYO, HND</td>  <td><a href="https://www.flightaware.com/live/flight/UAL804" rel="noopener noreferrer">UA 804</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:30 C</del></td>
-	</tr>
-<tr >
-		<td>3:24</td><td>AMSTERDAM</td>  <td><a href="https://www.flightaware.com/live/flight/KLM651" rel="noopener noreferrer">KL 651</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:44 C</del></td>
-	</tr>
-<tr >
-		<td>3:30</td><td>DOHA</td>  <td><a href="https://www.flightaware.com/live/flight/QTR707" rel="noopener noreferrer">QR 707</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:44 C</del></td>
-	</tr>
-<tr >
-		<td>3:33</td><td>LISBON</td>  <td><a href="https://www.flightaware.com/live/flight/UAL943" rel="noopener noreferrer">UA 943</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:44 C</del></td>
-	</tr>
-<tr >
-		<td>3:33</td><td>SAN SALVADOR</td>  <td><a href="https://www.flightaware.com/live/flight/AVA582" rel="noopener noreferrer">AV 582</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:44 C</del></td>
-	</tr>
-<tr >
-		<td>3:35</td><td>CANCUN</td>  <td><a href="https://www.flightaware.com/live/flight/UAL1694" rel="noopener noreferrer">UA 1694</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">15:44 C</del></td>
-	</tr>
-<tr >
-		<td>3:38</td><td>LONDON</td>  <td><a href="https://www.flightaware.com/live/flight/VIR21" rel="noopener noreferrer">VS 21</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">16:02 C</del></td>
-	</tr>
-<tr >
-		<td>3:42</td><td>JEDDAH</td>  <td><a href="https://www.flightaware.com/live/flight/SVA35" rel="noopener noreferrer">SV 35</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">16:06 C</del></td>
-	</tr>
-<tr >
-		<td>3:46</td><td>FRANKFURT</td>  <td><a href="https://www.flightaware.com/live/flight/DLH418" rel="noopener noreferrer">LH 418</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">16:10 C</del></td>
-	</tr>
-<tr >
-		<td>3:56</td><td>GENEVA</td>  <td><a href="https://www.flightaware.com/live/flight/UAL749" rel="noopener noreferrer">UA 749</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">16:20 C</del></td>
-	</tr>
-<tr >
-		<td>4:04</td><td>ZURICH</td>  <td><a href="https://www.flightaware.com/live/flight/SWR72" rel="noopener noreferrer">LX 72</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">16:21 C</del></td>
-	</tr>
-<tr >
-		<td>4:08</td><td>PUNTA CANA</td>  <td><a href="https://www.flightaware.com/live/flight/UAL1614" rel="noopener noreferrer">UA 1614</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">16:32 C</del></td>
-	</tr>
-<tr >
-		<td>4:15</td><td>LISBON</td>  <td><a href="https://www.flightaware.com/live/flight/TAP231" rel="noopener noreferrer">TP 231</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">16:42 C</del></td>
-	</tr>
-<tr >
-		<td>4:18</td><td>PARIS</td>  <td><a href="https://www.flightaware.com/live/flight/AFR50" rel="noopener noreferrer">AF 50</a></td>
-		<td><del style="text-decoration-style: double;background-color:#d1e0e0">16:42 C</del></td>
-	</tr>
-<tr style="background-color:#ADDFFF">
-		<td>4:59</td><td>LONDON</td>  <td><a href="https://www.flightaware.com/live/flight/BAW291" rel="noopener noreferrer">BA 291</a></td>
-		<td>InAir</td>
-	</tr>
-<tr style="background-color:#ADDFFF">
-		<td>5:02</td><td>LONDON</td>  <td><a href="https://www.flightaware.com/live/flight/BAW217" rel="noopener noreferrer">BA 217</a></td>
-		<td>InAir</td>
-	</tr>
-<tr style="background-color:#ADDFFF">
-		<td>5:20</td><td>AMMAN</td>  <td><a href="https://www.flightaware.com/live/flight/RJA282" rel="noopener noreferrer">RJ 282</a></td>
-		<td>InAir</td>
-	</tr>
-<tr style="background-color:#ADDFFF">
-		<td>6:46</td><td>PARIS</td>  <td><a href="https://www.flightaware.com/live/flight/AFR52" rel="noopener noreferrer">AF 52</a></td>
-		<td>InAir</td>
-	</tr>
-<tr style="background-color:#ADDFFF">
-		<td>7:00</td><td>REYKJAVIK</td>  <td><a href="https://www.flightaware.com/live/flight/ICE645" rel="noopener noreferrer">FI 645</a></td>
-		<td>InAir</td>
-	</tr>
-<tr>
-		<td style="background-color:#DFF429" colspan=4>Updated Apr 20, 2025 04:52 PM</td>
-	</tr></table>
+<header>
+  <img src="ChatGPTImageArrivals.png" alt="Dulles Terminal Logo" style="height: 40px; object-fit: cover;" />
+  <h1>IAB Flights</h1>
+</header>
+
+<input type="text" id="searchBox" placeholder="Search any text...">
+
+<div id="table-container">
+  <table id="iab-table" class="display">
+    <thead style="position: sticky; top: 0px; z-index: 999;">
+      <tr>
+        <th>Flight</th>
+        <th>Gate Time</th>
+        <th>Status</th>
+        <th>Bag</th>
+        <th style="display:none;">Index</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script>
+let table;
+
+async function loadIABFlights(preserveState = false) {
+  try {
+    const response = await fetch('arrivals.json');
+    const data = await response.json();
+
+    if (!preserveState) {
+      table = $('#iab-table').DataTable({
+        destroy: true,
+        data: [],
+        searching: false,
+        paging: false,
+        info: false,
+        order: [[4, 'asc']],
+        columnDefs: [{ targets: 4, visible: false }],
+        columns: [
+          { title: "Flight - From" },
+          { title: "Gate Arrival Time" },
+          { title: "Status" },
+          { title: "Bag" },
+          { title: "Index" }
+        ]
+      });
+    }
+
+    let rows = [];
+
+    data.forEach(entry => {
+      if (entry.iab) {
+        let flightFrom = `${entry.IATA}${entry.flightnumber} - ${entry.city || ''}`;
+        let gateArrivalTime = entry.GateArrivalTime || '';
+        if (gateArrivalTime.includes(' ')) {
+          gateArrivalTime = gateArrivalTime.split(' ')[1];
+        }
+        let baggageClaim = entry.baggage_claim || '';
+        let status = entry.status || '';
+        let index = entry.index || 0;
+
+        let rowClass = "";
+        if (entry.customsAt !== null && entry.customsAt !== undefined) {
+          rowClass = "strike";
+        }
+
+        let statusContent = `<span class='${rowClass}'>${status}</span>`;
+        if (status === 'InAir' || status === 'Landed') {
+          const url = `https://www.flightradar24.com/${entry.IATA}${entry.flightnumber}`;
+          statusContent = `<a href='${url}' target='_blank' class='${rowClass}'>${status}</a>`;
+        }
+
+        let row = [`<span class='${rowClass}'>${flightFrom}</span>`, `<span class='${rowClass}'>${gateArrivalTime}</span>`, statusContent, `<span class='${rowClass}'>${baggageClaim}</span>`, index];
+        rows.push(row);
+      }
+    });
+
+    let settings = table.settings();
+    let order = table.order();
+
+    table.clear().rows.add(rows).draw();
+
+    if (preserveState) {
+      table.order(order).draw(false);
+    }
+
+    $('#iab-table tbody tr').each(function(index) {
+      let status = $(this).find('td:eq(2)').text();
+      if (status.includes('InAir')) {
+        $(this).addClass('in-air');
+      } else if (status.includes('Landed')) {
+        $(this).addClass('landed');
+      } else if (status.includes('InGate')) {
+        $(this).addClass('in-gate');
+      }
+    });
+
+  } catch (error) {
+    console.error('Error loading arrivals.json:', error);
+  }
+}
+
+$(document).ready(function() {
+  loadIABFlights();
+  setInterval(() => loadIABFlights(true), 15000);
+
+  $('#searchBox').on('input', function() {
+    const value = $(this).val();
+    table.search(value).draw();
+  });
+});
+</script>
 </body>
 </html>
