@@ -61,7 +61,15 @@ function loadFlights() {
       const table = document.getElementById('flights-body');
       table.innerHTML = '';
       data.filter(entry => entry.iab).forEach(entry => {
-        const gateTime = entry.GateArrivalTime ? new Date(entry.GateArrivalTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : '';
+        const gateDate = entry.GateArrivalTime ? new Date(entry.GateArrivalTime) : null;
+        let gateTime = '';
+        if (gateDate) {
+          const hour = gateDate.getHours() % 12 || 12;
+          const minute = gateDate.getMinutes().toString().padStart(2, '0');
+          const ampm = gateDate.getHours() >= 12 ? 'PM' : 'AM';
+          gateTime = `${hour}:${minute} ${ampm}`;
+        }
+
         const flight = `${entry.IATA}${entry.flightnumber}`;
         const city = entry.city || '';
         let status = entry.status || '';
@@ -78,9 +86,14 @@ function loadFlights() {
           rowClass = 'cancelled-line';
         }
 
-        let statusCell = `<td>${status.replace(/^Customs/, 'C')}</td>`;
+        let statusText = status.replace(/^Customs /, '');
+        let statusCell = `<td>${statusText}</td>`;
+
         if (status.startsWith('Customs')) {
-          statusCell = `<td class="customs-status">${status.replace(/^Customs/, 'C')}</td>`;
+          statusCell = `<td class="customs-status">${statusText}</td>`;
+        } else if (["InAir", "OutGate"].includes(status)) {
+          const link = `https://www.flightradar24.com/${flight}`;
+          statusCell = `<td><a href="${link}" target="_blank">${statusText}</a></td>`;
         }
 
         tr.innerHTML = `
