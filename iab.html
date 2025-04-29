@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>IAB Arrivals</title>
+  <title id="page-title">IAB Arrivals</title>
   <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
@@ -15,6 +15,20 @@
       font-variant: normal; 
       font-weight: 700;
       padding: 10px;
+    }
+    .selector {
+      display: inline-block;
+      margin: 10px 30px;
+      cursor: pointer;
+      font-size: 48px;
+      font-weight: bold;
+      color: #999;
+      text-shadow: none;
+      transition: all 0.3s ease;
+    }
+    .selector.active {
+      color: #000;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
     }
     .customs-status {
       text-decoration-style: double;
@@ -34,33 +48,59 @@
   <table>
     <thead>
       <tr>
-        <th id="date-header" style="background-color:#c2c2a3" colspan="5">Dulles IAB</th>
+        <th style="background-color:#c2ee3d75" colspan="5">
+          <div style="margin-bottom: 5px;">
+            <span class="selector active" id="iab-tab">IAB</span>
+            <span class="selector" id="fis-tab">FIS</span>
+          </div>
+        </th>
       </tr>
       <tr>
+        <th id="date-header" style="background-color:#c2c2a3" colspan="5">Dulles IAB</th>
+      </tr>
+      <tr id="header-row">
         <th>Gate Time</th>
         <th>Flight</th>
         <th>Dep City</th>
         <th>Status</th>
-        <th>Bag</th>
+        <th class="bag-column">Bag</th>
       </tr>
     </thead>
     <tbody id="flights-body">
     </tbody>
   </table>
 <script>
-// Set current date
 const dateHeader = document.getElementById('date-header');
+const pageTitle = document.getElementById('page-title');
+const headerRow = document.getElementById('header-row');
 const today = new Date();
 const options = { month: 'short', day: 'numeric', year: 'numeric' };
-dateHeader.innerHTML = `Dulles IAB ${today.toLocaleDateString('en-US', options)}`;
 
-function loadFlights() {
+let immigrationLocation = "iab";
+
+function updateSelectorUI(activeId) {
+  document.querySelectorAll('.selector').forEach(el => {
+    el.classList.remove('active');
+  });
+  document.getElementById(activeId + '-tab').classList.add('active');
+}
+
+function loadFlights(immigration_location) {
+  updateSelectorUI(immigration_location);
+  pageTitle.innerText = immigration_location.toUpperCase() + ' Arrivals';
+  dateHeader.innerHTML = `Dulles ${immigration_location.toUpperCase()} ${today.toLocaleDateString('en-US', options)}`;
+
+  const showBag = immigration_location !== 'fis';
+  document.querySelectorAll('.bag-column').forEach(th => {
+    th.style.display = showBag ? '' : 'none';
+  });
+
   fetch('arrivals.json')
     .then(response => response.json())
     .then(data => {
       const table = document.getElementById('flights-body');
       table.innerHTML = '';
-      data.filter(entry => entry.iab).forEach(entry => {
+      data.filter(entry => entry[immigration_location]).forEach(entry => {
         const gateDate = entry.GateArrivalTime ? new Date(entry.GateArrivalTime) : null;
         let gateTime = '';
         if (gateDate) {
@@ -91,7 +131,7 @@ function loadFlights() {
 
         if (status.startsWith('Customs')) {
           statusCell = `<td class="customs-status">${statusText}</td>`;
-        } else if (["InAir", "OutGate"].includes(status)) {
+        } else if (["InAir", "OutGate", "Landed"].includes(status)) {
           const link = `https://www.flightradar24.com/${flight}`;
           statusCell = `<td><a href="${link}" target="_blank">${statusText}</a></td>`;
         }
@@ -101,7 +141,7 @@ function loadFlights() {
           <td>${flight}</td>
           <td>${city}</td>
           ${statusCell}
-          <td>${bag}</td>
+          ${showBag ? `<td class="bag-column">${bag}</td>` : ''}
         `;
 
         if (rowClass) {
@@ -113,8 +153,18 @@ function loadFlights() {
     });
 }
 
-loadFlights();
-setInterval(loadFlights, 30000);
+document.getElementById('iab-tab').addEventListener('click', () => {
+  immigrationLocation = 'iab';
+  loadFlights(immigrationLocation);
+});
+
+document.getElementById('fis-tab').addEventListener('click', () => {
+  immigrationLocation = 'fis';
+  loadFlights(immigrationLocation);
+});
+
+loadFlights(immigrationLocation);
+setInterval(() => loadFlights(immigrationLocation), 30000);
 </script>
 </body>
 </html>
