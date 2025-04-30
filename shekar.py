@@ -1,13 +1,25 @@
 import requests
 import json
 from datetime import datetime
-import united
+import time
 import globals
 
-def fetch_flight_data(url):
-    response = requests.get(url, timeout=(5, 10))  # 5 seconds connect timeout, 10 seconds read timeout
-    response.raise_for_status()
-    return response.json()
+def fetch_flight_data(url, max_attempts=4, wait_seconds=10):
+    attempts = 0
+    while attempts < max_attempts:
+        try:
+            response = requests.get(url, timeout=(5, 10))
+            if response.status_code == 200:
+                return response.json()
+            else:
+                print(f"Attempt {attempts + 1} failed with status code {response.status_code}. Retrying in {wait_seconds} seconds...")
+        except requests.RequestException as e:
+            print(f"Attempt {attempts + 1} encountered an error: {e}. Retrying in {wait_seconds} seconds...")
+
+        attempts += 1
+        time.sleep(wait_seconds)
+
+    raise Exception(f"Failed to fetch data from {url} after {max_attempts} attempts.")
 
 def is_published_today(entry):
     try:
@@ -276,14 +288,29 @@ def main():
         arrivals = filter_process_and_sort(data.get("arrivals", []), clean_arrival, "GateArrivalTime")
         departures = filter_process_and_sort(data.get("departures", []), clean_departure, "GateDepartureTime")
 
+        # format current time as "Month Day, Year HH:MM AM/PM"
+        current_time_str = datetime.now().strftime("%B %d, %Y %-I:%M %p")
+
+        # build a top-level object
+        arrivals_obj = {
+            "currentTime": current_time_str, 
+            "arrivals": arrivals
+        }
+
+        # build a top-level object
+        departures_obj = {
+            "currentTime": current_time_str, 
+            "departures": departures
+        }
+
         if arrivals:
-            write_to_file(arrivals, "arrivals.json")
+            write_to_file(arrivals_obj, "arrivals.json")
             print("Wrote arrivals.json sorted by GateArrivalTime.")
         else:
             print("No arrivals for today.")
 
         if departures:
-            write_to_file(departures, "departures.json")
+            write_to_file(departures_obj, "departures.json")
             print("Wrote departures.json sorted by GateDepartureTime.")
         else:
             print("No departures for today.")

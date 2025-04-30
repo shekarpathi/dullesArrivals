@@ -114,7 +114,10 @@
 <body>
   <header>
     <img src="ChatGPTImageDepartures.png" alt="Dulles Terminal Logo" style="height: 40px; object-fit: cover;" />
-    <h1>Departures</h1>
+    <div>
+      <h1>Departures</h1>
+      <span style="background-color: #c823a2" id="timestamp">Data current as of: --</span>
+    </div>
   </header>
   
   <input type="text" id="searchBox" placeholder="Search flights...">
@@ -149,7 +152,9 @@
       try {
         const response = await fetch('departures.json');
         const data = await response.json();
-        currentData = data;
+        currentData = data.departures;
+        const currentTime = data.currentTime;
+        document.getElementById('timestamp').textContent = `Data current as of: ${currentTime}`;
         renderTable();
       } catch (error) {
         console.error('Failed to load data:', error);
