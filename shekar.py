@@ -2,7 +2,48 @@ import requests
 import json
 from datetime import datetime
 import time
-import globals
+# import globals
+airline_name_dict = {
+    "Aer Lingus": "Aer Lingus",
+    "Aeromexico": "Aeromexico",
+    "Air Canada": "Air Canada",
+    "Air France": "Air France",
+    "Alaska Airlines": "Alaska",
+    "All Nippon Airways": "All Nippon",
+    "Allegiant Air LLC": "Allegiant",
+    "American Airlines": "American",
+    "Austrian Airlines AG dba Austrian": "Austrian",
+    "Avianca": "Avianca",
+    "Breeze Airways": "Breeze",
+    "British Airways": "British",
+    "Brussels Airlines": "Brussels",
+    "COPA Airlines": "COPA",
+    "Contour Airlines": "Contour",
+    "Delta Air Lines": "Delta",
+    "Deutsche Lufthansa AG": "Lufthansa",
+    "Egyptair": "Egyptair",
+    "Emirates": "Emirates",
+    "Ethiopian Airlines": "Ethiopian",
+    "Etihad Airways": "Etihad",
+    "Frontier Airlines Inc.": "Frontier",
+    "Iberia": "Iberia",
+    "Icelandair": "Icelandair",
+    "KLM-Royal Dutch Airlines": "KLM",
+    "Korean Air": "Korean",
+    "Porter Airlines": "Porter",
+    "Qatar Airways": "Qatar",
+    "SAS Scandinavian Airlines": "SAS",
+    "SWISS": "SWISS",
+    "Saudi Arabian Airlines": "Saudia",
+    "Southern Airways Express": "Southern",
+    "Southwest Airlines": "Southwest",
+    "Sun Country Airlines": "Sun Country",
+    "TAP Air Portugal": "TAP",
+    "Turkish Airlines": "Turkish",
+    "United Airlines": "United",
+    "Virgin Atlantic": "Virgin",
+    "Volaris El Salvador": "Volaris"
+}
 
 def fetch_flight_data(url, max_attempts=4, wait_seconds=10):
     attempts = 0
@@ -161,6 +202,8 @@ def clean_arrival(entry):
 
     entry.pop("actualtime", None)
     entry.pop("publishedTime", None)
+    if entry["airline"] in airline_name_dict:
+        entry["airline"] = airline_name_dict.get(entry["airline"])
     return entry
 
 def get_international_domestic(entry):
@@ -239,6 +282,8 @@ def clean_departure(entry):
     entry.pop("publishedTime", None)
     entry.pop("arr_gate", None)
     entry.pop("baggage", None)
+    if entry["airline"] in airline_name_dict:
+        entry["airline"] = airline_name_dict.get(entry["airline"])
 
     # Add boarding_time for UA flights
     # if entry["IATA"] == "UA":
@@ -303,6 +348,16 @@ def main():
             "departures": departures
         }
 
+        # build a top-level object
+        arr_dep_obj = {
+            "currentTime": current_time_str, 
+            "arrivals": arrivals,
+            "departures": departures
+        }
+        write_to_file(arr_dep_obj, "arr_dep.json")
+
+        
+
         if arrivals:
             write_to_file(arrivals_obj, "arrivals.json")
             print("Wrote arrivals.json sorted by GateArrivalTime.")
@@ -321,5 +376,5 @@ def main():
         print(f"An unexpected error occurred: {e}")
 
 if __name__ == "__main__":
-    print(globals.bearer_token)
+    # print(globals.bearer_token)
     main()
