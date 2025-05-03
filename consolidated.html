@@ -8,191 +8,164 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Flight Arrivals/Departures</title>
   <style>
+    :root { --search-height: 56px; --tab-height: 48px; }
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    .search-container { padding: 10px; background: #f9f9f9; border-bottom: 1px solid #ddd; }
-    .search-container input { width: 100%; padding: 8px; box-sizing: border-box; font-size: 16px; }
-    .tab-container { display: flex; background-color: #f2f2f2; border-bottom: 1px solid #ccc; }
-    .tab {
-      flex: 1;
-      text-align: center;
-      padding: 12px;
-      cursor: pointer;
-      user-select: none;
+    .search-container {
+      position: sticky; top: 0; z-index: 100;
+      background: #f9f9f9; padding: 10px; border-bottom: 1px solid #ddd;
+      height: var(--search-height); box-sizing: border-box;
+    }
+    .search-container input {
+      width: 100%; padding: 8px; box-sizing: border-box; font-size: 16px;
+    }
+    .tab-container {
+      position: sticky; top: var(--search-height); z-index: 90;
+      display: flex; background-color: #eed784; border-bottom: 1px solid #ccc;
+      height: var(--tab-height); box-sizing: border-box;
+    }
+    .tab { flex: 1; text-align: center; line-height: var(--tab-height);
+      cursor: pointer; user-select: none;
       transition: background-color 0.2s, box-shadow 0.2s;
     }
-    .tab.active {
-      background-color: #e0f7ff;
-      font-weight: bold;
+    .tab.active { background-color: #e0f7ff; font-weight: bold;
       box-shadow: inset 0 -4px 0 #007bff;
     }
-    .table-container { overflow-x: auto; padding: 10px; }
+    .table-header-container {
+      position: sticky; top: calc(var(--search-height) + var(--tab-height));
+      z-index: 80; background: #fff; overflow-x: auto;
+      box-sizing: border-box;
+    }
+    .table-body-container {
+      overflow-x: auto; padding: 10px; box-sizing: border-box;
+    }
     table { width: 100%; border-collapse: collapse; min-width: 400px; }
-    th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #e0e0e0; }
-    th { background-color: #fafafa; position: sticky; top: 0; }
-    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 1000; }
+    th, td { padding: 8px 12px; text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    table thead th {
+      background-color: #fafafa; position: sticky; top: 0; z-index: 70;
+    }
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5); display: none;
+      align-items: center; justify-content: center; z-index: 1000;
+    }
     .modal.active { display: flex; }
-    .modal-content { position: relative; background: #fff; padding: 20px; border-radius: 8px; max-height: 80%; overflow-y: auto; width: 90%; max-width: 400px; }
-    .modal-content .close { position: absolute; top: 10px; right: 15px; font-size: 24px; font-weight: bold; cursor: pointer; }
+    .modal-content { position: relative; background: #fff; padding: 20px;
+      border-radius: 8px; max-height: 80%; overflow-y: auto;
+      width: 90%; max-width: 400px; box-sizing: border-box;
+    }
+    .modal-content .close { position: absolute; top: 10px; right: 15px;
+      font-size: 24px; font-weight: bold; cursor: pointer;
+    }
     .modal-content p { margin: 8px 0; }
     .modal-content p strong { text-transform: capitalize; }
   </style>
 </head>
 <body>
-
-  <!-- Search bar -->
   <div class="search-container">
     <input type="text" id="search-input" placeholder="Search any field…" autocomplete="off" />
   </div>
-
-  <!-- Tabs -->
   <div class="tab-container">
     <div class="tab active" id="arr-tab">Arr</div>
     <div class="tab" id="dep-tab">Dep</div>
     <div class="tab" id="iab-tab">IAB</div>
     <div class="tab" id="fis-tab">FIS</div>
   </div>
-
-  <!-- Table -->
-  <div class="table-container">
-    <table>
-      <thead id="table-head"></thead>
-      <tbody id="table-body"></tbody>
-    </table>
+  <div class="table-header-container">
+    <table><thead id="table-head"></thead></table>
   </div>
-
-  <!-- Modal (mobile only) -->
+  <div class="table-body-container">
+    <table><tbody id="table-body"></tbody></table>
+  </div>
   <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <div id="modal-body"></div>
     </div>
   </div>
-
   <script>
     let flightData = {};
-
-    function isMobile() {
-      return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
-    }
-
+    const isMobile = () => /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+    const getActiveTab = () => document.querySelector('.tab.active')?.id;
     document.addEventListener('DOMContentLoaded', () => {
-      // Rename tabs on desktop
       if (!isMobile()) {
         document.getElementById('arr-tab').textContent = 'Arrivals';
         document.getElementById('dep-tab').textContent = 'Departures';
       }
-
-      fetch('arr_dep.json')
-        .then(res => res.json())
-        .then(json => {
-          flightData = json;
-          setupTabs();
-          if (isMobile()) initMobile(); else initDesktop();
-        })
-        .catch(err => console.error('Failed to load JSON:', err));
-
+      fetch('arr_dep.json').then(r => r.json()).then(json => {
+        flightData = json; setupTabs(); isMobile() ? initMobile() : initDesktop();
+      });
       document.getElementById('search-input').addEventListener('input', filterRows);
     });
-
     function setupTabs() {
-      document.querySelectorAll('.tab').forEach(tab =>
-        tab.addEventListener('click', () => {
-          document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-          if (isMobile()) initMobile(); else initDesktop();
-        })
-      );
+      document.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active'); isMobile() ? initMobile() : initDesktop();
+      }));
     }
-
     function initMobile() {
-      renderTableHead(['Flight','Airline','City']);
-      renderRows(flightData.arrivals || [], ['IATA','flightnumber','airline','city'], { clickForModal: true });
+      const tab = getActiveTab();
+      if (tab === 'dep-tab') {
+        render('departures', ['Flight','Airline','City','Gate'], ['IATA','flightnumber','airline','city','gate'], true);
+      } else if (tab === 'iab-tab') {
+        render('iab', ['Arrival Time','Flight','City','Status','Bag'], ['ArrivalTime','IATA','flightnumber','city','status','baggage_claim'], true);
+      } else {
+        render('arrivals', ['Flight','Airline','City'], ['IATA','flightnumber','airline','city'], true);
+      }
       setupModal(); filterRows();
     }
-
     function initDesktop() {
-      renderTableHead(['Flight','Airline','City','Gate','Status','Baggage Claim','Arrival Time','Arrival Info','Code Shares']);
-      renderRows(flightData.arrivals || [], ['IATA','flightnumber','airline','city','gate','status','baggage_claim','ArrivalTime','ArrivalInfo','codeShares'], { clickForModal: false });
+      const tab = getActiveTab();
+      if (tab === 'dep-tab') {
+        render('departures', ['Flight','Airline','City','Gate','Status','Departure Time','Departure Info','Code Shares'], ['IATA','flightnumber','airline','city','gate','status','departure_time','departure_info','codeShares'], false);
+      } else if (tab === 'iab-tab') {
+        render('iab', ['Arr','Flight','City','Status','Bag'], ['ArrivalTime','IATA','flightnumber','city','status','baggage_claim'], false);
+      } else {
+        render('arrivals', ['Flight','Airline','City','Gate','Status','Baggage Claim','Arrival Time','Arrival Info','Code Shares'], ['IATA','flightnumber','airline','city','gate','status','baggage_claim','arrival_time','arrival_info','codeShares'], false);
+      }
       document.getElementById('modal').style.display = 'none'; filterRows();
     }
-
-    function renderTableHead(cols) {
-      document.getElementById('table-head').innerHTML = '<tr>' + cols.map(c => `<th>${c}</th>`).join('') + '</tr>';
-    }
-
-    function renderRows(entries, keys, opts) {
+    function render(key, headers, keys, modal) {
+      let data = key === 'iab' ? (flightData.arrivals||[]).filter(e => e.iab) : (flightData[key] || []);
+      document.getElementById('table-head').innerHTML = '<tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr>';
       const tbody = document.getElementById('table-body'); tbody.innerHTML = '';
-      entries.forEach(entry => {
-        const tr = document.createElement('tr');
-        tr.setAttribute('data-json', JSON.stringify(entry));
-        // highlight statuses
-        const status = entry.status || '';
-        if (status === 'Landed' || status === 'InAir' || status.startsWith('Customs')) {
-          tr.style.backgroundColor = '#b7dbf5';
-        } else if (status === 'InGate') {
-          tr.style.backgroundColor = '#98e3ac';
-        } else if (status === 'Delayed') {
-          tr.style.backgroundColor = '#e3d498';
-        } else if (status === 'Cancelled') {
-          tr.style.backgroundColor = '#e6473a';
-        } else if (status === 'Scheduled' || status === 'Proposed') {
-          tr.style.backgroundColor = '#e6c8f5';
-        }
-        // append cells
-        keys.forEach(key => {
+      data.forEach(entry => {
+        const tr = document.createElement('tr'); tr.setAttribute('data-json', JSON.stringify(entry));
+        if (['Landed','InAir'].includes(entry.status) || (entry.status||'').startsWith('Customs')) tr.style.backgroundColor = '#b7dbf5';
+        keys.forEach(k => {
+          if (k === 'flightnumber') return;
           const td = document.createElement('td');
-          let text = '';
-          if (key === 'IATA') {
-            text = entry.IATA + entry.flightnumber;
-          } else if (key === 'flightnumber') {
-            return;
-          } else {
-            text = entry[key] || '';
-          }
-          td.textContent = text;
+          td.textContent = k === 'IATA' ? entry.IATA + entry.flightnumber : (entry[k] || '');
           tr.appendChild(td);
         });
-        if (opts.clickForModal) tr.addEventListener('click', () => showPopup(entry));
+        if (modal) tr.addEventListener('click', () => showPopup(entry));
         tbody.appendChild(tr);
       });
     }
-
     function filterRows() {
       const f = document.getElementById('search-input').value.toLowerCase();
-      document.querySelectorAll('#table-body tr').forEach(row => {
-        const txt = row.getAttribute('data-json').toLowerCase();
-        row.style.display = f && !txt.includes(f) ? 'none' : '';
-      });
+      document.querySelectorAll('#table-body tr').forEach(row => row.style.display = f && !row.getAttribute('data-json').toLowerCase().includes(f) ? 'none' : '');
     }
-
     function setupModal() {
       const modal = document.getElementById('modal');
       modal.querySelector('.close').addEventListener('click', () => modal.classList.remove('active'));
       modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
     }
-
     function showPopup(entry) {
-      const body = document.getElementById('modal-body'); body.innerHTML = '';
-      const fields = [
-        {label:'Flight',value:entry.IATA+entry.flightnumber},
-        {label:'Airline',value:entry.airline},
-        {label:'Status',value:entry.status},
-        {label:'Gate',value:entry.gate},
-        {label:'City',value:entry.city},
-        {label:'Customs At',value:entry.customsAt},
-        {label:'Aircraft Code',value:entry.aircraft_code},
-        {label:'Baggage Claim',value:entry.baggage_claim},
-        {label:'Arrival Info',value:entry.ArrivalInfo},
-        {label:'Arrival Time',value:entry.ArrivalTime}
-      ];
-      fields.forEach(({label,value}) => {
-        if (label==='Customs At'&&(value==null)) return;
-        const p = document.createElement('p'); p.innerHTML = `<strong>${label}:</strong> ${value||''}`;
-        body.appendChild(p);
-      });
+      const tab = getActiveTab(); const body = document.getElementById('modal-body'); body.innerHTML = '';
+      if (isMobile() && tab === 'dep-tab') {
+        Object.entries(entry).forEach(([k, v]) => { const p = document.createElement('p'); p.innerHTML = `<strong>${k}:</strong> ${v}`; body.appendChild(p); });
+      } else {
+        ['Flight','Airline','Status','Gate','City','Customs At','Aircraft Code','Baggage Claim','Arrival Info','Arrival Time'].forEach(label => {
+          const key = label.toLowerCase().replace(/ /g, '_');
+          let v = label === 'Flight' ? entry.IATA + entry.flightnumber : (entry[key] || '');
+          if (label === 'Customs At' && v == null) return;
+          const p = document.createElement('p'); p.innerHTML = `<strong>${label}:</strong> ${v}`;
+          body.appendChild(p);
+        });
+      }
       document.getElementById('modal').classList.add('active');
     }
   </script>
-
 </body>
 </html>
