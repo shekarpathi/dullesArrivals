@@ -1,142 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Departures</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f9;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Arrivals</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+      }
+      header {
+        background-color: #003366;
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+      }
+      header img {
+        height: 40px;
+        margin-right: 1rem;
+      }
+      h1 { margin: 0; }
+    
+      #searchBox {
+        display: block;
+        margin: 1rem auto;
+        padding: 0.5rem;
+        width: 80%;
+        max-width: 600px;
+        font-size: 1rem;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+    
+      #table-container {
+        height: 600px; /* Adjust this height as needed */
+        overflow-y: scroll;
+        margin: 2rem auto;
+        max-width: 1200px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+    
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+    
+      th, td {
+        padding: 0.75rem;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+      }
+    
+      thead th {
+        background-color: #003366;
+        color: white;
+        cursor: pointer;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+      }
+    
+          
+      /* Status-specific row colors */
+
+
+    .status-cancelled {
+      background-color: #FF4C4C; /* Red */
     }
-  
-    header {
-      background-color: #003366;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+
+    .status-delayed {
+        background-color: #ffa6009f; /* Orange */
     }
-  
-    header img {
-      height: 40px;
-      margin-right: 1rem;
+
+    .status-inair {
+        background-color: #4da6ff85; /* Sky Blue */
     }
-  
-    h1 { margin: 0; }
-  
-    #searchBox {
-      display: block;
-      margin: 0 auto;
-      padding: 0.75rem;
-      width: 80%;
-      max-width: 600px;
-      font-size: 1rem;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      background: white;
-      position: sticky;
-      top: 70px; /* below header */
-      z-index: 999;
+
+    .status-outgate {
+        background-color: #90ee9085; /* Light Green */
     }
-  
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 2rem auto;
-      max-width: 1200px;
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+    .status-proposed {
+        background-color: #D3D3D3; /* Light Gray */
     }
-  
-    th, td {
-      padding: 0.75rem;
-      border-bottom: 1px solid #ddd;
-      text-align: left;
+
+    .status-scheduled {
+        background-color: #add8e6b0; /* Light Blue */
     }
-  
-    thead th {
-      background-color: #003366;
-      color: white;
-      cursor: pointer;
-      position: sticky;
-      top: 130px; /* below search box */
-      z-index: 998;
-    }
-  
-    tr:hover {
-      background-color: #f1f1f1;
-    }
-  
-    /* Row backgrounds */
-    .highlight {
-      background-color: #ffe5e5;
-    }
-    .delayed {
-      background-color: #fff3cd;
-    }
-    .scheduled {
-      background-color: #e5ffe5;
-    }
-    .cancelled {
-      background-color: #ffcccc;
-    }
-  
-    /* Status text colors */
-    .status-text {
-      font-family: 'Arial', 'Helvetica', sans-serif;
-      font-weight: bold;
-      font-size: 18px;
-      text-align: center;
-    }
-    .landed-text, .scheduled-text {
-      color: #0E8F2A;
-    }
-    .cancelled-text {
-      color: #ef1515;
-    }
-    .delayed-text {
-      color: #f1746d;
-    }
-    .inair-text {
-      color: #14b4e1;
-    }
-    .outgate-text {
-      color: #e68906;
-    }
-  </style>
+
+
+      .highlight {
+        background-color: #14b4e1;
+      }
+      .delayed {
+        background-color: #fff3cd;
+      }
+
+      .ingate {
+        background-color: hsl(50, 66%, 82%);
+      }
+      .outgate {
+        background-color: rgba(144, 238, 144, 0.384)
+      }
+      .inair {
+        background-color: rgba(144, 238, 144, 0.384)
+      }
+      .scheduled {
+        background-color: #e5ffe5;
+      }
+      .cancelled {
+        background-color: #ffcccc;
+      }
+    
+      /* Status text colors */
+      .status-text {
+        font-family: 'Arial', 'Helvetica', sans-serif;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: center;
+      }
+      .landed-text, .scheduled-text {
+        color: #0E8F2A;
+      }
+      .cancelled-text {
+        color: #ef1515;
+      }
+      .delayed-text {
+        color: #f1746d;
+      }
+      .inair-text {
+        color: #14b4e1;
+      }
+      .ingate-text {
+        color: #e68906;
+      }
+    </style>
       </head>
-<body>
-  <header>
-    <img src="ChatGPTImageDepartures.png" alt="Dulles Terminal Logo" style="height: 40px; object-fit: cover;" />
-    <h1>Departures</h1>
-  </header>
+  <body>
+    <header>
+      <img src="ChatGPTImageDepartures.png" alt="Dulles Terminal Logo" style="height: 40px; object-fit: cover;" />
+      <h1>Departures</h1>
+    </header>
+    
+    <input type="text" id="searchBox" placeholder="Search for any text...">
   
-  <input type="text" id="searchBox" placeholder="Search flights...">
+    <div id="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th data-field="index">#</th>
+            <th data-field="IATA">Flight</th>
+            <th data-field="airline">Airline</th>
+            <th data-field="city">City</th>
+            <th data-field="gate">Gate</th>
+            <th data-field="status">Status</th>
+            <th data-field="DepartureTime">Departure Time</th>
+            <th data-field="DepartureInfo">Departure Info</th>
+            <th data-field="codeShares">Code Shares</th>
+            <th data-field="tail_number">Tail Number</th>
+          </tr>
+        </thead>
+        <tbody id="flight-table-body"></tbody>
+      </table>
+    </div>
   
-  <table>
-    <thead>
-      <tr>
-        <th data-field="index">#</th>
-        <th data-field="IATA">Flight</th>
-        <th data-field="airline">Airline</th>
-        <th data-field="city">City</th>
-        <th data-field="gate">Gate</th>
-        <th data-field="status">Status</th>
-        <th data-field="DepartureTime">Departure Time</th>
-        <th data-field="DepartureInfo">Departure Info</th>
-        <th data-field="codeShares">Code Shares</th>
-        <th data-field="tail_number">Tail Number</th>
-      </tr>
-    </thead>
-    <tbody id="flight-table-body"></tbody>
-  </table>
-      
+
   <script>
     let currentData = [];
     let currentSortField = localStorage.getItem('sortField') || 'DepartureTime';
@@ -181,17 +213,23 @@
 
       filtered.forEach(entry => {
         const row = document.createElement('tr');
-        if (["OutGate", "InAir"].includes(entry.status)) {
-          row.classList.add('highlight');
+        if (["InAir"].includes(entry.status)) {
+          row.classList.add('status-inair');
+          statusClass = 'inair-text status-text';
+        } else if (entry.status === "OutGate") {
+          row.classList.add('status-outgate');
           statusClass = 'outgate-text status-text';
         } else if (entry.status === "Delayed") {
-          row.classList.add('delayed');
+          row.classList.add('status-delayed');
           statusClass = 'delayed-text status-text';
-        } else if (["Scheduled", "Proposed"].includes(entry.status)) {
-          row.classList.add('scheduled');
+        } else if (["Scheduled"].includes(entry.status)) {
+          row.classList.add('status-scheduled');
+          statusClass = 'scheduled-text status-text';
+        } else if (["Proposed"].includes(entry.status)) {
+          row.classList.add('status-proposed');
           statusClass = 'scheduled-text status-text';
         } else if (entry.status === "Cancelled") {
-          row.classList.add('cancelled');
+          row.classList.add('status-cancelled');
           statusClass = 'cancelled-text status-text';
         }
         else {

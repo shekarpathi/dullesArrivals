@@ -64,26 +64,69 @@
       z-index: 2;
     }
   
-    tr:hover {
-      background-color: #f1f1f1;
+    
+    .InCustoms, .In_Customs, .In-Customs, .In_Customs { 
+      background-color: #ffe4b5;  /* Moccasin - warm, attention-getting */
     }
-  
+
+    .Cancelled {
+      background-color: #f8d7da;  /* Light red/pink - signals cancellation */
+    }
+
+    .Cancelled-text {
+      color: #e70d1f;  /* Light red/pink - signals cancellation */
+    }
+
+    .Delayed {
+      background-color: #fff3cd;  /* Light yellow - caution/delay */
+    }
+
+    .InAir {
+      background-color: #d1ecf1;  /* Light blue - in flight */
+    }
+
+    .InGate {
+      background-color: #d4edda;  /* Light green - arrived and at gate */
+    }
+
+    .Landed {
+      background-color: #c3e6cb;  /* Slightly deeper green - landed */
+    }
+
+    .Landed-text { /* Apply to text within Landed row */
+      animation: landedPulse 1s infinite alternate;
+    }
+
+    @keyframes landedPulse {
+      0% {
+        color: #0f8cec;   /* Dim green */
+        text-shadow: none;
+      }
+      50% {
+        color: #43a047;   /* Bright green */
+        text-shadow: 0 0 16px #c012e3;
+      }
+      100% {
+        color: #a5d6a7;   /* Dim green */
+        text-shadow: none;
+      }
+    }
+    .OutGate {
+      background-color: #e2e3e5;  /* Light gray - departed gate */
+    }
+
+    .Proposed {
+      background-color: #e7eaf6;  /* Light lavender/blue - proposed, not yet scheduled */
+    }
+
+    .Scheduled {
+      background-color: #d4e7ef;  /* Very light blue - scheduled */
+    }
+
+    .Diverted {
+      background-color: #f5c6cb;  /* Soft coral/red - indicates diversion */
+    }
     /* Status-specific row colors */
-    .highlight {
-      background-color: #ffe5e5;
-    }
-    .delayed {
-      background-color: #fff3cd;
-    }
-    .ingate {
-      background-color: hsl(50, 66%, 82%);
-    }
-    .scheduled {
-      background-color: #e5ffe5;
-    }
-    .cancelled {
-      background-color: #ffcccc;
-    }
   
     /* Status text colors */
     .status-text {
@@ -91,9 +134,6 @@
       font-weight: bold;
       font-size: 18px;
       text-align: center;
-    }
-    .landed-text, .scheduled-text {
-      color: #0E8F2A;
     }
     .cancelled-text {
       color: #ef1515;
@@ -105,7 +145,7 @@
       color: #14b4e1;
     }
     .ingate-text {
-      color: #e68906;
+      color: #0E8F2A;
     }
   </style>
     </head>
@@ -182,23 +222,16 @@
 
       filtered.forEach(entry => {
         const row = document.createElement('tr');
-        if (["OutGate", "InAir"].includes(entry.status)) {
-            row.classList.add('highlight');
-            statusClass = 'inair-text status-text';
-        } else if (entry.status === "Delayed") {
-            row.classList.add('delayed');
-            statusClass = 'delayed-text status-text';
-        } else if (entry.status === "InGate") {
-            row.classList.add('ingate');
-            statusClass = 'ingate-text status-text';
-        } else if (["Scheduled", "Proposed"].includes(entry.status)) {
-            row.classList.add('scheduled');
-            statusClass = 'scheduled-text status-text';
-        } else if (entry.status === "Cancelled") {
-            row.classList.add('cancelled');
-            statusClass = 'cancelled-text status-text';
-        } else {
-            statusClass = 'status-text'; // fallback
+        statusClass = 'status-text'; // fallback
+        try{
+          if (entry.status.toLowerCase().includes("customs")) {
+            row.classList.add('InGate');
+          } else {
+            row.classList.add(entry.status);
+            statusClass = statusClass + ' '+ entry.status+'-text';
+          }
+        } catch (error) {
+          row.classList.add('Scheduled');
         }
 
         row.innerHTML = `

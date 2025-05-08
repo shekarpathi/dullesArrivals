@@ -5,14 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dulles Arrivals & Departures</title>
   <style>
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
       font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       background-color: #f4f4f4;
-      padding: 20px;
     }
 
     .status-text {
@@ -25,8 +24,10 @@
     .switch-container {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 20px;
-      margin-bottom: 20px;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     .switch {
@@ -67,7 +68,7 @@
     }
 
     input:checked + .slider {
-      background-color: #4CAF50; /* Green when ON */
+      background-color: #4CAF50;
     }
 
     input:checked + .slider:before {
@@ -75,10 +76,10 @@
     }
 
     iframe {
-      margin-top: 20px;
       width: 100%;
-      height: 600px;
+      height: calc(100vh - 90px); /* 90px = approx height of switch-container */
       border: none;
+      display: block;
     }
   </style>
 </head>
@@ -92,19 +93,25 @@
   </label>
   <div class="status-text">Departures</div>
 </div>
-<iframe id="pageFrame" src="https://www.dulles.xyz/arrivals.html"></iframe>
+
+<iframe id="pageFrame" src=""></iframe>
 
 <script>
 function updateStatus() {
   const toggle = document.getElementById('toggleSwitch');
   const pageFrame = document.getElementById('pageFrame');
+  const baseUrl = window.location.origin;
 
   if (toggle.checked) {
-    pageFrame.src = 'https://www.dulles.xyz/departures.html';
+    pageFrame.src = `${baseUrl}/departures.html`;
   } else {
-    pageFrame.src = 'https://www.dulles.xyz/arrivals.html';
+    pageFrame.src = `${baseUrl}/arrivals.html`;
   }
 }
+
+window.onload = function () {
+  document.getElementById('pageFrame').src = `${window.location.origin}/arrivals.html`;
+};
 </script>
 
 </body>
