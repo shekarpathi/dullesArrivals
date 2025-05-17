@@ -1,0 +1,216 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body.arrivals-page {
+  background-color: #f9fae0; /* light gray or any color you want for arrivals */
+}
+
+body.departures-page {
+  background-color: #e0f7fa; /* light blue or any other color for departures */
+}
+
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #225876;
+  color: white;
+  padding: 1rem 2rem;
+  height: 80px;
+}
+header img {
+    height: 40px;
+    margin-right: 1rem;
+}
+h1 { margin: 0; }
+
+#controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem auto;
+    flex-wrap: wrap;
+}
+
+#searchBox {
+    padding: 0.5rem;
+    width: 300px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#timestamp {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+#table-container {
+  margin: 120px auto 0rem; /* add top margin to account for fixed header */
+  height: calc(100vh - 120px);
+  overflow-y: scroll;
+  max-width: 1200px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  overflow-x: visible;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+thead th {
+    background-color: #003366;
+    color: white;
+    cursor: pointer;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* Status-specific row colors */
+.Delayed { background-color: #fff3cc; }
+.InAir {background-color: #87cfeb90;}
+.InGate {background-color: #eee4b489;}
+.Landed {background-color: #87cfeb52;}
+.OutGate {background-color: #f8981379;}
+.Proposed { background-color: #69f9696c; }
+.Scheduled { background-color: #d7fdd7; }
+.Diverted { background-color: #ffa500; }
+.Cancelled { background-color: #f63f3f84; }
+
+/* Status text colors */
+.status-text {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+.bag-text, .scheduled-text {
+    color: #0E8F2A;
+}
+.landed-text, .scheduled-text {
+    color: #0E8F2A;
+}
+.cancelled-text {
+    color: #ef1515;
+}
+.delayed-text {
+    color: #f1746d;
+}
+.inair-text {
+    color: #14b4e1;
+}
+.ingate-text {
+    color: #e68906;
+}
+
+
+/* Row backgrounds */
+/* Status text colors */
+.status-text {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+.landed-text, .scheduled-text {
+    color: #0E8F2A;
+}
+.cancelled-text {
+    color: #ef1515;
+}
+.delayed-text {
+    color: #f1746d;
+}
+.inair-text {
+    color: #14b4e1;
+}
+.outgate-text {
+    color: #e68906;
+}
+.baggage-number {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #ffd90095; /* light yellow */
+    color: black;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+.gate-number {
+  display: inline-block;
+  padding: 0 8px; /* horizontal padding */
+  height: 40px;
+  background-color: #FFD700; /* bright yellow */
+  color: black;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-weight: bold;
+  font-stretch: condensed;
+  font-size: 24px;
+  text-align: center;
+  line-height: 40px; /* vertically centers text */
+  border-radius: 10px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+.door-number {
+  display: inline-block;
+  padding: 0 8px; /* horizontal padding */
+  height: 20px;
+  background-color: #FFD700; /* bright yellow */
+  color: black;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-weight: bold;
+  font-stretch: condensed;
+  font-size: 20px;
+  text-align: center;
+  line-height: 20px; /* vertically centers text */
+  border-radius: 4px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+td:nth-child(7), /* Arrival column */
+td:nth-child(8), /* Info column */
+th[data-field="Arrival"],
+th[data-field="Info"] {
+    white-space: nowrap;
+    width: 10%;
+}
+td .door-number {
+  /* display: block; */
+  text-align: center;
+}
+
+td.gate-cell {
+  text-align: center;
+}
+
+
+#controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto; /* Pushes it to the right */
+}
