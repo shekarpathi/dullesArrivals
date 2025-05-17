@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arrivals</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <header>
-    <img src="ChatGPTImageArrivals.png" alt="Dulles Terminal Logo" style="height: 40px; object-fit: cover;" />
+    <img src="TA-Dulles-Logo-web.png" alt="Dulles Terminal Logo" style="height: 40px; object-fit: cover;" />
     <h1>Arrivals</h1>
+    <div>
+      <input type="text" id="searchBox" placeholder="Search any text..."><br>
+      <span id="timestamp">Data current as of: --</span>
+    </div>
   </header>
-
-  <div id="controls">
-    <input type="text" id="searchBox" placeholder="Search any text...">
-    <span id="timestamp">Data current as of: --</span>
-  </div>
 
   <div id="table-container">
     <table>
       <thead>
         <tr>
-            <th data-field="index">#</th>
-            <th data-field="IATA">Flight</th>
-            <th data-field="airline">Airline</th>
-            <th data-field="city">City</th>
-            <th data-field="status">Status</th>
-            <th data-field="baggage_claim">Bag</th>
-            <th data-field="ArrivalTime">Arrival</th>
-            <th data-field="gate">Gate</th>
-            <th data-field="codeShares">Code Shares</th>
-            <th data-field="tail_number">Tail</th>
+          <th data-field="index">#</th>
+          <th data-field="IATA">Flight</th>
+          <th data-field="airline">Airline</th>
+          <th data-field="city">City</th>
+          <th data-field="status">Status</th>
+          <th data-field="baggage_claim">Bag</th>
+          <th data-field="ArrivalTime">Arrival</th>
+          <th data-field="gate">Gate</th>
+          <th data-field="codeShares">Code Shares</th>
+          <th data-field="tail_number">Tail</th>
         </tr>
       </thead>
       <tbody id="flight-table-body"></tbody>
@@ -106,14 +107,14 @@
         } else {
           statusClass = 'status-text';
         }
-       
-        
 
-  try {
-  row.classList.add(entry.status);
-  } catch (error) {
-  console.error('Failed to add class:', error);
-  } 
+
+
+        try {
+          row.classList.add(entry.status);
+        } catch (error) {
+          console.error('Failed to add class:', error);
+        }
 
         row.innerHTML = `
           <td>${entry.index}</td>
@@ -160,4 +161,5 @@
     };
   </script>
 </body>
+
 </html>

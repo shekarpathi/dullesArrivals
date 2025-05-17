@@ -155,6 +155,27 @@ def remove_unwanted_data(entry):
     entry.pop("mod_gate", None)
     entry["status"] = entry.get("status") or entry.get("mod_status")
     entry.pop("mod_status", None)
+    gate = entry.get("gate")
+    international = entry.get("international")
+    iab = entry.get("iab")
+
+    if gate:
+        if gate.startswith("C"):
+            entry["ll_door"] = "6↑7"
+        elif gate.startswith("D"):
+            entry["ll_door"] = "8"
+        elif gate.startswith("A") and len(gate) == 3:
+            entry["ll_door"] = "6↑7"
+        elif gate.startswith("B"):
+            entry["ll_door"] = "9↑10"
+        elif gate.startswith("A") and international == 0:
+            entry["ll_door"] = "9↑10"
+        elif gate.startswith("Z"):
+            entry["ll_door"] = "8"
+
+    if iab is True:
+        entry["ll_door"] = "15"
+
     return entry
 
 def format_time_am_pm(datetime_str):
@@ -176,23 +197,23 @@ def format_time_diff(time_str):
 
         if seconds > 0:
             if hours > 0:
-                return f"in {hours}h {remaining_minutes}m"
+                return f"in {hours}:{remaining_minutes:02d}"
             else:
                 return f"in {remaining_minutes}m"
         else:
             if hours > 0:
-                return f"{hours}h {remaining_minutes}m ago"
+                return f"{hours}:{remaining_minutes:02d} ago"
             else:
                 return f"{remaining_minutes}m ago"
     except Exception:
         return None
 
 def clean_arrival(entry):
+    entry = get_international_domestic(entry)
     entry = flatten_codeshare(entry)
     entry = flatten_tail_number(entry)
     entry = remove_unwanted_data(entry)
     entry = flatten_baggageclaim(entry)
-    entry = get_international_domestic(entry)
     entry.pop("arrivalInfo", None)
     entry["GateArrivalTime"] = entry.get("actualtime") or entry.get("publishedTime")
     
@@ -256,12 +277,12 @@ def clean_departure(entry):
 
             if seconds > 0:
                 if hours > 0:
-                    return f"in {hours}h {remaining_minutes}m"
+                    return f"in {hours}:{remaining_minutes:02d}"
                 else:
                     return f"in {remaining_minutes}m"
             else:
                 if hours > 0:
-                    return f"{hours}h {remaining_minutes}m ago"
+                    return f"{hours}:{remaining_minutes:02d} ago"
                 else:
                     return f"{remaining_minutes}m ago"
         except Exception:

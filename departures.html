@@ -1,127 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Departures</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f9;
-    }
-  
-    header {
-      background-color: #003366;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-  
-    header img {
-      height: 40px;
-      margin-right: 1rem;
-    }
-  
-    h1 { margin: 0; }
-  
-    #searchBox {
-      display: block;
-      margin: 0 auto;
-      padding: 0.75rem;
-      width: 80%;
-      max-width: 600px;
-      font-size: 1rem;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      background: white;
-      position: sticky;
-      top: 70px; /* below header */
-      z-index: 999;
-    }
-  
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 2rem auto;
-      max-width: 1200px;
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-  
-    th, td {
-      padding: 0.75rem;
-      border-bottom: 1px solid #ddd;
-      text-align: left;
-    }
-  
-    thead th {
-      background-color: #003366;
-      color: white;
-      cursor: pointer;
-      position: sticky;
-      top: 130px; /* below search box */
-      z-index: 998;
-    }
-  
-    tr:hover {
-      background-color: #f1f1f1;
-    }
-  
-    /* Row backgrounds */
-    .highlight {
-      background-color: #ffe5e5;
-    }
-    .delayed {
-      background-color: #fff3cd;
-    }
-    .scheduled {
-      background-color: #e5ffe5;
-    }
-    .cancelled {
-      background-color: #ffcccc;
-    }
-  
-    /* Status text colors */
-    .status-text {
-      font-family: 'Arial', 'Helvetica', sans-serif;
-      font-weight: bold;
-      font-size: 18px;
-      text-align: center;
-    }
-    .landed-text, .scheduled-text {
-      color: #0E8F2A;
-    }
-    .cancelled-text {
-      color: #ef1515;
-    }
-    .delayed-text {
-      color: #f1746d;
-    }
-    .inair-text {
-      color: #14b4e1;
-    }
-    .outgate-text {
-      color: #e68906;
-    }
-  </style>
-      </head>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
 <body>
   <header>
-    <img src="ChatGPTImageDepartures.png" alt="Dulles Terminal Logo" style="height: 40px; object-fit: cover;" />
+    <img src="TA-Dulles-Logo-web.png" alt="Dulles Terminal Logo" style="height: 40px; object-fit: cover;" />
+    <h1>Departures</h1>
     <div>
-      <h1>Departures</h1>
+      <input type="text" id="searchBox" placeholder="Search any text..."><br>
       <span style="background-color: #c823a2" id="timestamp">Data current as of: --</span>
     </div>
   </header>
-  
-  <input type="text" id="searchBox" placeholder="Search flights...">
-  
+
+    <div id="table-container">
   <table>
     <thead>
       <tr>
@@ -139,7 +40,8 @@
     </thead>
     <tbody id="flight-table-body"></tbody>
   </table>
-      
+</div>
+
   <script>
     let currentData = [];
     let currentSortField = localStorage.getItem('sortField') || 'DepartureTime';
@@ -174,13 +76,13 @@
         let valB = b[currentSortField];
 
         if (currentSortField === 'index') {
-        valA = parseInt(valA, 10) || 0;
-        valB = parseInt(valB, 10) || 0;
-        return currentSortDirection === 'asc' ? valA - valB : valB - valA;
+          valA = parseInt(valA, 10) || 0;
+          valB = parseInt(valB, 10) || 0;
+          return currentSortDirection === 'asc' ? valA - valB : valB - valA;
         } else {
-        valA = (valA || '').toString();
-        valB = (valB || '').toString();
-        return currentSortDirection === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+          valA = (valA || '').toString();
+          valB = (valB || '').toString();
+          return currentSortDirection === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
         }
       });
 
@@ -200,7 +102,7 @@
           statusClass = 'cancelled-text status-text';
         }
         else {
-            statusClass = 'status-text'; // fallback
+          statusClass = 'status-text'; // fallback
         }
 
         row.innerHTML = `
@@ -208,7 +110,7 @@
           <td>${entry.IATA}${entry.flightnumber}</td>
           <td>${entry.airline}</td>
           <td>${entry.city}</td>
-          <td>${entry.gate}</td>
+          <div class="gate-number">${entry.gate}</div>
           <td><div class="${statusClass}">${entry.status}</div></td>
           <td>${entry.DepartureTime}</td>
           <td>${entry.DepartureInfo || ''}</td>
@@ -246,4 +148,5 @@
     };
   </script>
 </body>
+
 </html>

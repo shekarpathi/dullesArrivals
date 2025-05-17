@@ -92,19 +92,26 @@
   </label>
   <div class="status-text">Departures</div>
 </div>
-<iframe id="pageFrame" src="https://www.dulles.xyz/arrivals.html"></iframe>
+
+<iframe id="pageFrame" src=""></iframe>
 
 <script>
 function updateStatus() {
   const toggle = document.getElementById('toggleSwitch');
   const pageFrame = document.getElementById('pageFrame');
+  const baseUrl = window.location.origin;
 
   if (toggle.checked) {
-    pageFrame.src = 'https://www.dulles.xyz/departures.html';
+    pageFrame.src = `${baseUrl}/departures.html`;
   } else {
-    pageFrame.src = 'https://www.dulles.xyz/arrivals.html';
+    pageFrame.src = `${baseUrl}/arrivals.html`;
   }
 }
+
+// Set default iframe source on page load
+window.onload = function () {
+  document.getElementById('pageFrame').src = `${window.location.origin}/arrivals.html`;
+};
 </script>
 
 </body>
