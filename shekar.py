@@ -231,7 +231,7 @@ def get_international_domestic(entry):
     try:
         preclearairports = ['AUH', 'DUB', 'SNN', 'AUA', 'BDA', 'NAS', 'YYC', 'YYZ', 'YEG', 'YHZ', 'YUL', 'YOW', 'YVR',
                             'YYJ', 'YWG', 'SJU', 'STT']
-        starAllianceMembersArray = ['OS', 'DL', 'UA', 'SAB', 'CA', 'NH', 'SK', 'LX', 'SN']
+        starAllianceMembersArray = ['OS', 'DL', 'UA', 'SAB', 'CA', 'NH', 'SK', 'LX', 'SN', 'LH']
 
         entry["iab"] = False
         entry["fis"] = False
