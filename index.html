@@ -15,63 +15,24 @@
       padding: 20px;
     }
 
-    .status-text {
-      font-family: 'Arial', 'Helvetica', sans-serif;
-      font-weight: bold;
-      font-size: 24px;
-      text-align: center;
-    }
-
-    .switch-container {
+    .tab-container {
       display: flex;
-      align-items: center;
-      gap: 20px;
+      justify-content: center;
       margin-bottom: 20px;
+      gap: 40px;
     }
 
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 100px;
-      height: 50px;
-    }
-
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .slider {
-      position: absolute;
+    .tab {
+      font-size: 28px;
+      font-weight: bold;
+      color: #999;
       cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: orange;
-      transition: .4s;
-      border-radius: 34px;
+      transition: all 0.3s ease;
     }
 
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 42px;
-      width: 42px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      transition: .4s;
-      border-radius: 50%;
-    }
-
-    input:checked + .slider {
-      background-color: #4CAF50; /* Green when ON */
-    }
-
-    input:checked + .slider:before {
-      transform: translateX(50px);
+    .tab.active {
+      color: #000;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     }
 
     iframe {
@@ -84,32 +45,32 @@
 </head>
 <body>
 
-<div class="switch-container">
-  <div class="status-text">Arrivals</div>
-  <label class="switch">
-    <input type="checkbox" id="toggleSwitch" onchange="updateStatus()">
-    <span class="slider"></span>
-  </label>
-  <div class="status-text">Departures</div>
+<div class="tab-container">
+  <span class="tab active" id="arrivals-tab">Arrivals</span>
+  <span class="tab" id="departures-tab">Departures</span>
 </div>
 
 <iframe id="pageFrame" src=""></iframe>
 
 <script>
-function updateStatus() {
-  const toggle = document.getElementById('toggleSwitch');
-  const pageFrame = document.getElementById('pageFrame');
-  const baseUrl = window.location.origin;
-
-  if (toggle.checked) {
-    pageFrame.src = `${baseUrl}/departures.html`;
-  } else {
-    pageFrame.src = `${baseUrl}/arrivals.html`;
-  }
+function setActiveTab(tabId) {
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
 }
+
+document.getElementById('arrivals-tab').addEventListener('click', () => {
+  setActiveTab('arrivals-tab');
+  document.getElementById('pageFrame').src = `${window.location.origin}/arrivals.html`;
+});
+
+document.getElementById('departures-tab').addEventListener('click', () => {
+  setActiveTab('departures-tab');
+  document.getElementById('pageFrame').src = `${window.location.origin}/departures.html`;
+});
 
 // Set default iframe source on page load
 window.onload = function () {
+  setActiveTab('arrivals-tab');
   document.getElementById('pageFrame').src = `${window.location.origin}/arrivals.html`;
 };
 </script>
