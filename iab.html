@@ -100,7 +100,7 @@ function loadFlights(immigration_location) {
     .then(data => {
       const table = document.getElementById('flights-body');
       table.innerHTML = '';
-      data.filter(entry => entry[immigration_location]).forEach(entry => {
+        data.arrivals.filter(entry => entry[immigration_location]).forEach(entry => {
         const gateDate = entry.GateArrivalTime ? new Date(entry.GateArrivalTime) : null;
         let gateTime = '';
         if (gateDate) {
