@@ -12,7 +12,7 @@
       font-family: Consolas, monaco, monospace;
       font-size: 44px;
       font-style: normal;
-      font-variant: normal; 
+      font-variant: normal;
       font-weight: 700;
       padding: 10px;
     }
@@ -55,9 +55,6 @@
           </div>
         </th>
       </tr>
-      <tr>
-        <th id="date-header" style="background-color:#c2c2a3" colspan="5">Dulles IAB</th>
-      </tr>
       <tr id="header-row">
         <th>Gate Time</th>
         <th>Flight</th>
@@ -70,7 +67,7 @@
     </tbody>
   </table>
 <script>
-const dateHeader = document.getElementById('date-header');
+// const dateHeader = document.getElementById('date-header');
 const pageTitle = document.getElementById('page-title');
 const headerRow = document.getElementById('header-row');
 const today = new Date();
@@ -88,7 +85,7 @@ function updateSelectorUI(activeId) {
 function loadFlights(immigration_location) {
   updateSelectorUI(immigration_location);
   pageTitle.innerText = immigration_location.toUpperCase() + ' Arrivals';
-  dateHeader.innerHTML = `Dulles ${immigration_location.toUpperCase()} ${today.toLocaleDateString('en-US', options)}`;
+  // dateHeader.innerHTML = `Dulles ${immigration_location.toUpperCase()} ${today.toLocaleDateString('en-US', options)}`;
 
   const showBag = immigration_location !== 'fis';
   document.querySelectorAll('.bag-column').forEach(th => {
