@@ -42,6 +42,10 @@
     .cancelled-line {
       background-color: rgba(240, 128, 128, 0.375);
     }
+    #searchBox.active {
+      border: 3px solid #007BFF;
+      background-color: #e6f2ff;
+    }
   </style>
 </head>
 <body>
@@ -55,6 +59,11 @@
           </div>
         </th>
       </tr>
+      <tr>
+        <th colspan="5">
+          <input type="text" id="searchBox" placeholder="Search..." style="width: 90%; font-size: 24px; padding: 15px;">
+        </th>
+      </tr>
       <tr id="header-row">
         <th>Gate Time</th>
         <th>Flight</th>
@@ -66,14 +75,15 @@
     <tbody id="flights-body">
     </tbody>
   </table>
+
 <script>
-// const dateHeader = document.getElementById('date-header');
 const pageTitle = document.getElementById('page-title');
-const headerRow = document.getElementById('header-row');
 const today = new Date();
 const options = { month: 'short', day: 'numeric', year: 'numeric' };
 
 let immigrationLocation = "iab";
+let currentSearchTerm = localStorage.getItem('flightSearchValue') || '';
+document.getElementById('searchBox').value = currentSearchTerm;
 
 function updateSelectorUI(activeId) {
   document.querySelectorAll('.selector').forEach(el => {
@@ -85,7 +95,6 @@ function updateSelectorUI(activeId) {
 function loadFlights(immigration_location) {
   updateSelectorUI(immigration_location);
   pageTitle.innerText = immigration_location.toUpperCase() + ' Arrivals';
-  // dateHeader.innerHTML = `Dulles ${immigration_location.toUpperCase()} ${today.toLocaleDateString('en-US', options)}`;
 
   const showBag = immigration_location !== 'fis';
   document.querySelectorAll('.bag-column').forEach(th => {
@@ -97,7 +106,18 @@ function loadFlights(immigration_location) {
     .then(data => {
       const table = document.getElementById('flights-body');
       table.innerHTML = '';
-        data.arrivals.filter(entry => entry[immigration_location]).forEach(entry => {
+      let filteredArrivals = data.arrivals.filter(entry => entry[immigration_location]);
+
+      if (currentSearchTerm) {
+        const term = currentSearchTerm.toLowerCase();
+        filteredArrivals = filteredArrivals.filter(entry =>
+          Object.values(entry).some(val =>
+            val && val.toString().toLowerCase().includes(term)
+          )
+        );
+      }
+
+      filteredArrivals.forEach(entry => {
         const gateDate = entry.GateArrivalTime ? new Date(entry.GateArrivalTime) : null;
         let gateTime = '';
         if (gateDate) {
@@ -157,6 +177,12 @@ document.getElementById('iab-tab').addEventListener('click', () => {
 
 document.getElementById('fis-tab').addEventListener('click', () => {
   immigrationLocation = 'fis';
+  loadFlights(immigrationLocation);
+});
+
+document.getElementById('searchBox').addEventListener('input', e => {
+  currentSearchTerm = e.target.value;
+  localStorage.setItem('flightSearchValue', currentSearchTerm);
   loadFlights(immigrationLocation);
 });
 
