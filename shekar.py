@@ -121,7 +121,7 @@ def flatten_tail_number(entry):
 
             # Construct the URL
             entry["tail_number"] = f"https://www.flightstats.com/v2/flight-tracker/{entry['IATA']}/{entry['flightnumber']}?year={year}&month={month}&date={date}"
-            entry["tail_number"] = f"https://www.flightradar24.com/{entry['IATA']}{entry['flightnumber']}"
+            # entry["tail_number"] = f"https://www.flightradar24.com/{entry['IATA']}{entry['flightnumber']}"
 
             try:
                 aircraft_code = aircraft_info.get("aircraft_code", None)
