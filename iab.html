@@ -139,7 +139,7 @@ function loadFlights(immigration_location) {
         tr.innerHTML = `
           <td>${gateTime}</td>
           <td>${flight}</td>
-          <td>${city}</td>
+          <td>${city}<span style="font-size: 34pt; color: chocolate;">|${entry.aircraft_code}</span></td>
           ${statusCell}
           ${showBag ? `<td class="bag-column">${bag}</td>` : ''}
         `;
