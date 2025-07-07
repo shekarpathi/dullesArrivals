@@ -2,6 +2,9 @@ import requests
 import json
 from datetime import datetime
 import time
+import urllib3
+import os
+
 # import globals
 airline_name_dict = {
     "Aer Lingus": "Aer Lingus",
@@ -44,6 +47,61 @@ airline_name_dict = {
     "Virgin Atlantic": "Virgin",
     "Volaris El Salvador": "Volaris"
 }
+
+
+# Optional: Suppress warnings if using verify=False (not recommended for production)
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+CACHE_FILE = "fleet_cache.json"
+
+# Load cache from file
+if os.path.exists(CACHE_FILE):
+    with open(CACHE_FILE, "r") as f:
+        try:
+            fleet_ident_cache = json.load(f)
+        except json.JSONDecodeError:
+            fleet_ident_cache = {}
+else:
+    fleet_ident_cache = {}
+
+def save_cache():
+    with open(CACHE_FILE, "w") as f:
+        json.dump(fleet_ident_cache, f)
+
+def fetch_fleet_ident(search_term):
+    # Return from cache if available
+    if search_term in fleet_ident_cache:
+        return fleet_ident_cache[search_term]
+
+    url = "https://www.flightaware.com/search/homepage-api/"
+    headers = {
+        "Host": "www.flightaware.com",
+        "Content-Type": "application/json",
+    }
+    payload = {
+        "searchTerm": search_term
+    }
+
+    try:
+        response = requests.post(url, headers=headers, json=payload, verify=False)
+        response.raise_for_status()
+        data = response.json()
+    except (requests.RequestException, json.JSONDecodeError):
+        print(f"Error fetching data for {search_term}")
+        return None
+
+    for entry in data:
+        if entry.get("type") == "fleet":
+            ident = entry.get("ident")
+            # Save to cache and persist to file
+            fleet_ident_cache[search_term] = ident
+            save_cache()
+            return ident
+
+    # If not found, store as None to prevent repeat lookups
+    fleet_ident_cache[search_term] = None
+    save_cache()
+    return None
 
 def fetch_flight_data(url, max_attempts=4, wait_seconds=10):
     attempts = 0
@@ -120,8 +178,15 @@ def flatten_tail_number(entry):
             date = today.day
 
             # Construct the URL
-            entry["tail_number"] = f"https://www.flightstats.com/v2/flight-tracker/{entry['IATA']}/{entry['flightnumber']}?year={year}&month={month}&date={date}"
+            ident = fetch_fleet_ident(entry['IATA'])
+            # if ident:
+            #     print(f"Fleet ident: {entry['IATA']}:{ident}")
+            # else:
+            #     print("No fleet ident found.")
+
+            # entry["tail_number"] = f"https://www.flightstats.com/v2/flight-tracker/{entry['IATA']}/{entry['flightnumber']}?year={year}&month={month}&date={date}"
             # entry["tail_number"] = f"https://www.flightradar24.com/{entry['IATA']}{entry['flightnumber']}"
+            entry["tail_number"] = f"https://www.flightaware.com/live/flight/{ident}{entry['flightnumber']}"
 
             try:
                 aircraft_code = aircraft_info.get("aircraft_code", None)
