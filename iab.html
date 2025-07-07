@@ -1,67 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title id="page-title">Customs Arrivals</title>
+  <title id="page-title">IAB Arrivals</title>
   <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
   <style>
-
-    thead tr:nth-child(1) th,
-thead tr:nth-child(2) th,
-thead tr:nth-child(3) th {
-  height: 50px; /* adjust to match actual content height */
-  line-height: 10px;
-  padding: 0 10px;
-}
-
-thead th {
-  background-color: #003366;
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 2;
-}
-
-
-thead tr:nth-child(1) th {
-  position: sticky;
-  top: 0;
-  background-color: #e68906;
-  color: white;
-  z-index: 3;
-}
-
-thead tr:nth-child(2) th {
-  position: sticky;
-  top: 60px; /* match height of row 1 */
-  background-color: white;
-  z-index: 2;
-}
-
-thead tr:nth-child(3) th {
-  position: sticky;
-  top: 120px; /* sum of row 1 + row 2 heights */
-  background-color: #003366;
-  color: white;
-  z-index: 1;
-}
-
-#table-container {
-  height: 120vh;
-  overflow-y: auto;
-}
-
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  font-family: Consolas, monaco, monospace;
-  font-size: 44px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 700;
-  padding: 10px;
-}
     table, th, td {
       border: 1px solid black;
       border-collapse: collapse;
@@ -104,39 +48,33 @@ table, th, td {
     }
   </style>
 </head>
-
-
-<body class="arrivals-page">
-
-  <div id="table-container">
-    <table>
-      <thead>
-<tr>
-  <th colspan="5" style="height: 60px;">
-    <span class="selector active" id="iab-tab">IAB</span>
-    <span class="selector" id="fis-tab">FIS</span>
-  </th>
-</tr>
-
+<body>
+  <table>
+    <thead>
       <tr>
-        <th colspan="5"  style="height: 60px;">
-          <span style="text-align: right">
-            <input type="text" id="searchBox" placeholder="Search any text..." style="height: 55px;">
-          </span>
+        <th style="background-color:#c2ee3d75" colspan="5">
+          <div style="margin-bottom: 5px;">
+            <span class="selector active" id="iab-tab">IAB</span>
+            <span class="selector" id="fis-tab">FIS</span>
+          </div>
         </th>
       </tr>
       <tr>
+        <th colspan="5">
+          <input type="text" id="searchBox" placeholder="Search..." style="width: 90%; font-size: 24px; padding: 15px;">
+        </th>
+      </tr>
+      <tr id="header-row">
         <th>Gate Time</th>
         <th>Flight</th>
         <th>Dep City</th>
         <th>Status</th>
         <th class="bag-column">Bag</th>
       </tr>
-      </thead>
-      <tbody id="flight-table-body"></tbody>
-    </table>
-  </div>
-
+    </thead>
+    <tbody id="flights-body">
+    </tbody>
+  </table>
 
 <script>
 const pageTitle = document.getElementById('page-title');
@@ -166,7 +104,7 @@ function loadFlights(immigration_location) {
   fetch('arrivals.json')
     .then(response => response.json())
     .then(data => {
-      const table = document.getElementById('flight-table-body');
+      const table = document.getElementById('flights-body');
       table.innerHTML = '';
       let filteredArrivals = data.arrivals.filter(entry => entry[immigration_location]);
 
