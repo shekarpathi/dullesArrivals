@@ -15,4 +15,5 @@ sudo cp favicon.ico /var/www/html
 sudo chown ec2-user /var/www/html/*
 sudo chgrp ec2-user /var/www/html/*
 date >> /tmp/lastRunTimestamp
-date >> /var/www/html/lastRunTimestamp
+date >> lastRunTimestamp
+sudo cp lastRunTimestamp /var/www/html
