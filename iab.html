@@ -2,9 +2,6 @@
 <html>
 <head>
   <title id="page-title">IAB Arrivals</title>
-  <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="expires" content="0">
   <style>
     table, th, td {
       border: 1px solid black;
@@ -46,6 +43,15 @@
       border: 3px solid #007BFF;
       background-color: #e6f2ff;
     }
+    thead  {
+      background-color: #003366;
+      color: white;
+      cursor: pointer;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
   </style>
 </head>
 <body>
@@ -65,10 +71,10 @@
         </th>
       </tr>
       <tr id="header-row">
-        <th>Gate Time</th>
+        <th>Gate</th>
         <th>Flight</th>
-        <th>Dep City</th>
-        <th>Status</th>
+        <th>From</th>
+        <th>Customs</th>
         <th class="bag-column">Bag</th>
       </tr>
     </thead>
@@ -157,7 +163,7 @@ function loadFlights(immigration_location) {
         tr.innerHTML = `
           <td>${gateTime}</td>
           <td>${flight}</td>
-          <td>${city}<span style="font-size: 34pt; color: chocolate;">|${entry.aircraft_code}</span></td>
+          <td>${city}<span style="font-size: 22pt; color: chocolate;">&nbsp;${entry.aircraft_code}</span></td>
           ${statusCell}
           ${showBag ? `<td class="bag-column">${bag}</td>` : ''}
         `;
