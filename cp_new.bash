@@ -11,6 +11,7 @@ sudo cp departures.html /var/www/html
 sudo cp arrivals.json /var/www/html
 sudo cp departures.json /var/www/html
 sudo cp fleet_cache.json /var/www/html
+sudo cp styles.css /var/www/html
 sudo cp *.png /var/www/html
 sudo cp favicon.ico /var/www/html
 sudo chown ec2-user /var/www/html/*
