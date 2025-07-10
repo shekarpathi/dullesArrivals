@@ -118,7 +118,7 @@
 
         row.innerHTML = `
           <td>${entry.index}</td>
-          <td>${entry.IATA}${entry.flightnumber}</td>
+          <td>${entry.IATA}${entry.flightnumber}<br>${entry.aircraft_code}</td>
           <td><img src="${entry.airline}.png" width="80" height=auto alt="${entry.airline}"></td>
           <td>${entry.city}</td>
           <td><div class="${statusClass}">${entry.status}</div></td>
