@@ -16,6 +16,7 @@ airline_name_dict = {
     "Allegiant Air LLC": "Allegiant",
     "American Airlines": "American",
     "Austrian Airlines AG dba Austrian": "Austrian",
+    "Avelo Airlines": "Avelo",
     "Avianca": "Avianca",
     "Breeze Airways": "Breeze",
     "British Airways": "British",
