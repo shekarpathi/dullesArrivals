@@ -70,7 +70,7 @@ def print_boarding_times_from_data(data, flight_number):
     return result
 
 def main():
-    flight_numbers = [5028, 545, 2029, 1491, 1670, 408, 1234, 1235, 1236, 1237, 1238, 1239]
+    flight_numbers = [1790, 1443, 4562, 1926, 419, 1825]
     date_str = datetime.today().strftime("%Y-%m-%d")
     token = get_bearer_token()
 
