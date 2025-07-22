@@ -9,7 +9,7 @@ def get_bearer_token():
     token_url = "https://www.united.com/api/auth/anonymous-token"
     headers_token = { 
         "Host": "www.united.com",
-        "User-Agent": "Netscape/5.0 Kangaroo/20100101 Quicko/133.0",
+        "User-Agent": "NSCP/55.0 Geckoo/90100901 Firefox/433.0",
         "Accept": "application/json",
         "Accept-Language": "en-US,en;q=0.5",
         "Accept-Encoding": "gzip, deflate, br",
