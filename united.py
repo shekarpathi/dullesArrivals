@@ -129,6 +129,12 @@ def get_boarding_times_from_data(flight_number, iata_departure_airport_code):
         }
 
     boarding_times = None
+    estimated_arrival_time = None
+    estimated_departure_time = None
+    scheduled_departure_time = None
+    scheduled_arrival_time = None
+    estimated_departure_delay = None
+    estimated_arrival_delay = None
 
     for leg in flegs:
         boarding_times=""
@@ -136,6 +142,14 @@ def get_boarding_times_from_data(flight_number, iata_departure_airport_code):
         for segment in segments:
 
             departure_airport = segment.get("DepartureAirport", {})
+
+            estimated_departure_delay = segment.get("EstimatedDepartureDelayMinutes", {})
+            estimated_arrival_delay = segment.get("EstimatedArrivalDelayMinutes", {})
+            estimated_arrival_time = format_time(parse_date(segment.get("EstimatedArrivalTime")))
+            estimated_departure_time = format_time(parse_date(segment.get("EstimatedDepartureTime")))
+            scheduled_departure_time = format_time(parse_date(segment.get("DepartureDateTime")))
+            scheduled_arrival_time = format_time(parse_date(segment.get("ArrivalDateTime")))
+
             if departure_airport.get("IATACode") == iata_departure_airport_code:
                 segments_from_IAD.append(segment)
                 # Save to Python variable as JSON string
@@ -191,11 +205,16 @@ def get_boarding_times_from_data(flight_number, iata_departure_airport_code):
                     continue
                 foo2 = process_reasons(reason_statuses)
                 # print(foo2)
-
     return {
-        "Status": safe_get_tuple(foo, 0),
-        "Departure Time": formatted_departure_time if formatted_departure_time is not None else "",
-        "Departure Info": (
+        "ua_Status": safe_get_tuple(foo, 0),
+        "ua_Departure_Time": formatted_departure_time if formatted_departure_time is not None else "",
+        "ua_scheduled_departure_time": scheduled_departure_time,
+        "ua_estimated_departure_time": estimated_departure_time,
+        "ua_estimated_departure_delay" : estimated_departure_delay,
+        "ua_estimated_arrival_time": estimated_arrival_time,
+        "ua_scheduled_arrival_time": scheduled_arrival_time,
+        "ua_estimated_arrival_delay": estimated_arrival_delay,
+        "ua_Departure_Info": (
             (boarding_times if boarding_times is not None else "")
             + ("\n" + safe_get_tuple(foo, 1))
             + ("\n" + safe_get_tuple(foo, 2))
@@ -253,10 +272,10 @@ def process_reasons(reason_statuses):
 
 
 def main():
-    flight_numbers = [6039]
+    flight_numbers = [918,1129]
     for flight_number in flight_numbers:
         try:
-            iata_departure_arrival_code = "IAD"
+            # iata_departure_arrival_code = "IAD"
             iata_departure_airport_code = "IAD"
             depData = get_boarding_times_from_data(flight_number, iata_departure_airport_code)
             print(depData)
