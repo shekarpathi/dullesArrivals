@@ -6,7 +6,7 @@ token = ""
 expiresAt = ""
 headers = {
     "Host": "www.united.com",
-    "User-Agent": "NSCP/55.0 Geckoo/90100901 Duncan/433.0",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept": "application/json",
     "Accept-Language": "en-US,en;q=0.5",
     "Sec-Fetch-Site": "same-origin",
