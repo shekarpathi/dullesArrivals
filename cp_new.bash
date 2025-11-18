@@ -1,7 +1,7 @@
 #!/bin/bash
 cd /home/ec2-user/dullesArrivals
-git fetch
-git pull
+#git fetch
+#git pull
 /usr/bin/python3 shekar.py
 sudo rm -f /var/www/html/fis.html /var/www/html/iab.html /var/www/html/index.html /var/www/html/arrivals.html /var/www/html/arrivals.json /var/www/html/departures.html /var/www/html/departures.json
 sudo cp iab.html /var/www/html
