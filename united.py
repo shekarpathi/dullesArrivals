@@ -1,6 +1,9 @@
 import requests
 import json
 import re
+import os
+import sqlite3
+from pathlib import Path as _Path
 from datetime import datetime, timezone
 token = ""
 expiresAt = ""
@@ -12,6 +15,104 @@ headers = {
     "Sec-Fetch-Site": "same-origin",
     "Priority": "u=0"
 }
+DB_PATH = str(_Path(__file__).resolve().parent / 'arr_dep.db')
+
+
+
+
+# ---------------------- DB helpers for UA departures ----------------------
+def _normalize_flightnumber(fn):
+    """Prefer numeric portion if present (e.g., 'UA918' -> '918'); otherwise return as string."""
+    s = str(fn).strip()
+    digits = re.sub(r"\D", "", s)
+    return digits if digits else s
+
+def get_ua_departure_flightnumbers_from_db(db_path: str = DB_PATH):
+    """Return distinct flightnumbers from departures where IATA='UA' (no date filter)."""
+    try:
+        conn = sqlite3.connect(db_path)
+        cur = conn.cursor()
+        from datetime import date
+        today = date.today().strftime("%Y-%m-%d")
+        cur.execute(
+            "SELECT DISTINCT flightnumber FROM departures WHERE IATA = 'UA' AND departure_date = ?",
+            (today,))
+        rows = cur.fetchall()
+        return [row[0] for row in rows]
+    except Exception as e:
+        print(f"[DB] Error reading UA departures: {e}")
+        return []
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+UA_COLS = [
+    "ua_Status",
+    "ua_Departure_Time",
+    "ua_scheduled_departure_time",
+    "ua_estimated_departure_time",
+    "ua_estimated_departure_delay",
+    "ua_estimated_arrival_time",
+    "ua_scheduled_arrival_time",
+    "ua_estimated_arrival_delay",
+    "ua_Departure_Info",
+]
+
+def update_departure_with_united_fields(flightnumber, resp: dict, db_path: str = DB_PATH, use_today: bool = True):
+    """
+    Update departures table for IATA='UA' + flightnumber with values from United response.
+    If use_today=True, scopes update to rows where departure_date is today's local date.
+    """
+    if not isinstance(resp, dict):
+        print(f"[DB] Skipping update for UA{flightnumber}: response is not a dict")
+        return 0
+
+    # Map response keys to UA_* columns
+    mapping = {
+        "ua_Status": resp.get("Status"),
+        "ua_Departure_Time": resp.get("Departure_Time") or resp.get("Departure Time"),
+        "ua_scheduled_departure_time": resp.get("scheduled_departure_time"),
+        "ua_estimated_departure_time": resp.get("estimated_departure_time"),
+        "ua_estimated_departure_delay": resp.get("estimated_departure_delay"),
+        "ua_estimated_arrival_time": resp.get("estimated_arrival_time"),
+        "ua_scheduled_arrival_time": resp.get("scheduled_arrival_time"),
+        "ua_estimated_arrival_delay": resp.get("estimated_arrival_delay"),
+        "ua_Departure_Info": resp.get("Departure_Info"),
+    }
+
+    sets = []
+    values = []
+    for col, val in mapping.items():
+        sets.append(f'"{col}" = ?')
+        values.append(None if val is None else str(val))
+
+    where = "IATA = 'UA' AND flightnumber = ?"
+    values.append(str(flightnumber))
+
+    if use_today:
+        # keep aligned with how arrivals/departures insert today's date: localtime
+        where += " AND departure_date = date('now','localtime')"
+
+    sql = f"UPDATE departures SET {', '.join(sets)} WHERE {where}"
+
+    try:
+        conn = sqlite3.connect(db_path)
+        cur = conn.cursor()
+        cur.execute(sql, values)
+        conn.commit()
+        return cur.rowcount
+    except Exception as e:
+        print("[DB] Update failed for UA{flightnumber}: {e}")
+        return 0
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+# -------------------- end DB helpers for UA departures --------------------
+
 
 def is_current_time_before_or_equal(extracted_timestamp, current_timestamp):
     """
@@ -81,12 +182,14 @@ def fetch_flight_data(flight_number, date_str):
         return '{}'
 
 def parse_date(date_str):
+    return date_str
     try:
         return datetime.fromisoformat(date_str)
     except (TypeError, ValueError):
         return None
 
 def format_time(dt):
+    return dt
     return dt.strftime("%I:%M %p") if dt else "N/A"
 
 
@@ -104,7 +207,8 @@ def get_boarding_times_from_data(flight_number, iata_departure_airport_code):
     data = fetch_flight_data(flight_number, date_str)
     # print(data)
     result = ""
-    with open("foo.json", 'w') as f:
+    filename = "united_"+flight_number+".json"
+    with open(filename, 'w') as f:
         json.dump(data, f, indent=4)
     pretty_json_string = json.dumps(data, indent=4)
     # print(pretty_json_string)
@@ -204,17 +308,23 @@ def get_boarding_times_from_data(flight_number, iata_departure_airport_code):
                 if not reason_statuses:
                     continue
                 foo2 = process_reasons(reason_statuses)
-                # print(foo2)
+                print('---------------')
+                print('---------------')
+                print('---------------')
+                print(foo2)
+                print('---------------')
+                print('---------------')
     return {
-        "ua_Status": safe_get_tuple(foo, 0),
-        "ua_Departure_Time": formatted_departure_time if formatted_departure_time is not None else "",
-        "ua_scheduled_departure_time": scheduled_departure_time,
-        "ua_estimated_departure_time": estimated_departure_time,
-        "ua_estimated_departure_delay" : estimated_departure_delay,
-        "ua_estimated_arrival_time": estimated_arrival_time,
-        "ua_scheduled_arrival_time": scheduled_arrival_time,
-        "ua_estimated_arrival_delay": estimated_arrival_delay,
-        "ua_Departure_Info": (
+        "Status": safe_get_tuple(foo, 0),
+        "leg_status_description": foo[1],
+        "Departure_Time": formatted_departure_time if formatted_departure_time is not None else "",
+        "scheduled_departure_time": scheduled_departure_time,
+        "estimated_departure_time": estimated_departure_time,
+        "estimated_departure_delay" : estimated_departure_delay,
+        "estimated_arrival_time": estimated_arrival_time,
+        "scheduled_arrival_time": scheduled_arrival_time,
+        "estimated_arrival_delay": estimated_arrival_delay,
+        "Departure_Info": (
             (boarding_times if boarding_times is not None else "")
             + ("\n" + safe_get_tuple(foo, 1))
             + ("\n" + safe_get_tuple(foo, 2))
@@ -233,25 +343,18 @@ def process_statuses(statuses):
     on_time_status=""
     where_is_plane=""
     flight_status=""
+    arrival_status=""
 
     for status in statuses:
         if status.get("StatusType") == "DepartureStatus":
-            on_time_status = status.get("Description")
-            # if on_time_status:
-            #     print("Del/Ontime:", on_time_status)
-            # else:
-            #     print("No description available for DepartureStatus.")
-
+            on_time_status = status.get("Description") or ""
+        if status.get("StatusType") == "ArrivalStatus":
+            arrival_status = status.get("Description") or ""
         if status.get("StatusType") == "LegStatus":
-            where_is_plane = status.get("Description")
-            # if where_is_plane:
-            #     print("Dep/At gate:", where_is_plane)
-            # else:
-            #     print("No description available for LegStatus.")
-
+            where_is_plane = status.get("Description") or ""
         if status.get("StatusType") == "FlightStatus":
             flight_status = status.get("Description") or ""
-    return on_time_status, where_is_plane, flight_status
+    return on_time_status, arrival_status, where_is_plane, flight_status
 
 
 def process_reasons(reason_statuses):
@@ -262,25 +365,41 @@ def process_reasons(reason_statuses):
             continue
 
         for item in descriptions:
-            if item.get("Key") == "LongOpsDesc":
+            if item.get("Key") == "CustPubDesc":
                 reason_for_delay = item.get("Description")
                 # if reason_for_delay:
                 #     print("Reason:", reason_for_delay)
                 # else:
-                #     print("Description is missing for LongOpsDesc.")
+                #     print("Description is missing for CustPubDesc.")
     return reason_for_delay
 
+def deleteUnitedJson():
+    pattern = re.compile(r"^united_\d{1,5}\.json$")
+
+    for filename in os.listdir("."):
+        if pattern.match(filename) and os.path.isfile(filename):
+            os.remove(filename)
+            print(f"Deleted: {filename}")
 
 def main():
-    flight_numbers = [918,1129]
-    for flight_number in flight_numbers:
+    deleteUnitedJson()
+    # 1) Query arr_dep.db for UA departures
+    flightnumbers = get_ua_departure_flightnumbers_from_db()
+    if not flightnumbers:
+        print("No UA departures found in DB.")
+        return
+
+    # flightnumbers=['2748', '2319']
+
+    # 2) Loop through each flight, call United API helper, print + update DB
+    for flight_number in flightnumbers:
         try:
-            # iata_departure_arrival_code = "IAD"
+            norm_fn = _normalize_flightnumber(flight_number)
             iata_departure_airport_code = "IAD"
-            depData = get_boarding_times_from_data(flight_number, iata_departure_airport_code)
-            print(depData)
-            # arrData = get_boarding_times_from_data(flight_number, iata_departure_arrival_code)
-            # print(arrData)
+            resp = get_boarding_times_from_data(norm_fn, iata_departure_airport_code)
+            print(resp)
+            updated = update_departure_with_united_fields(flight_number, resp, DB_PATH, use_today=True)
+            print(f"[DB] Updated {updated} row(s) for UA{flight_number}")
         except Exception as e:
             print(f"Error processing flight {flight_number}: {e}")
             print("-" * 40)
