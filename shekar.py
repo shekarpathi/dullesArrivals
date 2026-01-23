@@ -233,9 +233,9 @@ def remove_unwanted_data(entry):
         elif gate.startswith("A") and len(gate) == 3:
             entry["ll_door"] = "6↑7"
         elif gate.startswith("B"):
-            entry["ll_door"] = "9↑10"
+            entry["ll_door"] = "10↑11"
         elif gate.startswith("A") and international == 0:
-            entry["ll_door"] = "9↑10"
+            entry["ll_door"] = "10↑11"
         elif gate.startswith("Z"):
             entry["ll_door"] = "8"
 
