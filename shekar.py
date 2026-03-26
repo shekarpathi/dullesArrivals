@@ -108,7 +108,7 @@ def fetch_flight_data(url, max_attempts=4, wait_seconds=10):
     attempts = 0
     while attempts < max_attempts:
         try:
-            response = requests.get(url, timeout=(5, 10))
+            response = requests.get(url, timeout=(5, 10), cookies={"flight-info": "1"})
             if response.status_code == 200:
                 return response.json()
             else:
