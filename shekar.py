@@ -7,6 +7,7 @@ import os
 
 # import globals
 airline_name_dict = {
+    "EVA Air": "EVA Air",
     "Air Premia Inc.": "Air Premia",
     "Aer Lingus": "Aer Lingus",
     "Aeromexico": "Aeromexico",
