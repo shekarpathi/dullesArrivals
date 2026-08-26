@@ -406,7 +406,19 @@ def sort_by_datetime_field(entries, fieldname):
         i += 1
     return entrys
 
+def normalize_flight_entries(entries):
+    """Normalize array and numerically keyed object flight collections."""
+    if isinstance(entries, list):
+        candidates = entries
+    elif isinstance(entries, dict):
+        candidates = entries.values()
+    else:
+        return []
+
+    return [entry for entry in candidates if isinstance(entry, dict)]
+
 def filter_process_and_sort(entries, cleaner, sort_field):
+    entries = normalize_flight_entries(entries)
     cleaned = [cleaner(entry) for entry in entries if is_published_today(entry)]
     return sort_by_datetime_field(cleaned, sort_field)
 
