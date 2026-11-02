@@ -9,18 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arrivals</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20260828-2" />
 </head>
 
 <body class="arrivals-page">
-  <header>
-    <img src="TA-Dulles-Logo-web.png" alt="Dulles Terminal Logo" style="height: 40px; object-fit: cover;" />
-    <h1>Arrivals</h1>
-    <div>
-      <input type="text" id="searchBox" placeholder="Search any text..."><br>
-      <span id="timestamp">Data current as of: --</span>
-    </div>
-  </header>
+  <input type="hidden" id="searchBox">
 
   <div id="table-container">
     <table>
@@ -35,7 +28,6 @@
           <th data-field="ArrivalTime">Arrival</th>
           <th data-field="gate">Gate</th>
           <th data-field="codeShares">Code Shares</th>
-          <th data-field="tail_number">Tail</th>
         </tr>
       </thead>
       <tbody id="flight-table-body"></tbody>
@@ -44,8 +36,8 @@
 
   <script>
     let currentData = [];
-    let currentSortField = localStorage.getItem('arrivals_sortField') || 'ArrivalTime';
-    let currentSortDirection = localStorage.getItem('arrivals_sortDirection') || 'asc';
+    let currentSortField = 'index';
+    let currentSortDirection = 'asc';
     let currentSearchTerm = localStorage.getItem('arrivals_searchTerm') || '';
 
     document.getElementById('searchBox').value = currentSearchTerm;
@@ -55,8 +47,6 @@
         const response = await fetch('arrivals.json');
         const data = await response.json();
         currentData = data.arrivals;
-        const currentTime = data.currentTime;
-        document.getElementById('timestamp').textContent = `Data current as of: ${currentTime}`;
         renderTable();
       } catch (error) {
         console.error('Failed to load data:', error);
@@ -118,7 +108,11 @@
 
         row.innerHTML = `
           <td>${entry.index}</td>
-          <td>${entry.IATA}${entry.flightnumber}<br>${entry.aircraft_code}</td>
+          <td>
+            <a href="${entry.flight_url}" target="_blank" rel="noopener noreferrer">${entry.IATA}${entry.flightnumber}</a>
+            ${entry.tail_number && entry.tail_url ? `<br><a href="${entry.tail_url}" target="_blank" rel="noopener noreferrer">${entry.tail_number}</a>` : ''}
+            <br>${entry.aircraft_code || ''}
+          </td>
           <td><img src="${entry.airline}.png" width="80" height=auto alt="${entry.airline}"></td>
           <td>${entry.city}</td>
           <td><div class="${statusClass}">${entry.status}</div></td>
@@ -126,7 +120,6 @@
           <td style="white-space: normal;">${entry.ArrivalTime || ''}<BR>${entry.ArrivalInfo || ''}</td>
           <td class="gate-cell">${entry.gate || ''}<br><div class="door-number">${entry.ll_door || ''}</div></td>
           <td style="white-space: normal;">${entry.codeShares || ''}</td>
-          <td><a href="${entry.tail_number}" target="_blank">Link</a></td>
         `;
         tbody.appendChild(row);
       });

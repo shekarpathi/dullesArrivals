@@ -1,9 +1,12 @@
 import requests
 import json
+import csv
+import io
 from datetime import datetime
 import time
 import urllib3
 import os
+from urllib.parse import quote
 
 # import globals
 airline_name_dict = {
@@ -51,11 +54,167 @@ airline_name_dict = {
     "Volaris El Salvador": "Volaris"
 }
 
+# IATA aircraft type designators returned by the Dulles flight feed.
+# Unknown codes are intentionally preserved so new equipment is still visible.
+aircraft_type_dict = {
+    "221": "Airbus A220-100",
+    "223": "Airbus A220-300",
+    "318": "Airbus A318",
+    "319": "Airbus A319",
+    "320": "Airbus A320",
+    "321": "Airbus A321",
+    "A318": "Airbus A318",
+    "A319": "Airbus A319",
+    "A320": "Airbus A320",
+    "A321": "Airbus A321",
+    "A20N": "Airbus A320neo",
+    "A21N": "Airbus A321neo",
+    "32A": "Airbus A320",
+    "32B": "Airbus A321",
+    "32N": "Airbus A320neo",
+    "32Q": "Airbus A321neo",
+    "332": "Airbus A330-200",
+    "333": "Airbus A330-300",
+    "338": "Airbus A330-800neo",
+    "339": "Airbus A330-900neo",
+    "343": "Airbus A340-300",
+    "346": "Airbus A340-600",
+    "359": "Airbus A350-900",
+    "35K": "Airbus A350-1000",
+    "388": "Airbus A380-800",
+    "73G": "Boeing 737-700",
+    "73H": "Boeing 737-800",
+    "73J": "Boeing 737-900",
+    "738": "Boeing 737-800",
+    "739": "Boeing 737-900",
+    "B737": "Boeing 737-700",
+    "B738": "Boeing 737-800",
+    "B739": "Boeing 737-900",
+    "B37M": "Boeing 737 MAX 7",
+    "B38M": "Boeing 737 MAX 8",
+    "B39M": "Boeing 737 MAX 9",
+    "B3XM": "Boeing 737 MAX 10",
+    "752": "Boeing 757-200",
+    "753": "Boeing 757-300",
+    "762": "Boeing 767-200",
+    "763": "Boeing 767-300",
+    "764": "Boeing 767-400",
+    "772": "Boeing 777-200",
+    "773": "Boeing 777-300",
+    "77L": "Boeing 777-200LR",
+    "77W": "Boeing 777-300ER",
+    "788": "Boeing 787-8 Dreamliner",
+    "789": "Boeing 787-9 Dreamliner",
+    "78X": "Boeing 787-10 Dreamliner",
+    "AT7": "ATR 72",
+    "BCS1": "Airbus A220-100",
+    "BCS3": "Airbus A220-300",
+    "CR2": "Bombardier CRJ200",
+    "CR5": "Bombardier CRJ550",
+    "CR7": "Bombardier CRJ700",
+    "CR9": "Bombardier CRJ900",
+    "E135": "Embraer ERJ-135",
+    "E145": "Embraer ERJ-145",
+    "ERJ": "Embraer ERJ family",
+    "E170": "Embraer E170",
+    "E175": "Embraer E175",
+    "E75L": "Embraer E175 (long-wing variant)",
+    "E75S": "Embraer E175 (short-wing variant)",
+    "E190": "Embraer E190",
+    "E195": "Embraer E195",
+    "E290": "Embraer E190-E2",
+    "E295": "Embraer E195-E2",
+    "CRJ2": "Bombardier CRJ200",
+    "DH8D": "De Havilland Canada Dash 8-400",
+    "C208": "Cessna 208 Caravan",
+}
+
+AIRCRAFT_CACHE_FILE = "aircraft_type_cache.json"
+AIRCRAFT_DATA_URL = "https://raw.githubusercontent.com/jpatokal/openflights/master/data/planes.dat"
+
+
+def load_aircraft_type_cache():
+    if not os.path.exists(AIRCRAFT_CACHE_FILE):
+        return {}
+    try:
+        with open(AIRCRAFT_CACHE_FILE, "r") as cache_file:
+            cached_types = json.load(cache_file)
+            return cached_types if isinstance(cached_types, dict) else {}
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+aircraft_type_cache = load_aircraft_type_cache()
+remote_aircraft_types = None
+
+
+def save_aircraft_type_cache():
+    try:
+        temporary_file = f"{AIRCRAFT_CACHE_FILE}.tmp"
+        with open(temporary_file, "w") as cache_file:
+            json.dump(aircraft_type_cache, cache_file, indent=2, sort_keys=True)
+        os.replace(temporary_file, AIRCRAFT_CACHE_FILE)
+    except OSError as error:
+        print(f"Unable to save aircraft type cache: {error}")
+
+
+def fetch_remote_aircraft_types():
+    """Download OpenFlights' IATA/ICAO aircraft list at most once per run."""
+    global remote_aircraft_types
+    if remote_aircraft_types is not None:
+        return remote_aircraft_types
+
+    remote_aircraft_types = {}
+    try:
+        response = requests.get(AIRCRAFT_DATA_URL, timeout=(5, 10))
+        response.raise_for_status()
+        for name, iata_code, icao_code in csv.reader(io.StringIO(response.text)):
+            for code in (iata_code, icao_code):
+                normalized_code = code.strip().upper()
+                if normalized_code and normalized_code != r"\N":
+                    remote_aircraft_types[normalized_code] = name.strip()
+    except (requests.RequestException, ValueError, csv.Error) as error:
+        print(f"Unable to refresh aircraft type data: {error}")
+
+    return remote_aircraft_types
+
+
+def decode_aircraft_type(aircraft_code):
+    """Resolve built-in, cached, then remote aircraft names; preserve unknown codes."""
+    if not aircraft_code:
+        return None
+    normalized_code = str(aircraft_code).strip().upper()
+    if normalized_code in aircraft_type_dict:
+        return compact_aircraft_name(aircraft_type_dict[normalized_code])
+    if normalized_code in aircraft_type_cache:
+        return compact_aircraft_name(aircraft_type_cache[normalized_code])
+
+    aircraft_name = fetch_remote_aircraft_types().get(normalized_code)
+    if aircraft_name:
+        aircraft_type_cache[normalized_code] = aircraft_name
+        save_aircraft_type_cache()
+        return compact_aircraft_name(aircraft_name)
+
+    return normalized_code
+
+
+def compact_aircraft_name(aircraft_name):
+    """Remove space-consuming manufacturer prefixes from Airbus and Boeing names."""
+    for prefix in ("Airbus ", "Boeing "):
+        if aircraft_name.startswith(prefix):
+            return aircraft_name[len(prefix):]
+    return aircraft_name
+
 
 # Optional: Suppress warnings if using verify=False (not recommended for production)
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 CACHE_FILE = "fleet_cache.json"
+ICAO_CACHE_FILE = "icao_hex_cache.json"
+ICAO_STATE_FILE = "icao_lookup_state.json"
+ICAO_MAX_REQUESTS_PER_RUN = 1
+ICAO_NOT_FOUND_RETRY_SECONDS = 6 * 60 * 60
+ICAO_RATE_LIMIT_RETRY_SECONDS = 60 * 60
 
 # Load cache from file
 if os.path.exists(CACHE_FILE):
@@ -67,9 +226,98 @@ if os.path.exists(CACHE_FILE):
 else:
     fleet_ident_cache = {}
 
+if os.path.exists(ICAO_CACHE_FILE):
+    with open(ICAO_CACHE_FILE, "r") as f:
+        try:
+            icao_hex_cache = json.load(f)
+        except json.JSONDecodeError:
+            icao_hex_cache = {}
+else:
+    icao_hex_cache = {}
+
+if os.path.exists(ICAO_STATE_FILE):
+    with open(ICAO_STATE_FILE, "r") as f:
+        try:
+            icao_lookup_state = json.load(f)
+        except json.JSONDecodeError:
+            icao_lookup_state = {}
+else:
+    icao_lookup_state = {}
+
+icao_requests_this_run = 0
+
 def save_cache():
     with open(CACHE_FILE, "w") as f:
         json.dump(fleet_ident_cache, f)
+
+
+def save_icao_hex_cache():
+    temporary_file = f"{ICAO_CACHE_FILE}.tmp"
+    try:
+        with open(temporary_file, "w") as f:
+            json.dump(icao_hex_cache, f, indent=2, sort_keys=True)
+        os.replace(temporary_file, ICAO_CACHE_FILE)
+    except OSError as error:
+        print(f"Unable to save ICAO hex cache: {error}")
+
+
+def save_icao_lookup_state():
+    temporary_file = f"{ICAO_STATE_FILE}.tmp"
+    try:
+        with open(temporary_file, "w") as f:
+            json.dump(icao_lookup_state, f, indent=2, sort_keys=True)
+        os.replace(temporary_file, ICAO_STATE_FILE)
+    except OSError as error:
+        print(f"Unable to save ICAO lookup state: {error}")
+
+
+def fetch_icao_hex(registration):
+    """Resolve an aircraft registration to its ICAO hex through ADSB.lol."""
+    global icao_requests_this_run
+    normalized_registration = str(registration).strip().upper()
+    if not normalized_registration:
+        return None
+    if normalized_registration in icao_hex_cache:
+        return icao_hex_cache[normalized_registration]
+
+    now = int(time.time())
+    if now < int(icao_lookup_state.get("rate_limit_until", 0)):
+        return None
+    retry_after = icao_lookup_state.get("registrations", {}).get(normalized_registration, 0)
+    if now < int(retry_after):
+        return None
+    if icao_requests_this_run >= ICAO_MAX_REQUESTS_PER_RUN:
+        return None
+
+    url = f"https://api.adsb.lol/v2/reg/{quote(normalized_registration, safe='-')}"
+    try:
+        icao_requests_this_run += 1
+        response = requests.get(url, timeout=(5, 10))
+        if response.status_code == 429:
+            retry_seconds = response.headers.get("Retry-After", "")
+            retry_seconds = int(retry_seconds) if retry_seconds.isdigit() else ICAO_RATE_LIMIT_RETRY_SECONDS
+            icao_lookup_state["rate_limit_until"] = now + max(retry_seconds, 60)
+            save_icao_lookup_state()
+            print(f"ADSB.lol rate limit reached; pausing ICAO lookups for {max(retry_seconds, 60)} seconds.")
+            return None
+        response.raise_for_status()
+        aircraft = response.json().get("ac", [])
+        matching_aircraft = next(
+            (item for item in aircraft if str(item.get("r", "")).upper() == normalized_registration),
+            aircraft[0] if aircraft else None,
+        )
+        icao_hex = str(matching_aircraft.get("hex", "")).lower() if matching_aircraft else ""
+        if len(icao_hex) == 6 and all(character in "0123456789abcdef" for character in icao_hex):
+            icao_hex_cache[normalized_registration] = icao_hex
+            save_icao_hex_cache()
+            return icao_hex
+        registrations = icao_lookup_state.setdefault("registrations", {})
+        registrations[normalized_registration] = now + ICAO_NOT_FOUND_RETRY_SECONDS
+        save_icao_lookup_state()
+    except (requests.RequestException, json.JSONDecodeError, AttributeError) as error:
+        print(f"Unable to resolve ICAO hex for {normalized_registration}: {error}")
+
+    return None
 
 def fetch_fleet_ident(search_term):
     # Return from cache if available
@@ -154,59 +402,46 @@ def flatten_baggageclaim(entry):
 
 
 def flatten_tail_number(entry):
-    entry["tail_number"] = None
-    if "aircraftInfo" not in entry:
-        return None
-    if (isinstance(entry["aircraftInfo"], list) and len(entry["aircraftInfo"]) > 0):
-        aircraft_info = entry["aircraftInfo"][0]
-    elif isinstance(entry["aircraftInfo"], dict):
-        aircraft_info = entry.get("aircraftInfo", {})
+    aircraft_info_value = entry.get("aircraftInfo")
+    if isinstance(aircraft_info_value, list) and aircraft_info_value:
+        aircraft_info = aircraft_info_value[0]
+    elif isinstance(aircraft_info_value, dict):
+        aircraft_info = aircraft_info_value
+    else:
+        aircraft_info = {}
 
     try:
-        if (isinstance(aircraft_info, dict)):
-            try:
-                tail_number = aircraft_info.get("tail_number", None)
-                if tail_number:
-                    entry["tail_number"] = tail_number.lower()
-                else:
-                    entry["tail_number"] = None
-            except Exception:
-                entry["tail_number"] = None
-            entry["tail_number"] = "{}{}".format("https://www.flightradar24.com/data/aircraft/", entry["tail_number"])  # "UA121"
+        flight_number = str(entry.get("flightnumber") or "").strip()
+        airline_code = str(entry.get("IATA") or "").strip().upper()
+        flightaware_ident = fetch_fleet_ident(airline_code) or airline_code
+        entry["flight_url"] = (
+            f"https://www.flightaware.com/live/flight/{flightaware_ident}{flight_number}"
+            if flightaware_ident and flight_number else None
+        )
 
-            # Get today's date
-            today = datetime.today()
-            year = today.year
-            month = today.month
-            date = today.day
+        tail_number = aircraft_info.get("tail_number")
+        if tail_number:
+            registration = str(tail_number).strip().lower()
+            entry["tail_number"] = registration.upper()
+            icao_hex = fetch_icao_hex(registration)
+            entry["icao_hex"] = icao_hex
+            entry["tail_url"] = f"https://adsb.lol/?icao={icao_hex}" if icao_hex else None
+        else:
+            entry["tail_number"] = None
+            entry["icao_hex"] = None
+            entry["tail_url"] = None
 
-            # Construct the URL
-            ident = fetch_fleet_ident(entry['IATA'])
-            # if ident:
-            #     print(f"Fleet ident: {entry['IATA']}:{ident}")
-            # else:
-            #     print("No fleet ident found.")
-
-            # entry["tail_number"] = f"https://www.flightstats.com/v2/flight-tracker/{entry['IATA']}/{entry['flightnumber']}?year={year}&month={month}&date={date}"
-            # entry["tail_number"] = f"https://www.flightradar24.com/{entry['IATA']}{entry['flightnumber']}"
-            entry["tail_number"] = f"https://www.flightaware.com/live/flight/{ident}{entry['flightnumber']}"
-
-            try:
-                aircraft_code = aircraft_info.get("aircraft_code", None)
-                if aircraft_code:
-                    entry["aircraft_code"] = aircraft_code
-                else:
-                    entry["aircraft_code"] = None
-            except Exception:
-                entry["aircraft_code"] = None
-
+        aircraft_code = aircraft_info.get("aircraft_code")
+        entry["aircraft_code"] = decode_aircraft_type(aircraft_code)
         entry.pop("aircraftInfo", None)
     except Exception:
+        entry["flight_url"] = None
         entry["tail_number"] = None
+        entry["icao_hex"] = None
+        entry["tail_url"] = None
+        entry["aircraft_code"] = None
         entry.pop("aircraftInfo", None)
         print("Error processing tail number for flight:", entry.get("flightnumber"))
-        # print("Aircraft Info:", aircraft_info)
-        # print("Entry:", entry)
 
     return entry
 
